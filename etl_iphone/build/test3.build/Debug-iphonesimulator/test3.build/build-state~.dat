@@ -1,0 +1,207 @@
+Ttest3
+v7
+r0
+t350446581.912138
+cCheck dependencies
+cProcessInfoPlistFile /Users/ben/Documents/test3/build/Debug-iphonesimulator/test3.app/Info.plist test3-Info.plist
+cCompileXIB /Users/ben/Documents/test3/MainWindow.xib
+cProcessPCH /var/folders/aZ/aZdWnKfTFeOwtXB6kuvfJU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/test3_Prefix-bqtqxrkvlfkawgfimxgsxllzpmes/test3_Prefix.pch.gch test3_Prefix.pch normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/test3.build/Debug-iphonesimulator/test3.build/Objects-normal/i386/main.o /Users/ben/Documents/test3/main.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/test3.build/Debug-iphonesimulator/test3.build/Objects-normal/i386/test3AppDelegate.o /Users/ben/Documents/test3/Classes/test3AppDelegate.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cLd /Users/ben/Documents/test3/build/Debug-iphonesimulator/test3.app/test3 normal i386
+cGenerateDSYMFile /Users/ben/Documents/test3/build/Debug-iphonesimulator/test3.app.dSYM /Users/ben/Documents/test3/build/Debug-iphonesimulator/test3.app/test3
+cTouch /Users/ben/Documents/test3/build/Debug-iphonesimulator/test3.app
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk
+c000000004D5C9B4E0000000000000110
+t1297914702
+s272
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics
+c000000004D54CFFA00000000002999B0
+t1297403898
+s2726320
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/Foundation.framework/Foundation
+c000000004D54CFE5000000000029DA70
+t1297403877
+s2742896
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h
+c000000004D54CFB80000000000001466
+t1297403832
+s5222
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h
+c000000004D5615B40000000000000AA1
+t1297487284
+s2721
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/UIKit.framework/UIKit
+c000000004D5616030000000000766870
+t1297487363
+s7759984
+
+N/Users/ben/Documents/test3/Classes/test3AppDelegate.h
+c000000004F332C740000000000000152
+t1328753780
+s338
+i<UIKit/UIKit.h>
+
+N/Users/ben/Documents/test3/Classes/test3AppDelegate.m
+c000000004F332C4B0000000000000A29
+t1328753739
+s2601
+i"test3AppDelegate.h"
+
+N/Users/ben/Documents/test3/MainWindow.xib
+c000000004F332B2D00000000000020FE
+t1328753453
+s8446
+
+N/Users/ben/Documents/test3/build/Debug-iphonesimulator/test3.app
+t1328753781
+s204
+
+N/Users/ben/Documents/test3/build/Debug-iphonesimulator/test3.app.dSYM
+t1328753781
+s102
+
+N/Users/ben/Documents/test3/build/Debug-iphonesimulator/test3.app/Info.plist
+t1328753780
+s583
+
+N/Users/ben/Documents/test3/build/Debug-iphonesimulator/test3.app/MainWindow.nib
+t1328753780
+s1529
+
+N/Users/ben/Documents/test3/build/Debug-iphonesimulator/test3.app/PkgInfo
+t1328753780
+s8
+
+N/Users/ben/Documents/test3/build/Debug-iphonesimulator/test3.app/test3
+t1328753781
+s15724
+
+N/Users/ben/Documents/test3/build/test3.build/Debug-iphonesimulator/test3.build/Objects-normal/i386/main.o
+t1328753781
+s6288
+
+N/Users/ben/Documents/test3/build/test3.build/Debug-iphonesimulator/test3.build/Objects-normal/i386/test3.LinkFileList
+c000000004F332C7400000000000000E0
+t1328753780
+s224
+
+N/Users/ben/Documents/test3/build/test3.build/Debug-iphonesimulator/test3.build/Objects-normal/i386/test3AppDelegate.o
+t1328753781
+s50448
+
+N/Users/ben/Documents/test3/main.m
+c000000004F332B2D000000000000015D
+t1328753453
+s349
+i<UIKit/UIKit.h>
+
+N/Users/ben/Documents/test3/test3_Prefix.pch
+c000000004F332B2D00000000000000B3
+t1328753453
+s179
+i<Foundation/Foundation.h>
+i<UIKit/UIKit.h>
+
+N/var/folders/aZ/aZdWnKfTFeOwtXB6kuvfJU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/test3_Prefix-bqtqxrkvlfkawgfimxgsxllzpmes/test3_Prefix.pch.gch
+t1328753781
+s15814064
+
+Ntest3-Info.plist
+c000000004F332B2D000000000000038D
+t1328753453
+s909
+
+CCheck dependencies
+r0
+lSLF07#2@18"Check dependencies350446580#350446580#0(0"0(0#1#0"8603905312#0"0#
+
+CCompileC build/test3.build/Debug-iphonesimulator/test3.build/Objects-normal/i386/main.o /Users/ben/Documents/test3/main.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s350446581.791381
+e350446581.851469
+r1
+xCompileC
+xbuild/test3.build/Debug-iphonesimulator/test3.build/Objects-normal/i386/main.o
+x/Users/ben/Documents/test3/main.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@41"Compile /Users/ben/Documents/test3/main.m350446581#350446581#0(0"0(0#0#33"/Users/ben/Documents/test3/main.m8629297952#1742"    cd /Users/ben/Documents/test3    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40300 -iquote /Users/ben/Documents/test3/build/test3.build/Debug-iphonesimulator/test3.build/test3-generated-files.hmap -I/Users/ben/Documents/test3/build/test3.build/Debug-iphonesimulator/test3.build/test3-own-target-headers.hmap -I/Users/ben/Documents/test3/build/test3.build/Debug-iphonesimulator/test3.build/test3-all-target-headers.hmap -iquote /Users/ben/Documents/test3/build/test3.build/Debug-iphonesimulator/test3.build/test3-project-headers.hmap -F/Users/ben/Documents/test3/build/Debug-iphonesimulator -I/Users/ben/Documents/test3/build/Debug-iphonesimulator/include -I/Users/ben/Documents/test3/build/test3.build/Debug-iphonesimulator/test3.build/DerivedSources/i386 -I/Users/ben/Documents/test3/build/test3.build/Debug-iphonesimulator/test3.build/DerivedSources -include /var/folders/aZ/aZdWnKfTFeOwtXB6kuvfJU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/test3_Prefix-bqtqxrkvlfkawgfimxgsxllzpmes/test3_Prefix.pch -c /Users/ben/Documents/test3/main.m -o /Users/ben/Documents/test3/build/test3.build/Debug-iphonesimulator/test3.build/Objects-normal/i386/main.o0#
+
+CCompileC build/test3.build/Debug-iphonesimulator/test3.build/Objects-normal/i386/test3AppDelegate.o /Users/ben/Documents/test3/Classes/test3AppDelegate.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s350446581.792875
+e350446581.874027
+r1
+xCompileC
+xbuild/test3.build/Debug-iphonesimulator/test3.build/Objects-normal/i386/test3AppDelegate.o
+x/Users/ben/Documents/test3/Classes/test3AppDelegate.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@61"Compile /Users/ben/Documents/test3/Classes/test3AppDelegate.m350446581#350446581#0(0"0(0#0#53"/Users/ben/Documents/test3/Classes/test3AppDelegate.m8629162848#1774"    cd /Users/ben/Documents/test3    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40300 -iquote /Users/ben/Documents/test3/build/test3.build/Debug-iphonesimulator/test3.build/test3-generated-files.hmap -I/Users/ben/Documents/test3/build/test3.build/Debug-iphonesimulator/test3.build/test3-own-target-headers.hmap -I/Users/ben/Documents/test3/build/test3.build/Debug-iphonesimulator/test3.build/test3-all-target-headers.hmap -iquote /Users/ben/Documents/test3/build/test3.build/Debug-iphonesimulator/test3.build/test3-project-headers.hmap -F/Users/ben/Documents/test3/build/Debug-iphonesimulator -I/Users/ben/Documents/test3/build/Debug-iphonesimulator/include -I/Users/ben/Documents/test3/build/test3.build/Debug-iphonesimulator/test3.build/DerivedSources/i386 -I/Users/ben/Documents/test3/build/test3.build/Debug-iphonesimulator/test3.build/DerivedSources -include /var/folders/aZ/aZdWnKfTFeOwtXB6kuvfJU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/test3_Prefix-bqtqxrkvlfkawgfimxgsxllzpmes/test3_Prefix.pch -c /Users/ben/Documents/test3/Classes/test3AppDelegate.m -o /Users/ben/Documents/test3/build/test3.build/Debug-iphonesimulator/test3.build/Objects-normal/i386/test3AppDelegate.o0#
+
+CCompileXIB /Users/ben/Documents/test3/MainWindow.xib
+s350446580.539021
+e350446580.889329
+r1
+xCompileXIB
+x/Users/ben/Documents/test3/MainWindow.xib
+lSLF07#2@25"CompileXIB MainWindow.xib350446580#350446580#0(0"0(0#0#41"/Users/ben/Documents/test3/MainWindow.xib8628291040#532"    cd /Users/ben/Documents/test3    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 4.3    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/ben/Documents/test3/build/Debug-iphonesimulator/test3.app/MainWindow.nib /Users/ben/Documents/test3/MainWindow.xib --sdk /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk0#
+
+CGenerateDSYMFile /Users/ben/Documents/test3/build/Debug-iphonesimulator/test3.app.dSYM /Users/ben/Documents/test3/build/Debug-iphonesimulator/test3.app/test3
+s350446581.897327
+e350446581.909407
+r1
+xGenerateDSYMFile
+x/Users/ben/Documents/test3/build/Debug-iphonesimulator/test3.app.dSYM
+x/Users/ben/Documents/test3/build/Debug-iphonesimulator/test3.app/test3
+lSLF07#2@103"GenerateDSYMFile build/Debug-iphonesimulator/test3.app.dSYM build/Debug-iphonesimulator/test3.app/test3350446581#350446581#0(0"0(0#0#70"/Users/ben/Documents/test3/build/Debug-iphonesimulator/test3.app/test38628688800#341"    cd /Users/ben/Documents/test3    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/dsymutil /Users/ben/Documents/test3/build/Debug-iphonesimulator/test3.app/test3 -o /Users/ben/Documents/test3/build/Debug-iphonesimulator/test3.app.dSYM0#
+
+CLd /Users/ben/Documents/test3/build/Debug-iphonesimulator/test3.app/test3 normal i386
+s350446581.874121
+e350446581.897231
+r1
+xLd
+x/Users/ben/Documents/test3/build/Debug-iphonesimulator/test3.app/test3
+xnormal
+xi386
+lSLF07#2@75"Link /Users/ben/Documents/test3/build/Debug-iphonesimulator/test3.app/test3350446581#350446581#0(0"0(0#0#0"8628867232#830"    cd /Users/ben/Documents/test3    setenv MACOSX_DEPLOYMENT_TARGET 10.6    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -arch i386 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -L/Users/ben/Documents/test3/build/Debug-iphonesimulator -F/Users/ben/Documents/test3/build/Debug-iphonesimulator -filelist /Users/ben/Documents/test3/build/test3.build/Debug-iphonesimulator/test3.build/Objects-normal/i386/test3.LinkFileList -mmacosx-version-min=10.6 -Xlinker -objc_abi_version -Xlinker 2 -framework Foundation -framework UIKit -framework CoreGraphics -o /Users/ben/Documents/test3/build/Debug-iphonesimulator/test3.app/test30#
+
+CProcessInfoPlistFile /Users/ben/Documents/test3/build/Debug-iphonesimulator/test3.app/Info.plist test3-Info.plist
+s350446580.522858
+e350446580.538911
+r1
+xProcessInfoPlistFile
+x/Users/ben/Documents/test3/build/Debug-iphonesimulator/test3.app/Info.plist
+xtest3-Info.plist
+lSLF07#2@24"Process test3-Info.plist350446580#350446580#0(0"0(0#0#43"/Users/ben/Documents/test3/test3-Info.plist8629006176#437"    cd /Users/ben/Documents/test3    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-infoPlistUtility test3-Info.plist -genpkginfo /Users/ben/Documents/test3/build/Debug-iphonesimulator/test3.app/PkgInfo -expandbuildsettings -format binary -platform iphonesimulator -o /Users/ben/Documents/test3/build/Debug-iphonesimulator/test3.app/Info.plist0#
+
+CProcessPCH /var/folders/aZ/aZdWnKfTFeOwtXB6kuvfJU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/test3_Prefix-bqtqxrkvlfkawgfimxgsxllzpmes/test3_Prefix.pch.gch test3_Prefix.pch normal i386 objective-c com.apple.compilers.gcc.4_2
+s350446580.889452
+e350446581.791247
+r1
+xProcessPCH
+x/var/folders/aZ/aZdWnKfTFeOwtXB6kuvfJU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/test3_Prefix-bqtqxrkvlfkawgfimxgsxllzpmes/test3_Prefix.pch.gch
+xtest3_Prefix.pch
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@27"Precompile test3_Prefix.pch350446580#350446581#0(0"0(0#0#43"/Users/ben/Documents/test3/test3_Prefix.pch8627425792#1648"    cd /Users/ben/Documents/test3    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c-header -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40300 -iquote /Users/ben/Documents/test3/build/test3.build/Debug-iphonesimulator/test3.build/test3-generated-files.hmap -I/Users/ben/Documents/test3/build/test3.build/Debug-iphonesimulator/test3.build/test3-own-target-headers.hmap -I/Users/ben/Documents/test3/build/test3.build/Debug-iphonesimulator/test3.build/test3-all-target-headers.hmap -iquote /Users/ben/Documents/test3/build/test3.build/Debug-iphonesimulator/test3.build/test3-project-headers.hmap -F/Users/ben/Documents/test3/build/Debug-iphonesimulator -I/Users/ben/Documents/test3/build/Debug-iphonesimulator/include -I/Users/ben/Documents/test3/build/test3.build/Debug-iphonesimulator/test3.build/DerivedSources/i386 -I/Users/ben/Documents/test3/build/test3.build/Debug-iphonesimulator/test3.build/DerivedSources -c /Users/ben/Documents/test3/test3_Prefix.pch -o /var/folders/aZ/aZdWnKfTFeOwtXB6kuvfJU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/test3_Prefix-bqtqxrkvlfkawgfimxgsxllzpmes/test3_Prefix.pch.gch0#
+
+CTouch /Users/ben/Documents/test3/build/Debug-iphonesimulator/test3.app
+s350446581.909493
+e350446581.912104
+r1
+xTouch
+x/Users/ben/Documents/test3/build/Debug-iphonesimulator/test3.app
+lSLF07#2@70"Touch /Users/ben/Documents/test3/build/Debug-iphonesimulator/test3.app350446581#350446581#0(0"0(0#0#0"8628570592#252"    cd /Users/ben/Documents/test3    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /usr/bin/touch -c /Users/ben/Documents/test3/build/Debug-iphonesimulator/test3.app0#
+

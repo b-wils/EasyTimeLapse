@@ -1,0 +1,9 @@
+f70a5a3b7ed03b3da0d429147f8b2a4f 75b342bf7f21d69a8861266070aa8c73 ffffffffffffffffffffffffffffffff 204 /Users/ben/Documents/test3/build/Debug-iphonesimulator/test3.app
+000000004f332b2d00000000000020fe d75e00df06262188767531afb37c8620 ffffffffffffffffffffffffffffffff 1529 /Users/ben/Documents/test3/build/Debug-iphonesimulator/test3.app/MainWindow.nib
+00000000000000000000000000000000 d24f25acda1bdf057ab4947891910ff9 ffffffffffffffffffffffffffffffff 8 /Users/ben/Documents/test3/build/Debug-iphonesimulator/test3.app/PkgInfo
+00000000000000000000000000000000 d24f25acda1bdf057ab4947891910ff9 ffffffffffffffffffffffffffffffff 583 /Users/ben/Documents/test3/build/Debug-iphonesimulator/test3.app/Info.plist
+00000000000000000000000000000000 f30763c7daab40113ef8ae34375468e2 ffffffffffffffffffffffffffffffff 102 /Users/ben/Documents/test3/build/Debug-iphonesimulator/test3.app.dSYM
+32ae9455fcf636a8f4648607171f2b14 12faceb1cb33073022c59ebcdbe8a785 ffffffffffffffffffffffffffffffff 15724 /Users/ben/Documents/test3/build/Debug-iphonesimulator/test3.app/test3
+acf0a43d31afb8e7396d47bcff775c43 266835d693253aa9259b1c2a5a8c54cb ffffffffffffffffffffffffffffffff 50448 /Users/ben/Documents/test3/build/test3.build/Debug-iphonesimulator/test3.build/Objects-normal/i386/test3AppDelegate.o
+acf0a43d7e9c93f5396d47bcff775665 14c6a18320eaaa41d1ff9a2d4de55f59 ffffffffffffffffffffffffffffffff 6288 /Users/ben/Documents/test3/build/test3.build/Debug-iphonesimulator/test3.build/Objects-normal/i386/main.o
+000000004f31f1210000000000001e74 acf0a43d33c85c4d396d47bcff7743ed ffffffffffffffffffffffffffffffff 15814064 /var/folders/aZ/aZdWnKfTFeOwtXB6kuvfJU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/test3_Prefix-bqtqxrkvlfkawgfimxgsxllzpmes/test3_Prefix.pch.gch
