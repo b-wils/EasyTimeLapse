@@ -1,0 +1,438 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B558F83D1592D0D300CB6E24 /* libcommunications.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B558F83C1592D0D300CB6E24 /* libcommunications.a */; };
+		B558F8501592D24000CB6E24 /* libstdc++.6.0.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B558F84F1592D24000CB6E24 /* libstdc++.6.0.9.dylib */; };
+		B558F8AD1592D7F800CB6E24 /* ETLShotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B558F8AC1592D7F800CB6E24 /* ETLShotViewController.m */; };
+		B5990754158FFC000005C8E2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5990753158FFC000005C8E2 /* UIKit.framework */; };
+		B5990756158FFC000005C8E2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5990755158FFC000005C8E2 /* Foundation.framework */; };
+		B5990758158FFC000005C8E2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5990757158FFC000005C8E2 /* CoreGraphics.framework */; };
+		B599075E158FFC000005C8E2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B599075C158FFC000005C8E2 /* InfoPlist.strings */; };
+		B5990760158FFC000005C8E2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B599075F158FFC000005C8E2 /* main.m */; };
+		B5990764158FFC000005C8E2 /* ETLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B5990763158FFC000005C8E2 /* ETLAppDelegate.m */; };
+		B5990777158FFC310005C8E2 /* Bulb.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5990770158FFC310005C8E2 /* Bulb.xib */; };
+		B5990778158FFC310005C8E2 /* HDR.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5990771158FFC310005C8E2 /* HDR.xib */; };
+		B5990779158FFC310005C8E2 /* Home.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5990772158FFC310005C8E2 /* Home.xib */; };
+		B599077A158FFC310005C8E2 /* Manual.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5990773158FFC310005C8E2 /* Manual.xib */; };
+		B599077B158FFC310005C8E2 /* ProgramETL.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5990774158FFC310005C8E2 /* ProgramETL.xib */; };
+		B599077D158FFC310005C8E2 /* Timelapse.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5990776158FFC310005C8E2 /* Timelapse.xib */; };
+		B5990781158FFC9F0005C8E2 /* ETLHomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5990780158FFC9F0005C8E2 /* ETLHomeController.m */; };
+		B5990789159004DC0005C8E2 /* ETLTimelapseController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5990788159004DC0005C8E2 /* ETLTimelapseController.m */; };
+		B599078C159007EE0005C8E2 /* ETLManualController.m in Sources */ = {isa = PBXBuildFile; fileRef = B599078B159007EE0005C8E2 /* ETLManualController.m */; };
+		B599078F159008AF0005C8E2 /* ETLBulbController.m in Sources */ = {isa = PBXBuildFile; fileRef = B599078E159008AE0005C8E2 /* ETLBulbController.m */; };
+		B5990792159009180005C8E2 /* ETLHdrController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5990791159009180005C8E2 /* ETLHdrController.m */; };
+		B599079615900F830005C8E2 /* ETLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B599079515900F830005C8E2 /* ETLViewController.m */; };
+		B5B9D2271592732E000444BB /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5B9D2261592732E000444BB /* AudioToolbox.framework */; };
+		B5ED08151590F77B0026432C /* UIView+FindAndResignFirstResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = B5ED08141590F77B0026432C /* UIView+FindAndResignFirstResponder.m */; };
+		B5ED082315915FC00026432C /* NumpadDismissBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5ED082215915FC00026432C /* NumpadDismissBar.xib */; };
+		B5ED520215924E5900B31083 /* ETLProgramViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5ED520115924E5900B31083 /* ETLProgramViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		B558F83C1592D0D300CB6E24 /* libcommunications.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcommunications.a; path = "../../../Library/Developer/Xcode/DerivedData/Easy_Time_Lapse-grxhihygozrtdfccqjonwjemkieb/Build/Products/Debug-iphoneos/libcommunications.a"; sourceTree = "<group>"; };
+		B558F83F1592D16B00CB6E24 /* AudioQueueObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioQueueObject.h; path = ../../communications/communications/AudioQueueObject.h; sourceTree = "<group>"; };
+		B558F8401592D16B00CB6E24 /* AudioSignalAnalyzer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioSignalAnalyzer.h; path = ../../communications/communications/AudioSignalAnalyzer.h; sourceTree = "<group>"; };
+		B558F8411592D16B00CB6E24 /* AudioSignalGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioSignalGenerator.h; path = ../../communications/communications/AudioSignalGenerator.h; sourceTree = "<group>"; };
+		B558F8421592D16B00CB6E24 /* CharReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CharReceiver.h; path = ../../communications/communications/CharReceiver.h; sourceTree = "<group>"; };
+		B558F8431592D16B00CB6E24 /* crc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = crc.h; path = ../../communications/communications/crc.h; sourceTree = "<group>"; };
+		B558F8441592D16B00CB6E24 /* etl_typedefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = etl_typedefs.h; path = ../../communications/communications/etl_typedefs.h; sourceTree = "<group>"; };
+		B558F8451592D16B00CB6E24 /* ETLDeviceInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ETLDeviceInterface.h; path = ../../communications/communications/ETLDeviceInterface.h; sourceTree = "<group>"; };
+		B558F8461592D16B00CB6E24 /* FSKRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSKRecognizer.h; path = ../../communications/communications/FSKRecognizer.h; sourceTree = "<group>"; };
+		B558F8471592D16B00CB6E24 /* FSKSerialGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSKSerialGenerator.h; path = ../../communications/communications/FSKSerialGenerator.h; sourceTree = "<group>"; };
+		B558F8481592D16B00CB6E24 /* FSKTerminalAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSKTerminalAppDelegate.h; path = ../../communications/communications/FSKTerminalAppDelegate.h; sourceTree = "<group>"; };
+		B558F8491592D16B00CB6E24 /* lockfree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lockfree.h; path = ../../communications/communications/lockfree.h; sourceTree = "<group>"; };
+		B558F84A1592D16B00CB6E24 /* MultiDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MultiDelegate.h; path = ../../communications/communications/MultiDelegate.h; sourceTree = "<group>"; };
+		B558F84B1592D16B00CB6E24 /* PatternRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PatternRecognizer.h; path = ../../communications/communications/PatternRecognizer.h; sourceTree = "<group>"; };
+		B558F84C1592D16B00CB6E24 /* ScanCodeConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScanCodeConverter.h; path = ../../communications/communications/ScanCodeConverter.h; sourceTree = "<group>"; };
+		B558F84D1592D16B00CB6E24 /* TablePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TablePickerController.h; path = ../../communications/communications/TablePickerController.h; sourceTree = "<group>"; };
+		B558F84E1592D16B00CB6E24 /* TypePadController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TypePadController.h; path = ../../communications/communications/TypePadController.h; sourceTree = "<group>"; };
+		B558F84F1592D24000CB6E24 /* libstdc++.6.0.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.0.9.dylib"; path = "usr/lib/libstdc++.6.0.9.dylib"; sourceTree = SDKROOT; };
+		B558F8AB1592D7F800CB6E24 /* ETLShotViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETLShotViewController.h; sourceTree = "<group>"; };
+		B558F8AC1592D7F800CB6E24 /* ETLShotViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLShotViewController.m; sourceTree = "<group>"; };
+		B599074F158FFC000005C8E2 /* ETL-interface-test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ETL-interface-test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B5990753158FFC000005C8E2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		B5990755158FFC000005C8E2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		B5990757158FFC000005C8E2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		B599075B158FFC000005C8E2 /* ETL-interface-test-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ETL-interface-test-Info.plist"; sourceTree = "<group>"; };
+		B599075D158FFC000005C8E2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		B599075F158FFC000005C8E2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		B5990761158FFC000005C8E2 /* ETL-interface-test-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ETL-interface-test-Prefix.pch"; sourceTree = "<group>"; };
+		B5990762158FFC000005C8E2 /* ETLAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ETLAppDelegate.h; sourceTree = "<group>"; };
+		B5990763158FFC000005C8E2 /* ETLAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ETLAppDelegate.m; sourceTree = "<group>"; };
+		B5990770158FFC310005C8E2 /* Bulb.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Bulb.xib; path = ../Bulb.xib; sourceTree = "<group>"; };
+		B5990771158FFC310005C8E2 /* HDR.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HDR.xib; path = ../HDR.xib; sourceTree = "<group>"; };
+		B5990772158FFC310005C8E2 /* Home.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Home.xib; path = ../Home.xib; sourceTree = "<group>"; };
+		B5990773158FFC310005C8E2 /* Manual.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Manual.xib; path = ../Manual.xib; sourceTree = "<group>"; };
+		B5990774158FFC310005C8E2 /* ProgramETL.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ProgramETL.xib; path = ../ProgramETL.xib; sourceTree = "<group>"; };
+		B5990776158FFC310005C8E2 /* Timelapse.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Timelapse.xib; path = ../Timelapse.xib; sourceTree = "<group>"; };
+		B599077F158FFC9F0005C8E2 /* ETLHomeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETLHomeController.h; sourceTree = "<group>"; };
+		B5990780158FFC9F0005C8E2 /* ETLHomeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLHomeController.m; sourceTree = "<group>"; };
+		B5990787159004DC0005C8E2 /* ETLTimelapseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETLTimelapseController.h; sourceTree = "<group>"; };
+		B5990788159004DC0005C8E2 /* ETLTimelapseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLTimelapseController.m; sourceTree = "<group>"; };
+		B599078A159007EE0005C8E2 /* ETLManualController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETLManualController.h; sourceTree = "<group>"; };
+		B599078B159007EE0005C8E2 /* ETLManualController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLManualController.m; sourceTree = "<group>"; };
+		B599078D159008AE0005C8E2 /* ETLBulbController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETLBulbController.h; sourceTree = "<group>"; };
+		B599078E159008AE0005C8E2 /* ETLBulbController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLBulbController.m; sourceTree = "<group>"; };
+		B5990790159009180005C8E2 /* ETLHdrController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETLHdrController.h; sourceTree = "<group>"; };
+		B5990791159009180005C8E2 /* ETLHdrController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLHdrController.m; sourceTree = "<group>"; };
+		B599079315900EF10005C8E2 /* ETLViewControllers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETLViewControllers.h; sourceTree = "<group>"; };
+		B599079415900F830005C8E2 /* ETLViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETLViewController.h; sourceTree = "<group>"; };
+		B599079515900F830005C8E2 /* ETLViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLViewController.m; sourceTree = "<group>"; };
+		B5B9D2261592732E000444BB /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		B5ED08131590F77B0026432C /* UIView+FindAndResignFirstResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+FindAndResignFirstResponder.h"; sourceTree = "<group>"; };
+		B5ED08141590F77B0026432C /* UIView+FindAndResignFirstResponder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FindAndResignFirstResponder.m"; sourceTree = "<group>"; };
+		B5ED082215915FC00026432C /* NumpadDismissBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NumpadDismissBar.xib; sourceTree = "<group>"; };
+		B5ED520015924E5900B31083 /* ETLProgramViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETLProgramViewController.h; sourceTree = "<group>"; };
+		B5ED520115924E5900B31083 /* ETLProgramViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLProgramViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B599074C158FFC000005C8E2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B558F8501592D24000CB6E24 /* libstdc++.6.0.9.dylib in Frameworks */,
+				B558F83D1592D0D300CB6E24 /* libcommunications.a in Frameworks */,
+				B5B9D2271592732E000444BB /* AudioToolbox.framework in Frameworks */,
+				B5990754158FFC000005C8E2 /* UIKit.framework in Frameworks */,
+				B5990756158FFC000005C8E2 /* Foundation.framework in Frameworks */,
+				B5990758158FFC000005C8E2 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B558F83E1592D11F00CB6E24 /* External Headers */ = {
+			isa = PBXGroup;
+			children = (
+				B558F83F1592D16B00CB6E24 /* AudioQueueObject.h */,
+				B558F8401592D16B00CB6E24 /* AudioSignalAnalyzer.h */,
+				B558F8411592D16B00CB6E24 /* AudioSignalGenerator.h */,
+				B558F8421592D16B00CB6E24 /* CharReceiver.h */,
+				B558F8431592D16B00CB6E24 /* crc.h */,
+				B558F8441592D16B00CB6E24 /* etl_typedefs.h */,
+				B558F8451592D16B00CB6E24 /* ETLDeviceInterface.h */,
+				B558F8461592D16B00CB6E24 /* FSKRecognizer.h */,
+				B558F8471592D16B00CB6E24 /* FSKSerialGenerator.h */,
+				B558F8481592D16B00CB6E24 /* FSKTerminalAppDelegate.h */,
+				B558F8491592D16B00CB6E24 /* lockfree.h */,
+				B558F84A1592D16B00CB6E24 /* MultiDelegate.h */,
+				B558F84B1592D16B00CB6E24 /* PatternRecognizer.h */,
+				B558F84C1592D16B00CB6E24 /* ScanCodeConverter.h */,
+				B558F84D1592D16B00CB6E24 /* TablePickerController.h */,
+				B558F84E1592D16B00CB6E24 /* TypePadController.h */,
+			);
+			name = "External Headers";
+			sourceTree = "<group>";
+		};
+		B5990744158FFC000005C8E2 = {
+			isa = PBXGroup;
+			children = (
+				B5990759158FFC000005C8E2 /* ETL-interface-test */,
+				B5990752158FFC000005C8E2 /* Frameworks */,
+				B5990750158FFC000005C8E2 /* Products */,
+				B558F83C1592D0D300CB6E24 /* libcommunications.a */,
+				B558F84F1592D24000CB6E24 /* libstdc++.6.0.9.dylib */,
+			);
+			sourceTree = "<group>";
+		};
+		B5990750158FFC000005C8E2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B599074F158FFC000005C8E2 /* ETL-interface-test.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B5990752158FFC000005C8E2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B5B9D2261592732E000444BB /* AudioToolbox.framework */,
+				B5990753158FFC000005C8E2 /* UIKit.framework */,
+				B5990755158FFC000005C8E2 /* Foundation.framework */,
+				B5990757158FFC000005C8E2 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B5990759158FFC000005C8E2 /* ETL-interface-test */ = {
+			isa = PBXGroup;
+			children = (
+				B5ED08121590F7440026432C /* Utility */,
+				B5ED08101590F7140026432C /* Controllers */,
+				B599077E158FFC650005C8E2 /* Resources */,
+				B5990762158FFC000005C8E2 /* ETLAppDelegate.h */,
+				B5990763158FFC000005C8E2 /* ETLAppDelegate.m */,
+				B599075A158FFC000005C8E2 /* Supporting Files */,
+			);
+			path = "ETL-interface-test";
+			sourceTree = "<group>";
+		};
+		B599075A158FFC000005C8E2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B558F83E1592D11F00CB6E24 /* External Headers */,
+				B599075B158FFC000005C8E2 /* ETL-interface-test-Info.plist */,
+				B599075C158FFC000005C8E2 /* InfoPlist.strings */,
+				B599075F158FFC000005C8E2 /* main.m */,
+				B5990761158FFC000005C8E2 /* ETL-interface-test-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B599077E158FFC650005C8E2 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B5990770158FFC310005C8E2 /* Bulb.xib */,
+				B5990771158FFC310005C8E2 /* HDR.xib */,
+				B5990772158FFC310005C8E2 /* Home.xib */,
+				B5990773158FFC310005C8E2 /* Manual.xib */,
+				B5990774158FFC310005C8E2 /* ProgramETL.xib */,
+				B5990776158FFC310005C8E2 /* Timelapse.xib */,
+				B5ED082215915FC00026432C /* NumpadDismissBar.xib */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		B5ED08101590F7140026432C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B599079315900EF10005C8E2 /* ETLViewControllers.h */,
+				B599079415900F830005C8E2 /* ETLViewController.h */,
+				B599079515900F830005C8E2 /* ETLViewController.m */,
+				B599077F158FFC9F0005C8E2 /* ETLHomeController.h */,
+				B5990780158FFC9F0005C8E2 /* ETLHomeController.m */,
+				B5990787159004DC0005C8E2 /* ETLTimelapseController.h */,
+				B5990788159004DC0005C8E2 /* ETLTimelapseController.m */,
+				B599078A159007EE0005C8E2 /* ETLManualController.h */,
+				B599078B159007EE0005C8E2 /* ETLManualController.m */,
+				B599078D159008AE0005C8E2 /* ETLBulbController.h */,
+				B599078E159008AE0005C8E2 /* ETLBulbController.m */,
+				B5990790159009180005C8E2 /* ETLHdrController.h */,
+				B5990791159009180005C8E2 /* ETLHdrController.m */,
+				B5ED520015924E5900B31083 /* ETLProgramViewController.h */,
+				B5ED520115924E5900B31083 /* ETLProgramViewController.m */,
+				B558F8AB1592D7F800CB6E24 /* ETLShotViewController.h */,
+				B558F8AC1592D7F800CB6E24 /* ETLShotViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		B5ED08121590F7440026432C /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				B5ED08131590F77B0026432C /* UIView+FindAndResignFirstResponder.h */,
+				B5ED08141590F77B0026432C /* UIView+FindAndResignFirstResponder.m */,
+			);
+			name = Utility;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B599074E158FFC000005C8E2 /* ETL-interface-test */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B599076D158FFC000005C8E2 /* Build configuration list for PBXNativeTarget "ETL-interface-test" */;
+			buildPhases = (
+				B599074B158FFC000005C8E2 /* Sources */,
+				B599074C158FFC000005C8E2 /* Frameworks */,
+				B599074D158FFC000005C8E2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "ETL-interface-test";
+			productName = "ETL-interface-test";
+			productReference = B599074F158FFC000005C8E2 /* ETL-interface-test.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B5990746158FFC000005C8E2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = ETL;
+				LastUpgradeCheck = 0430;
+				ORGANIZATIONNAME = Microsoft;
+			};
+			buildConfigurationList = B5990749158FFC000005C8E2 /* Build configuration list for PBXProject "ETL-interface-test" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = B5990744158FFC000005C8E2;
+			productRefGroup = B5990750158FFC000005C8E2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B599074E158FFC000005C8E2 /* ETL-interface-test */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B599074D158FFC000005C8E2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B599075E158FFC000005C8E2 /* InfoPlist.strings in Resources */,
+				B5990777158FFC310005C8E2 /* Bulb.xib in Resources */,
+				B5990778158FFC310005C8E2 /* HDR.xib in Resources */,
+				B5990779158FFC310005C8E2 /* Home.xib in Resources */,
+				B599077A158FFC310005C8E2 /* Manual.xib in Resources */,
+				B599077B158FFC310005C8E2 /* ProgramETL.xib in Resources */,
+				B599077D158FFC310005C8E2 /* Timelapse.xib in Resources */,
+				B5ED082315915FC00026432C /* NumpadDismissBar.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B599074B158FFC000005C8E2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B5990760158FFC000005C8E2 /* main.m in Sources */,
+				B5990764158FFC000005C8E2 /* ETLAppDelegate.m in Sources */,
+				B5990781158FFC9F0005C8E2 /* ETLHomeController.m in Sources */,
+				B5990789159004DC0005C8E2 /* ETLTimelapseController.m in Sources */,
+				B599078C159007EE0005C8E2 /* ETLManualController.m in Sources */,
+				B599078F159008AF0005C8E2 /* ETLBulbController.m in Sources */,
+				B5990792159009180005C8E2 /* ETLHdrController.m in Sources */,
+				B599079615900F830005C8E2 /* ETLViewController.m in Sources */,
+				B5ED08151590F77B0026432C /* UIView+FindAndResignFirstResponder.m in Sources */,
+				B5ED520215924E5900B31083 /* ETLProgramViewController.m in Sources */,
+				B558F8AD1592D7F800CB6E24 /* ETLShotViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		B599075C158FFC000005C8E2 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B599075D158FFC000005C8E2 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B599076B158FFC000005C8E2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		B599076C158FFC000005C8E2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B599076E158FFC000005C8E2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ETL-interface-test/ETL-interface-test-Prefix.pch";
+				INFOPLIST_FILE = "ETL-interface-test/ETL-interface-test-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/Easy_Time_Lapse-grxhihygozrtdfccqjonwjemkieb/Build/Products/Debug-iphoneos\"",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = /Users/home/ben/source/iOS/communications/communications;
+				VALID_ARCHS = "armv6 armv7";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		B599076F158FFC000005C8E2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ETL-interface-test/ETL-interface-test-Prefix.pch";
+				INFOPLIST_FILE = "ETL-interface-test/ETL-interface-test-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/Easy_Time_Lapse-grxhihygozrtdfccqjonwjemkieb/Build/Products/Debug-iphoneos\"",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = /Users/home/ben/source/iOS/communications/communications;
+				VALID_ARCHS = "armv6 armv7";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B5990749158FFC000005C8E2 /* Build configuration list for PBXProject "ETL-interface-test" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B599076B158FFC000005C8E2 /* Debug */,
+				B599076C158FFC000005C8E2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B599076D158FFC000005C8E2 /* Build configuration list for PBXNativeTarget "ETL-interface-test" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B599076E158FFC000005C8E2 /* Debug */,
+				B599076F158FFC000005C8E2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B5990746158FFC000005C8E2 /* Project object */;
+}

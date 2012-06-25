@@ -1,0 +1,88 @@
+// !$*UTF8*$!
+{
+	B5990746158FFC000005C8E2 /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeExecutable = B599B2501592A26200A473B6 /* ETL-interface-test */;
+		activeTarget = B599074E158FFC000005C8E2 /* ETL-interface-test */;
+		codeSenseManager = B599B26A1592A26700A473B6 /* Code sense */;
+		executables = (
+			B599B2501592A26200A473B6 /* ETL-interface-test */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					356,
+					20,
+					48.16259765625,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 361931363;
+			PBXWorkspaceStateSaveDate = 361931363;
+		};
+		sourceControlManager = B599B2691592A26700A473B6 /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	B599074E158FFC000005C8E2 /* ETL-interface-test */ = {
+		activeExec = 0;
+		executables = (
+			B599B2501592A26200A473B6 /* ETL-interface-test */,
+		);
+	};
+	B599B2501592A26200A473B6 /* ETL-interface-test */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = "ETL-interface-test";
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
+	};
+	B599B2691592A26700A473B6 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+			repositoryNamesForRoots = {
+				"" = "";
+			};
+		};
+	};
+	B599B26A1592A26700A473B6 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+}

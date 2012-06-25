@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'communications' target in the 'communications' project
+//
+
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+#endif
