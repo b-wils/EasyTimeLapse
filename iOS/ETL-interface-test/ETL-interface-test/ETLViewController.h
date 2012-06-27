@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#define CLASS(x) (NSClassFromString(@#x))
+
 @protocol ResumeView <NSObject>
 - (void) resumeView;
 @end
@@ -27,10 +29,11 @@ typedef void (^ETLViewInitBlock)(ETLViewController *);
 #pragma mark -
 #pragma mark Screen Transitions
 - (IBAction)goBack:(id)sender;
-- (void)transitionTo:(id)view fromNib:(NSString *)name;
-- (void)transitionTo:(id)view fromNib:(NSString *)name animated:(bool)animated;
-- (void)transitionTo:(id)view fromNib:(NSString *)name animated:(bool)animated 
+- (void)transitionTo:(Class)type;
+- (void)transitionTo:(Class)type fromNib:(NSString *)name;
+- (void)transitionTo:(Class)type fromNib:(NSString *)name animated:(bool)animated;
+- (void)transitionTo:(Class)type fromNib:(NSString *)name animated:(bool)animated 
                                                        withTransitionStyle:(UIModalTransitionStyle)style;
-- (void)transitionTo:(id)view fromNib:(NSString *)name animated:(bool)animated 
+- (void)transitionTo:(Class)type fromNib:(NSString *)name animated:(bool)animated 
                                                        withCustomInit:(ETLViewInitBlock)customInit;
 @end

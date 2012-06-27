@@ -44,7 +44,7 @@
                                           withSections:dataSource->sections];
     };
     
-    [self transitionTo:[ETLProgramViewController alloc] fromNib:@"ProgramETL" animated:NO withCustomInit:initBlock];
+    [self transitionTo:CLASS(ETLProgramViewController) fromNib:@"ProgramETL" animated:NO withCustomInit:initBlock];
 }
 
 @end

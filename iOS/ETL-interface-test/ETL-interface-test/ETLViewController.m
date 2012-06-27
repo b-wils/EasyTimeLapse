@@ -8,6 +8,7 @@
 
 #import "ETLViewController.h"
 #import "UIView+FindAndResignFirstResponder.h"
+#import <objc/runtime.h>
 
 @interface ETLViewController ()
 
@@ -36,30 +37,51 @@
 }
 
 // TODO - consider vairiants w/o fromNib:
-- (void)transitionTo:(id)view fromNib:(NSString *)name
+- (void)transitionTo:(Class)type
 {
-    [self transitionTo:view fromNib:name animated:YES];
+    [self transitionTo:type fromNib:nil];
 }
 
-- (void)transitionTo:(id)view fromNib:(NSString *)name animated:(bool)animated {
-    [self transitionTo:view fromNib:name animated:animated withTransitionStyle:UIModalTransitionStyleFlipHorizontal];
+- (void)transitionTo:(Class)type fromNib:(NSString *)name
+{
+    [self transitionTo:type fromNib:name animated:YES];
 }
 
-- (void)transitionTo:(ETLViewController *)view fromNib:(NSString *)name animated:(bool)animated withCustomInit:(ETLViewInitBlock)initBlock
+- (void)transitionTo:(Class)type fromNib:(NSString *)name animated:(bool)animated {
+    [self transitionTo:type fromNib:name animated:animated withTransitionStyle:UIModalTransitionStyleFlipHorizontal];
+}
+
+- (void)transitionTo:(Class)type fromNib:(NSString *)name animated:(bool)animated withCustomInit:(ETLViewInitBlock)initBlock
 {
-    view = [view initWithNibName:name bundle:nil];
+    if(!name) {
+        name = [[NSString alloc] initWithCString: class_getName(type) 
+                                        encoding:NSStringEncodingConversionAllowLossy]; 
+        NSError * reError = nil;
+        NSRegularExpression * re = [NSRegularExpression 
+               regularExpressionWithPattern:@"ETL(.*)Controller" 
+               options:NSRegularExpressionCaseInsensitive 
+               error:&reError];
+        NSArray * matches = [re matchesInString:name options:NSRegularExpressionCaseInsensitive range:NSMakeRange(0, [name length])];
+        if ([matches count] > 0) 
+        {
+            NSTextCheckingResult *m = [matches objectAtIndex:0];
+            name = [name substringWithRange:[m rangeAtIndex:1]];
+        }
+    }
+    
+    ETLViewController * view = [[type alloc] initWithNibName:name bundle:nil];
     if(initBlock) initBlock(view);
     [self transitionTo:view animated:animated];
 }
 
-- (void)transitionTo:(ETLViewController *)view fromNib:(NSString *)name animated:(bool)animated withTransitionStyle:(UIModalTransitionStyle) style
+- (void)transitionTo:(Class)type fromNib:(NSString *)name animated:(bool)animated withTransitionStyle:(UIModalTransitionStyle) style
 {  
     __block UIModalTransitionStyle _style = style;
     ETLViewInitBlock initBlock = ^(ETLViewController * v) {
         v.modalTransitionStyle = _style;
     };
     
-    [self transitionTo:view fromNib:name animated:animated withCustomInit:initBlock];
+    [self transitionTo:type fromNib:name animated:animated withCustomInit:initBlock];
 }
 
 - (void)transitionTo:(ETLViewController *)view animated:(bool)animated

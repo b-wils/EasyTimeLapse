@@ -14,24 +14,23 @@
 
 - (IBAction)gotoTimelapse:(id)sender
 {
-    //[self transitionTo:[ETLTimelapseController alloc] fromNib:@"Timelapse"];
-    [self transitionTo: [ETLTimelapseSlidersController alloc] 
-          fromNib:@"ETLTimelapseSlidersController"];
+    [self transitionTo: CLASS(ETLTimelapseController)];
+    //[self transitionTo:CLASS(ETLTimelapseSlidersController)];
 }
 
 - (IBAction)gotoManual:(id)sender
 {
-    [self transitionTo:[ETLManualController alloc] fromNib:@"Manual"];
+    [self transitionTo:CLASS(ETLManualController)];
 }
 
 - (IBAction)gotoBulb:(id)sender
 {
-    [self transitionTo:[ETLBulbController alloc] fromNib:@"Bulb"];
+    [self transitionTo:CLASS(ETLBulbController)];
 }
 
 - (IBAction)gotoHDR:(id)sender
 {
-    [self transitionTo:[ETLHdrController alloc] fromNib:@"HDR"];
+    [self transitionTo:CLASS(ETLHdrController)];
 }
 
 - (void)resumeView
