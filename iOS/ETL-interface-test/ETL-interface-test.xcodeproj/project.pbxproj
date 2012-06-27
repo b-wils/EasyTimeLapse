@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B50D23B8159B9C5F00F2FCCC /* ETLTimelapseSlidersController.m in Sources */ = {isa = PBXBuildFile; fileRef = B50D23B6159B9C5F00F2FCCC /* ETLTimelapseSlidersController.m */; };
+		B50D23B9159B9C5F00F2FCCC /* ETLTimelapseSlidersController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B50D23B7159B9C5F00F2FCCC /* ETLTimelapseSlidersController.xib */; };
 		B558F83D1592D0D300CB6E24 /* libcommunications.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B558F83C1592D0D300CB6E24 /* libcommunications.a */; };
 		B558F8501592D24000CB6E24 /* libstdc++.6.0.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B558F84F1592D24000CB6E24 /* libstdc++.6.0.9.dylib */; };
 		B558F8AD1592D7F800CB6E24 /* ETLShotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B558F8AC1592D7F800CB6E24 /* ETLShotViewController.m */; };
@@ -35,6 +37,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B50D23B5159B9C5F00F2FCCC /* ETLTimelapseSlidersController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETLTimelapseSlidersController.h; sourceTree = "<group>"; };
+		B50D23B6159B9C5F00F2FCCC /* ETLTimelapseSlidersController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLTimelapseSlidersController.m; sourceTree = "<group>"; };
+		B50D23B7159B9C5F00F2FCCC /* ETLTimelapseSlidersController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ETLTimelapseSlidersController.xib; sourceTree = "<group>"; };
 		B558F83C1592D0D300CB6E24 /* libcommunications.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcommunications.a; path = "../../../Library/Developer/Xcode/DerivedData/Easy_Time_Lapse-grxhihygozrtdfccqjonwjemkieb/Build/Products/Debug-iphoneos/libcommunications.a"; sourceTree = "<group>"; };
 		B558F83F1592D16B00CB6E24 /* AudioQueueObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioQueueObject.h; path = ../../communications/communications/AudioQueueObject.h; sourceTree = "<group>"; };
 		B558F8401592D16B00CB6E24 /* AudioSignalAnalyzer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioSignalAnalyzer.h; path = ../../communications/communications/AudioSignalAnalyzer.h; sourceTree = "<group>"; };
@@ -190,6 +195,7 @@
 		B599077E158FFC650005C8E2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B50D23B7159B9C5F00F2FCCC /* ETLTimelapseSlidersController.xib */,
 				B5990770158FFC310005C8E2 /* Bulb.xib */,
 				B5990771158FFC310005C8E2 /* HDR.xib */,
 				B5990772158FFC310005C8E2 /* Home.xib */,
@@ -221,6 +227,8 @@
 				B5ED520115924E5900B31083 /* ETLProgramViewController.m */,
 				B558F8AB1592D7F800CB6E24 /* ETLShotViewController.h */,
 				B558F8AC1592D7F800CB6E24 /* ETLShotViewController.m */,
+				B50D23B5159B9C5F00F2FCCC /* ETLTimelapseSlidersController.h */,
+				B50D23B6159B9C5F00F2FCCC /* ETLTimelapseSlidersController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -294,6 +302,7 @@
 				B599077B158FFC310005C8E2 /* ProgramETL.xib in Resources */,
 				B599077D158FFC310005C8E2 /* Timelapse.xib in Resources */,
 				B5ED082315915FC00026432C /* NumpadDismissBar.xib in Resources */,
+				B50D23B9159B9C5F00F2FCCC /* ETLTimelapseSlidersController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -315,6 +324,7 @@
 				B5ED08151590F77B0026432C /* UIView+FindAndResignFirstResponder.m in Sources */,
 				B5ED520215924E5900B31083 /* ETLProgramViewController.m in Sources */,
 				B558F8AD1592D7F800CB6E24 /* ETLShotViewController.m in Sources */,
+				B50D23B8159B9C5F00F2FCCC /* ETLTimelapseSlidersController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,7 +14,9 @@
 
 - (IBAction)gotoTimelapse:(id)sender
 {
-    [self transitionTo:[ETLTimelapseController alloc] fromNib:@"Timelapse"];
+    //[self transitionTo:[ETLTimelapseController alloc] fromNib:@"Timelapse"];
+    [self transitionTo: [ETLTimelapseSlidersController alloc] 
+          fromNib:@"ETLTimelapseSlidersController"];
 }
 
 - (IBAction)gotoManual:(id)sender

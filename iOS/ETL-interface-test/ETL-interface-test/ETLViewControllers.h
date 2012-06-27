@@ -12,4 +12,5 @@
 #import "ETLHdrController.h"
 #import "ETLManualController.h"
 #import "ETLTimelapseController.h"
+#import "ETLTimelapseSlidersController.h"
 #import "ETLProgramViewController.h"
