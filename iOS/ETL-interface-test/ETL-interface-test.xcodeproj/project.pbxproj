@@ -31,6 +31,9 @@
 		B5990792159009180005C8E2 /* ETLHdrController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5990791159009180005C8E2 /* ETLHdrController.m */; };
 		B599079615900F830005C8E2 /* ETLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B599079515900F830005C8E2 /* ETLViewController.m */; };
 		B5B9D2271592732E000444BB /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5B9D2261592732E000444BB /* AudioToolbox.framework */; };
+		B5C1CD51159CE5B0005D6FC0 /* gears.png in Resources */ = {isa = PBXBuildFile; fileRef = B5C1CD50159CE5B0005D6FC0 /* gears.png */; };
+		B5C1CD55159CF086005D6FC0 /* ETLBulbSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C1CD53159CF086005D6FC0 /* ETLBulbSettingsController.m */; };
+		B5C1CD56159CF086005D6FC0 /* BulbSettings.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5C1CD54159CF086005D6FC0 /* BulbSettings.xib */; };
 		B5ED08151590F77B0026432C /* UIView+FindAndResignFirstResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = B5ED08141590F77B0026432C /* UIView+FindAndResignFirstResponder.m */; };
 		B5ED082315915FC00026432C /* NumpadDismissBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5ED082215915FC00026432C /* NumpadDismissBar.xib */; };
 		B5ED520215924E5900B31083 /* ETLProgramViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5ED520115924E5900B31083 /* ETLProgramViewController.m */; };
@@ -90,6 +93,10 @@
 		B599079415900F830005C8E2 /* ETLViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETLViewController.h; sourceTree = "<group>"; };
 		B599079515900F830005C8E2 /* ETLViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLViewController.m; sourceTree = "<group>"; };
 		B5B9D2261592732E000444BB /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		B5C1CD50159CE5B0005D6FC0 /* gears.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gears.png; sourceTree = SOURCE_ROOT; };
+		B5C1CD52159CF085005D6FC0 /* ETLBulbSettingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETLBulbSettingsController.h; sourceTree = "<group>"; };
+		B5C1CD53159CF086005D6FC0 /* ETLBulbSettingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLBulbSettingsController.m; sourceTree = "<group>"; };
+		B5C1CD54159CF086005D6FC0 /* BulbSettings.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BulbSettings.xib; sourceTree = "<group>"; };
 		B5ED08131590F77B0026432C /* UIView+FindAndResignFirstResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+FindAndResignFirstResponder.h"; sourceTree = "<group>"; };
 		B5ED08141590F77B0026432C /* UIView+FindAndResignFirstResponder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FindAndResignFirstResponder.m"; sourceTree = "<group>"; };
 		B5ED082215915FC00026432C /* NumpadDismissBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NumpadDismissBar.xib; sourceTree = "<group>"; };
@@ -195,6 +202,8 @@
 		B599077E158FFC650005C8E2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B5C1CD57159CF093005D6FC0 /* images */,
+				B5C1CD54159CF086005D6FC0 /* BulbSettings.xib */,
 				B50D23B7159B9C5F00F2FCCC /* TimelapseSliders.xib */,
 				B5990770158FFC310005C8E2 /* Bulb.xib */,
 				B5990771158FFC310005C8E2 /* HDR.xib */,
@@ -207,14 +216,31 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
-		B5ED08101590F7140026432C /* Controllers */ = {
+		B5C1CD57159CF093005D6FC0 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				B5C1CD50159CE5B0005D6FC0 /* gears.png */,
+			);
+			name = images;
+			sourceTree = "<group>";
+		};
+		B5C1CD58159CF0CC005D6FC0 /* Core */ = {
 			isa = PBXGroup;
 			children = (
 				B599079315900EF10005C8E2 /* ETLViewControllers.h */,
 				B599079415900F830005C8E2 /* ETLViewController.h */,
 				B599079515900F830005C8E2 /* ETLViewController.m */,
-				B599077F158FFC9F0005C8E2 /* ETLHomeController.h */,
-				B5990780158FFC9F0005C8E2 /* ETLHomeController.m */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+		B5C1CD59159CF0D7005D6FC0 /* Shots */ = {
+			isa = PBXGroup;
+			children = (
+				B50D23B5159B9C5F00F2FCCC /* ETLTimelapseSlidersController.h */,
+				B50D23B6159B9C5F00F2FCCC /* ETLTimelapseSlidersController.m */,
+				B558F8AB1592D7F800CB6E24 /* ETLShotViewController.h */,
+				B558F8AC1592D7F800CB6E24 /* ETLShotViewController.m */,
 				B5990787159004DC0005C8E2 /* ETLTimelapseController.h */,
 				B5990788159004DC0005C8E2 /* ETLTimelapseController.m */,
 				B599078A159007EE0005C8E2 /* ETLManualController.h */,
@@ -223,12 +249,21 @@
 				B599078E159008AE0005C8E2 /* ETLBulbController.m */,
 				B5990790159009180005C8E2 /* ETLHdrController.h */,
 				B5990791159009180005C8E2 /* ETLHdrController.m */,
+			);
+			name = Shots;
+			sourceTree = "<group>";
+		};
+		B5ED08101590F7140026432C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B5C1CD59159CF0D7005D6FC0 /* Shots */,
+				B5C1CD58159CF0CC005D6FC0 /* Core */,
+				B599077F158FFC9F0005C8E2 /* ETLHomeController.h */,
+				B5990780158FFC9F0005C8E2 /* ETLHomeController.m */,
 				B5ED520015924E5900B31083 /* ETLProgramViewController.h */,
 				B5ED520115924E5900B31083 /* ETLProgramViewController.m */,
-				B558F8AB1592D7F800CB6E24 /* ETLShotViewController.h */,
-				B558F8AC1592D7F800CB6E24 /* ETLShotViewController.m */,
-				B50D23B5159B9C5F00F2FCCC /* ETLTimelapseSlidersController.h */,
-				B50D23B6159B9C5F00F2FCCC /* ETLTimelapseSlidersController.m */,
+				B5C1CD52159CF085005D6FC0 /* ETLBulbSettingsController.h */,
+				B5C1CD53159CF086005D6FC0 /* ETLBulbSettingsController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -303,6 +338,8 @@
 				B599077D158FFC310005C8E2 /* Timelapse.xib in Resources */,
 				B5ED082315915FC00026432C /* NumpadDismissBar.xib in Resources */,
 				B50D23B9159B9C5F00F2FCCC /* TimelapseSliders.xib in Resources */,
+				B5C1CD51159CE5B0005D6FC0 /* gears.png in Resources */,
+				B5C1CD56159CF086005D6FC0 /* BulbSettings.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -325,6 +362,7 @@
 				B5ED520215924E5900B31083 /* ETLProgramViewController.m in Sources */,
 				B558F8AD1592D7F800CB6E24 /* ETLShotViewController.m in Sources */,
 				B50D23B8159B9C5F00F2FCCC /* ETLTimelapseSlidersController.m in Sources */,
+				B5C1CD55159CF086005D6FC0 /* ETLBulbSettingsController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

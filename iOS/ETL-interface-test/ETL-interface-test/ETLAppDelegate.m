@@ -8,7 +8,6 @@
 
 #import "ETLAppDelegate.h"
 #import "ETLHomeController.h"
-//#import "ETLDeviceInterface.h"
 
 @implementation ETLAppDelegate
 
