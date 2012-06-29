@@ -31,6 +31,8 @@
 		B5990792159009180005C8E2 /* ETLHdrController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5990791159009180005C8E2 /* ETLHdrController.m */; };
 		B599079615900F830005C8E2 /* ETLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B599079515900F830005C8E2 /* ETLViewController.m */; };
 		B5B9D2271592732E000444BB /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5B9D2261592732E000444BB /* AudioToolbox.framework */; };
+		B5C0582F159E311200750DC9 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = B5C0582D159E311200750DC9 /* background.png */; };
+		B5C05830159E311200750DC9 /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5C0582E159E311200750DC9 /* background@2x.png */; };
 		B5C1CD51159CE5B0005D6FC0 /* gears.png in Resources */ = {isa = PBXBuildFile; fileRef = B5C1CD50159CE5B0005D6FC0 /* gears.png */; };
 		B5C1CD55159CF086005D6FC0 /* ETLBulbSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C1CD53159CF086005D6FC0 /* ETLBulbSettingsController.m */; };
 		B5C1CD56159CF086005D6FC0 /* BulbSettings.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5C1CD54159CF086005D6FC0 /* BulbSettings.xib */; };
@@ -93,6 +95,8 @@
 		B599079415900F830005C8E2 /* ETLViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETLViewController.h; sourceTree = "<group>"; };
 		B599079515900F830005C8E2 /* ETLViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLViewController.m; sourceTree = "<group>"; };
 		B5B9D2261592732E000444BB /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		B5C0582D159E311200750DC9 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = background.png; path = ../../../assets/v1/background.png; sourceTree = "<group>"; };
+		B5C0582E159E311200750DC9 /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "background@2x.png"; path = "../../../assets/v1/background@2x.png"; sourceTree = "<group>"; };
 		B5C1CD50159CE5B0005D6FC0 /* gears.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gears.png; sourceTree = SOURCE_ROOT; };
 		B5C1CD52159CF085005D6FC0 /* ETLBulbSettingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETLBulbSettingsController.h; sourceTree = "<group>"; };
 		B5C1CD53159CF086005D6FC0 /* ETLBulbSettingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLBulbSettingsController.m; sourceTree = "<group>"; };
@@ -219,6 +223,8 @@
 		B5C1CD57159CF093005D6FC0 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				B5C0582D159E311200750DC9 /* background.png */,
+				B5C0582E159E311200750DC9 /* background@2x.png */,
 				B5C1CD50159CE5B0005D6FC0 /* gears.png */,
 			);
 			name = images;
@@ -340,6 +346,8 @@
 				B50D23B9159B9C5F00F2FCCC /* TimelapseSliders.xib in Resources */,
 				B5C1CD51159CE5B0005D6FC0 /* gears.png in Resources */,
 				B5C1CD56159CF086005D6FC0 /* BulbSettings.xib in Resources */,
+				B5C0582F159E311200750DC9 /* background.png in Resources */,
+				B5C05830159E311200750DC9 /* background@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
