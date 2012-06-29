@@ -13,6 +13,8 @@
 @end
 
 @implementation ETLBulbSettingsController
+@synthesize latencyField;
+@synthesize latencyLabel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -31,6 +33,8 @@
 
 - (void)viewDidUnload
 {
+    [self setLatencyField:nil];
+    [self setLatencyLabel:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -41,4 +45,6 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+- (IBAction)latencyValueChanged:(id)sender {
+}
 @end

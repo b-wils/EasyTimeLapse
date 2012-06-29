@@ -10,4 +10,7 @@
 
 @interface ETLBulbSettingsController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UILabel *latencyLabel;
+@property (weak, nonatomic) IBOutlet UITextField *latencyField;
+- (IBAction)latencyValueChanged:(id)sender;
 @end
