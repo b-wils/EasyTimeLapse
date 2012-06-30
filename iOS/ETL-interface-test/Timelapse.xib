@@ -238,7 +238,7 @@
 							<object class="IBUITextField" id="416492629">
 								<reference key="NSNextResponder" ref="810328755"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{163, 0}, {54, 31}}</string>
+								<string key="NSFrame">{{163, 8}, {54, 31}}</string>
 								<reference key="NSSuperview" ref="810328755"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="928594410"/>
@@ -276,7 +276,7 @@
 							<object class="IBUILabel" id="138892750">
 								<reference key="NSNextResponder" ref="810328755"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{81, 5}, {74, 21}}</string>
+								<string key="NSFrame">{{81, 13}, {74, 21}}</string>
 								<reference key="NSSuperview" ref="810328755"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="416492629"/>
@@ -297,7 +297,7 @@
 							<object class="IBUILabel" id="928594410">
 								<reference key="NSNextResponder" ref="810328755"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{225, 5}, {47, 21}}</string>
+								<string key="NSFrame">{{225, 13}, {47, 21}}</string>
 								<reference key="NSSuperview" ref="810328755"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="870449248"/>
@@ -318,7 +318,7 @@
 							<object class="IBUILabel" id="870449248">
 								<reference key="NSNextResponder" ref="810328755"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{81, 39}, {131, 21}}</string>
+								<string key="NSFrame">{{81, 47}, {131, 21}}</string>
 								<reference key="NSSuperview" ref="810328755"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="378974152"/>
@@ -339,7 +339,7 @@
 							<object class="IBUILabel" id="378974152">
 								<reference key="NSNextResponder" ref="810328755"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{81, 57}, {131, 21}}</string>
+								<string key="NSFrame">{{81, 65}, {131, 21}}</string>
 								<reference key="NSSuperview" ref="810328755"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="206654614"/>
@@ -360,7 +360,7 @@
 							<object class="IBUILabel" id="293817806">
 								<reference key="NSNextResponder" ref="810328755"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{81, 75}, {131, 21}}</string>
+								<string key="NSFrame">{{81, 83}, {131, 21}}</string>
 								<reference key="NSSuperview" ref="810328755"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="106080710"/>
@@ -381,7 +381,7 @@
 							<object class="IBUILabel" id="206654614">
 								<reference key="NSNextResponder" ref="810328755"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{220, 39}, {100, 21}}</string>
+								<string key="NSFrame">{{220, 47}, {100, 21}}</string>
 								<reference key="NSSuperview" ref="810328755"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="293817806"/>
@@ -405,7 +405,7 @@
 							<object class="IBUILabel" id="106080710">
 								<reference key="NSNextResponder" ref="810328755"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{220, 57}, {100, 21}}</string>
+								<string key="NSFrame">{{220, 65}, {100, 21}}</string>
 								<reference key="NSSuperview" ref="810328755"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="898017991"/>
@@ -429,10 +429,10 @@
 							<object class="IBUILabel" id="898017991">
 								<reference key="NSNextResponder" ref="810328755"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{220, 75}, {100, 21}}</string>
+								<string key="NSFrame">{{220, 83}, {100, 21}}</string>
 								<reference key="NSSuperview" ref="810328755"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="26997095"/>
+								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -451,15 +451,14 @@
 								<reference key="IBUIFont" ref="600494249"/>
 							</object>
 						</array>
-						<string key="NSFrame">{{0, 144}, {320, 98}}</string>
+						<string key="NSFrame">{{0, 144}, {320, 116}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="138892750"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
-							<int key="NSColorSpace">3</int>
-							<bytes key="NSWhite">MQA</bytes>
-							<reference key="NSCustomColorSpace" ref="983154350"/>
+							<int key="NSColorSpace">1</int>
+							<bytes key="NSRGB">MC40MTk2MDc4NDMxIDAuNTUyOTQxMTc2NSAwLjY5MDE5NjA3ODQAA</bytes>
 						</object>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
@@ -709,10 +708,10 @@
 							<reference ref="211678350"/>
 							<reference ref="174149902"/>
 							<reference ref="810328755"/>
-							<reference ref="26997095"/>
 							<reference ref="315542569"/>
 							<reference ref="751155095"/>
 							<reference ref="118971588"/>
+							<reference ref="26997095"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -873,7 +872,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">90</int>
+			<int key="maxID">94</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1017,7 +1016,7 @@
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
 			<string key="background.png">{320, 480}</string>
-			<string key="topbar_timelapse.png">{16, 16}</string>
+			<string key="topbar_timelapse.png">{320, 44}</string>
 		</dictionary>
 		<string key="IBCocoaTouchPluginVersion">1181</string>
 	</data>

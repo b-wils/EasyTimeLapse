@@ -62,6 +62,12 @@
 		B5C1CD51159CE5B0005D6FC0 /* gears.png in Resources */ = {isa = PBXBuildFile; fileRef = B5C1CD50159CE5B0005D6FC0 /* gears.png */; };
 		B5C1CD55159CF086005D6FC0 /* ETLBulbSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C1CD53159CF086005D6FC0 /* ETLBulbSettingsController.m */; };
 		B5C1CD56159CF086005D6FC0 /* BulbSettings.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5C1CD54159CF086005D6FC0 /* BulbSettings.xib */; };
+		B5C5D14B159E8E26004FE5C6 /* indent_bot.png in Resources */ = {isa = PBXBuildFile; fileRef = B5C5D145159E8E26004FE5C6 /* indent_bot.png */; };
+		B5C5D14C159E8E26004FE5C6 /* indent_bot@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5C5D146159E8E26004FE5C6 /* indent_bot@2x.png */; };
+		B5C5D14D159E8E26004FE5C6 /* indent_mid.png in Resources */ = {isa = PBXBuildFile; fileRef = B5C5D147159E8E26004FE5C6 /* indent_mid.png */; };
+		B5C5D14E159E8E26004FE5C6 /* indent_mid@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5C5D148159E8E26004FE5C6 /* indent_mid@2x.png */; };
+		B5C5D14F159E8E26004FE5C6 /* indent_top.png in Resources */ = {isa = PBXBuildFile; fileRef = B5C5D149159E8E26004FE5C6 /* indent_top.png */; };
+		B5C5D150159E8E26004FE5C6 /* indent_top@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5C5D14A159E8E26004FE5C6 /* indent_top@2x.png */; };
 		B5ED08151590F77B0026432C /* UIView+FindAndResignFirstResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = B5ED08141590F77B0026432C /* UIView+FindAndResignFirstResponder.m */; };
 		B5ED082315915FC00026432C /* NumpadDismissBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5ED082215915FC00026432C /* NumpadDismissBar.xib */; };
 		B5ED520215924E5900B31083 /* ETLProgramViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5ED520115924E5900B31083 /* ETLProgramViewController.m */; };
@@ -153,6 +159,12 @@
 		B5C1CD52159CF085005D6FC0 /* ETLBulbSettingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETLBulbSettingsController.h; sourceTree = "<group>"; };
 		B5C1CD53159CF086005D6FC0 /* ETLBulbSettingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLBulbSettingsController.m; sourceTree = "<group>"; };
 		B5C1CD54159CF086005D6FC0 /* BulbSettings.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BulbSettings.xib; sourceTree = "<group>"; };
+		B5C5D145159E8E26004FE5C6 /* indent_bot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = indent_bot.png; path = ../../../assets/v1/indent_bot.png; sourceTree = "<group>"; };
+		B5C5D146159E8E26004FE5C6 /* indent_bot@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "indent_bot@2x.png"; path = "../../../assets/v1/indent_bot@2x.png"; sourceTree = "<group>"; };
+		B5C5D147159E8E26004FE5C6 /* indent_mid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = indent_mid.png; path = ../../../assets/v1/indent_mid.png; sourceTree = "<group>"; };
+		B5C5D148159E8E26004FE5C6 /* indent_mid@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "indent_mid@2x.png"; path = "../../../assets/v1/indent_mid@2x.png"; sourceTree = "<group>"; };
+		B5C5D149159E8E26004FE5C6 /* indent_top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = indent_top.png; path = ../../../assets/v1/indent_top.png; sourceTree = "<group>"; };
+		B5C5D14A159E8E26004FE5C6 /* indent_top@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "indent_top@2x.png"; path = "../../../assets/v1/indent_top@2x.png"; sourceTree = "<group>"; };
 		B5ED08131590F77B0026432C /* UIView+FindAndResignFirstResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+FindAndResignFirstResponder.h"; sourceTree = "<group>"; };
 		B5ED08141590F77B0026432C /* UIView+FindAndResignFirstResponder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FindAndResignFirstResponder.m"; sourceTree = "<group>"; };
 		B5ED082215915FC00026432C /* NumpadDismissBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NumpadDismissBar.xib; sourceTree = "<group>"; };
@@ -323,6 +335,12 @@
 		B5C1CD57159CF093005D6FC0 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				B5C5D145159E8E26004FE5C6 /* indent_bot.png */,
+				B5C5D146159E8E26004FE5C6 /* indent_bot@2x.png */,
+				B5C5D147159E8E26004FE5C6 /* indent_mid.png */,
+				B5C5D148159E8E26004FE5C6 /* indent_mid@2x.png */,
+				B5C5D149159E8E26004FE5C6 /* indent_top.png */,
+				B5C5D14A159E8E26004FE5C6 /* indent_top@2x.png */,
 				B57C06FF159E76C000D02610 /* buttons */,
 				B57C06FE159E76AF00D02610 /* toolbars */,
 				B5C0582D159E311200750DC9 /* background.png */,
@@ -476,6 +494,12 @@
 				B53DADF4159E7725000BBC31 /* homebutton_timelapse_pressed@2x.png in Resources */,
 				B53DADF5159E7725000BBC31 /* homebutton_timelapse.png in Resources */,
 				B53DADF6159E7725000BBC31 /* homebutton_timelapse@2x.png in Resources */,
+				B5C5D14B159E8E26004FE5C6 /* indent_bot.png in Resources */,
+				B5C5D14C159E8E26004FE5C6 /* indent_bot@2x.png in Resources */,
+				B5C5D14D159E8E26004FE5C6 /* indent_mid.png in Resources */,
+				B5C5D14E159E8E26004FE5C6 /* indent_mid@2x.png in Resources */,
+				B5C5D14F159E8E26004FE5C6 /* indent_top.png in Resources */,
+				B5C5D150159E8E26004FE5C6 /* indent_top@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
