@@ -9,15 +9,19 @@
 #import "ETLAppDelegate.h"
 #import "ETLHomeController.h"
 
+ETLAppDelegate *theDelegateInstance;
+
 @implementation ETLAppDelegate
 
 @synthesize window = _window;
 @synthesize viewController = _viewController;
+@synthesize colorSwitcher = _colorSwitcher;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     
-    
+    theDelegateInstance = self;
+    self.colorSwitcher = [[ColorSwitcher alloc] initWithScheme:@"blue"];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.viewController = [[ETLHomeController alloc] initWithNibName:@"Home" bundle:nil];
@@ -25,6 +29,11 @@
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
     return YES;
+}
+
++ (ETLAppDelegate *)instance
+{
+    return theDelegateInstance;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

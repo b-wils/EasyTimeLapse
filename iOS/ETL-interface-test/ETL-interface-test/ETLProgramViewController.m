@@ -7,6 +7,7 @@
 //
 
 #import "ETLProgramViewController.h"
+#import "ADVPopoverProgressBar.h"
 
 @interface ETLProgramViewController ()
 
@@ -26,6 +27,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    UIProgressView *original = programmingProgress;
+    programmingProgress = (UIProgressView *)[[ADVPopoverProgressBar alloc] initWithFrame:programmingProgress.frame];
+    [programmingProgress setProgress:0.6];
+    [original removeFromSuperview];
+    [self.view addSubview:programmingProgress];
     
     progressBarTimer = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(updateProgressBar:) userInfo:nil repeats:YES];
     
@@ -49,8 +55,9 @@ const NSUInteger streamBitsPerDataByte = 14;
         programmingProgress.progress += 0.002;
     }
     
-    if (programmingProgress.progress >= 1) {
+    if (programmingProgress.progress >= 0.999) {
         [timer invalidate];
+        programmingProgress.progress = 1.0;
         [deviceInterface stopProgramming];
         bytesTransferred.text = @"Done";
         cancelButton.hidden = true;

@@ -8,6 +8,7 @@
 
 #import "ETLTimelapseController.h"
 #import "ETLProgramViewController.h"
+#import "RCSwitchOnOff.h"
 
 @interface ETLTimelapseController ()
 
@@ -49,6 +50,25 @@
 
 - (void)viewDidLoad
 {
+    [super viewDidLoad];
+    ETLPredicate pSwitch = ^bool (id obj) {return [obj class] == CLASS(UISwitch);};
+    NSArray *switches = [[self view].subviews filterWith:pSwitch];
+    
+    [switches eachWith:^void (id obj) {
+        UISwitch *s = (UISwitch *)obj;
+        RCSwitchOnOff *res = [[RCSwitchOnOff alloc] initWithFrame:s.frame];
+        [res setOn:[s isOn]];
+        
+        NSArray* actions = [s actionsForTarget:self forControlEvent:UIControlEventValueChanged];
+        for (NSString *a in actions) {
+            [res addTarget:self action:NSSelectorFromString(a) forControlEvents:UIControlEventValueChanged];
+        }
+        
+        [[self view] addSubview:res];
+        [s removeFromSuperview];
+    }];
+    
+    
     [periodUnitPicker selectRow:1 inComponent:0 animated:NO];
     shotPeriodField.inputAccessoryView = numpadToolbar;
     shotLimitField.inputAccessoryView = numpadToolbar;

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ColorSwitcher.h"
 
 @class ETLHomeController;
 @class ETLDeviceInterface;
@@ -18,5 +19,7 @@
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) ETLHomeController *viewController;
+@property (nonatomic, strong) ColorSwitcher * colorSwitcher;
++ (ETLAppDelegate*)instance;
 
 @end

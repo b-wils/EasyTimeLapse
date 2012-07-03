@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NSArray+ArrayUtility.h"
 
 #define CLASS(x) (NSClassFromString(@#x))
 
