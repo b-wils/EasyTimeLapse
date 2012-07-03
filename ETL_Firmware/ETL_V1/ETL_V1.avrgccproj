@@ -187,6 +187,9 @@
     <Compile Include="Arduino\wiring_private.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="Arduino\WMath.cpp">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="Arduino\WString.cpp">
       <SubType>compile</SubType>
     </Compile>
@@ -226,9 +229,9 @@
     <Compile Include="Arduino\wiring_analog.c">
       <SubType>compile</SubType>
     </Compile>
-	<Compile Include="crc.c">
-	  <SubType>compile</SubType>
-	</Compile>
+    <Compile Include="crc.c">
+      <SubType>compile</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Arduino" />

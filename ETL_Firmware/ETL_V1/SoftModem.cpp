@@ -382,6 +382,17 @@ void SoftModem::write(uint8_t data)
 #endif
 }
 
+#if defined(ARDUINO) && ARDUINO >= 100
+size_t
+#else
+void
+#endif
+    SoftModem::writeBytes(uint8_t *data, uint16_t length) {
+	for (int i = 0; i < length; i++) {
+		write(data[i]);
+	}
+}
+
 #if SOFT_MODEM_DEBUG
 #include "Arduino/HardwareSerial.h"
 
@@ -516,18 +527,18 @@ void SoftModem::printDebugInfo(short resetCounts)
 	//Serial.print("  timer2ISRCnt=");
 	//Serial.println(timer2ISRCnt,DEC);
 	
-	Serial.print("  errs=");
-	Serial.println(errs,DEC);
-	
-	Serial.print("  ints=");
-	Serial.println(ints,DEC);
+	//Serial.print("  errs=");
+	//Serial.println(errs,DEC);
+	//
+	//Serial.print("  ints=");
+	//Serial.println(ints,DEC);
 	
 	Serial.print("  lowNoiseCnt=");
 	Serial.println(lowNoiseCnt,DEC);
 	
-    Serial.print("  midNoiseCnt=");
-	Serial.println(midNoiseCnt,DEC);
-	
+    //Serial.print("  midNoiseCnt=");
+	//Serial.println(midNoiseCnt,DEC);
+	//
 	Serial.print("  highNoiseCnt=");
 	Serial.println(highNoiseCnt,DEC);
 	

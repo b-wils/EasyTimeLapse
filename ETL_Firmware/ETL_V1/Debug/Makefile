@@ -49,6 +49,7 @@ C_SRCS +=  \
 ../Arduino/new.cpp \
 ../Arduino/Print.cpp \
 ../Arduino/Stream.cpp \
+../Arduino/WMath.cpp \
 ../Arduino/WString.cpp \
 ../crc.cpp \
 ../ETL_V1.cpp \
@@ -70,6 +71,7 @@ Arduino/HardwareSerial.o \
 Arduino/new.o \
 Arduino/Print.o \
 Arduino/Stream.o \
+Arduino/WMath.o \
 Arduino/WString.o \
 crc.o \
 ETL_V1.o \
@@ -85,6 +87,7 @@ Arduino/HardwareSerial.o \
 Arduino/new.o \
 Arduino/Print.o \
 Arduino/Stream.o \
+Arduino/WMath.o \
 Arduino/WString.o \
 crc.o \
 ETL_V1.o \
@@ -100,6 +103,7 @@ Arduino/HardwareSerial.d \
 Arduino/new.d \
 Arduino/Print.d \
 Arduino/Stream.d \
+Arduino/WMath.d \
 Arduino/WString.d \
 crc.d \
 ETL_V1.d \
@@ -115,6 +119,7 @@ Arduino/HardwareSerial.d \
 Arduino/new.d \
 Arduino/Print.d \
 Arduino/Stream.d \
+Arduino/WMath.d \
 Arduino/WString.d \
 crc.d \
 ETL_V1.d \

@@ -71,8 +71,10 @@ public:
 	int read(void);
 	#if defined(ARDUINO) && ARDUINO >= 100
 	size_t write(uint8_t data);
+	//size_t writeBytes(uint8_t *data, uint16_t length);
 	#else
 	void write(uint8_t data);
+	void writeBytes(uint8_t *data, uint16_t length);
 	#endif
 	void demodulate(void);
 	void recv(void);

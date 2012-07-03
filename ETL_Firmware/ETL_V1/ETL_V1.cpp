@@ -1,6 +1,6 @@
 /*
  * ETL_V1.cpp
- *s
+ *
  * Created: 3/29/2012 11:34:34 AM
  *  Author: brandonw
  */ 
@@ -60,12 +60,21 @@ uint16_t validConfigs;
 
 TransmitState tState;
 
+double fstopSinPhase;
+double fstopSinPeriodMin;
+
+crc_t recvCrc;
+SectionConfig recvConfig;
+uint8_t recvCommand;
+uint8_t recvNumShots;
+uint8_t configPointer;
+
 void populateConfigs() {
     myConfigs[0].type = CONFIG_SIN_P4;
     myConfigs[0].repeatIndex = 0;
     myConfigs[0].numRepeats = 0;
     myConfigs[0].shots = 50;
-    myConfigs[0].interval = 12000;
+    myConfigs[0].interval = 1200;
     myConfigs[0].intervalDelta = 0;
     //myConfigs[0].exposureOffset = -2.841463415;
 	myConfigs[0].exposureOffset = -4.5;
@@ -169,9 +178,6 @@ void InitTimelapsePauseState() {
 	SetLEDCycle(LED_CYCLE_TIMELAPSE_PAUSE);
 }
 
-double fstopSinPhase;
-double fstopSinPeriodMin;
-
 void SetConfig(int index) {
 	Serial.print("set config index ");
 	Serial.println(index);
@@ -258,16 +264,36 @@ void InitTimelapseState() {
 byte printval;
 
 void InitTransmitState() {
-    SetLED(YELLOW);
+    //SetLED(YELLOW);
     currentState = STATE_TRANSMIT;
     DebugPrint("Enter Transmit");
-    modemPacketIndex = 0;
+	
+	// This is our unused audio channel. This must go to ground otherwise something
+	// weird happens electrically. We could probably use the P/U resistor too.
+	pinMode(flashPin, OUTPUT);
+	digitalWrite(flashPin, HIGH);
+	
+    modemPacketIndex = 1;
 	bytesRead = 0;
 	modem.begin();
 	printTimer = millis();
 	validConfigs = 0;
 	printval = 'A';
 	tState = TSTATE_CONFIG;
+	
+	//
+	// Send our begin packet
+	//
+	
+	CommandPacket startPacket;
+	startPacket.command = COMMAND_BEGIN;
+	startPacket.data = 0x1;
+
+    startPacket.Crc = crc_init();
+	startPacket.Crc = crc_update(startPacket.Crc, &startPacket.command, 2);
+	startPacket.Crc = crc_finalize(startPacket.Crc);
+	
+	modem.writeBytes((uint8_t *) &startPacket, sizeof(startPacket));
 }
 
 void LeaveTransmitState() {
@@ -645,19 +671,15 @@ void ProcessTimeLapseExposing() {
     }
 }
 
-
-crc_t recvCrc;
-SectionConfig recvConfig;
-uint8_t recvCommand;
-uint8_t recvNumShots;
-uint8_t configPointer;
-
 void ProcessTransmitState() {
     
+	CommandPacket startPacket;
+	
 	while(modem.available()) {
         byte myByte = modem.read();
 
 		byte* dataPointer;
+		//Serial.print("byte:");
 		//Serial.println(myByte, HEX);
 		
 		if (bytesRead <= 1) {
@@ -693,19 +715,60 @@ void ProcessTransmitState() {
 					Serial.print(" data: ");
 					Serial.println(recvNumShots, HEX);
 					
-			        if (myCrc != recvCrc) {
+					bool failCrc = false;
+					
+					if (random(2) == 0) {
+						failCrc = true;
+						Serial.println("force fail crc");
+					}
+					
+			        if (myCrc != recvCrc || failCrc) {
 				        DebugPrint("Crc mismatch!");
 			            Serial.print(" recv_crc = ");
 			            Serial.print(recvCrc, HEX);
                         Serial.print(" calc_Crc = ");
 			            Serial.println(myCrc, HEX);
-				        SetLEDCycle(LED_CYCLE_CRC_ERROR);
+						Serial.println();
+				        //SetLEDCycle(LED_CYCLE_CRC_ERROR);
+						
+						// Request the the pakcet again
+						
+						delay(1000);
+						
+                        startPacket.command = COMMAND_BEGIN;
+	                    startPacket.data = modemPacketIndex;
+
+                        startPacket.Crc = crc_init();
+	                    startPacket.Crc = crc_update(startPacket.Crc, &startPacket.command, 2);
+	                    startPacket.Crc = crc_finalize(startPacket.Crc);
+	
+	                    modem.writeBytes((uint8_t *) &startPacket, sizeof(startPacket));
 			        } else {
-				        Serial.println("Config success, awaiting shot data");
+				        Serial.println("packet success");
+						Serial.println();
 						numConfigs = recvNumShots;
 						configPointer = 0;
 						validConfigs = 0;
-						tState = TSTATE_SHOT_DATA;
+						
+						if (modemPacketIndex == recvNumShots) {
+							modemPacketIndex++;
+						}
+						
+						// need to make sure iphone is ready to receive again
+						// this should be async
+						// or ideally we will fix iphone so it can send receive simulteneously...
+						delay(1000);
+						
+	                    startPacket.command = COMMAND_BEGIN;
+	                    startPacket.data = modemPacketIndex;
+
+                        startPacket.Crc = crc_init();
+	                    startPacket.Crc = crc_update(startPacket.Crc, &startPacket.command, 2);
+	                    startPacket.Crc = crc_finalize(startPacket.Crc);
+	
+	                    modem.writeBytes((uint8_t *) &startPacket, sizeof(startPacket));
+						
+						//tState = TSTATE_SHOT_DATA;
 					}						
 				}
 			} else if (tState == TSTATE_SHOT_DATA) {
@@ -794,6 +857,26 @@ void ProcessLEDCycle() {
 	}	
 }
 
+void ProcessTransmitStateTwoWay() {
+	
+	if (millis() > printTimer) {
+	    //modem.write(printval);
+		printval++;
+		printTimer += 5000;
+		
+		modem.printDebugInfo(1);
+	}
+	
+	while(modem.available()) {
+        byte myByte = modem.read();
+		
+		Serial.print("byte:");
+		Serial.println(myByte, HEX);
+		
+		//printTimer = millis() + 3000;
+	}		
+}
+
 void loop() {
 	
     ProcessButton();
@@ -812,19 +895,9 @@ void loop() {
             break;
         case STATE_TRANSMIT:
 		    ProcessTransmitState();
-            if (millis() > printTimer) {
-		        printTimer += 2000;
-	        	//modem.printDebugInfo(true);
-				//modem.write(printval);
-				for (int i = 0; i <5; i++) {
-	                modem.write(printval);
-				}					
-				printval++;
-	        }
+			//ProcessTransmitStateTwoWay();
 			break;
     }        
 	
 	ProcessLEDCycle();
-
-	//ProcessIdle();
 }

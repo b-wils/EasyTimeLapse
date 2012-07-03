@@ -28,10 +28,56 @@ enum {
 
 #define MAX_CONFIGS 5
 
+enum commands {
+	COMMAND_INVALID,
+	COMMAND_BEGIN
+};
+
 struct CommandPacket {
 	crc_t Crc;
 	byte command;
 	byte data;
+};
+
+struct DeviceSettings {
+	uint32_t StaticShutterLag;
+	uint8_t  ConfigSections;
+};
+
+struct BasicTimelapse {
+	uint32_t shots;
+	uint32_t interval;
+	float    exposureLengthPower;
+};
+
+struct BulbRamp {
+	float     exposureFstopChangePerMin;
+    float     fstopSinAmplitude;
+	int8_t    fstopChangeOnPress;
+};
+
+struct IntervalRamp {
+	uint32_t   intervalDelta;
+    int8_t     repeatIndex;
+    uint16_t   numRepeats;
+};
+
+struct HDRShot {
+	float      fstopIncreasePerHDRShot;
+    uint8_t    numHDRShots; // This is in addition to the initial exposure, eg value of 4 would result in 5 shots per bracket
+};
+
+struct VariablePacket {
+	crc_t crc;
+	uint8_t command;
+	uint8_t packetId;
+	union {
+		DeviceSettings deviceSettings;
+		BasicTimelapse basicTimelapse;
+		BulbRamp       bulbRamp;
+		IntervalRamp   intervalRamp;
+		HDRShot        hdrShot;
+	};
 };
 
 struct SectionConfig {

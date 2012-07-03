@@ -17,32 +17,32 @@
 // constants won't change. They're used here to 
 // set pin numbers:
 // prototype pins
-const int buttonPin = 2;     // the number of the pushbutton pin
-const int shutterPin = A2;
-const int focusPin = A3;
-const int flashPin = A4;
-const int flashSensePin = A5;
-const int micShortedPin = 4;
-const int batteryMonitorPin = A0;
-const int cableSensePin = 3;
-#define FSK_INPUT_FILTER_ENABLE_PIN 8
-#define CAMERA_SHORT_PIN 4
-
-// breadboard  1 pins
-//#define buttonPin 2     // the number of the pushbutton pin
-//#define shutterPin A5
-//#define focusPin A4
-//#define flashPin A0
-//#define flashSensePin A1
-//#define micShortedPin 4
-//#define batteryMonitorPin A2
-//#define cableSensePin 3
+//const int buttonPin = 2;     // the number of the pushbutton pin
+//const int shutterPin = A2;
+//const int focusPin = A3;
+//const int flashPin = A4;
+//const int flashSensePin = A5;
+//const int micShortedPin = 4;
+//const int batteryMonitorPin = A0;
+//const int cableSensePin = 3;
 //#define FSK_INPUT_FILTER_ENABLE_PIN 8
 //#define CAMERA_SHORT_PIN 4
 
-#define redLed 9
+// breadboard  1 pins
+#define buttonPin 2     // the number of the pushbutton pin
+#define shutterPin A5
+#define focusPin A4
+#define flashPin A0
+#define flashSensePin A1
+#define micShortedPin 4
+#define batteryMonitorPin A2
+#define cableSensePin 3
+#define FSK_INPUT_FILTER_ENABLE_PIN 8
+#define CAMERA_SHORT_PIN 4
+
+#define redLed 11
 #define greenLed 10
-#define blueLed 11
+#define blueLed 9
 
 uint32_t Timer2Overflow = 0;
 
