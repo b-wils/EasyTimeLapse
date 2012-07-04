@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B5272DC315A4DBDB00F62549 /* Common.h in Headers */ = {isa = PBXBuildFile; fileRef = B5272DC215A4DBDB00F62549 /* Common.h */; };
 		B5B2350D1592CD660046F3B5 /* AudioQueueObject.h in Headers */ = {isa = PBXBuildFile; fileRef = B5B234F11592CD660046F3B5 /* AudioQueueObject.h */; };
 		B5B2350E1592CD660046F3B5 /* AudioQueueObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B5B234F21592CD660046F3B5 /* AudioQueueObject.m */; };
 		B5B2350F1592CD660046F3B5 /* AudioSignalAnalyzer.h in Headers */ = {isa = PBXBuildFile; fileRef = B5B234F31592CD660046F3B5 /* AudioSignalAnalyzer.h */; };
@@ -16,8 +17,6 @@
 		B5B235131592CD660046F3B5 /* CharReceiver.h in Headers */ = {isa = PBXBuildFile; fileRef = B5B234F71592CD660046F3B5 /* CharReceiver.h */; };
 		B5B235141592CD660046F3B5 /* crc.c in Sources */ = {isa = PBXBuildFile; fileRef = B5B234F81592CD660046F3B5 /* crc.c */; };
 		B5B235151592CD660046F3B5 /* crc.h in Headers */ = {isa = PBXBuildFile; fileRef = B5B234F91592CD660046F3B5 /* crc.h */; };
-		B5B235161592CD660046F3B5 /* etl_typedefs.c in Sources */ = {isa = PBXBuildFile; fileRef = B5B234FA1592CD660046F3B5 /* etl_typedefs.c */; };
-		B5B235171592CD660046F3B5 /* etl_typedefs.h in Headers */ = {isa = PBXBuildFile; fileRef = B5B234FB1592CD660046F3B5 /* etl_typedefs.h */; };
 		B5B235181592CD660046F3B5 /* ETLDeviceInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = B5B234FC1592CD660046F3B5 /* ETLDeviceInterface.h */; };
 		B5B235191592CD660046F3B5 /* ETLDeviceInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = B5B234FD1592CD660046F3B5 /* ETLDeviceInterface.m */; };
 		B5B2351A1592CD660046F3B5 /* FSKRecognizer.h in Headers */ = {isa = PBXBuildFile; fileRef = B5B234FE1592CD660046F3B5 /* FSKRecognizer.h */; };
@@ -39,6 +38,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B5272DC215A4DBDB00F62549 /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Common.h; path = ../../../ETL_Firmware/ETL_V1/Common.h; sourceTree = "<group>"; };
 		B5B234F11592CD660046F3B5 /* AudioQueueObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioQueueObject.h; sourceTree = "<group>"; };
 		B5B234F21592CD660046F3B5 /* AudioQueueObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioQueueObject.m; sourceTree = "<group>"; };
 		B5B234F31592CD660046F3B5 /* AudioSignalAnalyzer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioSignalAnalyzer.h; sourceTree = "<group>"; };
@@ -48,8 +48,6 @@
 		B5B234F71592CD660046F3B5 /* CharReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CharReceiver.h; sourceTree = "<group>"; };
 		B5B234F81592CD660046F3B5 /* crc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = crc.c; sourceTree = "<group>"; };
 		B5B234F91592CD660046F3B5 /* crc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crc.h; sourceTree = "<group>"; };
-		B5B234FA1592CD660046F3B5 /* etl_typedefs.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = etl_typedefs.c; sourceTree = "<group>"; };
-		B5B234FB1592CD660046F3B5 /* etl_typedefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = etl_typedefs.h; sourceTree = "<group>"; };
 		B5B234FC1592CD660046F3B5 /* ETLDeviceInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETLDeviceInterface.h; sourceTree = "<group>"; };
 		B5B234FD1592CD660046F3B5 /* ETLDeviceInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLDeviceInterface.m; sourceTree = "<group>"; };
 		B5B234FE1592CD660046F3B5 /* FSKRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSKRecognizer.h; sourceTree = "<group>"; };
@@ -112,6 +110,7 @@
 		B5C4472A159285AF009F1A98 /* communications */ = {
 			isa = PBXGroup;
 			children = (
+				B5272DC215A4DBDB00F62549 /* Common.h */,
 				B5B234F11592CD660046F3B5 /* AudioQueueObject.h */,
 				B5B234F21592CD660046F3B5 /* AudioQueueObject.m */,
 				B5B234F31592CD660046F3B5 /* AudioSignalAnalyzer.h */,
@@ -121,8 +120,6 @@
 				B5B234F71592CD660046F3B5 /* CharReceiver.h */,
 				B5B234F81592CD660046F3B5 /* crc.c */,
 				B5B234F91592CD660046F3B5 /* crc.h */,
-				B5B234FA1592CD660046F3B5 /* etl_typedefs.c */,
-				B5B234FB1592CD660046F3B5 /* etl_typedefs.h */,
 				B5B234FC1592CD660046F3B5 /* ETLDeviceInterface.h */,
 				B5B234FD1592CD660046F3B5 /* ETLDeviceInterface.m */,
 				B5B234FE1592CD660046F3B5 /* FSKRecognizer.h */,
@@ -165,7 +162,6 @@
 				B5B235111592CD660046F3B5 /* AudioSignalGenerator.h in Headers */,
 				B5B235131592CD660046F3B5 /* CharReceiver.h in Headers */,
 				B5B235151592CD660046F3B5 /* crc.h in Headers */,
-				B5B235171592CD660046F3B5 /* etl_typedefs.h in Headers */,
 				B5B235181592CD660046F3B5 /* ETLDeviceInterface.h in Headers */,
 				B5B2351A1592CD660046F3B5 /* FSKRecognizer.h in Headers */,
 				B5B2351C1592CD660046F3B5 /* FSKSerialGenerator.h in Headers */,
@@ -176,6 +172,7 @@
 				B5B235231592CD660046F3B5 /* ScanCodeConverter.h in Headers */,
 				B5B235251592CD660046F3B5 /* TablePickerController.h in Headers */,
 				B5B235271592CD660046F3B5 /* TypePadController.h in Headers */,
+				B5272DC315A4DBDB00F62549 /* Common.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -234,7 +231,6 @@
 				B5B235101592CD660046F3B5 /* AudioSignalAnalyzer.m in Sources */,
 				B5B235121592CD660046F3B5 /* AudioSignalGenerator.m in Sources */,
 				B5B235141592CD660046F3B5 /* crc.c in Sources */,
-				B5B235161592CD660046F3B5 /* etl_typedefs.c in Sources */,
 				B5B235191592CD660046F3B5 /* ETLDeviceInterface.m in Sources */,
 				B5B2351B1592CD660046F3B5 /* FSKRecognizer.mm in Sources */,
 				B5B2351D1592CD660046F3B5 /* FSKSerialGenerator.m in Sources */,

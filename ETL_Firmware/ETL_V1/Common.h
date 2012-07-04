@@ -12,6 +12,10 @@
 #ifndef COMMON_H_
 #define COMMON_H_
 
+#ifndef byte
+typedef uint8_t byte;
+#endif
+
 enum {
  CONFIG_PAUSE = 0,
  CONFIG_LOOP_BEGIN,
@@ -25,7 +29,6 @@ enum {
 #define CONFIG_SIN_P3   (_BV(7))
 #define CONFIG_SIN_P4   (_BV(7) | _BV(6))
 
-
 #define MAX_CONFIGS 5
 
 enum commands {
@@ -33,41 +36,41 @@ enum commands {
 	COMMAND_BEGIN
 };
 
-struct CommandPacket {
+typedef struct {
 	crc_t Crc;
 	byte command;
 	byte data;
-};
+} CommandPacket;
 
-struct DeviceSettings {
+typedef struct {
 	uint32_t StaticShutterLag;
 	uint8_t  ConfigSections;
-};
+} DeviceSettings;
 
-struct BasicTimelapse {
+typedef struct {
 	uint32_t shots;
 	uint32_t interval;
 	float    exposureLengthPower;
-};
+} BasicTimelapse;
 
-struct BulbRamp {
+typedef struct {
 	float     exposureFstopChangePerMin;
     float     fstopSinAmplitude;
 	int8_t    fstopChangeOnPress;
-};
+} BulbRamp;
 
-struct IntervalRamp {
+typedef struct {
 	uint32_t   intervalDelta;
     int8_t     repeatIndex;
     uint16_t   numRepeats;
-};
+} IntervalRamp;
 
-struct HDRShot {
+typedef struct {
 	float      fstopIncreasePerHDRShot;
     uint8_t    numHDRShots; // This is in addition to the initial exposure, eg value of 4 would result in 5 shots per bracket
-};
+} HDRShot;
 
-struct VariablePacket {
+typedef struct {
 	crc_t crc;
 	uint8_t command;
 	uint8_t packetId;
@@ -78,9 +81,9 @@ struct VariablePacket {
 		IntervalRamp   intervalRamp;
 		HDRShot        hdrShot;
 	};
-};
+} VariablePacket;
 
-struct SectionConfig {
+typedef struct {
  uint8_t    type;
  int8_t     repeatIndex;
  uint16_t   numRepeats;
@@ -93,7 +96,7 @@ struct SectionConfig {
  float      fstopIncreasePerHDRShot;
  uint8_t    numHDRShots; // This is in addition to the initial exposure, eg value of 4 would result in 5 shots per bracket
  int8_t    fstopChangeOnPress;
-};
+} SectionConfig;
 
 struct ETlModemPacket {
 	crc_t Crc;

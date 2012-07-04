@@ -130,6 +130,7 @@
 		B5272DAA15A3857E00F62549 /* ColorSwitcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorSwitcher.h; sourceTree = "<group>"; };
 		B5272DAB15A3857E00F62549 /* ColorSwitcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorSwitcher.m; sourceTree = "<group>"; };
 		B5272DAD15A3871800F62549 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		B5272DC415A4DD3800F62549 /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Common.h; path = ../../../ETL_Firmware/ETL_V1/Common.h; sourceTree = "<group>"; };
 		B53DADD7159E7725000BBC31 /* homebutton_bulb_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = homebutton_bulb_pressed.png; path = ../../../assets/v1/homebutton_bulb_pressed.png; sourceTree = "<group>"; };
 		B53DADD8159E7725000BBC31 /* homebutton_bulb_pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "homebutton_bulb_pressed@2x.png"; path = "../../../assets/v1/homebutton_bulb_pressed@2x.png"; sourceTree = "<group>"; };
 		B53DADD9159E7725000BBC31 /* homebutton_bulb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = homebutton_bulb.png; path = ../../../assets/v1/homebutton_bulb.png; sourceTree = "<group>"; };
@@ -152,7 +153,6 @@
 		B558F8411592D16B00CB6E24 /* AudioSignalGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioSignalGenerator.h; path = ../../communications/communications/AudioSignalGenerator.h; sourceTree = "<group>"; };
 		B558F8421592D16B00CB6E24 /* CharReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CharReceiver.h; path = ../../communications/communications/CharReceiver.h; sourceTree = "<group>"; };
 		B558F8431592D16B00CB6E24 /* crc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = crc.h; path = ../../communications/communications/crc.h; sourceTree = "<group>"; };
-		B558F8441592D16B00CB6E24 /* etl_typedefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = etl_typedefs.h; path = ../../communications/communications/etl_typedefs.h; sourceTree = "<group>"; };
 		B558F8451592D16B00CB6E24 /* ETLDeviceInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ETLDeviceInterface.h; path = ../../communications/communications/ETLDeviceInterface.h; sourceTree = "<group>"; };
 		B558F8461592D16B00CB6E24 /* FSKRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSKRecognizer.h; path = ../../communications/communications/FSKRecognizer.h; sourceTree = "<group>"; };
 		B558F8471592D16B00CB6E24 /* FSKSerialGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSKSerialGenerator.h; path = ../../communications/communications/FSKSerialGenerator.h; sourceTree = "<group>"; };
@@ -314,12 +314,12 @@
 		B558F83E1592D11F00CB6E24 /* External Headers */ = {
 			isa = PBXGroup;
 			children = (
+				B5272DC415A4DD3800F62549 /* Common.h */,
 				B558F83F1592D16B00CB6E24 /* AudioQueueObject.h */,
 				B558F8401592D16B00CB6E24 /* AudioSignalAnalyzer.h */,
 				B558F8411592D16B00CB6E24 /* AudioSignalGenerator.h */,
 				B558F8421592D16B00CB6E24 /* CharReceiver.h */,
 				B558F8431592D16B00CB6E24 /* crc.h */,
-				B558F8441592D16B00CB6E24 /* etl_typedefs.h */,
 				B558F8451592D16B00CB6E24 /* ETLDeviceInterface.h */,
 				B558F8461592D16B00CB6E24 /* FSKRecognizer.h */,
 				B558F8471592D16B00CB6E24 /* FSKSerialGenerator.h */,

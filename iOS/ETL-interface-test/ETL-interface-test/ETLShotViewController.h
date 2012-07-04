@@ -7,7 +7,7 @@
 //
 
 #import "ETLViewController.h"
-#import "etl_typedefs.h"
+#import "Common.h"
 
 @interface ETLShotViewController : ETLViewController
 {
