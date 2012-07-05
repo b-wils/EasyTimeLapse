@@ -69,7 +69,7 @@
 					<object class="IBUIButton" id="826745861">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{20, 96}, {125, 125}}</string>
+						<string key="NSFrame">{{20, 112}, {130, 130}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="476461860"/>
@@ -111,7 +111,7 @@
 					<object class="IBUIButton" id="476461860">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{175, 96}, {125, 125}}</string>
+						<string key="NSFrame">{{170, 112}, {130, 130}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="933350148"/>
@@ -144,7 +144,7 @@
 					<object class="IBUIButton" id="933350148">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{20, 251}, {125, 125}}</string>
+						<string key="NSFrame">{{20, 262}, {130, 130}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="363403327"/>
@@ -174,7 +174,7 @@
 					<object class="IBUIButton" id="363403327">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{175, 251}, {125, 125}}</string>
+						<string key="NSFrame">{{170, 262}, {130, 130}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView"/>
@@ -276,12 +276,12 @@
 						<int key="objectID">1</int>
 						<reference key="object" ref="191373211"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="476461860"/>
-							<reference ref="933350148"/>
-							<reference ref="363403327"/>
 							<reference ref="614707695"/>
 							<reference ref="105813375"/>
+							<reference ref="476461860"/>
 							<reference ref="826745861"/>
+							<reference ref="933350148"/>
+							<reference ref="363403327"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -307,11 +307,6 @@
 						<reference key="parent" ref="191373211"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">41</int>
-						<reference key="object" ref="933350148"/>
-						<reference key="parent" ref="191373211"/>
-					</object>
-					<object class="IBObjectRecord">
 						<int key="objectID">40</int>
 						<reference key="object" ref="476461860"/>
 						<reference key="parent" ref="191373211"/>
@@ -324,6 +319,11 @@
 					<object class="IBObjectRecord">
 						<int key="objectID">66</int>
 						<reference key="object" ref="105813375"/>
+						<reference key="parent" ref="191373211"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">41</int>
+						<reference key="object" ref="933350148"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
 				</array>
