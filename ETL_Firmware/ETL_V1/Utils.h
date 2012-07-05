@@ -91,6 +91,21 @@ struct TestStruct {
 void DebugInit() {	
 	Serial.begin(19200);
 	Serial.println("ETL version 0.1");
+	
+	Serial.print("DeviceSettings size: ");
+	Serial.println(sizeof(DeviceSettings));
+		
+	Serial.print("BasicTimelapse size: ");
+	Serial.println(sizeof(BasicTimelapse));
+		
+	Serial.print("BulbRamp size: ");
+	Serial.println(sizeof(BulbRamp));
+		
+	Serial.print("IntervalRamp size: ");
+	Serial.println(sizeof(IntervalRamp));
+	
+	Serial.print("HDRShot size: ");
+	Serial.println(sizeof(HDRShot));
 }
 
 void DebugPrint( const char* myString) {

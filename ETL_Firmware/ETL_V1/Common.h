@@ -40,35 +40,35 @@ typedef struct {
 	crc_t Crc;
 	byte command;
 	byte data;
-} CommandPacket;
+} __attribute__((__packed__)) CommandPacket;
 
 typedef struct {
 	uint32_t StaticShutterLag;
 	uint8_t  ConfigSections;
-} DeviceSettings;
+} __attribute__((__packed__)) DeviceSettings;
 
 typedef struct {
 	uint32_t shots;
 	uint32_t interval;
 	float    exposureLengthPower;
-} BasicTimelapse;
+} __attribute__((__packed__)) BasicTimelapse;
 
 typedef struct {
 	float     exposureFstopChangePerMin;
     float     fstopSinAmplitude;
 	int8_t    fstopChangeOnPress;
-} BulbRamp;
+} __attribute__((__packed__)) BulbRamp;
 
 typedef struct {
 	uint32_t   intervalDelta;
     int8_t     repeatIndex;
     uint16_t   numRepeats;
-} IntervalRamp;
+} __attribute__((__packed__)) IntervalRamp;
 
 typedef struct {
 	float      fstopIncreasePerHDRShot;
     uint8_t    numHDRShots; // This is in addition to the initial exposure, eg value of 4 would result in 5 shots per bracket
-} HDRShot;
+} __attribute__((__packed__)) HDRShot;
 
 typedef struct {
 	crc_t crc;
@@ -81,7 +81,7 @@ typedef struct {
 		IntervalRamp   intervalRamp;
 		HDRShot        hdrShot;
 	};
-} VariablePacket;
+} __attribute__((__packed__)) VariablePacket;
 
 typedef struct {
  uint8_t    type;
@@ -96,12 +96,12 @@ typedef struct {
  float      fstopIncreasePerHDRShot;
  uint8_t    numHDRShots; // This is in addition to the initial exposure, eg value of 4 would result in 5 shots per bracket
  int8_t    fstopChangeOnPress;
-} SectionConfig;
+} __attribute__((__packed__)) SectionConfig;
 
 typedef struct  {
 	crc_t Crc;
 	SectionConfig SectConf;
-} ETlModemPacket;
+} __attribute__((__packed__)) ETlModemPacket;
 
 
 

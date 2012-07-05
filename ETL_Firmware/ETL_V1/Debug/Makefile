@@ -51,13 +51,13 @@ C_SRCS +=  \
 ../Arduino/Stream.cpp \
 ../Arduino/WMath.cpp \
 ../Arduino/WString.cpp \
-../crc.cpp \
 ../ETL_V1.cpp \
 ../SoftModem.cpp \
 ../Arduino/wiring_digital.c \
 ../Arduino/wiring.c \
 ../Arduino/WInterrupts.c \
-../Arduino/wiring_analog.c
+../Arduino/wiring_analog.c \
+../crc.c
 
 
 PREPROCESSING_SRCS += 
@@ -73,13 +73,13 @@ Arduino/Print.o \
 Arduino/Stream.o \
 Arduino/WMath.o \
 Arduino/WString.o \
-crc.o \
 ETL_V1.o \
 SoftModem.o \
 Arduino/wiring_digital.o \
 Arduino/wiring.o \
 Arduino/WInterrupts.o \
-Arduino/wiring_analog.o
+Arduino/wiring_analog.o \
+crc.o
 
 
 OBJS_AS_ARGS +=  \
@@ -89,13 +89,13 @@ Arduino/Print.o \
 Arduino/Stream.o \
 Arduino/WMath.o \
 Arduino/WString.o \
-crc.o \
 ETL_V1.o \
 SoftModem.o \
 Arduino/wiring_digital.o \
 Arduino/wiring.o \
 Arduino/WInterrupts.o \
-Arduino/wiring_analog.o
+Arduino/wiring_analog.o \
+crc.o
 
 
 C_DEPS +=  \
@@ -105,13 +105,13 @@ Arduino/Print.d \
 Arduino/Stream.d \
 Arduino/WMath.d \
 Arduino/WString.d \
-crc.d \
 ETL_V1.d \
 SoftModem.d \
 Arduino/wiring_digital.d \
 Arduino/wiring.d \
 Arduino/WInterrupts.d \
-Arduino/wiring_analog.d
+Arduino/wiring_analog.d \
+crc.d
 
 
 C_DEPS_AS_ARGS +=  \
@@ -121,13 +121,13 @@ Arduino/Print.d \
 Arduino/Stream.d \
 Arduino/WMath.d \
 Arduino/WString.d \
-crc.d \
 ETL_V1.d \
 SoftModem.d \
 Arduino/wiring_digital.d \
 Arduino/wiring.d \
 Arduino/WInterrupts.d \
-Arduino/wiring_analog.d
+Arduino/wiring_analog.d \
+crc.d
 
 
 OUTPUT_FILE_PATH +=ETL_V1.elf
@@ -157,6 +157,8 @@ ADDITIONAL_DEPENDENCIES:= $(HEX_FLASH_FILE_PATH) $(LSS_FILE_PATH) $(HEX_EEPROM_F
 OUTPUT_FILE_DEP:= ./makedep.mk
 
 # AVR/GNU C Compiler
+
+
 
 
 
@@ -232,3 +234,4 @@ size: $(OUTPUT_FILE_PATH)
 # Other Targets
 clean:
 	-$(RM) $(OBJS_AS_ARGS)$(C_DEPS_AS_ARGS) $(EXECUTABLES) $(LIB_AS_ARGS) $(HEX_FLASH_FILE_PATH_AS_ARGS) $(HEX_EEPROM_FILE_PATH_AS_ARGS) $(LSS_FILE_PATH_AS_ARGS) $(MAP_FILE_PATH_AS_ARGS)
+
