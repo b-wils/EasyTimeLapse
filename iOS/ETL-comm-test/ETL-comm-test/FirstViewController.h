@@ -13,10 +13,10 @@
 #import "FSKRecognizer.h"
 #import "AudioSignalAnalyzer.h"
 #import "CharReceiver.h"
-#import "etl_typedefs.h"
+#import "Common.h"
 #import "ETLDeviceInterface.h"
 #import "crc.h"
-#import "etl_typedefs.h"
+#import "common.h"
 
 #define MAX_PACKETS 16
 

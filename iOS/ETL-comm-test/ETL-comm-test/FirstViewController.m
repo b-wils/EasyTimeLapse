@@ -1,3 +1,4 @@
+
 //
 //  FirstViewController.m
 //  ETL-comm-test
@@ -25,6 +26,12 @@
         deviceInterface = [[ETLDeviceInterface alloc] initWithReceiver:self];
         [deviceInterface startReader];
         packetIndex = 0;
+        
+        NSLog(@"settings size %ld", sizeof(DeviceSettings));
+        NSLog(@"basic size %ld", sizeof(BasicTimelapse));
+        NSLog(@"bulb ramp size %ld", sizeof(BulbRamp));
+        NSLog(@"interval ramp size %ld", sizeof(IntervalRamp));
+        NSLog(@"hdr size %ld", sizeof(HDRShot));
         
         memset(sentPackets, 0, sizeof(CommandPacket) * MAX_PACKETS);
     }
@@ -65,7 +72,7 @@
         // Process received packet
         
         crc_t myCrc = crc_init();
-        myCrc = crc_update(myCrc, (uint8_t *) &receivePacket.Command, 2);
+        myCrc = crc_update(myCrc, (uint8_t *) &receivePacket.command, 2);
         myCrc = crc_finalize(myCrc);
         
         //NSLog(@"random %ld", random());
@@ -91,14 +98,15 @@
             [deviceInterface writeBuffer:(uint8_t *) &sentPackets[packetIndex] ofSize:sizeof(sentPackets[packetIndex])];
             totalCommandBits = 32;
         } else {
-            NSLog(@"crc match; cmd: %x, data %x", receivePacket.Command, receivePacket.Data);
+            NSLog(@"crc match; cmd: %x, data %x", receivePacket.command, receivePacket.data);
             // Initialize and send the next packet
             
             //NSLog(@"sleep wake");
             
-            packetIndex = receivePacket.Data;
+            packetIndex = receivePacket.data;
             
             if (packetIndex > 5) {
+                NSLog(@"EndLoop");
                 packetIndex = 1;
                 return;
             }
@@ -109,11 +117,11 @@
             
             usleep(500000);
             
-            sentPackets[packetIndex].Command = 0x77;
-            sentPackets[packetIndex].Data = packetIndex;
+            sentPackets[packetIndex].command = 0x77;
+            sentPackets[packetIndex].data = packetIndex;
         
             sentPackets[packetIndex].Crc = crc_init();
-            sentPackets[packetIndex].Crc =  crc_update(sentPackets[packetIndex].Crc, ((uint8_t *) &sentPackets[packetIndex].Command), 2);
+            sentPackets[packetIndex].Crc =  crc_update(sentPackets[packetIndex].Crc, ((uint8_t *) &sentPackets[packetIndex].command), 2);
             sentPackets[packetIndex].Crc = crc_finalize(sentPackets[packetIndex].Crc);
             
             programmingProgress.progress = 0;

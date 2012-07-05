@@ -36,8 +36,8 @@
     progressBarTimer = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(updateProgressBar:) userInfo:nil repeats:YES];
     
     [deviceInterface startProgramming];
-    [deviceInterface sendCommand:command.Command data:command.Data];
-    for (NSUInteger i = 0; i < command.Data; i++) {
+    [deviceInterface sendCommand:command.command data:command.data];
+    for (NSUInteger i = 0; i < command.data; i++) {
         [deviceInterface sendSection:sections + i];
     }
 }
@@ -72,7 +72,7 @@ const NSUInteger streamBitsPerDataByte = 14;
     sections = commandSections;
     
     // TODO - review this calculation for general cases
-    totalCommandBits = (sizeof(CommandPacket) + sizeof(ETlModemPacket) * command.Data) * streamBitsPerDataByte;
+    totalCommandBits = (sizeof(CommandPacket) + sizeof(ETlModemPacket) * command.data) * streamBitsPerDataByte;
 }
 
 - (void)goBack:(id)sender

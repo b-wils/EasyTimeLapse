@@ -170,8 +170,10 @@ ETLDeviceInterface * __theDeviceInterface = NULL;
 {    
     SectionConfig section;
     
-    initEtlConfig(&section);
+    //initEtlConfig(&section);
 
+    memset(&section, 0, sizeof(SectionConfig));
+    
     section.shots = 100; //[shots.text intValue];
     section.interval = 8; //[interval.text intValue];
     

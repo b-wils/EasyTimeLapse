@@ -194,8 +194,8 @@
         
     }
     else {*/
-        command.Command = 10; // TODO - this is just grabbed from the sample, verify correct command
-        command.Data = 1; // TODO - verify this is appropriate for the correct command
+        command.command = 10; // TODO - this is just grabbed from the sample, verify correct command
+        command.data = 1; // TODO - verify this is appropriate for the correct command
         
         sections[0].shots = _shotLimit;
         sections[0].interval = _shotPeriodInMs;
