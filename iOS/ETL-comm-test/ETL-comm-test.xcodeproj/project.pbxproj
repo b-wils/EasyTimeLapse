@@ -1,0 +1,543 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FB202945159D11C900707177 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB202944159D11C900707177 /* UIKit.framework */; };
+		FB202947159D11C900707177 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB202946159D11C900707177 /* Foundation.framework */; };
+		FB202949159D11C900707177 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB202948159D11C900707177 /* CoreGraphics.framework */; };
+		FB20294F159D11C900707177 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FB20294D159D11C900707177 /* InfoPlist.strings */; };
+		FB202951159D11C900707177 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FB202950159D11C900707177 /* main.m */; };
+		FB202955159D11C900707177 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FB202954159D11C900707177 /* AppDelegate.m */; };
+		FB202958159D11C900707177 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB202956159D11C900707177 /* MainStoryboard_iPhone.storyboard */; };
+		FB20295B159D11C900707177 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB202959159D11C900707177 /* MainStoryboard_iPad.storyboard */; };
+		FB20295E159D11C900707177 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB20295D159D11C900707177 /* FirstViewController.m */; };
+		FB202960159D11C900707177 /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = FB20295F159D11C900707177 /* first.png */; };
+		FB202962159D11C900707177 /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FB202961159D11C900707177 /* first@2x.png */; };
+		FB202965159D11C900707177 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB202964159D11C900707177 /* SecondViewController.m */; };
+		FB202967159D11C900707177 /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = FB202966159D11C900707177 /* second.png */; };
+		FB202969159D11C900707177 /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FB202968159D11C900707177 /* second@2x.png */; };
+		FB202971159D11C900707177 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB202970159D11C900707177 /* SenTestingKit.framework */; };
+		FB202972159D11C900707177 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB202944159D11C900707177 /* UIKit.framework */; };
+		FB202973159D11C900707177 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB202946159D11C900707177 /* Foundation.framework */; };
+		FB20297B159D11C900707177 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FB202979159D11C900707177 /* InfoPlist.strings */; };
+		FB20297E159D11C900707177 /* ETL_comm_testTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FB20297D159D11C900707177 /* ETL_comm_testTests.m */; };
+		FB2029A2159E6FB400707177 /* libcommunications.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FB2029A1159E6FB400707177 /* libcommunications.a */; };
+		FB2029A7159E710600707177 /* libstdc++.6.0.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FB2029A6159E710600707177 /* libstdc++.6.0.9.dylib */; };
+		FB2029A9159E711D00707177 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB2029A8159E711D00707177 /* AudioToolbox.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FB202974159D11C900707177 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FB202937159D11C900707177 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FB20293F159D11C900707177;
+			remoteInfo = "ETL-comm-test";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		FB202940159D11C900707177 /* ETL-comm-test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ETL-comm-test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB202944159D11C900707177 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		FB202946159D11C900707177 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		FB202948159D11C900707177 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		FB20294C159D11C900707177 /* ETL-comm-test-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ETL-comm-test-Info.plist"; sourceTree = "<group>"; };
+		FB20294E159D11C900707177 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		FB202950159D11C900707177 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		FB202952159D11C900707177 /* ETL-comm-test-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ETL-comm-test-Prefix.pch"; sourceTree = "<group>"; };
+		FB202953159D11C900707177 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		FB202954159D11C900707177 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		FB202957159D11C900707177 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
+		FB20295A159D11C900707177 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
+		FB20295C159D11C900707177 /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
+		FB20295D159D11C900707177 /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
+		FB20295F159D11C900707177 /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
+		FB202961159D11C900707177 /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
+		FB202963159D11C900707177 /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
+		FB202964159D11C900707177 /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		FB202966159D11C900707177 /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
+		FB202968159D11C900707177 /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
+		FB20296F159D11C900707177 /* ETL-comm-testTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ETL-comm-testTests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB202970159D11C900707177 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		FB202978159D11C900707177 /* ETL-comm-testTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ETL-comm-testTests-Info.plist"; sourceTree = "<group>"; };
+		FB20297A159D11C900707177 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		FB20297C159D11C900707177 /* ETL_comm_testTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ETL_comm_testTests.h; sourceTree = "<group>"; };
+		FB20297D159D11C900707177 /* ETL_comm_testTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ETL_comm_testTests.m; sourceTree = "<group>"; };
+		FB20298B159E66D900707177 /* AudioQueueObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioQueueObject.h; path = ../../communications/communications/AudioQueueObject.h; sourceTree = "<group>"; };
+		FB20298C159E66D900707177 /* AudioSignalAnalyzer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioSignalAnalyzer.h; path = ../../communications/communications/AudioSignalAnalyzer.h; sourceTree = "<group>"; };
+		FB20298D159E66D900707177 /* AudioSignalGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioSignalGenerator.h; path = ../../communications/communications/AudioSignalGenerator.h; sourceTree = "<group>"; };
+		FB20298E159E66D900707177 /* CharReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CharReceiver.h; path = ../../communications/communications/CharReceiver.h; sourceTree = "<group>"; };
+		FB20298F159E66D900707177 /* crc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = crc.h; path = ../../communications/communications/crc.h; sourceTree = "<group>"; };
+		FB202990159E66D900707177 /* etl_typedefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = etl_typedefs.h; path = ../../communications/communications/etl_typedefs.h; sourceTree = "<group>"; };
+		FB202991159E66D900707177 /* ETLDeviceInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ETLDeviceInterface.h; path = ../../communications/communications/ETLDeviceInterface.h; sourceTree = "<group>"; };
+		FB202992159E66D900707177 /* FSKRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSKRecognizer.h; path = ../../communications/communications/FSKRecognizer.h; sourceTree = "<group>"; };
+		FB202993159E66D900707177 /* FSKSerialGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSKSerialGenerator.h; path = ../../communications/communications/FSKSerialGenerator.h; sourceTree = "<group>"; };
+		FB202994159E66D900707177 /* FSKTerminalAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSKTerminalAppDelegate.h; path = ../../communications/communications/FSKTerminalAppDelegate.h; sourceTree = "<group>"; };
+		FB202995159E66D900707177 /* lockfree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lockfree.h; path = ../../communications/communications/lockfree.h; sourceTree = "<group>"; };
+		FB202996159E66D900707177 /* MultiDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MultiDelegate.h; path = ../../communications/communications/MultiDelegate.h; sourceTree = "<group>"; };
+		FB202997159E66D900707177 /* PatternRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PatternRecognizer.h; path = ../../communications/communications/PatternRecognizer.h; sourceTree = "<group>"; };
+		FB202998159E66D900707177 /* ScanCodeConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScanCodeConverter.h; path = ../../communications/communications/ScanCodeConverter.h; sourceTree = "<group>"; };
+		FB202999159E66D900707177 /* TablePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TablePickerController.h; path = ../../communications/communications/TablePickerController.h; sourceTree = "<group>"; };
+		FB20299A159E66D900707177 /* TypePadController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TypePadController.h; path = ../../communications/communications/TypePadController.h; sourceTree = "<group>"; };
+		FB2029A1159E6FB400707177 /* libcommunications.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcommunications.a; path = "../../../../Library/Developer/Xcode/DerivedData/Easy_Time_Lapse-dktuakzarnjxkhcgpkrmtjjximwo/Build/Products/Debug-iphoneos/libcommunications.a"; sourceTree = "<group>"; };
+		FB2029A6159E710600707177 /* libstdc++.6.0.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.0.9.dylib"; path = "usr/lib/libstdc++.6.0.9.dylib"; sourceTree = SDKROOT; };
+		FB2029A8159E711D00707177 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FB20293D159D11C900707177 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FB2029A9159E711D00707177 /* AudioToolbox.framework in Frameworks */,
+				FB2029A7159E710600707177 /* libstdc++.6.0.9.dylib in Frameworks */,
+				FB2029A2159E6FB400707177 /* libcommunications.a in Frameworks */,
+				FB202945159D11C900707177 /* UIKit.framework in Frameworks */,
+				FB202947159D11C900707177 /* Foundation.framework in Frameworks */,
+				FB202949159D11C900707177 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FB20296B159D11C900707177 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FB202971159D11C900707177 /* SenTestingKit.framework in Frameworks */,
+				FB202972159D11C900707177 /* UIKit.framework in Frameworks */,
+				FB202973159D11C900707177 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FB202935159D11C900707177 = {
+			isa = PBXGroup;
+			children = (
+				FB2029A8159E711D00707177 /* AudioToolbox.framework */,
+				FB2029A6159E710600707177 /* libstdc++.6.0.9.dylib */,
+				FB2029A1159E6FB400707177 /* libcommunications.a */,
+				FB20294A159D11C900707177 /* ETL-comm-test */,
+				FB202976159D11C900707177 /* ETL-comm-testTests */,
+				FB202943159D11C900707177 /* Frameworks */,
+				FB202941159D11C900707177 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FB202941159D11C900707177 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FB202940159D11C900707177 /* ETL-comm-test.app */,
+				FB20296F159D11C900707177 /* ETL-comm-testTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FB202943159D11C900707177 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FB202944159D11C900707177 /* UIKit.framework */,
+				FB202946159D11C900707177 /* Foundation.framework */,
+				FB202948159D11C900707177 /* CoreGraphics.framework */,
+				FB202970159D11C900707177 /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FB20294A159D11C900707177 /* ETL-comm-test */ = {
+			isa = PBXGroup;
+			children = (
+				FB202953159D11C900707177 /* AppDelegate.h */,
+				FB202954159D11C900707177 /* AppDelegate.m */,
+				FB202956159D11C900707177 /* MainStoryboard_iPhone.storyboard */,
+				FB202959159D11C900707177 /* MainStoryboard_iPad.storyboard */,
+				FB20295C159D11C900707177 /* FirstViewController.h */,
+				FB20295D159D11C900707177 /* FirstViewController.m */,
+				FB20295F159D11C900707177 /* first.png */,
+				FB202961159D11C900707177 /* first@2x.png */,
+				FB202963159D11C900707177 /* SecondViewController.h */,
+				FB202964159D11C900707177 /* SecondViewController.m */,
+				FB202966159D11C900707177 /* second.png */,
+				FB202968159D11C900707177 /* second@2x.png */,
+				FB20294B159D11C900707177 /* Supporting Files */,
+			);
+			path = "ETL-comm-test";
+			sourceTree = "<group>";
+		};
+		FB20294B159D11C900707177 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FB20298A159E66D900707177 /* External Headers */,
+				FB20294C159D11C900707177 /* ETL-comm-test-Info.plist */,
+				FB20294D159D11C900707177 /* InfoPlist.strings */,
+				FB202950159D11C900707177 /* main.m */,
+				FB202952159D11C900707177 /* ETL-comm-test-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FB202976159D11C900707177 /* ETL-comm-testTests */ = {
+			isa = PBXGroup;
+			children = (
+				FB20297C159D11C900707177 /* ETL_comm_testTests.h */,
+				FB20297D159D11C900707177 /* ETL_comm_testTests.m */,
+				FB202977159D11C900707177 /* Supporting Files */,
+			);
+			path = "ETL-comm-testTests";
+			sourceTree = "<group>";
+		};
+		FB202977159D11C900707177 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FB202978159D11C900707177 /* ETL-comm-testTests-Info.plist */,
+				FB202979159D11C900707177 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FB20298A159E66D900707177 /* External Headers */ = {
+			isa = PBXGroup;
+			children = (
+				FB20298B159E66D900707177 /* AudioQueueObject.h */,
+				FB20298C159E66D900707177 /* AudioSignalAnalyzer.h */,
+				FB20298D159E66D900707177 /* AudioSignalGenerator.h */,
+				FB20298E159E66D900707177 /* CharReceiver.h */,
+				FB20298F159E66D900707177 /* crc.h */,
+				FB202990159E66D900707177 /* etl_typedefs.h */,
+				FB202991159E66D900707177 /* ETLDeviceInterface.h */,
+				FB202992159E66D900707177 /* FSKRecognizer.h */,
+				FB202993159E66D900707177 /* FSKSerialGenerator.h */,
+				FB202994159E66D900707177 /* FSKTerminalAppDelegate.h */,
+				FB202995159E66D900707177 /* lockfree.h */,
+				FB202996159E66D900707177 /* MultiDelegate.h */,
+				FB202997159E66D900707177 /* PatternRecognizer.h */,
+				FB202998159E66D900707177 /* ScanCodeConverter.h */,
+				FB202999159E66D900707177 /* TablePickerController.h */,
+				FB20299A159E66D900707177 /* TypePadController.h */,
+			);
+			name = "External Headers";
+			path = "../../ETL-interface-test/ETL-interface-test";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FB20293F159D11C900707177 /* ETL-comm-test */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FB202981159D11C900707177 /* Build configuration list for PBXNativeTarget "ETL-comm-test" */;
+			buildPhases = (
+				FB20293C159D11C900707177 /* Sources */,
+				FB20293D159D11C900707177 /* Frameworks */,
+				FB20293E159D11C900707177 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "ETL-comm-test";
+			productName = "ETL-comm-test";
+			productReference = FB202940159D11C900707177 /* ETL-comm-test.app */;
+			productType = "com.apple.product-type.application";
+		};
+		FB20296E159D11C900707177 /* ETL-comm-testTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FB202984159D11C900707177 /* Build configuration list for PBXNativeTarget "ETL-comm-testTests" */;
+			buildPhases = (
+				FB20296A159D11C900707177 /* Sources */,
+				FB20296B159D11C900707177 /* Frameworks */,
+				FB20296C159D11C900707177 /* Resources */,
+				FB20296D159D11C900707177 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FB202975159D11C900707177 /* PBXTargetDependency */,
+			);
+			name = "ETL-comm-testTests";
+			productName = "ETL-comm-testTests";
+			productReference = FB20296F159D11C900707177 /* ETL-comm-testTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FB202937159D11C900707177 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+			};
+			buildConfigurationList = FB20293A159D11C900707177 /* Build configuration list for PBXProject "ETL-comm-test" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = FB202935159D11C900707177;
+			productRefGroup = FB202941159D11C900707177 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FB20293F159D11C900707177 /* ETL-comm-test */,
+				FB20296E159D11C900707177 /* ETL-comm-testTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FB20293E159D11C900707177 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FB20294F159D11C900707177 /* InfoPlist.strings in Resources */,
+				FB202958159D11C900707177 /* MainStoryboard_iPhone.storyboard in Resources */,
+				FB20295B159D11C900707177 /* MainStoryboard_iPad.storyboard in Resources */,
+				FB202960159D11C900707177 /* first.png in Resources */,
+				FB202962159D11C900707177 /* first@2x.png in Resources */,
+				FB202967159D11C900707177 /* second.png in Resources */,
+				FB202969159D11C900707177 /* second@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FB20296C159D11C900707177 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FB20297B159D11C900707177 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		FB20296D159D11C900707177 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FB20293C159D11C900707177 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FB202951159D11C900707177 /* main.m in Sources */,
+				FB202955159D11C900707177 /* AppDelegate.m in Sources */,
+				FB20295E159D11C900707177 /* FirstViewController.m in Sources */,
+				FB202965159D11C900707177 /* SecondViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FB20296A159D11C900707177 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FB20297E159D11C900707177 /* ETL_comm_testTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FB202975159D11C900707177 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FB20293F159D11C900707177 /* ETL-comm-test */;
+			targetProxy = FB202974159D11C900707177 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		FB20294D159D11C900707177 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FB20294E159D11C900707177 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		FB202956159D11C900707177 /* MainStoryboard_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FB202957159D11C900707177 /* en */,
+			);
+			name = MainStoryboard_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+		FB202959159D11C900707177 /* MainStoryboard_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FB20295A159D11C900707177 /* en */,
+			);
+			name = MainStoryboard_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+		FB202979159D11C900707177 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FB20297A159D11C900707177 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FB20297F159D11C900707177 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		FB202980159D11C900707177 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FB202982159D11C900707177 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ETL-comm-test/ETL-comm-test-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INFOPLIST_FILE = "ETL-comm-test/ETL-comm-test-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/Easy_Time_Lapse-dktuakzarnjxkhcgpkrmtjjximwo/Build/Products/Debug-iphoneos\"",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		FB202983159D11C900707177 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ETL-comm-test/ETL-comm-test-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INFOPLIST_FILE = "ETL-comm-test/ETL-comm-test-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/Easy_Time_Lapse-dktuakzarnjxkhcgpkrmtjjximwo/Build/Products/Debug-iphoneos\"",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		FB202985159D11C900707177 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ETL-comm-test.app/ETL-comm-test";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ETL-comm-test/ETL-comm-test-Prefix.pch";
+				INFOPLIST_FILE = "ETL-comm-testTests/ETL-comm-testTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		FB202986159D11C900707177 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ETL-comm-test.app/ETL-comm-test";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ETL-comm-test/ETL-comm-test-Prefix.pch";
+				INFOPLIST_FILE = "ETL-comm-testTests/ETL-comm-testTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FB20293A159D11C900707177 /* Build configuration list for PBXProject "ETL-comm-test" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FB20297F159D11C900707177 /* Debug */,
+				FB202980159D11C900707177 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FB202981159D11C900707177 /* Build configuration list for PBXNativeTarget "ETL-comm-test" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FB202982159D11C900707177 /* Debug */,
+				FB202983159D11C900707177 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		FB202984159D11C900707177 /* Build configuration list for PBXNativeTarget "ETL-comm-testTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FB202985159D11C900707177 /* Debug */,
+				FB202986159D11C900707177 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FB202937159D11C900707177 /* Project object */;
+}
