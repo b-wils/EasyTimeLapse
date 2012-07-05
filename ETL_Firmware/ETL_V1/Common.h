@@ -98,10 +98,12 @@ typedef struct {
  int8_t    fstopChangeOnPress;
 } SectionConfig;
 
-struct ETlModemPacket {
+typedef struct  {
 	crc_t Crc;
 	SectionConfig SectConf;
-};
+} ETlModemPacket;
+
+
 
 // this is a test
 
