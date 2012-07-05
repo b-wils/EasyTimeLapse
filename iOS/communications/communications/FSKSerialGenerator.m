@@ -119,6 +119,7 @@ SAMPLE sineTable[SINE_TABLE_LENGTH];
 	}
 	
 	bits = 1;	// Make sure the output is HIGH when there is no data
+    //NSLog(@"Audio Buffer HIGH");
 	return NO;
 }
 

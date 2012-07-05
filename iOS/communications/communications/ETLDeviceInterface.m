@@ -58,23 +58,13 @@ ETLDeviceInterface * __theDeviceInterface = NULL;
 	[recognizer addReceiver:receiver];
 	generator = [[FSKSerialGenerator alloc] init];
 	AudioSessionSetActive (true);
-    
-    for (int i = 0; i<5;i++) {
-        //SectionConfig *myConfig = malloc(sizeof(SectionConfig));
-        //initEtlConfig(myConfig);
-        //[mySectionConfigs addObject:myConfig];
-        
-        initEtlConfig(&myConfigs[i]);
-    }
-    
-    configIndex = 0;
 
     return self;
 }
 
 - (void)startProgramming
 {
-    NSLog (@"Programming started.");    
+   // NSLog (@"Programming started.");    
     
     [analyzer record];
     [generator play];
@@ -82,7 +72,7 @@ ETLDeviceInterface * __theDeviceInterface = NULL;
 
 - (void)pauseProgramming
 {
-    NSLog (@"Interrupted. Pausing programming.");
+    //NSLog (@"Interrupted. Pausing programming.");
     
     [analyzer stop];
     [generator pause];
@@ -90,7 +80,7 @@ ETLDeviceInterface * __theDeviceInterface = NULL;
 
 - (void)resumeProgramming
 {
-    NSLog (@"Resuming programming.");
+    //NSLog (@"Resuming programming.");
     
     [analyzer record];
     [generator resume];
@@ -98,10 +88,54 @@ ETLDeviceInterface * __theDeviceInterface = NULL;
 
 - (void)stopProgramming
 {
-    NSLog (@"Programming stopped.");    
+    //NSLog (@"Programming stopped.");    
     
     [generator stop];
     [analyzer stop];
+}
+
+-(void)startPlayer
+{
+    //NSLog (@"player started.");    
+    
+    [generator play];
+}
+
+-(void)pausePlayer
+{
+    //NSLog (@"player paused.");    
+    
+    [generator pause];
+}
+
+-(void)resumePlayer
+{
+   // NSLog (@"player resumed.");    
+    
+    [generator resume];
+}
+
+-(void)stopPlayer
+{
+    //NSLog (@"player stopped.");    
+    
+    [generator stop];
+}
+
+-(void)startReader
+{
+    //NSLog (@"reader started."); 
+    
+    [analyzer record];
+
+}
+
+-(void)stopReader
+{
+    //NSLog (@"reader started."); 
+    
+    [analyzer stop];
+    
 }
 
 - (void)writeBuffer:(unsigned char *)buffer ofSize:(size_t)bufferSize withCrc:(bool)withCrc

@@ -33,4 +33,13 @@
 - (void)resumeProgramming;
 - (void)stopProgramming;
 
+- (void) startReader;
+- (void) stopReader;
+- (void) startPlayer;
+- (void) stopPlayer;
+- (void) pausePlayer;
+- (void) resumePlayer;
+
+- (void)writeBuffer:(unsigned char *)buffer ofSize:(size_t)bufferSize;
+
 @end

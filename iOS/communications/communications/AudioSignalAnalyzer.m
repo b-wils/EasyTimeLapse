@@ -195,7 +195,7 @@ static void recordingCallback (
 		audioFormat.mBytesPerFrame		= 2;
 		
 		
-		AudioQueueNewInput (
+		OSStatus myStatus = AudioQueueNewInput (
 							&audioFormat,
 							recordingCallback,
 							self,									// userData
@@ -204,6 +204,8 @@ static void recordingCallback (
 							0,										// flags
 							&queueObject
 							);
+        
+        NSLog(@"AudioQueueNewInput retval: %ld", myStatus);
 		
 	}
 	return self;

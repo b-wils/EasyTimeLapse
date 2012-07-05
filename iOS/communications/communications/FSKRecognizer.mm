@@ -60,7 +60,7 @@ struct FSKByteQueue: public lock_free::queue<char> {
 	char input;
 	while (byteQueue->get(input))
 	{
-		NSLog(@"Byte: %c (%02x)", input, (unsigned char)input);
+		//NSLog(@"Byte: %c (%02x)", input, (unsigned char)input);
 		[receivers receivedChar:input];
 	}
 }
@@ -79,7 +79,7 @@ struct FSKByteQueue: public lock_free::queue<char> {
 		case FSKStart:
 			if(!high)
 			{
-				NSLog(@"Start bit: %c %d", high?'H':'L', length);
+				//NSLog(@"Start bit: %c %d", high?'H':'L', length);
 				newState = FSKBits;
 			}
 			else

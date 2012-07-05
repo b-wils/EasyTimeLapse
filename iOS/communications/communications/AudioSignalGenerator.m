@@ -70,7 +70,7 @@ static void playbackCallback (
 - (void) setupPlaybackAudioQueueObject {
 	
 	// create the playback audio queue object
-	AudioQueueNewOutput (
+	OSStatus myStatus = AudioQueueNewOutput (
 						 &audioFormat,
 						 playbackCallback,
 						 self, 
@@ -80,6 +80,8 @@ static void playbackCallback (
 						 &queueObject
 						 );
 	
+    NSLog(@"AudioQueueNewOutput retval: %ld", myStatus);
+    
 	AudioQueueSetParameter (
 							queueObject,
 							kAudioQueueParam_Volume,
@@ -129,7 +131,7 @@ static void playbackCallback (
 					self.queueObject,
 					self.audioPlayerShouldStopImmediately
 					);
-	
+	AudioQueueReset(self.queueObject);
 }
 
 

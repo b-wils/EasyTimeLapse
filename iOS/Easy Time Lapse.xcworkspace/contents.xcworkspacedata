@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:ETL-comm-test/ETL-comm-test.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "container:ETL-interface-test/ETL-interface-test.xcodeproj">
    </FileRef>
    <FileRef
