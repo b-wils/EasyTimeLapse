@@ -35,6 +35,10 @@
 		B5272DA815A3800E00F62549 /* NSArray+ArrayUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = B5272DA715A3800E00F62549 /* NSArray+ArrayUtility.m */; };
 		B5272DAC15A3857E00F62549 /* ColorSwitcher.m in Sources */ = {isa = PBXBuildFile; fileRef = B5272DAB15A3857E00F62549 /* ColorSwitcher.m */; };
 		B5272DAE15A3871800F62549 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5272DAD15A3871800F62549 /* CoreImage.framework */; };
+		B5272DD315A66BCE00F62549 /* back_home.png in Resources */ = {isa = PBXBuildFile; fileRef = B5272DCF15A66BCE00F62549 /* back_home.png */; };
+		B5272DD415A66BCE00F62549 /* back_home@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5272DD015A66BCE00F62549 /* back_home@2x.png */; };
+		B5272DD515A66BCE00F62549 /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = B5272DD115A66BCE00F62549 /* back.png */; };
+		B5272DD615A66BCE00F62549 /* back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5272DD215A66BCE00F62549 /* back@2x.png */; };
 		B53DADE7159E7725000BBC31 /* homebutton_bulb_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = B53DADD7159E7725000BBC31 /* homebutton_bulb_pressed.png */; };
 		B53DADE8159E7725000BBC31 /* homebutton_bulb_pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B53DADD8159E7725000BBC31 /* homebutton_bulb_pressed@2x.png */; };
 		B53DADE9159E7725000BBC31 /* homebutton_bulb.png in Resources */ = {isa = PBXBuildFile; fileRef = B53DADD9159E7725000BBC31 /* homebutton_bulb.png */; };
@@ -131,6 +135,10 @@
 		B5272DAB15A3857E00F62549 /* ColorSwitcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorSwitcher.m; sourceTree = "<group>"; };
 		B5272DAD15A3871800F62549 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		B5272DC415A4DD3800F62549 /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Common.h; path = ../../../ETL_Firmware/ETL_V1/Common.h; sourceTree = "<group>"; };
+		B5272DCF15A66BCE00F62549 /* back_home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = back_home.png; path = ../../../assets/v1/back_home.png; sourceTree = "<group>"; };
+		B5272DD015A66BCE00F62549 /* back_home@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "back_home@2x.png"; path = "../../../assets/v1/back_home@2x.png"; sourceTree = "<group>"; };
+		B5272DD115A66BCE00F62549 /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = back.png; path = ../../../assets/v1/back.png; sourceTree = "<group>"; };
+		B5272DD215A66BCE00F62549 /* back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "back@2x.png"; path = "../../../assets/v1/back@2x.png"; sourceTree = "<group>"; };
 		B53DADD7159E7725000BBC31 /* homebutton_bulb_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = homebutton_bulb_pressed.png; path = ../../../assets/v1/homebutton_bulb_pressed.png; sourceTree = "<group>"; };
 		B53DADD8159E7725000BBC31 /* homebutton_bulb_pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "homebutton_bulb_pressed@2x.png"; path = "../../../assets/v1/homebutton_bulb_pressed@2x.png"; sourceTree = "<group>"; };
 		B53DADD9159E7725000BBC31 /* homebutton_bulb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = homebutton_bulb.png; path = ../../../assets/v1/homebutton_bulb.png; sourceTree = "<group>"; };
@@ -354,6 +362,10 @@
 		B57C06FF159E76C000D02610 /* buttons */ = {
 			isa = PBXGroup;
 			children = (
+				B5272DCF15A66BCE00F62549 /* back_home.png */,
+				B5272DD015A66BCE00F62549 /* back_home@2x.png */,
+				B5272DD115A66BCE00F62549 /* back.png */,
+				B5272DD215A66BCE00F62549 /* back@2x.png */,
 				B5272D5115A27E4900F62549 /* settings.png */,
 				B5272D5215A27E4900F62549 /* settings@2x.png */,
 				B53DADF7159E7729000BBC31 /* Home */,
@@ -627,6 +639,10 @@
 				B5272D7215A27E7900F62549 /* switch_off@2x.png in Resources */,
 				B5272D7315A27E7900F62549 /* switch_on.png in Resources */,
 				B5272D7415A27E7900F62549 /* switch_on@2x.png in Resources */,
+				B5272DD315A66BCE00F62549 /* back_home.png in Resources */,
+				B5272DD415A66BCE00F62549 /* back_home@2x.png in Resources */,
+				B5272DD515A66BCE00F62549 /* back.png in Resources */,
+				B5272DD615A66BCE00F62549 /* back@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
