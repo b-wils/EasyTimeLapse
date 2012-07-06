@@ -19,6 +19,17 @@ ETLAppDelegate *theDelegateInstance;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+   
+    UIImage *minImage = [UIImage imageNamed:@"slider_fill.png"];
+    UIImage *maxImage = [UIImage imageNamed:@"slider_track.png"];
+    UIImage *thumbImage = [UIImage imageNamed:@"slider_handle.png"];
+    
+    [[UISlider appearance] setMaximumTrackImage:maxImage 
+                                       forState:UIControlStateNormal];
+    [[UISlider appearance] setMinimumTrackImage:minImage 
+                                       forState:UIControlStateNormal];
+    [[UISlider appearance] setThumbImage:thumbImage 
+                                forState:UIControlStateNormal];
     
     theDelegateInstance = self;
     self.colorSwitcher = [[ColorSwitcher alloc] initWithScheme:@"blue"];
