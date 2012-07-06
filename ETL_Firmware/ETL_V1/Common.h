@@ -31,11 +31,16 @@ enum {
 
 #define MAX_CONFIGS 5
 
-enum commands {
-	COMMAND_INVALID,
-	COMMAND_BEGIN
+enum deviceCommands {
+	ETL_COMMAND_INVALID = 0,
+	ETL_COMMAND_SETTINGS,
+	ETL_COMMAND_BASICTIMELAPSE,
+	ETL_COMMAND_BULBRAMP,
+	ETL_COMMAND_INTERVALRAMP,
+	ETL_COMMAND_HDRSHOT
 };
 
+// TODO remove
 typedef struct {
 	crc_t Crc;
 	byte command;
@@ -83,6 +88,7 @@ typedef struct {
 	};
 } __attribute__((__packed__)) VariablePacket;
 
+// TODO remove
 typedef struct {
  uint8_t    type;
  int8_t     repeatIndex;
@@ -98,12 +104,22 @@ typedef struct {
  int8_t    fstopChangeOnPress;
 } __attribute__((__packed__)) SectionConfig;
 
+// TODO remove
 typedef struct  {
 	crc_t Crc;
 	SectionConfig SectConf;
 } __attribute__((__packed__)) ETlModemPacket;
 
+enum iosCommands {
+	IOS_COMMAND_INVALID = 0,
+	IOS_COMMAND_REQUESTPACKETID
+};
 
+typedef struct {
+    crc_t crc;
+	uint8_t command;
+	uint8_t data;
+} __attribute__((__packed__)) IPhonePacket;
 
 // this is a test
 

@@ -286,7 +286,7 @@ void InitTransmitState() {
 	//
 	
 	CommandPacket startPacket;
-	startPacket.command = COMMAND_BEGIN;
+	startPacket.command = IOS_COMMAND_REQUESTPACKETID;
 	startPacket.data = 0x1;
 
     startPacket.Crc = crc_init();
@@ -735,7 +735,7 @@ void ProcessTransmitState() {
 						
 						delay(1000);
 						
-                        startPacket.command = COMMAND_BEGIN;
+                        startPacket.command = IOS_COMMAND_REQUESTPACKETID;
 	                    startPacket.data = modemPacketIndex;
 
                         startPacket.Crc = crc_init();
@@ -759,7 +759,7 @@ void ProcessTransmitState() {
 						// or ideally we will fix iphone so it can send receive simulteneously...
 						delay(1000);
 						
-	                    startPacket.command = COMMAND_BEGIN;
+	                    startPacket.command = IOS_COMMAND_REQUESTPACKETID;
 	                    startPacket.data = modemPacketIndex;
 
                         startPacket.Crc = crc_init();
@@ -857,7 +857,7 @@ void ProcessLEDCycle() {
 	}	
 }
 
-void ProcessTransmitStateTwoWay() {
+void ProcessTransmitStateTest() {
 	
 	if (millis() > printTimer) {
 	    //modem.write(printval);
@@ -875,6 +875,78 @@ void ProcessTransmitStateTwoWay() {
 		
 		//printTimer = millis() + 3000;
 	}		
+}
+
+VariablePacket recvPacket;
+
+void ProcessTransmitStateNew() {
+	
+	while(modem.available()) {
+        ((char *) &recvPacket)[bytesRead] = modem.read();
+        bytesRead++;
+		
+		if (bytesRead >= 16) {
+			IPhonePacket sendPacket;
+			
+			memset(&sendPacket, 0, sizeof(IPhonePacket));
+			
+			bytesRead = 0;
+		
+            crc_t myCrc = crc_init();
+		    myCrc = crc_update(myCrc, (byte*) &recvPacket, sizeof(recvPacket));
+		    myCrc = crc_finalize(myCrc);
+					
+		    Serial.print(" command: ");
+		    Serial.println(recvPacket.command, HEX);
+					
+		    Serial.print(" packetId: ");
+		    Serial.println(recvPacket.packetId, HEX);
+					
+		    bool failCrc = false;
+					
+		    if (random(2) == 0) {
+			    failCrc = true;
+			    Serial.println("force fail crc");
+		    }
+					
+		    if (myCrc != recvPacket.crc || failCrc) {
+			    DebugPrint("Crc mismatch!");
+			    Serial.print(" recv_crc = ");
+			    Serial.print(recvCrc, HEX);
+                Serial.print(" calc_Crc = ");
+			    Serial.println(myCrc, HEX);
+			    Serial.println();
+			    //SetLEDCycle(LED_CYCLE_CRC_ERROR);
+			    
+				// TODO for now we always request a packet, need specifc retry code here
+		    } else {
+			    Serial.println("packet success");
+			    Serial.println();
+						
+			    if (modemPacketIndex == recvPacket.packetId) {
+				    modemPacketIndex++;
+			    } else {
+				    // TODO reqeust next packet
+				}					
+		    }
+		
+		
+			// need to make sure iphone is ready to receive again
+			// this should be async
+			// or ideally we will fix iphone so it can send receive simulteneously...
+		    delay(1000);
+			
+	        sendPacket.command = IOS_COMMAND_REQUESTPACKETID;
+	        sendPacket.data = modemPacketIndex;
+
+            sendPacket.crc = crc_init();
+	        sendPacket.crc = crc_update(sendPacket.crc, &sendPacket.command, 2);
+	        sendPacket.crc = crc_finalize(sendPacket.crc);
+	
+	        modem.writeBytes((uint8_t *) &sendPacket, sizeof(sendPacket));
+        }							
+	}
+		
 }
 
 void loop() {
