@@ -27,11 +27,13 @@
         [deviceInterface startReader];
         packetIndex = 0;
         
-        NSLog(@"settings size %ld", sizeof(DeviceSettings));
-        NSLog(@"basic size %ld", sizeof(BasicTimelapse));
-        NSLog(@"bulb ramp size %ld", sizeof(BulbRamp));
-        NSLog(@"interval ramp size %ld", sizeof(IntervalRamp));
-        NSLog(@"hdr size %ld", sizeof(HDRShot));
+//        NSLog(@"varible packet size %ld", sizeof(VariablePacket
+//                                                 ));
+//        NSLog(@"settings size %ld", sizeof(DeviceSettings));
+//        NSLog(@"basic size %ld", sizeof(BasicTimelapse));
+//        NSLog(@"bulb ramp size %ld", sizeof(BulbRamp));
+//        NSLog(@"interval ramp size %ld", sizeof(IntervalRamp));
+//        NSLog(@"hdr size %ld", sizeof(HDRShot));
         
         memset(sentPackets, 0, sizeof(CommandPacket) * MAX_PACKETS);
     }
@@ -72,7 +74,7 @@
         // Process received packet
         
         crc_t myCrc = crc_init();
-        myCrc = crc_update(myCrc, (uint8_t *) &receivePacket.command, 2);
+        myCrc = crc_update(myCrc, ((uint8_t *) &receivePacket) + sizeof(crc_t), sizeof(receivePacket) - sizeof(crc_t));
         myCrc = crc_finalize(myCrc);
         
         //NSLog(@"random %ld", random());
@@ -80,11 +82,11 @@
         // randomly fail our crc check to check for robustness
         if (random() % 2 == 0) {
             NSLog(@"fail crc");
-            failCrc = TRUE;
+            //failCrc = TRUE;
         }
         
-        if (myCrc != receivePacket.Crc || failCrc) {
-            NSLog(@"crc mismatch recv: %x, calc: %x; resend packet %d", receivePacket.Crc, myCrc, packetIndex);
+        if (myCrc != receivePacket.crc || failCrc) {
+            NSLog(@"crc mismatch recv: %x, calc: %x; resend packet %d", receivePacket.crc, myCrc, packetIndex);
             // Resend the last packet. If this is the first time through, last packet is initialized to a ping packet
   
             [deviceInterface stopReader];
@@ -112,17 +114,18 @@
             }
              
             NSLog(@"packet %d request", packetIndex);
-            
             [deviceInterface stopReader];
             
             usleep(500000);
             
-            sentPackets[packetIndex].command = 0x77;
-            sentPackets[packetIndex].data = packetIndex;
+            sentPackets[packetIndex].command = ETL_COMMAND_BASICTIMELAPSE;
+            sentPackets[packetIndex].packetId = packetIndex;
         
-            sentPackets[packetIndex].Crc = crc_init();
-            sentPackets[packetIndex].Crc =  crc_update(sentPackets[packetIndex].Crc, ((uint8_t *) &sentPackets[packetIndex].command), 2);
-            sentPackets[packetIndex].Crc = crc_finalize(sentPackets[packetIndex].Crc);
+            sentPackets[packetIndex].crc = crc_init();
+            sentPackets[packetIndex].crc =  crc_update(sentPackets[packetIndex].crc, ((uint8_t *) &sentPackets[packetIndex]) + sizeof(crc_t), sizeof(VariablePacket) - sizeof(crc_t));
+            sentPackets[packetIndex].crc = crc_finalize(sentPackets[packetIndex].crc);
+            
+            NSLog(@"packet %d request crc %x", packetIndex, sentPackets[packetIndex].crc);
             
             programmingProgress.progress = 0;
             progressBarTimer = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(updateProgressBar:) userInfo:nil repeats:YES];

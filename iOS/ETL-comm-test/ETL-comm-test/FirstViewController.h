@@ -33,9 +33,9 @@
     NSUInteger receivedBits;
     NSUInteger packetIndex;
     
-    CommandPacket receivePacket;
+    IPhonePacket receivePacket;
     
-    CommandPacket sentPackets[MAX_PACKETS];
+    VariablePacket sentPackets[MAX_PACKETS];
 }
 -(IBAction)programButtonPush;
 -(IBAction)listenButtonPush;
