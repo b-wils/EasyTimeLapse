@@ -285,13 +285,14 @@ void InitTransmitState() {
 	// Send our begin packet
 	//
 	
-	CommandPacket startPacket;
+	IPhonePacket startPacket;
+    memset(&startPacket, 0, sizeof(IPhonePacket));
 	startPacket.command = IOS_COMMAND_REQUESTPACKETID;
 	startPacket.data = 0x1;
 
-    startPacket.Crc = crc_init();
-	startPacket.Crc = crc_update(startPacket.Crc, &startPacket.command, 2);
-	startPacket.Crc = crc_finalize(startPacket.Crc);
+    startPacket.crc = crc_init();
+	startPacket.crc = crc_update(startPacket.crc, &startPacket.command, 2);
+	startPacket.crc = crc_finalize(startPacket.crc);
 	
 	modem.writeBytes((uint8_t *) &startPacket, sizeof(startPacket));
 }
@@ -782,7 +783,7 @@ void ProcessTransmitState() {
 		            bytesRead = 0;
 			        Serial.println("Packet Received!");
 		            crc_t myCrc = crc_init();
-		            myCrc = crc_update(myCrc, (byte*) &recvConfig, sizeof(SectionConfig));
+		            myCrc = crc_update(myCrc, (byte*) &recvConfig + sizeof(crc_t), sizeof(SectionConfig) - sizeof(crc_t));
 		            myCrc = crc_finalize(myCrc);
 			
 			        PrintSectionConfig(recvConfig);
@@ -893,7 +894,7 @@ void ProcessTransmitStateNew() {
 			bytesRead = 0;
 		
             crc_t myCrc = crc_init();
-		    myCrc = crc_update(myCrc, (byte*) &recvPacket, sizeof(recvPacket));
+		    myCrc = crc_update(myCrc, (byte*) &recvPacket + sizeof(crc_t), sizeof(recvPacket) - sizeof(crc_t));
 		    myCrc = crc_finalize(myCrc);
 					
 		    Serial.print(" command: ");
@@ -904,10 +905,10 @@ void ProcessTransmitStateNew() {
 					
 		    bool failCrc = false;
 					
-		    if (random(2) == 0) {
-			    failCrc = true;
-			    Serial.println("force fail crc");
-		    }
+		    //if (random(2) == 0) {
+			    //failCrc = true;
+			    //Serial.println("force fail crc");
+		    //}
 					
 		    if (myCrc != recvPacket.crc || failCrc) {
 			    DebugPrint("Crc mismatch!");
@@ -918,9 +919,17 @@ void ProcessTransmitStateNew() {
 			    Serial.println();
 			    //SetLEDCycle(LED_CYCLE_CRC_ERROR);
 			    
+				Serial.print("Shots: ");
+				Serial.println(recvPacket.basicTimelapse.shots);
+				Serial.print("exposure: ");
+				Serial.println(recvPacket.basicTimelapse.exposureLengthPower);
+				Serial.print("interval: ");
+				Serial.println(recvPacket.basicTimelapse.interval);
+				
 				// TODO for now we always request a packet, need specifc retry code here
 		    } else {
-			    Serial.println("packet success");
+			    Serial.print("packet success; crc = ");
+				Serial.println(myCrc, HEX);
 			    Serial.println();
 						
 			    if (modemPacketIndex == recvPacket.packetId) {
@@ -940,7 +949,7 @@ void ProcessTransmitStateNew() {
 	        sendPacket.data = modemPacketIndex;
 
             sendPacket.crc = crc_init();
-	        sendPacket.crc = crc_update(sendPacket.crc, &sendPacket.command, 2);
+	        sendPacket.crc = crc_update(sendPacket.crc, ((uint8_t *) &sendPacket) + sizeof(crc_t), sizeof(sendPacket) - sizeof(crc_t));
 	        sendPacket.crc = crc_finalize(sendPacket.crc);
 	
 	        modem.writeBytes((uint8_t *) &sendPacket, sizeof(sendPacket));
@@ -966,7 +975,7 @@ void loop() {
             ProcessTimeLapseExposing();
             break;
         case STATE_TRANSMIT:
-		    ProcessTransmitState();
+		    ProcessTransmitStateNew();
 			//ProcessTransmitStateTwoWay();
 			break;
     }        
