@@ -62,8 +62,13 @@ const NSUInteger streamBitsPerDataByte = 14;
         bytesTransferred.text = @"Done";
         cancelButton.hidden = true;
         
-        [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(goBack:) userInfo:NULL repeats:NO];
+        [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(didFinishProgramming:) userInfo:NULL repeats:NO];
     }
+}
+
+- (void)didFinishProgramming:(id)sender
+{
+    [self transitionTo:CLASS(ETLDoneProgrammingController) fromNib:@"DoneProgramming"];
 }
 
 - (void) setDeviceCommand:(CommandPacket)deviceCommand withSections:(SectionConfig *)commandSections

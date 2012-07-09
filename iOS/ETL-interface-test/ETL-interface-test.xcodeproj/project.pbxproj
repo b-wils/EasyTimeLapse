@@ -55,6 +55,9 @@
 		B53DADF4159E7725000BBC31 /* homebutton_timelapse_pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B53DADE4159E7725000BBC31 /* homebutton_timelapse_pressed@2x.png */; };
 		B53DADF5159E7725000BBC31 /* homebutton_timelapse.png in Resources */ = {isa = PBXBuildFile; fileRef = B53DADE5159E7725000BBC31 /* homebutton_timelapse.png */; };
 		B53DADF6159E7725000BBC31 /* homebutton_timelapse@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B53DADE6159E7725000BBC31 /* homebutton_timelapse@2x.png */; };
+		B5420FD215AB635F001E3D15 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = B5420FD115AB635F001E3D15 /* Default.png */; };
+		B5420FD615AB63EF001E3D15 /* ETLDoneProgrammingController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5420FD415AB63EF001E3D15 /* ETLDoneProgrammingController.m */; };
+		B5420FD715AB63EF001E3D15 /* DoneProgramming.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5420FD515AB63EF001E3D15 /* DoneProgramming.xib */; };
 		B558F83D1592D0D300CB6E24 /* libcommunications.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B558F83C1592D0D300CB6E24 /* libcommunications.a */; };
 		B558F8501592D24000CB6E24 /* libstdc++.6.0.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B558F84F1592D24000CB6E24 /* libstdc++.6.0.9.dylib */; };
 		B558F8AD1592D7F800CB6E24 /* ETLShotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B558F8AC1592D7F800CB6E24 /* ETLShotViewController.m */; };
@@ -155,6 +158,10 @@
 		B53DADE4159E7725000BBC31 /* homebutton_timelapse_pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "homebutton_timelapse_pressed@2x.png"; path = "../../../assets/v1/homebutton_timelapse_pressed@2x.png"; sourceTree = "<group>"; };
 		B53DADE5159E7725000BBC31 /* homebutton_timelapse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = homebutton_timelapse.png; path = ../../../assets/v1/homebutton_timelapse.png; sourceTree = "<group>"; };
 		B53DADE6159E7725000BBC31 /* homebutton_timelapse@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "homebutton_timelapse@2x.png"; path = "../../../assets/v1/homebutton_timelapse@2x.png"; sourceTree = "<group>"; };
+		B5420FD115AB635F001E3D15 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../../../assets/v1/Default.png; sourceTree = "<group>"; };
+		B5420FD315AB63EF001E3D15 /* ETLDoneProgrammingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETLDoneProgrammingController.h; sourceTree = "<group>"; };
+		B5420FD415AB63EF001E3D15 /* ETLDoneProgrammingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLDoneProgrammingController.m; sourceTree = "<group>"; };
+		B5420FD515AB63EF001E3D15 /* DoneProgramming.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DoneProgramming.xib; sourceTree = "<group>"; };
 		B558F83C1592D0D300CB6E24 /* libcommunications.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcommunications.a; path = "../../../Library/Developer/Xcode/DerivedData/Easy_Time_Lapse-grxhihygozrtdfccqjonwjemkieb/Build/Products/Debug-iphoneos/libcommunications.a"; sourceTree = "<group>"; };
 		B558F83F1592D16B00CB6E24 /* AudioQueueObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioQueueObject.h; path = ../../communications/communications/AudioQueueObject.h; sourceTree = "<group>"; };
 		B558F8401592D16B00CB6E24 /* AudioSignalAnalyzer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioSignalAnalyzer.h; path = ../../communications/communications/AudioSignalAnalyzer.h; sourceTree = "<group>"; };
@@ -434,6 +441,7 @@
 			isa = PBXGroup;
 			children = (
 				B5C1CD57159CF093005D6FC0 /* images */,
+				B5420FD515AB63EF001E3D15 /* DoneProgramming.xib */,
 				B5C1CD54159CF086005D6FC0 /* BulbSettings.xib */,
 				B50D23B7159B9C5F00F2FCCC /* TimelapseSliders.xib */,
 				B5990770158FFC310005C8E2 /* Bulb.xib */,
@@ -450,6 +458,7 @@
 		B5C1CD57159CF093005D6FC0 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				B5420FD115AB635F001E3D15 /* Default.png */,
 				B5272D5515A27E7900F62549 /* progress_count.png */,
 				B5272D5615A27E7900F62549 /* progress_count@2x.png */,
 				B5272D5715A27E7900F62549 /* progress_fill.png */,
@@ -513,6 +522,8 @@
 				B5990780158FFC9F0005C8E2 /* ETLHomeController.m */,
 				B5ED520015924E5900B31083 /* ETLProgramViewController.h */,
 				B5ED520115924E5900B31083 /* ETLProgramViewController.m */,
+				B5420FD315AB63EF001E3D15 /* ETLDoneProgrammingController.h */,
+				B5420FD415AB63EF001E3D15 /* ETLDoneProgrammingController.m */,
 				B5C1CD52159CF085005D6FC0 /* ETLBulbSettingsController.h */,
 				B5C1CD53159CF086005D6FC0 /* ETLBulbSettingsController.m */,
 			);
@@ -643,6 +654,8 @@
 				B5272DD415A66BCE00F62549 /* back_home@2x.png in Resources */,
 				B5272DD515A66BCE00F62549 /* back.png in Resources */,
 				B5272DD615A66BCE00F62549 /* back@2x.png in Resources */,
+				B5420FD215AB635F001E3D15 /* Default.png in Resources */,
+				B5420FD715AB63EF001E3D15 /* DoneProgramming.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -673,6 +686,7 @@
 				B5272D9915A37CFB00F62549 /* ADVPopoverProgressBar.m in Sources */,
 				B5272DA815A3800E00F62549 /* NSArray+ArrayUtility.m in Sources */,
 				B5272DAC15A3857E00F62549 /* ColorSwitcher.m in Sources */,
+				B5420FD615AB63EF001E3D15 /* ETLDoneProgrammingController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

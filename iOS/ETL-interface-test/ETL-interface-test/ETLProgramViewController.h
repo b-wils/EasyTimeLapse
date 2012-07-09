@@ -26,4 +26,6 @@
 
 - (void) setDeviceCommand:(CommandPacket)deviceCommand withSections:(SectionConfig *)commandSections;
 
+- (void) didFinishProgramming:(id)sender;
+
 @end
