@@ -57,7 +57,6 @@
 		B53DADF6159E7725000BBC31 /* homebutton_timelapse@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B53DADE6159E7725000BBC31 /* homebutton_timelapse@2x.png */; };
 		B5420FD215AB635F001E3D15 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = B5420FD115AB635F001E3D15 /* Default.png */; };
 		B5420FD615AB63EF001E3D15 /* ETLDoneProgrammingController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5420FD415AB63EF001E3D15 /* ETLDoneProgrammingController.m */; };
-		B5420FD715AB63EF001E3D15 /* DoneProgramming.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5420FD515AB63EF001E3D15 /* DoneProgramming.xib */; };
 		B5420FD915AB6853001E3D15 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5420FD815AB6853001E3D15 /* Storyboard.storyboard */; };
 		B558F83D1592D0D300CB6E24 /* libcommunications.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B558F83C1592D0D300CB6E24 /* libcommunications.a */; };
 		B558F8501592D24000CB6E24 /* libstdc++.6.0.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B558F84F1592D24000CB6E24 /* libstdc++.6.0.9.dylib */; };
@@ -68,12 +67,6 @@
 		B599075E158FFC000005C8E2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B599075C158FFC000005C8E2 /* InfoPlist.strings */; };
 		B5990760158FFC000005C8E2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B599075F158FFC000005C8E2 /* main.m */; };
 		B5990764158FFC000005C8E2 /* ETLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B5990763158FFC000005C8E2 /* ETLAppDelegate.m */; };
-		B5990777158FFC310005C8E2 /* Bulb.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5990770158FFC310005C8E2 /* Bulb.xib */; };
-		B5990778158FFC310005C8E2 /* HDR.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5990771158FFC310005C8E2 /* HDR.xib */; };
-		B5990779158FFC310005C8E2 /* Home.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5990772158FFC310005C8E2 /* Home.xib */; };
-		B599077A158FFC310005C8E2 /* Manual.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5990773158FFC310005C8E2 /* Manual.xib */; };
-		B599077B158FFC310005C8E2 /* ProgramETL.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5990774158FFC310005C8E2 /* ProgramETL.xib */; };
-		B599077D158FFC310005C8E2 /* Timelapse.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5990776158FFC310005C8E2 /* Timelapse.xib */; };
 		B5990781158FFC9F0005C8E2 /* ETLHomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5990780158FFC9F0005C8E2 /* ETLHomeController.m */; };
 		B5990789159004DC0005C8E2 /* ETLTimelapseController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5990788159004DC0005C8E2 /* ETLTimelapseController.m */; };
 		B599078C159007EE0005C8E2 /* ETLManualController.m in Sources */ = {isa = PBXBuildFile; fileRef = B599078B159007EE0005C8E2 /* ETLManualController.m */; };
@@ -162,7 +155,6 @@
 		B5420FD115AB635F001E3D15 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../../../assets/v1/Default.png; sourceTree = "<group>"; };
 		B5420FD315AB63EF001E3D15 /* ETLDoneProgrammingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETLDoneProgrammingController.h; sourceTree = "<group>"; };
 		B5420FD415AB63EF001E3D15 /* ETLDoneProgrammingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLDoneProgrammingController.m; sourceTree = "<group>"; };
-		B5420FD515AB63EF001E3D15 /* DoneProgramming.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DoneProgramming.xib; sourceTree = "<group>"; };
 		B5420FD815AB6853001E3D15 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		B558F83C1592D0D300CB6E24 /* libcommunications.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcommunications.a; path = "../../../Library/Developer/Xcode/DerivedData/Easy_Time_Lapse-grxhihygozrtdfccqjonwjemkieb/Build/Products/Debug-iphoneos/libcommunications.a"; sourceTree = "<group>"; };
 		B558F83F1592D16B00CB6E24 /* AudioQueueObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioQueueObject.h; path = ../../communications/communications/AudioQueueObject.h; sourceTree = "<group>"; };
@@ -193,12 +185,6 @@
 		B5990761158FFC000005C8E2 /* ETL-interface-test-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ETL-interface-test-Prefix.pch"; sourceTree = "<group>"; };
 		B5990762158FFC000005C8E2 /* ETLAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ETLAppDelegate.h; sourceTree = "<group>"; };
 		B5990763158FFC000005C8E2 /* ETLAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ETLAppDelegate.m; sourceTree = "<group>"; };
-		B5990770158FFC310005C8E2 /* Bulb.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Bulb.xib; path = ../Bulb.xib; sourceTree = "<group>"; };
-		B5990771158FFC310005C8E2 /* HDR.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HDR.xib; path = ../HDR.xib; sourceTree = "<group>"; };
-		B5990772158FFC310005C8E2 /* Home.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Home.xib; path = ../Home.xib; sourceTree = "<group>"; };
-		B5990773158FFC310005C8E2 /* Manual.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Manual.xib; path = ../Manual.xib; sourceTree = "<group>"; };
-		B5990774158FFC310005C8E2 /* ProgramETL.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ProgramETL.xib; path = ../ProgramETL.xib; sourceTree = "<group>"; };
-		B5990776158FFC310005C8E2 /* Timelapse.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Timelapse.xib; path = ../Timelapse.xib; sourceTree = "<group>"; };
 		B599077F158FFC9F0005C8E2 /* ETLHomeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETLHomeController.h; sourceTree = "<group>"; };
 		B5990780158FFC9F0005C8E2 /* ETLHomeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLHomeController.m; sourceTree = "<group>"; };
 		B5990787159004DC0005C8E2 /* ETLTimelapseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETLTimelapseController.h; sourceTree = "<group>"; };
@@ -444,15 +430,8 @@
 			isa = PBXGroup;
 			children = (
 				B5C1CD57159CF093005D6FC0 /* images */,
-				B5420FD515AB63EF001E3D15 /* DoneProgramming.xib */,
 				B5C1CD54159CF086005D6FC0 /* BulbSettings.xib */,
 				B50D23B7159B9C5F00F2FCCC /* TimelapseSliders.xib */,
-				B5990770158FFC310005C8E2 /* Bulb.xib */,
-				B5990771158FFC310005C8E2 /* HDR.xib */,
-				B5990772158FFC310005C8E2 /* Home.xib */,
-				B5990773158FFC310005C8E2 /* Manual.xib */,
-				B5990774158FFC310005C8E2 /* ProgramETL.xib */,
-				B5990776158FFC310005C8E2 /* Timelapse.xib */,
 				B5ED082215915FC00026432C /* NumpadDismissBar.xib */,
 			);
 			name = Resources;
@@ -597,12 +576,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B599075E158FFC000005C8E2 /* InfoPlist.strings in Resources */,
-				B5990777158FFC310005C8E2 /* Bulb.xib in Resources */,
-				B5990778158FFC310005C8E2 /* HDR.xib in Resources */,
-				B5990779158FFC310005C8E2 /* Home.xib in Resources */,
-				B599077A158FFC310005C8E2 /* Manual.xib in Resources */,
-				B599077B158FFC310005C8E2 /* ProgramETL.xib in Resources */,
-				B599077D158FFC310005C8E2 /* Timelapse.xib in Resources */,
 				B5ED082315915FC00026432C /* NumpadDismissBar.xib in Resources */,
 				B50D23B9159B9C5F00F2FCCC /* TimelapseSliders.xib in Resources */,
 				B5C1CD51159CE5B0005D6FC0 /* gears.png in Resources */,
@@ -658,7 +631,6 @@
 				B5272DD515A66BCE00F62549 /* back.png in Resources */,
 				B5272DD615A66BCE00F62549 /* back@2x.png in Resources */,
 				B5420FD215AB635F001E3D15 /* Default.png in Resources */,
-				B5420FD715AB63EF001E3D15 /* DoneProgramming.xib in Resources */,
 				B5420FD915AB6853001E3D15 /* Storyboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
