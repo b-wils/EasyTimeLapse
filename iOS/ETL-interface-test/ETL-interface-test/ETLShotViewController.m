@@ -36,15 +36,12 @@
     // Release any retained subviews of the main view.
 }
 
-- (IBAction)goProgramDevice:(id)sender
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    __block ETLShotViewController * dataSource = self;
-    ETLViewInitBlock initBlock = ^(ETLViewController * view) {
-        [(ETLProgramViewController *)view setDeviceCommand:dataSource->command 
-                                          withSections:dataSource->sections];
-    };
-    
-    [self transitionTo:CLASS(ETLProgramViewController) fromNib:@"ProgramETL" animated:NO withCustomInit:initBlock];
+    if ([segue.identifier isEqualToString:@"Program"]) {
+        ETLProgramViewController *controller = [segue destinationViewController];
+        [controller setDeviceCommand:command withSections:sections];
+    }
 }
 
 @end

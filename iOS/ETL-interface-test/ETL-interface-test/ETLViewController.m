@@ -18,25 +18,25 @@
 
 @synthesize delegate;
 
--(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (void)viewDidLoad
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self && !numpadToolbar)
+    [super viewDidLoad];
+    if (!numpadToolbar)
     {
         [[NSBundle mainBundle] loadNibNamed:@"NumpadDismissBar" owner:self options:nil];
     }
-    
-    return self;
+
 }
 
 #pragma mark -
 #pragma mark Screen Transitions
 - (IBAction)goBack:(id)sender
 {
-    if(self.delegate) { [self.delegate resumeView]; }
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
-// TODO - consider vairiants w/o fromNib:
+// TODO - consider vairiants w/o fromNib: 
+/*
 - (void)transitionTo:(Class)type
 {
     [self transitionTo:type fromNib:nil];
@@ -88,13 +88,13 @@
 {
     view.delegate = self;
     [self presentViewController:view animated:animated completion:NULL];
-}
+} */
 
 #pragma mark -
-- (void)resumeView
-{
-    [self dismissModalViewControllerAnimated: NO];
-}
+//- (void)resumeView
+//{
+//    [self dismissModalViewControllerAnimated: NO];
+//}
 
 - (IBAction)hideFirstResponder:(id)sender
 {

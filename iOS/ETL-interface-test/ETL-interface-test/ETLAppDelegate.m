@@ -33,12 +33,11 @@ ETLAppDelegate *theDelegateInstance;
     
     theDelegateInstance = self;
     self.colorSwitcher = [[ColorSwitcher alloc] initWithScheme:@"blue"];
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
-    self.viewController = [[ETLHomeController alloc] initWithNibName:@"Home" bundle:nil];
+    //self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    //self.viewController = [[ETLHomeController alloc] initWithNibName:@"Home" bundle:nil];
     
-    self.window.rootViewController = self.viewController;
-    [self.window makeKeyAndVisible];
+    //self.window.rootViewController = self.viewController;
+    //[self.window makeKeyAndVisible];
     return YES;
 }
 

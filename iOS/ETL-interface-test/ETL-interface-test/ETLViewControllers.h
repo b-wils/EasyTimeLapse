@@ -13,3 +13,4 @@
 #import "ETLTimelapseController.h"
 #import "ETLTimelapseSlidersController.h"
 #import "ETLProgramViewController.h"
+#import "ETLDoneProgrammingController.h"

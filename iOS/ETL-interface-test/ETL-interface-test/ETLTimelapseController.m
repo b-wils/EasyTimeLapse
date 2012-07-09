@@ -24,25 +24,6 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        periodUnits = [NSArray arrayWithObjects:
-                       @"ms",
-                       @"seconds",
-                       @"minutes",
-                       @"hours", nil]; 
-        NSArray * msTimes = [NSArray arrayWithObjects:
-                             [NSNumber numberWithInt:1], 
-                             [NSNumber numberWithInt:1000], 
-                             [NSNumber numberWithInt:1000*60], 
-                             [NSNumber numberWithInt:1000*3600], nil];
-        
-        msInUnit = [NSDictionary dictionaryWithObjects:msTimes forKeys:periodUnits];
-        
-        _shotFramesPerSecond = 24.0f;
-        
-        // TODO better automatic update for these data
-        _shotPeriodInMs = 5000; // 5 sec default
-        _shotLimit = 100; // 100 shot default
-        periodUnit = [periodUnits objectAtIndex:1]; // "seconds"
     }
     
     return self;
@@ -51,6 +32,27 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    periodUnits = [NSArray arrayWithObjects:
+                   @"ms",
+                   @"seconds",
+                   @"minutes",
+                   @"hours", nil]; 
+    NSArray * msTimes = [NSArray arrayWithObjects:
+                         [NSNumber numberWithInt:1], 
+                         [NSNumber numberWithInt:1000], 
+                         [NSNumber numberWithInt:1000*60], 
+                         [NSNumber numberWithInt:1000*3600], nil];
+    
+    msInUnit = [NSDictionary dictionaryWithObjects:msTimes forKeys:periodUnits];
+    
+    _shotFramesPerSecond = 24.0f;
+    
+    // TODO better automatic update for these data
+    _shotPeriodInMs = 5000; // 5 sec default
+    _shotLimit = 100; // 100 shot default
+    periodUnit = [periodUnits objectAtIndex:1]; // "seconds"
+
     ETLPredicate pSwitch = ^bool (id obj) {return [obj class] == CLASS(UISwitch);};
     NSArray *switches = [[self view].subviews filterWith:pSwitch];
     
@@ -187,21 +189,21 @@
     periodUnitPicker.hidden = YES;
 }
 
-- (IBAction)goProgramDevice:(id)sender 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-/*  TODO - do something else for continuousShooting mode
-    if (self.continuousShooting) {
-        
-    }
-    else {*/
-        command.command = 10; // TODO - this is just grabbed from the sample, verify correct command
-        command.data = 1; // TODO - verify this is appropriate for the correct command
-        
-        sections[0].shots = _shotLimit;
-        sections[0].interval = _shotPeriodInMs;
-//    }
+    /*  TODO - do something else for continuousShooting mode
+     if (self.continuousShooting) {
+     
+     }
+     else {*/
+    command.command = 10; // TODO - this is just grabbed from the sample, verify correct command
+    command.data = 1; // TODO - verify this is appropriate for the correct command
     
-    [super goProgramDevice:sender];
+    sections[0].shots = _shotLimit;
+    sections[0].interval = _shotPeriodInMs;
+    //    }
+    
+    [super prepareForSegue:segue sender:sender];
 }
 
 @end

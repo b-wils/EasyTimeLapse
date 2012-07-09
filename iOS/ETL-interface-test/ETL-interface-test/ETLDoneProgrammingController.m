@@ -29,6 +29,11 @@
     // Do any additional setup after loading the view from its nib.
 }
 
+- (void)goBack:(id)sender
+{
+    [self.navigationController popToRootViewControllerAnimated: YES];
+}
+
 - (void)viewDidUnload
 {
     [super viewDidUnload];

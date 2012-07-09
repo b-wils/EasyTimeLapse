@@ -10,9 +10,4 @@
 
 @interface ETLHomeController : ETLViewController
 
-- (IBAction)gotoTimelapse:(id)sender;
-- (IBAction)gotoManual:(id)sender;
-- (IBAction)gotoBulb:(id)sender;
-- (IBAction)gotoHDR:(id)sender;
-
 @end

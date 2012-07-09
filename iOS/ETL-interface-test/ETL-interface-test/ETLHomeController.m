@@ -9,32 +9,14 @@
 #import "ETLHomeController.h"
 #import "ETLViewControllers.h"
 
-
 @implementation ETLHomeController
 
-- (IBAction)gotoTimelapse:(id)sender
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    [self transitionTo: CLASS(ETLTimelapseController)];
-    //[self transitionTo:CLASS(ETLTimelapseSlidersController)];
-}
-
-- (IBAction)gotoManual:(id)sender
-{
-    [self transitionTo:CLASS(ETLManualController)];
-}
-
-- (IBAction)gotoBulb:(id)sender
-{
-    [self transitionTo:CLASS(ETLBulbController)];
-}
-
-- (IBAction)gotoHDR:(id)sender
-{
-    [self transitionTo:CLASS(ETLHdrController)];
-}
-
-- (void)resumeView
-{
-    [self dismissModalViewControllerAnimated: YES];
+    if ([segue.identifier isEqualToString:@"Timelapse"])
+	{
+		ETLTimelapseController *timelapseController = [[self.navigationController viewControllers] objectAtIndex:0];
+        timelapseController.delegate = self;
+	}
 }
 @end

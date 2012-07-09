@@ -11,30 +11,19 @@
 
 #define CLASS(x) (NSClassFromString(@#x))
 
-@protocol ResumeView <NSObject>
-- (void) resumeView;
-@end
-
 @class ETLViewController;
 typedef void (^ETLViewInitBlock)(ETLViewController *);
 
-@interface ETLViewController : UIViewController <ResumeView>
+@interface ETLViewController : UIViewController
 {
     IBOutlet UIView * numpadToolbar;
 }
 
-@property(nonatomic, strong) id <ResumeView> delegate;
+@property(nonatomic, strong) id delegate;
 
 - (IBAction)hideFirstResponder:(id)sender;
 
 #pragma mark -
 #pragma mark Screen Transitions
 - (IBAction)goBack:(id)sender;
-- (void)transitionTo:(Class)type;
-- (void)transitionTo:(Class)type fromNib:(NSString *)name;
-- (void)transitionTo:(Class)type fromNib:(NSString *)name animated:(bool)animated;
-- (void)transitionTo:(Class)type fromNib:(NSString *)name animated:(bool)animated 
-                                                       withTransitionStyle:(UIModalTransitionStyle)style;
-- (void)transitionTo:(Class)type fromNib:(NSString *)name animated:(bool)animated 
-                                                       withCustomInit:(ETLViewInitBlock)customInit;
 @end

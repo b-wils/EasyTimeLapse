@@ -15,5 +15,4 @@
     SectionConfig sections[MAX_CONFIGS];
 }
 
-- (IBAction)goProgramDevice:(id)sender;
 @end

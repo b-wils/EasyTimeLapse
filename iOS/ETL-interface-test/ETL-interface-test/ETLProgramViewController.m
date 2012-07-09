@@ -7,6 +7,7 @@
 //
 
 #import "ETLProgramViewController.h"
+#import "ETLViewControllers.h"
 #import "ADVPopoverProgressBar.h"
 
 @interface ETLProgramViewController ()
@@ -15,18 +16,12 @@
 
 @implementation ETLProgramViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        deviceInterface = [[ETLDeviceInterface alloc] initWithReceiver:self];
-    }
-    return self;
-}
+@synthesize command, sections;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    deviceInterface = [[ETLDeviceInterface alloc] initWithReceiver:self];
     UIProgressView *original = programmingProgress;
     programmingProgress = (UIProgressView *)[[ADVPopoverProgressBar alloc] initWithFrame:programmingProgress.frame];
     [programmingProgress setProgress:0.6];
@@ -34,7 +29,11 @@
     [self.view addSubview:programmingProgress];
     
     progressBarTimer = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(updateProgressBar:) userInfo:nil repeats:YES];
-    
+    [NSTimer scheduledTimerWithTimeInterval:0.75 target:self selector:@selector(startProgramming) userInfo:nil repeats:NO];
+}
+
+- (void)startProgramming
+{
     [deviceInterface startProgramming];
     [deviceInterface sendCommand:command.command data:command.data];
     for (NSUInteger i = 0; i < command.data; i++) {
@@ -52,7 +51,7 @@ const NSUInteger streamBitsPerDataByte = 14;
         programmingProgress.progress = (bitCount / (totalCommandBits * 1.0)) * 0.9;
     }
     else {
-        programmingProgress.progress += 0.002;
+        programmingProgress.progress += 0.001;
     }
     
     if (programmingProgress.progress >= 0.999) {
@@ -68,7 +67,8 @@ const NSUInteger streamBitsPerDataByte = 14;
 
 - (void)didFinishProgramming:(id)sender
 {
-    [self transitionTo:CLASS(ETLDoneProgrammingController) fromNib:@"DoneProgramming"];
+    ETLDoneProgrammingController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"DoneProgramming"];
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 - (void) setDeviceCommand:(CommandPacket)deviceCommand withSections:(SectionConfig *)commandSections
@@ -86,6 +86,7 @@ const NSUInteger streamBitsPerDataByte = 14;
     [progressBarTimer invalidate];
     progressBarTimer = nil;
     [super goBack:sender];
+    //[self dismissModalViewControllerAnimated:NO];
 }
 
 - (void) receivedChar:(char)input

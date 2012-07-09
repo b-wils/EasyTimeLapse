@@ -17,8 +17,6 @@
     IBOutlet UIButton * cancelButton;
     
     ETLDeviceInterface * deviceInterface;
-    CommandPacket command;
-    SectionConfig *sections;
     NSUInteger totalCommandBits;
     
     NSTimer * progressBarTimer;
@@ -27,5 +25,8 @@
 - (void) setDeviceCommand:(CommandPacket)deviceCommand withSections:(SectionConfig *)commandSections;
 
 - (void) didFinishProgramming:(id)sender;
+
+@property (nonatomic, assign) CommandPacket command;
+@property (nonatomic, assign) SectionConfig *sections;
 
 @end

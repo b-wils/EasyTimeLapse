@@ -58,6 +58,7 @@
 		B5420FD215AB635F001E3D15 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = B5420FD115AB635F001E3D15 /* Default.png */; };
 		B5420FD615AB63EF001E3D15 /* ETLDoneProgrammingController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5420FD415AB63EF001E3D15 /* ETLDoneProgrammingController.m */; };
 		B5420FD715AB63EF001E3D15 /* DoneProgramming.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5420FD515AB63EF001E3D15 /* DoneProgramming.xib */; };
+		B5420FD915AB6853001E3D15 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5420FD815AB6853001E3D15 /* Storyboard.storyboard */; };
 		B558F83D1592D0D300CB6E24 /* libcommunications.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B558F83C1592D0D300CB6E24 /* libcommunications.a */; };
 		B558F8501592D24000CB6E24 /* libstdc++.6.0.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B558F84F1592D24000CB6E24 /* libstdc++.6.0.9.dylib */; };
 		B558F8AD1592D7F800CB6E24 /* ETLShotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B558F8AC1592D7F800CB6E24 /* ETLShotViewController.m */; };
@@ -162,6 +163,7 @@
 		B5420FD315AB63EF001E3D15 /* ETLDoneProgrammingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETLDoneProgrammingController.h; sourceTree = "<group>"; };
 		B5420FD415AB63EF001E3D15 /* ETLDoneProgrammingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLDoneProgrammingController.m; sourceTree = "<group>"; };
 		B5420FD515AB63EF001E3D15 /* DoneProgramming.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DoneProgramming.xib; sourceTree = "<group>"; };
+		B5420FD815AB6853001E3D15 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		B558F83C1592D0D300CB6E24 /* libcommunications.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcommunications.a; path = "../../../Library/Developer/Xcode/DerivedData/Easy_Time_Lapse-grxhihygozrtdfccqjonwjemkieb/Build/Products/Debug-iphoneos/libcommunications.a"; sourceTree = "<group>"; };
 		B558F83F1592D16B00CB6E24 /* AudioQueueObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioQueueObject.h; path = ../../communications/communications/AudioQueueObject.h; sourceTree = "<group>"; };
 		B558F8401592D16B00CB6E24 /* AudioSignalAnalyzer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioSignalAnalyzer.h; path = ../../communications/communications/AudioSignalAnalyzer.h; sourceTree = "<group>"; };
@@ -383,6 +385,7 @@
 		B5990744158FFC000005C8E2 = {
 			isa = PBXGroup;
 			children = (
+				B5420FD815AB6853001E3D15 /* Storyboard.storyboard */,
 				B5272DAD15A3871800F62549 /* CoreImage.framework */,
 				B5990759158FFC000005C8E2 /* ETL-interface-test */,
 				B5990752158FFC000005C8E2 /* Frameworks */,
@@ -656,6 +659,7 @@
 				B5272DD615A66BCE00F62549 /* back@2x.png in Resources */,
 				B5420FD215AB635F001E3D15 /* Default.png in Resources */,
 				B5420FD715AB63EF001E3D15 /* DoneProgramming.xib in Resources */,
+				B5420FD915AB6853001E3D15 /* Storyboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
