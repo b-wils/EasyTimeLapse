@@ -44,7 +44,7 @@
 #define greenLed 10
 #define blueLed 9
 
-uint32_t Timer2Overflow = 0;
+//uint32_t Timer2Overflow = 0;
 
 #define BUTTON_TRANSMIT_PERIOD 1500 //ms
 #define BUTTON_STOP_TIMELAPSE_PERIOD 1500

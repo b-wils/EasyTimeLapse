@@ -53,6 +53,7 @@ C_SRCS +=  \
 ../Arduino/WString.cpp \
 ../ETL_V1.cpp \
 ../SoftModem.cpp \
+../Utils.cpp \
 ../Arduino/wiring_digital.c \
 ../Arduino/wiring.c \
 ../Arduino/WInterrupts.c \
@@ -75,6 +76,7 @@ Arduino/WMath.o \
 Arduino/WString.o \
 ETL_V1.o \
 SoftModem.o \
+Utils.o \
 Arduino/wiring_digital.o \
 Arduino/wiring.o \
 Arduino/WInterrupts.o \
@@ -91,6 +93,7 @@ Arduino/WMath.o \
 Arduino/WString.o \
 ETL_V1.o \
 SoftModem.o \
+Utils.o \
 Arduino/wiring_digital.o \
 Arduino/wiring.o \
 Arduino/WInterrupts.o \
@@ -107,6 +110,7 @@ Arduino/WMath.d \
 Arduino/WString.d \
 ETL_V1.d \
 SoftModem.d \
+Utils.d \
 Arduino/wiring_digital.d \
 Arduino/wiring.d \
 Arduino/WInterrupts.d \
@@ -123,6 +127,7 @@ Arduino/WMath.d \
 Arduino/WString.d \
 ETL_V1.d \
 SoftModem.d \
+Utils.d \
 Arduino/wiring_digital.d \
 Arduino/wiring.d \
 Arduino/WInterrupts.d \
@@ -171,25 +176,25 @@ OUTPUT_FILE_DEP:= ./makedep.mk
 Arduino/%.o: ../Arduino/%.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler
-	$(QUOTE)$(AVR_APP_PATH)avr-gcc.exe$(QUOTE) -funsigned-char -funsigned-bitfields -O0 -fpack-struct -fshort-enums -g2 -Wall -c -std=gnu99  -mmcu=atmega328p   -MD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	$(QUOTE)$(AVR_APP_PATH)avr-gcc.exe$(QUOTE) -funsigned-char -funsigned-bitfields -O0 -ffunction-sections -fpack-struct -fshort-enums -g2 -Wall -c -std=gnu99  -mmcu=atmega328p   -MD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
 	@echo Finished building: $<
 
 Arduino/%.o: ../Arduino/%.cpp
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU CPP Compiler
-	$(QUOTE)$(AVR_APP_PATH)avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -O0 -fdata-sections -ffunction-sections -fpack-struct -fshort-enums -g2 -Wall -c  -mmcu=atmega328p   -MD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	$(QUOTE)$(AVR_APP_PATH)avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -Os -fdata-sections -ffunction-sections -fpack-struct -fshort-enums -g2 -Wall -c  -mmcu=atmega328p   -MD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
 	@echo Finished building: $<
 
 ./%.o: .././%.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler
-	$(QUOTE)$(AVR_APP_PATH)avr-gcc.exe$(QUOTE) -funsigned-char -funsigned-bitfields -O0 -fpack-struct -fshort-enums -g2 -Wall -c -std=gnu99  -mmcu=atmega328p   -MD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	$(QUOTE)$(AVR_APP_PATH)avr-gcc.exe$(QUOTE) -funsigned-char -funsigned-bitfields -O0 -ffunction-sections -fpack-struct -fshort-enums -g2 -Wall -c -std=gnu99  -mmcu=atmega328p   -MD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
 	@echo Finished building: $<
 
 ./%.o: .././%.cpp
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU CPP Compiler
-	$(QUOTE)$(AVR_APP_PATH)avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -O0 -fdata-sections -ffunction-sections -fpack-struct -fshort-enums -g2 -Wall -c  -mmcu=atmega328p   -MD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	$(QUOTE)$(AVR_APP_PATH)avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -Os -fdata-sections -ffunction-sections -fpack-struct -fshort-enums -g2 -Wall -c  -mmcu=atmega328p   -MD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
 	@echo Finished building: $<
 
 

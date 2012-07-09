@@ -79,11 +79,11 @@ public:
 	void demodulate(void);
 	void recv(void);
 	static SoftModem *activeObject;
-	uint32_t anaISRCnt;
-	uint32_t timer2ISRCnt;
-	uint32_t lowNoiseCnt;
-	uint32_t midNoiseCnt;
-	uint32_t highNoiseCnt;
+	uint16_t anaISRCnt;
+	uint16_t timer2ISRCnt;
+	uint16_t lowNoiseCnt;
+	uint16_t midNoiseCnt;
+	uint16_t highNoiseCnt;
 	uint32_t lowSignalCnt;
 	uint32_t highSignalCnt;
 	void printDebugInfo(short resetCounts);

@@ -25,16 +25,13 @@ struct RGBColors {
 	byte red;
 	byte green;
 	byte blue;
+	
+    //RGBColors(uint8_t Red, uint8_t Green, uint8_t Blue) {
+		//red = Red;
+		//blue = Blue;
+		//green = Green;
+	//};
 };
-
-//const RGBColors OFF		= {0,0,0};
-//const RGBColors RED		= {255,0,0};
-//const RGBColors GREEN	= {0,100,0};
-//const RGBColors BLUE	= {0,0,150};
-//const RGBColors YELLOW	= {255,40,0};
-//const RGBColors PURPLE	= {255,0,100};
-//const RGBColors CYAN	= {0,100,150};
-//const RGBColors WHITE	= {255,60,90};
 
 #define RED_MAX 150
 #define BLUE_MAX 150
@@ -49,8 +46,19 @@ const RGBColors PURPLE	= {RED_MAX,0,GREEN_MAX};
 const RGBColors CYAN	= {0,BLUE_MAX,GREEN_MAX};
 const RGBColors WHITE	= {RED_MAX,BLUE_MAX,GREEN_MAX};
 
-const int colorLoop_elements = 8;
+//
+//#define OFF     RGBColors(0,0,0)
+//#define RED	    RGBColors(RED_MAX,0,0)
+//#define GREEN	RGBColors(0,BLUE_MAX,0)
+//#define BLUE	RGBColors(0,0,GREEN_MAX)
+//#define YELLOW	RGBColors(RED_MAX,BLUE_MAX,0)
+//#define PURPLE	RGBColors(RED_MAX,0,GREEN_MAX)
+//#define CYAN	RGBColors(0,BLUE_MAX,GREEN_MAX)
+//#define WHITE	RGBColors(RED_MAX,BLUE_MAX,GREEN_MAX)
+//
 //const RGBColors colorLoop[] = {GREEN,YELLOW,RED,PURPLE,BLUE,CYAN,WHITE, OFF};
+
+void testFunc(RGBColors testcolor);
 
 struct LedCycle {
 	uint32_t TimePerLed;
@@ -63,21 +71,27 @@ struct LedCycle {
 		TimePerLed = myTime;
 		NumLedPositions = myPos;
 		RepeatCycle = myRepeat;
-		ColorCycle[0] = Color0;
-		ColorCycle[1] = Color1;
-		ColorCycle[2] = Color2;
-		ColorCycle[3] = Color3;
-		ColorCycle[4] = Color4;
-		ColorCycle[5] = Color5;
+		//ColorCycle[0] = Color0;
+		//ColorCycle[1] = Color1;
+		//ColorCycle[2] = Color2;
+		//ColorCycle[3] = Color3;
+		//ColorCycle[4] = Color4;
+		//ColorCycle[5] = Color5;
 	};
 };
 
-struct TestStruct {
-	uint32_t val;
-	TestStruct(uint32_t myVal) {
-		
-	};
+//struct tempStruct {
+	//RGBColors color;
+	//tempStruct(RGBColors *myColor) {
+		//color = myColor;
+	//}
+//};
+
+struct test2struct {
+	uint8_t hi;
 };
+
+void test2func(test2struct hihi);
 
 #define LED_CYCLE_OFF LedCycle(0,0,0,OFF,OFF,OFF,OFF,OFF,OFF)
 #define LED_CYCLE_START LedCycle(200,6,0,RED,OFF,GREEN,OFF,BLUE,OFF)
@@ -88,92 +102,14 @@ struct TestStruct {
 #define LED_CYCLE_CRC_ERROR LedCycle(333, 6, 1, RED,OFF,OFF,YELLOW,OFF,OFF)
 #define LED_CYCLE_CRC_SUCCESS LedCycle(333, 2, 1, GREEN,YELLOW,OFF,OFF,OFF,OFF)
 
-void DebugInit() {	
-	Serial.begin(19200);
-	Serial.println("ETL version 0.1");
-	
-	Serial.print("DeviceSettings size: ");
-	Serial.println(sizeof(DeviceSettings));
-		
-	Serial.print("BasicTimelapse size: ");
-	Serial.println(sizeof(BasicTimelapse));
-		
-	Serial.print("BulbRamp size: ");
-	Serial.println(sizeof(BulbRamp));
-		
-	Serial.print("IntervalRamp size: ");
-	Serial.println(sizeof(IntervalRamp));
-	
-	Serial.print("HDRShot size: ");
-	Serial.println(sizeof(HDRShot));
-}
+void DebugInit();
 
-void DebugPrint( const char* myString) {
-	Serial.println(myString);
-    delay(15);
-}\
+void DebugPrint( const char* myString);
 
-void PrintSectionConfig(SectionConfig SecConf) {
+void PrintSectionConfig(SectionConfig SecConf);
 
-    Serial.println("Section Config:");
+void SetLED(RGBColors colors);
 
-    Serial.print("  type: ");
-	Serial.println(SecConf.type);
-	
-	Serial.print("  repeatIndex: ");
-	Serial.println(SecConf.repeatIndex);
-	
-	Serial.print("  numRepeats: ");
-	Serial.println(SecConf.numRepeats);
-	
-	Serial.print("  shots: ");
-	Serial.println(SecConf.shots);
-	
-	Serial.print("  interval: ");
-	Serial.println(SecConf.interval);
-	
-	Serial.print("  intervalDelta: ");
-	Serial.println(SecConf.intervalDelta);
-	
-	Serial.print("  exposureOffset: ");
-	Serial.println(SecConf.exposureOffset);
-	
-	Serial.print("  exposureFstopChangePerMin: ");
-	Serial.println(SecConf.exposureFstopChangePerMin);
-
-	Serial.print("  fstopSinAmplitude: ");
-	Serial.println(SecConf.fstopSinAmplitude);
-	
-	Serial.print("  fstopIncreasePerHDRShot: ");
-	Serial.println(SecConf.fstopIncreasePerHDRShot);
-	
-	Serial.print("  numHDRShots: ");
-	Serial.println(SecConf.numHDRShots);
-	
-	Serial.print("  fstopChangeOnPress: ");
-	Serial.println(SecConf.fstopChangeOnPress);
-}
-
-void SetLED(RGBColors colors) {
-	analogWrite(redLed, colors.red);
-	analogWrite(blueLed, colors.blue);
-	analogWrite(greenLed, colors.green);
-}
-
-byte AreColorsEqual(RGBColors color1, RGBColors color2) {
-	if (color1.blue != color2.blue) {
-		return 0;
-	}
-	
-	if (color1.red != color2.red) {
-		return 0;
-	}
-	
-	if (color1.green != color2.green) {
-		return 0;
-	}
-	
-	return 1;
-}
+byte AreColorsEqual(RGBColors color1, RGBColors color2);
 
 #endif /* UTILS_H_ */
