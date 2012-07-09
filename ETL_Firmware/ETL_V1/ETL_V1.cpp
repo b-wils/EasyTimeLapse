@@ -52,6 +52,8 @@ uint32_t exposureLength = 0;
 
 uint32_t printTimer = 0;
 
+uint8_t useFlashFeeback = 0;
+
 //ETlModemPacket modemPacket;
 size_t modemPacketIndex = 0;
 uint8_t bytesRead = 0;
@@ -70,16 +72,18 @@ uint8_t recvNumShots;
 uint8_t configPointer;
 
 void populateConfigs() {
-    myConfigs[0].type = CONFIG_SIN_P4;
+    //myConfigs[0].type = CONFIG_SIN_P4
+	myConfigs[0].type = 0;
     myConfigs[0].repeatIndex = 0;
     myConfigs[0].numRepeats = 0;
-    myConfigs[0].shots = 50;
+    myConfigs[0].shots = 2;
     myConfigs[0].interval = 1200;
     myConfigs[0].intervalDelta = 0;
     //myConfigs[0].exposureOffset = -2.841463415;
-	myConfigs[0].exposureOffset = -4.5;
+	myConfigs[0].exposureOffset = -2;
     myConfigs[0].exposureFstopChangePerMin = 0;
-	myConfigs[0].fstopSinAmplitude = 0.158536585;
+	//myConfigs[0].fstopSinAmplitude = 0.158536585;
+	myConfigs[0].fstopSinAmplitude = 0;
     myConfigs[0].fstopIncreasePerHDRShot = 0;
     myConfigs[0].numHDRShots = 0;
 	myConfigs[0].fstopChangeOnPress = 0;
@@ -179,19 +183,32 @@ void InitTimelapsePauseState() {
 }
 
 void SetConfig(int index) {
+
+		Serial.print("use flash: ");
+		Serial.println(useFlashFeeback, HEX);
+
 	Serial.print("set config index ");
 	Serial.println(index);
     shotsRemaining = myConfigs[index].shots;
     currentInterval = myConfigs[index].interval;
 	HDRShotNumber = 0;
+	//
+		//Serial.print("use flash: ");
+		//Serial.println(useFlashFeeback, HEX);
 	
 	if (repeatsRemaining == -1 && myConfigs[index].numRepeats != 0) {
 		repeatsRemaining = myConfigs[index].numRepeats;
 	}
 	
+		Serial.print("use flash2: ");
+		Serial.println(useFlashFeeback, HEX);
+	
 	if (myConfigs[index].type & _BV(CONFIG_PAUSE)) {
 	    InitTimelapsePauseState();	
 	}
+	
+		Serial.print("use flash3: ");
+		Serial.println(useFlashFeeback, HEX);
 	
 	if (myConfigs[index].fstopSinAmplitude != 0) {
 		uint8_t sinSetting = myConfigs[index].type;// & CONFIG_SIN_MASK;
@@ -211,6 +228,9 @@ void SetConfig(int index) {
 			break;
 		}
 	}
+
+	Serial.print("use flash4: ");
+	Serial.println(useFlashFeeback, HEX);
 	
 	expRefTime = nextPhotoTime;
 }
@@ -274,6 +294,7 @@ void InitTransmitState() {
 	digitalWrite(flashPin, HIGH);
 	
     modemPacketIndex = 1;
+	configIndex = 0;
 	bytesRead = 0;
 	modem.begin();
 	printTimer = millis();
@@ -335,6 +356,8 @@ void setup() {
 	SetLEDCycle(LED_CYCLE_START);
 	
 	printTimer = millis();
+	
+	useFlashFeeback = 0;
 }
 
 void ProcessIdle() {
@@ -644,9 +667,17 @@ void ProcessTimelapseWaiting() {
         digitalWrite(focusPin, HIGH);
         digitalWrite(shutterPin, HIGH);
         SetLED(WHITE);
-        currentState = STATE_TIMELAPSE_WAITING_FLASH;
+		
+		Serial.print("use flash: ");
+		Serial.println(useFlashFeeback, HEX);
+		
+		if (useFlashFeeback) {
+            currentState = STATE_TIMELAPSE_WAITING_FLASH;
+		} else {
+			currentState = STATE_TIMELAPSE_EXPOSING;
+			shutterOffTime = millis() + exposureLength;
+		}						
     }
-    
 }
 
 void ProcessTimeLapseWaitingFlash() {
@@ -718,10 +749,10 @@ void ProcessTransmitState() {
 					
 					bool failCrc = false;
 					
-					if (random(2) == 0) {
-						failCrc = true;
-						Serial.println("force fail crc");
-					}
+					//if (random(2) == 0) {
+						//failCrc = true;
+						//Serial.println("force fail crc");
+					//}
 					
 			        if (myCrc != recvCrc || failCrc) {
 				        DebugPrint("Crc mismatch!");
@@ -931,7 +962,40 @@ void ProcessTransmitStateNew() {
 			    Serial.print("packet success; crc = ");
 				Serial.println(myCrc, HEX);
 			    Serial.println();
-						
+				
+				switch (recvPacket.command) {
+	            
+	            case ETL_COMMAND_SETTINGS:
+				    break;
+	            case ETL_COMMAND_BASICTIMELAPSE:
+				    myConfigs[configPointer].shots = recvPacket.basicTimelapse.shots;
+					myConfigs[configPointer].exposureOffset = recvPacket.basicTimelapse.exposureLengthPower;
+					myConfigs[configPointer].interval = recvPacket.basicTimelapse.interval;
+				    // Increment to the next config. basic MUST come last
+					// TODO dump to EEPROM here
+					configPointer++;
+					numConfigs = configPointer;
+				    break;
+	            case ETL_COMMAND_BULBRAMP:
+				    myConfigs[configPointer].exposureFstopChangePerMin = recvPacket.bulbRamp.exposureFstopChangePerMin;
+					myConfigs[configPointer].fstopChangeOnPress = recvPacket.bulbRamp.fstopChangeOnPress;
+					myConfigs[configPointer].fstopSinAmplitude = recvPacket.bulbRamp.fstopSinAmplitude;
+				    break;
+	            case ETL_COMMAND_INTERVALRAMP:
+				    myConfigs[configPointer].intervalDelta = recvPacket.intervalRamp.intervalDelta;
+					myConfigs[configPointer].numRepeats = recvPacket.intervalRamp.numRepeats;
+					myConfigs[configPointer].repeatIndex = recvPacket.intervalRamp.repeatIndex;
+				    break;
+	            case ETL_COMMAND_HDRSHOT:
+				    myConfigs[configPointer].fstopIncreasePerHDRShot = recvPacket.hdrShot.fstopIncreasePerHDRShot;
+					myConfigs[configPointer].numHDRShots = recvPacket.hdrShot.numHDRShots;
+				    break;
+				case ETL_COMMAND_INVALID:
+				default:
+				    Serial.print("unrecognized command: ");
+					Serial.println(recvPacket.command, HEX);
+				}					
+					
 			    if (modemPacketIndex == recvPacket.packetId) {
 				    modemPacketIndex++;
 			    } else {
