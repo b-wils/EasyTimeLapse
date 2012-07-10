@@ -29,7 +29,7 @@
     [self.view addSubview:programmingProgress];
     
     progressBarTimer = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(updateProgressBar:) userInfo:nil repeats:YES];
-    [NSTimer scheduledTimerWithTimeInterval:0.75 target:self selector:@selector(startProgramming) userInfo:nil repeats:NO];
+    startTimer = [NSTimer scheduledTimerWithTimeInterval:0.75 target:self selector:@selector(startProgramming) userInfo:nil repeats:NO];
 }
 
 - (void)startProgramming
@@ -85,6 +85,8 @@ const NSUInteger streamBitsPerDataByte = 14;
     [deviceInterface stopProgramming];
     [progressBarTimer invalidate];
     progressBarTimer = nil;
+    [startTimer invalidate];
+    startTimer = nil;
     [super goBack:sender];
     //[self dismissModalViewControllerAnimated:NO];
 }

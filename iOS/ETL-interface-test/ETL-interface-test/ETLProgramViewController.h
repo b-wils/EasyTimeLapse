@@ -19,7 +19,7 @@
     ETLDeviceInterface * deviceInterface;
     NSUInteger totalCommandBits;
     
-    NSTimer * progressBarTimer;
+    NSTimer * progressBarTimer, *startTimer;
 }
 
 - (void) setDeviceCommand:(CommandPacket)deviceCommand withSections:(SectionConfig *)commandSections;

@@ -551,7 +551,7 @@
 			attributes = {
 				CLASSPREFIX = ETL;
 				LastUpgradeCheck = 0430;
-				ORGANIZATIONNAME = Microsoft;
+				ORGANIZATIONNAME = "";
 			};
 			buildConfigurationList = B5990749158FFC000005C8E2 /* Build configuration list for PBXProject "ETL-interface-test" */;
 			compatibilityVersion = "Xcode 3.2";

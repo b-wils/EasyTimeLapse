@@ -11,5 +11,7 @@
 @interface ETLHdrController : ETLShotViewController
 {
     IBOutlet UITextField * bracketCountField;
+    IBOutlet UITextField * initialExposureField;
+    IBOutlet UITextField * finalExposureField;
 }
 @end
