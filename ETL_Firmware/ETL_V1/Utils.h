@@ -25,13 +25,9 @@ struct RGBColors {
 	byte red;
 	byte green;
 	byte blue;
-	
-    //RGBColors(uint8_t Red, uint8_t Green, uint8_t Blue) {
-		//red = Red;
-		//blue = Blue;
-		//green = Green;
-	//};
 };
+
+RGBColors createColor(uint8_t Red, uint8_t Green, uint8_t Blue);
 
 #define RED_MAX 150
 #define BLUE_MAX 150
@@ -47,18 +43,16 @@ const RGBColors CYAN	= {0,BLUE_MAX,GREEN_MAX};
 const RGBColors WHITE	= {RED_MAX,BLUE_MAX,GREEN_MAX};
 
 //
-//#define OFF     RGBColors(0,0,0)
-//#define RED	    RGBColors(RED_MAX,0,0)
-//#define GREEN	RGBColors(0,BLUE_MAX,0)
-//#define BLUE	RGBColors(0,0,GREEN_MAX)
-//#define YELLOW	RGBColors(RED_MAX,BLUE_MAX,0)
-//#define PURPLE	RGBColors(RED_MAX,0,GREEN_MAX)
-//#define CYAN	RGBColors(0,BLUE_MAX,GREEN_MAX)
-//#define WHITE	RGBColors(RED_MAX,BLUE_MAX,GREEN_MAX)
+//#define OFF     createColor(0,0,0)
+//#define RED	    createColor(RED_MAX,0,0)
+//#define GREEN	createColor(0,BLUE_MAX,0)
+//#define BLUE	createColor(0,0,GREEN_MAX)
+//#define YELLOW	createColor(RED_MAX,BLUE_MAX,0)
+//#define PURPLE	createColor(RED_MAX,0,GREEN_MAX)
+//#define CYAN	createColor(0,BLUE_MAX,GREEN_MAX)
+//#define WHITE	createColor(RED_MAX,BLUE_MAX,GREEN_MAX)
 //
 //const RGBColors colorLoop[] = {GREEN,YELLOW,RED,PURPLE,BLUE,CYAN,WHITE, OFF};
-
-void testFunc(RGBColors testcolor);
 
 struct LedCycle {
 	uint32_t TimePerLed;
@@ -79,19 +73,6 @@ struct LedCycle {
 		//ColorCycle[5] = Color5;
 	};
 };
-
-//struct tempStruct {
-	//RGBColors color;
-	//tempStruct(RGBColors *myColor) {
-		//color = myColor;
-	//}
-//};
-
-struct test2struct {
-	uint8_t hi;
-};
-
-void test2func(test2struct hihi);
 
 #define LED_CYCLE_OFF LedCycle(0,0,0,OFF,OFF,OFF,OFF,OFF,OFF)
 #define LED_CYCLE_START LedCycle(200,6,0,RED,OFF,GREEN,OFF,BLUE,OFF)

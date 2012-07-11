@@ -77,7 +77,7 @@ void populateConfigs() {
     myConfigs[0].repeatIndex = 0;
     myConfigs[0].numRepeats = 0;
     myConfigs[0].shots = 2;
-    myConfigs[0].interval = 1200;
+    myConfigs[0].interval = 2000;
     myConfigs[0].intervalDelta = 0;
     //myConfigs[0].exposureOffset = -2.841463415;
 	myConfigs[0].exposureOffset = -2;
@@ -184,9 +184,6 @@ void InitTimelapsePauseState() {
 
 void SetConfig(int index) {
 
-		Serial.print("use flash: ");
-		Serial.println(useFlashFeeback, HEX);
-
 	Serial.print("set config index ");
 	Serial.println(index);
     shotsRemaining = myConfigs[index].shots;
@@ -200,15 +197,9 @@ void SetConfig(int index) {
 		repeatsRemaining = myConfigs[index].numRepeats;
 	}
 	
-		Serial.print("use flash2: ");
-		Serial.println(useFlashFeeback, HEX);
-	
 	if (myConfigs[index].type & _BV(CONFIG_PAUSE)) {
 	    InitTimelapsePauseState();	
 	}
-	
-		Serial.print("use flash3: ");
-		Serial.println(useFlashFeeback, HEX);
 	
 	if (myConfigs[index].fstopSinAmplitude != 0) {
 		uint8_t sinSetting = myConfigs[index].type;// & CONFIG_SIN_MASK;
@@ -228,9 +219,6 @@ void SetConfig(int index) {
 			break;
 		}
 	}
-
-	Serial.print("use flash4: ");
-	Serial.println(useFlashFeeback, HEX);
 	
 	expRefTime = nextPhotoTime;
 }
@@ -902,8 +890,8 @@ void ProcessTransmitStateTest() {
 	while(modem.available()) {
         byte myByte = modem.read();
 		
-		Serial.print("byte:");
-		Serial.println(myByte, HEX);
+		//Serial.print("byte:");
+		//Serial.println(myByte, HEX);
 		
 		//printTimer = millis() + 3000;
 	}		
@@ -961,42 +949,41 @@ void ProcessTransmitStateNew() {
 		    } else {
 			    Serial.print("packet success; crc = ");
 				Serial.println(myCrc, HEX);
-			    Serial.println();
-				
-				switch (recvPacket.command) {
-	            
-	            case ETL_COMMAND_SETTINGS:
-				    break;
-	            case ETL_COMMAND_BASICTIMELAPSE:
-				    myConfigs[configPointer].shots = recvPacket.basicTimelapse.shots;
-					myConfigs[configPointer].exposureOffset = recvPacket.basicTimelapse.exposureLengthPower;
-					myConfigs[configPointer].interval = recvPacket.basicTimelapse.interval;
-				    // Increment to the next config. basic MUST come last
-					// TODO dump to EEPROM here
-					configPointer++;
-					numConfigs = configPointer;
-				    break;
-	            case ETL_COMMAND_BULBRAMP:
-				    myConfigs[configPointer].exposureFstopChangePerMin = recvPacket.bulbRamp.exposureFstopChangePerMin;
-					myConfigs[configPointer].fstopChangeOnPress = recvPacket.bulbRamp.fstopChangeOnPress;
-					myConfigs[configPointer].fstopSinAmplitude = recvPacket.bulbRamp.fstopSinAmplitude;
-				    break;
-	            case ETL_COMMAND_INTERVALRAMP:
-				    myConfigs[configPointer].intervalDelta = recvPacket.intervalRamp.intervalDelta;
-					myConfigs[configPointer].numRepeats = recvPacket.intervalRamp.numRepeats;
-					myConfigs[configPointer].repeatIndex = recvPacket.intervalRamp.repeatIndex;
-				    break;
-	            case ETL_COMMAND_HDRSHOT:
-				    myConfigs[configPointer].fstopIncreasePerHDRShot = recvPacket.hdrShot.fstopIncreasePerHDRShot;
-					myConfigs[configPointer].numHDRShots = recvPacket.hdrShot.numHDRShots;
-				    break;
-				case ETL_COMMAND_INVALID:
-				default:
-				    Serial.print("unrecognized command: ");
-					Serial.println(recvPacket.command, HEX);
-				}					
+			    Serial.println();				
 					
 			    if (modemPacketIndex == recvPacket.packetId) {
+				    switch (recvPacket.command) {
+	            
+	                case ETL_COMMAND_SETTINGS:
+				        break;
+	                case ETL_COMMAND_BASICTIMELAPSE:
+				        myConfigs[configPointer].shots = recvPacket.basicTimelapse.shots;
+					    myConfigs[configPointer].exposureOffset = recvPacket.basicTimelapse.exposureLengthPower;
+					    myConfigs[configPointer].interval = recvPacket.basicTimelapse.interval;
+				        // Increment to the next config. basic MUST come last
+					    // TODO dump to EEPROM here
+					    configPointer++;
+					    numConfigs = configPointer;
+				        break;
+	                case ETL_COMMAND_BULBRAMP:
+				        myConfigs[configPointer].exposureFstopChangePerMin = recvPacket.bulbRamp.exposureFstopChangePerMin;
+					    myConfigs[configPointer].fstopChangeOnPress = recvPacket.bulbRamp.fstopChangeOnPress;
+					    myConfigs[configPointer].fstopSinAmplitude = recvPacket.bulbRamp.fstopSinAmplitude;
+				        break;
+	                case ETL_COMMAND_INTERVALRAMP:
+				        myConfigs[configPointer].intervalDelta = recvPacket.intervalRamp.intervalDelta;
+					    myConfigs[configPointer].numRepeats = recvPacket.intervalRamp.numRepeats;
+					    myConfigs[configPointer].repeatIndex = recvPacket.intervalRamp.repeatIndex;
+				        break;
+	                case ETL_COMMAND_HDRSHOT:
+				        myConfigs[configPointer].fstopIncreasePerHDRShot = recvPacket.hdrShot.fstopIncreasePerHDRShot;
+					    myConfigs[configPointer].numHDRShots = recvPacket.hdrShot.numHDRShots;
+				        break;
+				    case ETL_COMMAND_INVALID:
+				    default:
+				        Serial.print("unrecognized command: ");
+					    Serial.println(recvPacket.command, HEX);
+				    }	
 				    modemPacketIndex++;
 			    } else {
 				    // TODO reqeust next packet
@@ -1040,6 +1027,7 @@ void loop() {
             break;
         case STATE_TRANSMIT:
 		    ProcessTransmitStateNew();
+			//ProcessTransmitStateTest();
 			//ProcessTransmitStateTwoWay();
 			break;
     }        

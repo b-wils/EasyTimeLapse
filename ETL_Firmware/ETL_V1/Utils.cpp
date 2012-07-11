@@ -21,20 +21,20 @@ void DebugInit() {
 	Serial.begin(19200);
 	Serial.println("ETL version 0.1");
 	
-	Serial.print("DeviceSettings size: ");
-	Serial.println(sizeof(DeviceSettings));
-		
-	Serial.print("BasicTimelapse size: ");
-	Serial.println(sizeof(BasicTimelapse));
-		
-	Serial.print("BulbRamp size: ");
-	Serial.println(sizeof(BulbRamp));
-		
-	Serial.print("IntervalRamp size: ");
-	Serial.println(sizeof(IntervalRamp));
-	
-	Serial.print("HDRShot size: ");
-	Serial.println(sizeof(HDRShot));
+	//Serial.print("DeviceSettings size: ");
+	//Serial.println(sizeof(DeviceSettings));
+		//
+	//Serial.print("BasicTimelapse size: ");
+	//Serial.println(sizeof(BasicTimelapse));
+		//
+	//Serial.print("BulbRamp size: ");
+	//Serial.println(sizeof(BulbRamp));
+		//
+	//Serial.print("IntervalRamp size: ");
+	//Serial.println(sizeof(IntervalRamp));
+	//
+	//Serial.print("HDRShot size: ");
+	//Serial.println(sizeof(HDRShot));
 }
 
 void DebugPrint( const char* myString) {
@@ -44,42 +44,45 @@ void DebugPrint( const char* myString) {
 
 void PrintSectionConfig(SectionConfig SecConf) {
 
-    Serial.println("Section Config:");
+    // TODO string print takes 16 bytes out of memory. This adds up VERY quickly.
+	// This either needs to be optimized or split out
 
-    Serial.print("  type: ");
-	Serial.println(SecConf.type);
-	
-	Serial.print("  repeatIndex: ");
-	Serial.println(SecConf.repeatIndex);
-	
-	Serial.print("  numRepeats: ");
-	Serial.println(SecConf.numRepeats);
-	
-	Serial.print("  shots: ");
-	Serial.println(SecConf.shots);
-	
-	Serial.print("  interval: ");
-	Serial.println(SecConf.interval);
-	
-	Serial.print("  intervalDelta: ");
-	Serial.println(SecConf.intervalDelta);
-	
-	Serial.print("  exposureOffset: ");
-	Serial.println(SecConf.exposureOffset);
-	
-	Serial.print("  exposureFstopChangePerMin: ");
-	Serial.println(SecConf.exposureFstopChangePerMin);
-
-	Serial.print("  fstopSinAmplitude: ");
-	Serial.println(SecConf.fstopSinAmplitude);
-	
-	Serial.print("  fstopIncreasePerHDRShot: ");
-	Serial.println(SecConf.fstopIncreasePerHDRShot);
-	
-	Serial.print("  numHDRShots: ");
+    //Serial.println("Section Config:");
+//
+    //Serial.print("  type: ");
+	//Serial.println(SecConf.type);
+	//
+	//Serial.print("  repeatIndex: ");
+	//Serial.println(SecConf.repeatIndex);
+	//
+	//Serial.print("  numRepeats: ");
+	//Serial.println(SecConf.numRepeats);
+	//
+	//Serial.print("  shots: ");
+	//Serial.println(SecConf.shots);
+	//
+	//Serial.print("  interval: ");
+	//Serial.println(SecConf.interval);
+	//
+	//Serial.print("  intervalDelta: ");
+	//Serial.println(SecConf.intervalDelta);
+	//
+	//Serial.print("  exposureOffset: ");
+	//Serial.println(SecConf.exposureOffset);
+	//
+	//Serial.print("  exposureFstopChangePerMin: ");
+	//Serial.println(SecConf.exposureFstopChangePerMin);
+//
+	//Serial.print("  fstopSinAmplitude: ");
+	//Serial.println(SecConf.fstopSinAmplitude);
+	//
+	//Serial.print("  fstopIncreasePerHDRShot: ");
+	//Serial.println(SecConf.fstopIncreasePerHDRShot);
+	//
+	//Serial.print("  numHDRShots: ");
 	Serial.println(SecConf.numHDRShots);
-	
-	Serial.print("  fstopChangeOnPress: ");
+	//
+	//Serial.print("  fstopChangeOnPress: ");
 	Serial.println(SecConf.fstopChangeOnPress);
 }
 
@@ -104,3 +107,13 @@ byte AreColorsEqual(RGBColors color1, RGBColors color2) {
 	
 	return 1;
 }
+
+RGBColors createColor(uint8_t Red, uint8_t Green, uint8_t Blue) {
+	RGBColors color;
+	
+	color.red = Red;
+	color.blue = Blue;
+	color.green = Green;
+	
+	return color;
+}		
