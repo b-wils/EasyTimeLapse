@@ -1,0 +1,242 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>6.0</ProjectVersion>
+    <ProjectGuid>{d3f2ebdf-d4fc-411b-a916-ded1d03c2d2f}</ProjectGuid>
+    <avrdevice>ATmega328P</avrdevice>
+    <avrdeviceseries>none</avrdeviceseries>
+    <OutputType>Executable</OutputType>
+    <Language>CPP</Language>
+    <OutputDirectory>$(MSBuildProjectDirectory)\$(Configuration)</OutputDirectory>
+    <AvrGccProjectExtensions>
+    </AvrGccProjectExtensions>
+    <AssemblyName>ETL_V1</AssemblyName>
+    <Name>ETL_V1</Name>
+    <RootNamespace>ETL_V1</RootNamespace>
+    <avrtool>com.atmel.avrdbg.tool.simulator</avrtool>
+    <avrtoolinterface>
+    </avrtoolinterface>
+    <com_atmel_avrdbg_tool_ispmk2>
+      <ToolType>com.atmel.avrdbg.tool.ispmk2</ToolType>
+      <ToolName>AVRISP mkII</ToolName>
+      <ToolNumber>000200067362</ToolNumber>
+      <Channel>
+        <host>127.0.0.1</host>
+        <port>14853</port>
+        <ssl>False</ssl>
+      </Channel>
+      <ToolOptions>
+        <InterfaceName>ISP</InterfaceName>
+        <InterfaceProperties>
+          <JtagDbgClock>1000000</JtagDbgClock>
+          <JtagProgClock>1000000</JtagProgClock>
+          <IspClock>125000</IspClock>
+          <JtagInChain>false</JtagInChain>
+          <JtagEnableExtResetOnStartSession>false</JtagEnableExtResetOnStartSession>
+          <JtagDevicesBefore>0</JtagDevicesBefore>
+          <JtagDevicesAfter>0</JtagDevicesAfter>
+          <JtagInstrBitsBefore>0</JtagInstrBitsBefore>
+          <JtagInstrBitsAfter>0</JtagInstrBitsAfter>
+        </InterfaceProperties>
+      </ToolOptions>
+    </com_atmel_avrdbg_tool_ispmk2>
+    <com_atmel_avrdbg_tool_simulator>
+      <ToolType>com.atmel.avrdbg.tool.simulator</ToolType>
+      <ToolName>AVR Simulator</ToolName>
+      <ToolNumber>
+      </ToolNumber>
+      <Channel>
+        <host>127.0.0.1</host>
+        <port>25941</port>
+        <ssl>False</ssl>
+      </Channel>
+    </com_atmel_avrdbg_tool_simulator>
+    <com_atmel_avrdbg_tool_avrdragon>
+      <ToolType>com.atmel.avrdbg.tool.avrdragon</ToolType>
+      <ToolName>AVR Dragon</ToolName>
+      <ToolNumber>00A200028066</ToolNumber>
+      <Channel>
+        <host>127.0.0.1</host>
+        <port>5825</port>
+        <ssl>False</ssl>
+      </Channel>
+      <ToolOptions>
+        <InterfaceName>debugWIRE</InterfaceName>
+        <InterfaceProperties>
+          <JtagDbgClock>1000000</JtagDbgClock>
+          <JtagProgClock>1000000</JtagProgClock>
+          <IspClock>150000</IspClock>
+          <JtagInChain>false</JtagInChain>
+          <JtagEnableExtResetOnStartSession>false</JtagEnableExtResetOnStartSession>
+          <JtagDevicesBefore>0</JtagDevicesBefore>
+          <JtagDevicesAfter>0</JtagDevicesAfter>
+          <JtagInstrBitsBefore>0</JtagInstrBitsBefore>
+          <JtagInstrBitsAfter>0</JtagInstrBitsAfter>
+        </InterfaceProperties>
+      </ToolOptions>
+    </com_atmel_avrdbg_tool_avrdragon>
+    <ToolchainName>com.Atmel.AVRGCC8</ToolchainName>
+    <ToolchainFlavour>Native</ToolchainFlavour>
+    <AsfVersion>3.0.1</AsfVersion>
+    <KeepTimersRunning>true</KeepTimersRunning>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputFileName>ETL_V1</OutputFileName>
+    <OutputFileExtension>.elf</OutputFileExtension>
+    <ToolchainSettings>
+      <AvrGccCpp xmlns="">
+  <avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>True</avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>
+  <avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>
+  <avrgcc.compiler.optimization.PackStructureMembers>True</avrgcc.compiler.optimization.PackStructureMembers>
+  <avrgcc.compiler.optimization.AllocateBytesNeededForEnum>True</avrgcc.compiler.optimization.AllocateBytesNeededForEnum>
+  <avrgcc.compiler.warnings.AllWarnings>True</avrgcc.compiler.warnings.AllWarnings>
+  <avrgcccpp.compiler.general.ChangeDefaultCharTypeUnsigned>True</avrgcccpp.compiler.general.ChangeDefaultCharTypeUnsigned>
+  <avrgcccpp.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcccpp.compiler.general.ChangeDefaultBitFieldUnsigned>
+  <avrgcccpp.compiler.optimization.level>Optimize for size (-Os)</avrgcccpp.compiler.optimization.level>
+  <avrgcccpp.compiler.optimization.PackStructureMembers>True</avrgcccpp.compiler.optimization.PackStructureMembers>
+  <avrgcccpp.compiler.optimization.AllocateBytesNeededForEnum>True</avrgcccpp.compiler.optimization.AllocateBytesNeededForEnum>
+  <avrgcccpp.compiler.warnings.AllWarnings>True</avrgcccpp.compiler.warnings.AllWarnings>
+  <avrgcccpp.linker.libraries.Libraries>
+    <ListValues>
+      <Value>m</Value>
+    </ListValues>
+  </avrgcccpp.linker.libraries.Libraries>
+</AvrGccCpp>
+    </ToolchainSettings>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <UsesExternalMakeFile>False</UsesExternalMakeFile>
+    <ExternalMakeFilePath>C:\Users\brandonw\Documents\AVRStudio\ETL_V1\Debug\Makefile</ExternalMakeFilePath>
+    <OutputFileName>ETL_V1</OutputFileName>
+    <OutputFileExtension>.elf</OutputFileExtension>
+    <ToolchainSettings>
+      <AvrGccCpp xmlns="">
+  <avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>True</avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>
+  <avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>
+  <avrgcc.compiler.optimization.PrepareFunctionsForGarbageCollection>True</avrgcc.compiler.optimization.PrepareFunctionsForGarbageCollection>
+  <avrgcc.compiler.optimization.PackStructureMembers>True</avrgcc.compiler.optimization.PackStructureMembers>
+  <avrgcc.compiler.optimization.AllocateBytesNeededForEnum>True</avrgcc.compiler.optimization.AllocateBytesNeededForEnum>
+  <avrgcc.compiler.warnings.AllWarnings>True</avrgcc.compiler.warnings.AllWarnings>
+  <avrgcccpp.compiler.general.ChangeDefaultCharTypeUnsigned>True</avrgcccpp.compiler.general.ChangeDefaultCharTypeUnsigned>
+  <avrgcccpp.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcccpp.compiler.general.ChangeDefaultBitFieldUnsigned>
+  <avrgcccpp.compiler.optimization.level>Optimize for size (-Os)</avrgcccpp.compiler.optimization.level>
+  <avrgcccpp.compiler.optimization.OtherFlags>-fdata-sections</avrgcccpp.compiler.optimization.OtherFlags>
+  <avrgcccpp.compiler.optimization.PrepareFunctionsForGarbageCollection>True</avrgcccpp.compiler.optimization.PrepareFunctionsForGarbageCollection>
+  <avrgcccpp.compiler.optimization.PackStructureMembers>True</avrgcccpp.compiler.optimization.PackStructureMembers>
+  <avrgcccpp.compiler.optimization.AllocateBytesNeededForEnum>True</avrgcccpp.compiler.optimization.AllocateBytesNeededForEnum>
+  <avrgcccpp.compiler.optimization.DebugLevel>Default (-g2)</avrgcccpp.compiler.optimization.DebugLevel>
+  <avrgcccpp.compiler.warnings.AllWarnings>True</avrgcccpp.compiler.warnings.AllWarnings>
+  <avrgcccpp.linker.libraries.Libraries>
+    <ListValues>
+      <Value>m</Value>
+    </ListValues>
+  </avrgcccpp.linker.libraries.Libraries>
+  <avrgcccpp.linker.optimization.GarbageCollectUnusedSections>True</avrgcccpp.linker.optimization.GarbageCollectUnusedSections>
+  <avrgcccpp.linker.optimization.RelaxBranches>True</avrgcccpp.linker.optimization.RelaxBranches>
+  <avrgcccpp.linker.memorysettings.InitialStack>0x800</avrgcccpp.linker.memorysettings.InitialStack>
+  <avrgcccpp.linker.miscellaneous.LinkerFlags>-Wl,-lm</avrgcccpp.linker.miscellaneous.LinkerFlags>
+  <avrgcccpp.assembler.debugging.DebugLevel>Default (-Wa,-g)</avrgcccpp.assembler.debugging.DebugLevel>
+</AvrGccCpp>
+    </ToolchainSettings>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Arduino\Arduino.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Arduino\HardwareSerial.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Arduino\HardwareSerial.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Arduino\io.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Arduino\new.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Arduino\new.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Arduino\pins_arduino.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Arduino\Print.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Arduino\Print.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Arduino\Printable.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Arduino\Stream.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Arduino\Stream.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Arduino\wiring_private.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Arduino\WMath.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Arduino\WString.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Arduino\WString.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Common.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="crc.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="ETL_V1.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="ETL_V1.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="SoftModem.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="SoftModem.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Arduino\wiring_digital.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Arduino\wiring.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Utils.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Utils.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Arduino\WInterrupts.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Arduino\wiring_analog.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="crc.c">
+      <SubType>compile</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Arduino" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Debug\Makefile">
+      <SubType>compile</SubType>
+      <Link>Makefile</Link>
+    </None>
+  </ItemGroup>
+  <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\AvrGCC.targets" />
+</Project>
