@@ -11,6 +11,7 @@
 
 #include "Common.h"
 #include "Arduino/Arduino.h"
+#include "Utils.h"
 
 #define MS_PER_SEC 1000
 #define SEC_PER_MIN 60
@@ -42,8 +43,8 @@ const int cableSensePin = 3;
 //#define CAMERA_SHORT_PIN 4
 
 #define redLed 11
-#define greenLed 10
-#define blueLed 9
+#define greenLed 9
+#define blueLed 10
 
 //uint32_t Timer2Overflow = 0;
 
@@ -94,5 +95,8 @@ enum TransmitState {
 	TSTATE_CONFIG,
 	TSTATE_SHOT_DATA
 };
+
+void InitIdleState();
+void SetConfig(int index);
 
 #endif /* ETL_V1_H_ */

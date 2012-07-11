@@ -65,12 +65,12 @@ struct LedCycle {
 		TimePerLed = myTime;
 		NumLedPositions = myPos;
 		RepeatCycle = myRepeat;
-		//ColorCycle[0] = Color0;
-		//ColorCycle[1] = Color1;
-		//ColorCycle[2] = Color2;
-		//ColorCycle[3] = Color3;
-		//ColorCycle[4] = Color4;
-		//ColorCycle[5] = Color5;
+		ColorCycle[0] = Color0;
+		ColorCycle[1] = Color1;
+		ColorCycle[2] = Color2;
+		ColorCycle[3] = Color3;
+		ColorCycle[4] = Color4;
+		ColorCycle[5] = Color5;
 	};
 };
 
@@ -82,6 +82,7 @@ struct LedCycle {
 #define LED_CYCLE_IDLE LedCycle(333, 8, 1, PURPLE, OFF,OFF,OFF,OFF,OFF)
 #define LED_CYCLE_CRC_ERROR LedCycle(333, 6, 1, RED,OFF,OFF,YELLOW,OFF,OFF)
 #define LED_CYCLE_CRC_SUCCESS LedCycle(333, 2, 1, GREEN,YELLOW,OFF,OFF,OFF,OFF)
+#define LED_CYCLE_COLOR_COMBOS LedCycle(500, 4, 1, PURPLE,YELLOW,CYAN,WHITE,OFF,OFF)
 
 void DebugInit();
 
@@ -92,5 +93,7 @@ void PrintSectionConfig(SectionConfig SecConf);
 void SetLED(RGBColors colors);
 
 byte AreColorsEqual(RGBColors color1, RGBColors color2);
+
+void SetLEDCycle(LedCycle cycle);
 
 #endif /* UTILS_H_ */

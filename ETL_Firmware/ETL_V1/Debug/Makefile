@@ -42,6 +42,8 @@ C_SRCS +=  \
 ../Arduino/Stream.cpp \
 ../Arduino/WMath.cpp \
 ../Arduino/WString.cpp \
+../camera.cpp \
+../communications.cpp \
 ../ETL_V1.cpp \
 ../SoftModem.cpp \
 ../Arduino/wiring_digital.c \
@@ -65,6 +67,8 @@ Arduino/Print.o \
 Arduino/Stream.o \
 Arduino/WMath.o \
 Arduino/WString.o \
+camera.o \
+communications.o \
 ETL_V1.o \
 SoftModem.o \
 Arduino/wiring_digital.o \
@@ -82,6 +86,8 @@ Arduino/Print.o \
 Arduino/Stream.o \
 Arduino/WMath.o \
 Arduino/WString.o \
+camera.o \
+communications.o \
 ETL_V1.o \
 SoftModem.o \
 Arduino/wiring_digital.o \
@@ -99,6 +105,8 @@ Arduino/Print.d \
 Arduino/Stream.d \
 Arduino/WMath.d \
 Arduino/WString.d \
+camera.d \
+communications.d \
 ETL_V1.d \
 SoftModem.d \
 Arduino/wiring_digital.d \
@@ -116,6 +124,8 @@ Arduino/Print.d \
 Arduino/Stream.d \
 Arduino/WMath.d \
 Arduino/WString.d \
+camera.d \
+communications.d \
 ETL_V1.d \
 SoftModem.d \
 Arduino/wiring_digital.d \
@@ -135,6 +145,10 @@ ADDITIONAL_DEPENDENCIES:=
 OUTPUT_FILE_DEP:= ./makedep.mk
 
 # AVR32/GNU C Compiler
+
+
+
+
 
 
 
