@@ -39,6 +39,9 @@ static int analyze(SAMPLE *inputBuffer,
 	for (long i=0; i < framesPerBuffer; i++, pSample++)
 	{
 		int thisFrame = *pSample;
+        int d = INT_MAX - thisFrame;
+        d = d * 0.37;
+        thisFrame = MIN(INT_MAX, thisFrame + d);
 		int diff = thisFrame - lastFrame;
 		
 		int sign = 0;
@@ -275,7 +278,8 @@ static OSStatus	recordingCallback(
     
 	AudioComponentDescription defaultOutputDescription;
 	defaultOutputDescription.componentType = kAudioUnitType_Output;
-	defaultOutputDescription.componentSubType = kAudioUnitSubType_VoiceProcessingIO; //kAudioUnitSubType_RemoteIO;
+//	defaultOutputDescription.componentSubType = kAudioUnitSubType_VoiceProcessingIO;
+	defaultOutputDescription.componentSubType = kAudioUnitSubType_RemoteIO;    
 	defaultOutputDescription.componentManufacturer = kAudioUnitManufacturer_Apple;
 	defaultOutputDescription.componentFlags = 0;
 	defaultOutputDescription.componentFlagsMask = 0;
@@ -308,19 +312,19 @@ static OSStatus	recordingCallback(
     
     // Disable voice noise reduction
     UInt32 shouldBypass = YES;
-    err = AudioUnitSetProperty(audioUnit, 
-                               kAUVoiceIOProperty_BypassVoiceProcessing, 
-                               kAudioUnitScope_Input, 
-                               0, 
-                               &shouldBypass, sizeof(UInt32));
-    NSAssert1(err == noErr, @"Error disabling noice reduction: %ld", err);
+//    err = AudioUnitSetProperty(audioUnit, 
+//                               kAUVoiceIOProperty_BypassVoiceProcessing, 
+//                               kAudioUnitScope_Input, 
+//                               0, 
+//                               &shouldBypass, sizeof(UInt32));
+//    NSAssert1(err == noErr, @"Error disabling noice reduction: %ld", err);
     
-    err = AudioUnitSetProperty(audioUnit, 
-                               kAUVoiceIOProperty_BypassVoiceProcessing, 
-                               kAudioUnitScope_Output, 
-                               0, 
-                               &shouldBypass, sizeof(UInt32));
-    NSAssert1(err == noErr, @"Error disabling noice reduction: %ld", err);
+//    err = AudioUnitSetProperty(audioUnit, 
+//                               kAUVoiceIOProperty_BypassVoiceProcessing, 
+//                               kAudioUnitScope_Output, 
+//                               0, 
+//                               &shouldBypass, sizeof(UInt32));
+//    NSAssert1(err == noErr, @"Error disabling noice reduction: %ld", err);
 	
 	AURenderCallbackStruct input;
 	input.inputProc = recordingCallback;
