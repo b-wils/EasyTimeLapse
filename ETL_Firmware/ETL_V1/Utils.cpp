@@ -39,7 +39,7 @@ void DebugInit() {
 
 void DebugPrint( const char* myString) {
 	Serial.println(myString);
-    delay(15);
+    delay(30);
 }
 
 void PrintSectionConfig(SectionConfig SecConf) {

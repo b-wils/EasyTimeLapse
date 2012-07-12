@@ -26,9 +26,6 @@
 //const int flashSensePin = A5;
 //const int micShortedPin = 4;
 //const int batteryMonitorPin = A0;
-//const int cableSensePin = 3;
-//#define FSK_INPUT_FILTER_ENABLE_PIN 8
-//#define CAMERA_SHORT_PIN 4
 
 // breadboard  1 pins
 #define buttonPin 2     // the number of the pushbutton pin
@@ -38,15 +35,9 @@
 #define flashSensePin A1
 #define micShortedPin 4
 #define batteryMonitorPin A2
-#define cableSensePin 3
-#define FSK_INPUT_FILTER_ENABLE_PIN 8
-#define CAMERA_SHORT_PIN 4
-
 #define redLed 11
 #define greenLed 9
 #define blueLed 10
-
-//uint32_t Timer2Overflow = 0;
 
 #define BUTTON_TRANSMIT_PERIOD 1500 //ms
 #define BUTTON_STOP_TIMELAPSE_PERIOD 1500
@@ -74,12 +65,6 @@
 #define ADC_EMPTY_VOLTAGE (ADC_MAX * EMPTY_VOLTAGE / VOTLAGE_DIV_FACTOR / ADC_REF_VOLTAGE)
 
 enum {
- BUTTON_PUSH = 0,
- BUTTON_RELEASE,
- BUTTON_PENDING_PROCESS
-};
-
-enum {
  STATE_INVALID = 0,
  STATE_IDLE,
  STATE_TIMELAPSE_WAITING,
@@ -87,13 +72,6 @@ enum {
  STATE_TIMELAPSE_EXPOSING,
  STATE_TIMELAPSE_PAUSE,
  STATE_TRANSMIT
-};
-
-enum TransmitState {
-	TSTATE_INVALID = 0,
-	TSTATE_INIT,
-	TSTATE_CONFIG,
-	TSTATE_SHOT_DATA
 };
 
 void InitIdleState();

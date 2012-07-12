@@ -23,10 +23,6 @@ uint8_t configPointer;
 int lastButtonState = HIGH;
 int buttonState = HIGH;
 
-int cableSenseState = LOW;
-int lastCableSenseState = LOW;
-uint32_t lastCableDebounceTime;
-
 uint32_t lastDebounceTime;
 uint32_t buttonPressTime;
 
@@ -40,13 +36,6 @@ uint8_t currentState = 0;
 
 byte buttonClicked;
 byte buttonHeld;
-
-//ETlModemPacket modemPacket;
-
-crc_t recvCrc;
-SectionConfig recvConfig;
-uint8_t recvCommand;
-uint8_t recvNumShots;
 
 void populateConfigs() {
     //myConfigs[0].type = CONFIG_SIN_P4
@@ -159,8 +148,6 @@ void setup() {
 	
 	pinMode(buttonPin, INPUT);
 	digitalWrite(buttonPin, HIGH);
-    
-	pinMode(cableSensePin, INPUT);
 	
     pinMode(shutterPin, OUTPUT);
     digitalWrite(shutterPin, LOW);
@@ -170,8 +157,9 @@ void setup() {
     pinMode(flashPin, INPUT);
     digitalWrite(flashPin, HIGH);
     
-	pinMode(FSK_INPUT_FILTER_ENABLE_PIN, OUTPUT);
-	digitalWrite(FSK_INPUT_FILTER_ENABLE_PIN, HIGH);
+	// not currently used
+	//pinMode(FSK_INPUT_FILTER_ENABLE_PIN, OUTPUT);
+	//digitalWrite(FSK_INPUT_FILTER_ENABLE_PIN, HIGH);
 	
     delay(20);
 	
@@ -180,6 +168,11 @@ void setup() {
 	populateConfigs();
 	
 	analogReference(INTERNAL);
+	
+	// Set LEDs to output
+	pinMode(redLed, OUTPUT);
+	pinMode(greenLed, OUTPUT);
+	pinMode(blueLed, OUTPUT);
 	
     InitIdleState();
 	
@@ -232,18 +225,13 @@ void ProcessIdle() {
 		return;
 	}
 
-    if (lastCableSenseState != cableSenseState) {
-		// Better way - Attach interrupt, disable interrupts, check state
-		return;
-	}
+	Serial.flush();
 
     // If we've made it this far, we can idle!
     attachInterrupt(0,ButtonChange,CHANGE);
-    //attachInterrupt(1, CableSenseChange, CHANGE);
     sleep_enable();
     sleep_cpu();
     sleep_disable();
-    //detachInterrupt(1);
     detachInterrupt(0);
 }
 
@@ -308,36 +296,6 @@ void ProcessButton() {
     lastButtonState = reading;
 }
 
-void ProcessCableSense() {
-    
-    // read the state of the switch into a local variable:
-    int reading = digitalRead(cableSensePin);
-
-    // check to see if you just pressed the button 
-    // (i.e. the input went from LOW to HIGH),  and you've waited 
-    // long enough since the last press to ignore any noise:  
-
-    // If the switch changed, due to noise or pressing:
-    if (reading != lastCableSenseState) {
-        // reset the debouncing timer
-        lastCableDebounceTime = millis();
-    } 
-  
-    if ((millis() - lastCableDebounceTime) > CABLE_DEBOUNCE_PERIOD) {
-        if (cableSenseState != reading) {
-		    cableSenseState = reading;	
-			if (cableSenseState == HIGH) {
-				DebugPrint("Cable Plugged!");
-			} else {
-				DebugPrint("Cable Unplugged");
-			}
-		}			
-	}
-
-    lastCableSenseState = reading;
-}
-
-
 void ProcessLEDCycle() {
     if (currentLedCycle.NumLedPositions != 0) {
 		if ( millis() > nextLedTime) {
@@ -363,8 +321,6 @@ void ProcessLEDCycle() {
 void loop() {
 	
     ProcessButton();
- 
-    //ProcessCableSense();
     
     switch (currentState) {
         case STATE_TIMELAPSE_WAITING:
@@ -402,4 +358,7 @@ void loop() {
 				Serial.println("Unrecognized command ");
 		}
 	}
+	
+	//ProcessIdle();
+	
 }

@@ -12,9 +12,6 @@
 #include "Utils.h"
 
 SoftModem modem;
-//uint8_t bytesRead;
-//uint16_t modemPacketIndex;
-
 VariablePacket recvPacket;
 
 extern uint8_t currentState;
@@ -75,6 +72,8 @@ void ProcessTransmitState() {
 	while(modem.available()) {
         ((char *) &recvPacket)[bytesRead] = modem.read();
         bytesRead++;
+		
+		Serial.println(((char *) &recvPacket)[bytesRead]);
 		
 		if (bytesRead >= 16) {
 			IPhonePacket sendPacket;

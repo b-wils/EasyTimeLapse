@@ -315,7 +315,6 @@ void ProcessTimeLapseWaitingFlash() {
 
 void ProcessTimeLapseExposing() {
     if (millis() >= shutterOffTime) {
-		Serial.println("Shutter Off");
         SetLED(OFF);
         digitalWrite(shutterPin, LOW);
         digitalWrite(focusPin, LOW);
