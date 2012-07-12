@@ -260,6 +260,8 @@ void ProcessButton() {
     if (reading != lastButtonState) {
         // reset the debouncing timer
         lastDebounceTime = millis();
+		
+		//Serial.print("button change");
     } 
   
     if ((millis() - lastDebounceTime) > BUTTON_DEBOUNCE_PERIOD) {
@@ -380,4 +382,24 @@ void loop() {
     }        
 	
 	ProcessLEDCycle();
+	
+	if (Serial.available()) {
+		uint8_t incByte = Serial.read();
+		
+		switch (incByte) {
+			case 'p':
+				// dump our shots
+				Serial.print("num configs: ");
+				Serial.println(numConfigs);
+				for (int i = 0; i < numConfigs; i++) {
+					Serial.print("config #");
+					Serial.println(i);
+					PrintSectionConfig(myConfigs[i]);	
+				}
+				
+				break;
+			default:
+				Serial.println("Unrecognized command ");
+		}
+	}
 }

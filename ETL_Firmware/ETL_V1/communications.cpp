@@ -45,6 +45,9 @@ void InitTransmitState() {
 	printTimer = millis();
 	printval = 'A';
 	
+	numConfigs = 0;
+	configPointer = 0;
+	
 	//
 	// Send our begin packet
 	//

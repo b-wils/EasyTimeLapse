@@ -58,32 +58,32 @@ void PrintSectionConfig(SectionConfig SecConf) {
 	//Serial.print("  numRepeats: ");
 	//Serial.println(SecConf.numRepeats);
 	//
-	//Serial.print("  shots: ");
-	//Serial.println(SecConf.shots);
-	//
-	//Serial.print("  interval: ");
-	//Serial.println(SecConf.interval);
+	Serial.print("  shots: ");
+	Serial.println(SecConf.shots);
+	
+	Serial.print("  interval: ");
+	Serial.println(SecConf.interval);
 	//
 	//Serial.print("  intervalDelta: ");
 	//Serial.println(SecConf.intervalDelta);
 	//
-	//Serial.print("  exposureOffset: ");
-	//Serial.println(SecConf.exposureOffset);
+	Serial.print("  exposureOffset: ");
+	Serial.println(SecConf.exposureOffset);
 	//
-	//Serial.print("  exposureFstopChangePerMin: ");
-	//Serial.println(SecConf.exposureFstopChangePerMin);
+	Serial.print("  exposureFstopChangePerMin: ");
+	Serial.println(SecConf.exposureFstopChangePerMin);
 //
 	//Serial.print("  fstopSinAmplitude: ");
 	//Serial.println(SecConf.fstopSinAmplitude);
 	//
 	//Serial.print("  fstopIncreasePerHDRShot: ");
 	//Serial.println(SecConf.fstopIncreasePerHDRShot);
-	//
+	////
 	//Serial.print("  numHDRShots: ");
-	Serial.println(SecConf.numHDRShots);
-	//
+	//Serial.println(SecConf.numHDRShots);
+	////
 	//Serial.print("  fstopChangeOnPress: ");
-	Serial.println(SecConf.fstopChangeOnPress);
+	//Serial.println(SecConf.fstopChangeOnPress);
 }
 
 void SetLED(RGBColors colors) {

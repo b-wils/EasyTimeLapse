@@ -113,11 +113,11 @@ void InitTimelapseState() {
 	
 	byte micShorted = digitalRead(micShortedPin);
 	
-	if (micShorted == HIGH) {
-	    DebugPrint("Mic not shorted");	
-    } else {
-        DebugPrint("Mic Shorted");	
-	}		
+	//if (micShorted == HIGH) {
+	    //DebugPrint("Mic not shorted");	
+    //} else {
+        //DebugPrint("Mic Shorted");	
+	//}		
 	
 	digitalWrite(micShortedPin, LOW);
 	
@@ -289,9 +289,6 @@ void ProcessTimelapseWaiting() {
         digitalWrite(focusPin, HIGH);
         digitalWrite(shutterPin, HIGH);
         SetLED(WHITE);
-		
-		Serial.print("use flash: ");
-		Serial.println(useFlashFeeback, HEX);
 		
 		if (useFlashFeeback) {
             currentState = STATE_TIMELAPSE_WAITING_FLASH;
