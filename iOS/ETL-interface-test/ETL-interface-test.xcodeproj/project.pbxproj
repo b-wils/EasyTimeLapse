@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B504994F15AF560B00F4AF31 /* ETLTimelapse.m in Sources */ = {isa = PBXBuildFile; fileRef = B504994E15AF560B00F4AF31 /* ETLTimelapse.m */; };
+		B504996F15AF5C2300F4AF31 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5990753158FFC000005C8E2 /* UIKit.framework */; };
+		B504997015AF5C2300F4AF31 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5990755158FFC000005C8E2 /* Foundation.framework */; };
+		B504997115AF5C2300F4AF31 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5990757158FFC000005C8E2 /* CoreGraphics.framework */; };
+		B504997715AF5C2400F4AF31 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B504997515AF5C2400F4AF31 /* InfoPlist.strings */; };
+		B504997915AF5C2400F4AF31 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B504997815AF5C2400F4AF31 /* main.m */; };
+		B5049B6F15AF60B900F4AF31 /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5049B6E15AF60B900F4AF31 /* GHUnitIOS.framework */; };
+		B5049B7215AF611700F4AF31 /* ETLTimelapseTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B5049B7115AF611700F4AF31 /* ETLTimelapseTest.m */; };
+		B5049B7715AF66CC00F4AF31 /* ETLTimelapse.h in Sources */ = {isa = PBXBuildFile; fileRef = B504994D15AF560B00F4AF31 /* ETLTimelapse.h */; };
+		B5049B7815AF66CC00F4AF31 /* ETLTimelapse.m in Sources */ = {isa = PBXBuildFile; fileRef = B504994E15AF560B00F4AF31 /* ETLTimelapse.m */; };
 		B50D23B8159B9C5F00F2FCCC /* ETLTimelapseSlidersController.m in Sources */ = {isa = PBXBuildFile; fileRef = B50D23B6159B9C5F00F2FCCC /* ETLTimelapseSlidersController.m */; };
 		B50D23B9159B9C5F00F2FCCC /* TimelapseSliders.xib in Resources */ = {isa = PBXBuildFile; fileRef = B50D23B7159B9C5F00F2FCCC /* TimelapseSliders.xib */; };
 		B5272D5315A27E4900F62549 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = B5272D5115A27E4900F62549 /* settings.png */; };
@@ -94,7 +104,26 @@
 		B5ED520215924E5900B31083 /* ETLProgramViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5ED520115924E5900B31083 /* ETLProgramViewController.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		B5049B7515AF638B00F4AF31 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B5990746158FFC000005C8E2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B599074E158FFC000005C8E2;
+			remoteInfo = "ETL-interface-test";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		B504994D15AF560B00F4AF31 /* ETLTimelapse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETLTimelapse.h; sourceTree = "<group>"; };
+		B504994E15AF560B00F4AF31 /* ETLTimelapse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLTimelapse.m; sourceTree = "<group>"; };
+		B504996D15AF5C2300F4AF31 /* ETLTests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ETLTests.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B504997415AF5C2400F4AF31 /* ETLTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ETLTests-Info.plist"; sourceTree = "<group>"; };
+		B504997615AF5C2400F4AF31 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		B504997815AF5C2400F4AF31 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		B504997A15AF5C2400F4AF31 /* ETLTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ETLTests-Prefix.pch"; sourceTree = "<group>"; };
+		B5049B6E15AF60B900F4AF31 /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GHUnitIOS.framework; path = ../../../../Developer/Frameworks/GHUnitIOS.framework; sourceTree = "<group>"; };
+		B5049B7115AF611700F4AF31 /* ETLTimelapseTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLTimelapseTest.m; sourceTree = "<group>"; };
 		B50D23B5159B9C5F00F2FCCC /* ETLTimelapseSlidersController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETLTimelapseSlidersController.h; sourceTree = "<group>"; };
 		B50D23B6159B9C5F00F2FCCC /* ETLTimelapseSlidersController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLTimelapseSlidersController.m; sourceTree = "<group>"; };
 		B50D23B7159B9C5F00F2FCCC /* TimelapseSliders.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimelapseSliders.xib; sourceTree = "<group>"; };
@@ -157,7 +186,7 @@
 		B5420FD415AB63EF001E3D15 /* ETLDoneProgrammingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLDoneProgrammingController.m; sourceTree = "<group>"; };
 		B5420FD815AB6853001E3D15 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		B558F83C1592D0D300CB6E24 /* libcommunications.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcommunications.a; path = "../../../Library/Developer/Xcode/DerivedData/Easy_Time_Lapse-grxhihygozrtdfccqjonwjemkieb/Build/Products/Debug-iphoneos/libcommunications.a"; sourceTree = "<group>"; };
-		B558F83F1592D16B00CB6E24 /* AudioUnitObject.h */ = {isa = PBXFileReference; fileEncoding = 4; name = AudioUnitObject.h; path = ../../communications/communications/AudioUnitObject.h; sourceTree = "<group>"; };
+		B558F83F1592D16B00CB6E24 /* AudioUnitObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioUnitObject.h; path = ../../communications/communications/AudioUnitObject.h; sourceTree = "<group>"; };
 		B558F8401592D16B00CB6E24 /* AudioSignalAnalyzer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioSignalAnalyzer.h; path = ../../communications/communications/AudioSignalAnalyzer.h; sourceTree = "<group>"; };
 		B558F8411592D16B00CB6E24 /* AudioSignalGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioSignalGenerator.h; path = ../../communications/communications/AudioSignalGenerator.h; sourceTree = "<group>"; };
 		B558F8421592D16B00CB6E24 /* CharReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CharReceiver.h; path = ../../communications/communications/CharReceiver.h; sourceTree = "<group>"; };
@@ -223,6 +252,17 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		B504996A15AF5C2300F4AF31 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B504996F15AF5C2300F4AF31 /* UIKit.framework in Frameworks */,
+				B504997015AF5C2300F4AF31 /* Foundation.framework in Frameworks */,
+				B504997115AF5C2300F4AF31 /* CoreGraphics.framework in Frameworks */,
+				B5049B6F15AF60B900F4AF31 /* GHUnitIOS.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B599074C158FFC000005C8E2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -240,6 +280,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B504994C15AF55E900F4AF31 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B504994D15AF560B00F4AF31 /* ETLTimelapse.h */,
+				B504994E15AF560B00F4AF31 /* ETLTimelapse.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		B504997215AF5C2300F4AF31 /* ETLTests */ = {
+			isa = PBXGroup;
+			children = (
+				B504997315AF5C2400F4AF31 /* Supporting Files */,
+				B5049B7115AF611700F4AF31 /* ETLTimelapseTest.m */,
+			);
+			path = ETLTests;
+			sourceTree = "<group>";
+		};
+		B504997315AF5C2400F4AF31 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B504997415AF5C2400F4AF31 /* ETLTests-Info.plist */,
+				B504997515AF5C2400F4AF31 /* InfoPlist.strings */,
+				B504997815AF5C2400F4AF31 /* main.m */,
+				B504997A15AF5C2400F4AF31 /* ETLTests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		B5272D8115A37C4A00F62549 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -372,8 +441,8 @@
 			isa = PBXGroup;
 			children = (
 				B5420FD815AB6853001E3D15 /* Storyboard.storyboard */,
-				B5272DAD15A3871800F62549 /* CoreImage.framework */,
 				B5990759158FFC000005C8E2 /* ETL-interface-test */,
+				B504997215AF5C2300F4AF31 /* ETLTests */,
 				B5990752158FFC000005C8E2 /* Frameworks */,
 				B5990750158FFC000005C8E2 /* Products */,
 				B558F83C1592D0D300CB6E24 /* libcommunications.a */,
@@ -385,6 +454,7 @@
 			isa = PBXGroup;
 			children = (
 				B599074F158FFC000005C8E2 /* ETL-interface-test.app */,
+				B504996D15AF5C2300F4AF31 /* ETLTests.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -392,6 +462,8 @@
 		B5990752158FFC000005C8E2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B5049B6E15AF60B900F4AF31 /* GHUnitIOS.framework */,
+				B5272DAD15A3871800F62549 /* CoreImage.framework */,
 				B5B9D2261592732E000444BB /* AudioToolbox.framework */,
 				B5990753158FFC000005C8E2 /* UIKit.framework */,
 				B5990755158FFC000005C8E2 /* Foundation.framework */,
@@ -403,6 +475,7 @@
 		B5990759158FFC000005C8E2 /* ETL-interface-test */ = {
 			isa = PBXGroup;
 			children = (
+				B504994C15AF55E900F4AF31 /* Models */,
 				B5272D8115A37C4A00F62549 /* Libraries */,
 				B5ED08121590F7440026432C /* Utility */,
 				B5ED08101590F7140026432C /* Controllers */,
@@ -526,6 +599,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		B504996C15AF5C2300F4AF31 /* ETLTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B504997E15AF5C2400F4AF31 /* Build configuration list for PBXNativeTarget "ETLTests" */;
+			buildPhases = (
+				B504996915AF5C2300F4AF31 /* Sources */,
+				B504996A15AF5C2300F4AF31 /* Frameworks */,
+				B504996B15AF5C2300F4AF31 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B5049B7615AF638B00F4AF31 /* PBXTargetDependency */,
+			);
+			name = ETLTests;
+			productName = ETLTests;
+			productReference = B504996D15AF5C2300F4AF31 /* ETLTests.app */;
+			productType = "com.apple.product-type.application";
+		};
 		B599074E158FFC000005C8E2 /* ETL-interface-test */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B599076D158FFC000005C8E2 /* Build configuration list for PBXNativeTarget "ETL-interface-test" */;
@@ -559,6 +650,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				English,
 			);
 			mainGroup = B5990744158FFC000005C8E2;
 			productRefGroup = B5990750158FFC000005C8E2 /* Products */;
@@ -566,11 +658,20 @@
 			projectRoot = "";
 			targets = (
 				B599074E158FFC000005C8E2 /* ETL-interface-test */,
+				B504996C15AF5C2300F4AF31 /* ETLTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		B504996B15AF5C2300F4AF31 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B504997715AF5C2400F4AF31 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B599074D158FFC000005C8E2 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -638,6 +739,17 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		B504996915AF5C2300F4AF31 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B5049B7715AF66CC00F4AF31 /* ETLTimelapse.h in Sources */,
+				B5049B7815AF66CC00F4AF31 /* ETLTimelapse.m in Sources */,
+				B504997915AF5C2400F4AF31 /* main.m in Sources */,
+				B5049B7215AF611700F4AF31 /* ETLTimelapseTest.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B599074B158FFC000005C8E2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -663,12 +775,29 @@
 				B5272DA815A3800E00F62549 /* NSArray+ArrayUtility.m in Sources */,
 				B5272DAC15A3857E00F62549 /* ColorSwitcher.m in Sources */,
 				B5420FD615AB63EF001E3D15 /* ETLDoneProgrammingController.m in Sources */,
+				B504994F15AF560B00F4AF31 /* ETLTimelapse.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		B5049B7615AF638B00F4AF31 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B599074E158FFC000005C8E2 /* ETL-interface-test */;
+			targetProxy = B5049B7515AF638B00F4AF31 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
+		B504997515AF5C2400F4AF31 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B504997615AF5C2400F4AF31 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		B599075C158FFC000005C8E2 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -680,6 +809,50 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		B504997F15AF5C2400F4AF31 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Developer/Library/Frameworks,
+					"\"$(SRCROOT)/../../../../Developer/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ETLTests/ETLTests-Prefix.pch";
+				INFOPLIST_FILE = "ETLTests/ETLTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		B504998015AF5C2400F4AF31 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Developer/Library/Frameworks,
+					"\"$(SRCROOT)/../../../../Developer/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ETLTests/ETLTests-Prefix.pch";
+				INFOPLIST_FILE = "ETLTests/ETLTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
 		B599076B158FFC000005C8E2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -728,8 +901,14 @@
 		B599076E158FFC000005C8E2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../gh-unit/Examples/MyTestable-iOS\"",
+					"\"$(SRCROOT)/../../../gh-unit/Examples/MyTestable-MacOSX/Frameworks\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ETL-interface-test/ETL-interface-test-Prefix.pch";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				INFOPLIST_FILE = "ETL-interface-test/ETL-interface-test-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -745,8 +924,14 @@
 		B599076F158FFC000005C8E2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../gh-unit/Examples/MyTestable-iOS\"",
+					"\"$(SRCROOT)/../../../gh-unit/Examples/MyTestable-MacOSX/Frameworks\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ETL-interface-test/ETL-interface-test-Prefix.pch";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				INFOPLIST_FILE = "ETL-interface-test/ETL-interface-test-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -762,6 +947,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		B504997E15AF5C2400F4AF31 /* Build configuration list for PBXNativeTarget "ETLTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B504997F15AF5C2400F4AF31 /* Debug */,
+				B504998015AF5C2400F4AF31 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		B5990749158FFC000005C8E2 /* Build configuration list for PBXProject "ETL-interface-test" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

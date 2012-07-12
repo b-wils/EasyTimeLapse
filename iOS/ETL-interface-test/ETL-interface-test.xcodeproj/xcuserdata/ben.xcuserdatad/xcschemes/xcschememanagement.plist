@@ -9,9 +9,29 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>ETL-tests.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
+		<key>ETLTests.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>B504995415AF58A300F4AF31</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B504996C15AF5C2300F4AF31</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>B599074E158FFC000005C8E2</key>
 		<dict>
 			<key>primary</key>
