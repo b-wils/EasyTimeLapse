@@ -107,7 +107,7 @@
             
             packetIndex = receivePacket.data;
             
-            if (packetIndex > 5) {
+            if (packetIndex > 4) {
                 NSLog(@"EndLoop");
                 packetIndex = 1;
                 return;
@@ -118,9 +118,22 @@
             
             usleep(500000);
             
+            if (packetIndex % 2 == 0) {
+            
             sentPackets[packetIndex].command = ETL_COMMAND_BASICTIMELAPSE;
             sentPackets[packetIndex].packetId = packetIndex;
         
+            sentPackets[packetIndex].basicTimelapse.shots = packetIndex;
+            sentPackets[packetIndex].basicTimelapse.interval = 2000;
+            sentPackets[packetIndex].basicTimelapse.exposureLengthPower = -2;
+            } else {
+                sentPackets[packetIndex].command = ETL_COMMAND_BULBRAMP;
+                sentPackets[packetIndex].packetId = packetIndex;
+                
+                sentPackets[packetIndex].bulbRamp.exposureFstopChangePerMin = 0.15;
+            }
+            
+            
             sentPackets[packetIndex].crc = crc_init();
             sentPackets[packetIndex].crc =  crc_update(sentPackets[packetIndex].crc, ((uint8_t *) &sentPackets[packetIndex]) + sizeof(crc_t), sizeof(VariablePacket) - sizeof(crc_t));
             sentPackets[packetIndex].crc = crc_finalize(sentPackets[packetIndex].crc);
