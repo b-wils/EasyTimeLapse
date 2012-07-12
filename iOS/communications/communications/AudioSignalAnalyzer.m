@@ -148,9 +148,8 @@ static OSStatus	recordingCallback(
     AudioSignalAnalyzer *analyzer = (AudioSignalAnalyzer *) inUserData;
     AudioBuffer buffer;
     
-    // TODO - figure out why buffer needs sizeof(SAMPLE)*2 bytes per sample
     buffer.mNumberChannels = 1;
-    buffer.mDataByteSize = inNumFrames * sizeof(SAMPLE) * 2;
+    buffer.mDataByteSize = inNumFrames * sizeof(SAMPLE);
     buffer.mData = malloc(buffer.mDataByteSize);
     
     AudioBufferList bufferList;
@@ -160,7 +159,7 @@ static OSStatus	recordingCallback(
     OSStatus err = AudioUnitRender([analyzer audioUnit],
                                    ioActionFlags,
                                    inTimeStamp,
-                                   kInputBus,
+                                   inBusNumber,
                                    inNumFrames,
                                    &bufferList);
 	if (err) { printf("renderingCallback: error %d\n", (int)err); return err; }
@@ -245,7 +244,18 @@ static OSStatus	recordingCallback(
         printf("Format\n\tsample rate: %f\n", format.mSampleRate);
         printf("\tchannels: %ld\n", format.mChannelsPerFrame);
         printf("\tbytes per frame: %ld\n", format.mBytesPerFrame);
-        printf("\tbytes per packet: %ld\n", format.mBytesPerPacket);        
+        printf("\tbytes per packet: %ld\n", format.mBytesPerPacket);
+        printf("\tformat flags: %ld (expected %d)\n", format.mFormatFlags, kAudioFormatFlagIsSignedInteger | kAudioFormatFlagIsPacked);
+        printf("\tformat id: %ld (expected %d)\n", format.mFormatID, kAudioFormatLinearPCM);
+    }
+    Float64 sampleRate;   
+    size = sizeof(Float64);
+    err = AudioSessionGetProperty(kAudioSessionProperty_CurrentHardwareSampleRate, &size, &sampleRate);
+    if (err) {
+        printf("Error getting hardware sample rate: %ld\n", err);
+    }
+    else {
+        printf("Sample rate: %f\n", sampleRate);        
     }
 }
 
@@ -253,9 +263,19 @@ static OSStatus	recordingCallback(
 {
     if (audioUnitInitialized) return noErr;
     
+    Float64 sampleRate;
+    UInt32 size = sizeof(Float64);
+    OSStatus err = AudioSessionGetProperty(kAudioSessionProperty_CurrentHardwareSampleRate, &size, &sampleRate);
+    if (err) {
+        printf("Error getting hardware sample rate: %ld\n", err);
+    }
+    else {
+        printf("Sample rate: %f\n", sampleRate);        
+    }
+    
 	AudioComponentDescription defaultOutputDescription;
 	defaultOutputDescription.componentType = kAudioUnitType_Output;
-	defaultOutputDescription.componentSubType = kAudioUnitSubType_RemoteIO;
+	defaultOutputDescription.componentSubType = kAudioUnitSubType_VoiceProcessingIO; //kAudioUnitSubType_RemoteIO;
 	defaultOutputDescription.componentManufacturer = kAudioUnitManufacturer_Apple;
 	defaultOutputDescription.componentFlags = 0;
 	defaultOutputDescription.componentFlagsMask = 0;
@@ -265,7 +285,7 @@ static OSStatus	recordingCallback(
 	NSAssert(defaultOutput, @"Can't find default output");
 	
 	// Create a new unit based on this that we'll use for output
-	OSErr err = AudioComponentInstanceNew(defaultOutput, &audioUnit);
+	/*OSErr*/ err = AudioComponentInstanceNew(defaultOutput, &audioUnit);
 	NSAssert1(audioUnit, @"Error creating unit: %ld", err);
     
     // Disable output
@@ -287,15 +307,21 @@ static OSStatus	recordingCallback(
     NSAssert1(err == noErr, @"Error enabling input: %ld", err);
     
     // Disable voice noise reduction
-//    UInt32 shouldBypass = YES;
-//    err = AudioUnitSetProperty(audioUnit, 
-//                               kAUVoiceIOProperty_BypassVoiceProcessing, 
-//                               kAudioUnitScope_Input, 
-//                               0, 
-//                               &shouldBypass, sizeof(UInt32));
-//    NSAssert1(err == noErr, @"Error disabling noice reduction: %ld", err);
+    UInt32 shouldBypass = YES;
+    err = AudioUnitSetProperty(audioUnit, 
+                               kAUVoiceIOProperty_BypassVoiceProcessing, 
+                               kAudioUnitScope_Input, 
+                               0, 
+                               &shouldBypass, sizeof(UInt32));
+    NSAssert1(err == noErr, @"Error disabling noice reduction: %ld", err);
+    
+    err = AudioUnitSetProperty(audioUnit, 
+                               kAUVoiceIOProperty_BypassVoiceProcessing, 
+                               kAudioUnitScope_Output, 
+                               0, 
+                               &shouldBypass, sizeof(UInt32));
+    NSAssert1(err == noErr, @"Error disabling noice reduction: %ld", err);
 	
-	// Set our tone rendering function on the unit
 	AURenderCallbackStruct input;
 	input.inputProc = recordingCallback;
 	input.inputProcRefCon = (__bridge void*)self;
@@ -306,11 +332,19 @@ static OSStatus	recordingCallback(
                                &input, sizeof(AURenderCallbackStruct));
 	NSAssert1(err == noErr, @"Error setting callback: %ld", err);
 	
-	// Set the format to 32 bit, single channel, floating point, linear PCM
+	// Set the format
 	err = AudioUnitSetProperty (audioUnit,
                                 kAudioUnitProperty_StreamFormat,
                                 kAudioUnitScope_Input,
                                 kOutputBus,
+                                &audioFormat,
+                                sizeof(AudioStreamBasicDescription));
+    NSAssert1(err == noErr, @"Error setting stream format: %ld", err);
+    
+    err = AudioUnitSetProperty (audioUnit,
+                                kAudioUnitProperty_StreamFormat,
+                                kAudioUnitScope_Output,
+                                kInputBus,
                                 &audioFormat,
                                 sizeof(AudioStreamBasicDescription));
     NSAssert1(err == noErr, @"Error setting stream format: %ld", err);

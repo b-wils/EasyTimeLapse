@@ -54,7 +54,7 @@ ETLDeviceInterface * __theDeviceInterface = NULL;
 							 &sessionCategory);
     NSAssert1(err == noErr, @"Failed to set audio category", err);
     
-    Float32 preferredBufferSize = .005;
+    Float32 preferredBufferSize = .02;
     err = AudioSessionSetProperty(kAudioSessionProperty_PreferredHardwareIOBufferDuration, sizeof(preferredBufferSize), &preferredBufferSize);
     NSAssert1(err == noErr, @"Failed to set buffer duration", err);
 	
