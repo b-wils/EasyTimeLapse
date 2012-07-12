@@ -9,7 +9,6 @@
 #import "AudioSignalAnalyzer.h"
 
 #define SAMPLE_RATE  44100
-#define SAMPLE  SInt16
 #define NUM_CHANNELS  1
 #define BYTES_PER_FRAME  (NUM_CHANNELS * sizeof(SAMPLE))
 
@@ -23,9 +22,13 @@
 #define EDGE_MAX_WIDTH			8
 #define IDLE_CHECK_PERIOD		MS_TO_SAMPLES(10)
 
-static int analyze( SAMPLE *inputBuffer,
-						  unsigned long framesPerBuffer,
-						  AudioSignalAnalyzer* analyzer)
+
+#define kOutputBus 0
+#define kInputBus 1
+
+static int analyze(SAMPLE *inputBuffer,
+                   unsigned long framesPerBuffer,
+                   AudioSignalAnalyzer* analyzer)
 {
 	analyzerData *data = analyzer.pulseData;
 	SAMPLE *pSample = inputBuffer;
@@ -133,39 +136,49 @@ static int analyze( SAMPLE *inputBuffer,
 }
 
 
-static void recordingCallback (
-							   void								*inUserData,
-							   AudioQueueRef						inAudioQueue,
-							   AudioQueueBufferRef					inBuffer,
-							   const AudioTimeStamp				*inStartTime,
-							   UInt32								inNumPackets,
-							   const AudioStreamPacketDescription	*inPacketDesc
-) {
-	// This is not a Cocoa thread, it needs a manually allocated pool
-//    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-	
+static OSStatus	recordingCallback(
+							void						*inUserData, 
+							AudioUnitRenderActionFlags 	*ioActionFlags, 
+							const AudioTimeStamp 		*inTimeStamp, 
+							UInt32 						inBusNumber, 
+							UInt32 						inNumFrames, 
+							AudioBufferList 			*ioData)
+{	
  	// This callback, being outside the implementation block, needs a reference to the AudioRecorder object
-	AudioSignalAnalyzer *analyzer = (AudioSignalAnalyzer *) inUserData;
+    AudioSignalAnalyzer *analyzer = (AudioSignalAnalyzer *) inUserData;
+    AudioBuffer buffer;
+    
+    // TODO - figure out why buffer needs sizeof(SAMPLE)*2 bytes per sample
+    buffer.mNumberChannels = 1;
+    buffer.mDataByteSize = inNumFrames * sizeof(SAMPLE) * 2;
+    buffer.mData = malloc(buffer.mDataByteSize);
+    
+    AudioBufferList bufferList;
+    bufferList.mNumberBuffers = 1;
+    bufferList.mBuffers[0] = buffer;
+    
+    OSStatus err = AudioUnitRender([analyzer audioUnit],
+                                   ioActionFlags,
+                                   inTimeStamp,
+                                   kInputBus,
+                                   inNumFrames,
+                                   &bufferList);
+	if (err) { printf("renderingCallback: error %d\n", (int)err); return err; }
+
 	
 	// if there is audio data, analyze it
-	if (inNumPackets > 0) {
-		analyze((SAMPLE*)inBuffer->mAudioData, inBuffer->mAudioDataByteSize / BYTES_PER_FRAME, analyzer);		
+	if (inNumFrames > 0) {
+		analyze((SAMPLE*)bufferList.mBuffers[0].mData, bufferList.mBuffers[0].mDataByteSize / BYTES_PER_FRAME, analyzer);		
 	}
-	
-	// if not stopping, re-enqueue the buffer so that it can be filled again
-	if ([analyzer isRunning]) {		
-		AudioQueueEnqueueBuffer (
-								 inAudioQueue,
-								 inBuffer,
-								 0,
-								 NULL
-								 );
-	}
-	
-//	[pool release];
+    
+    free(buffer.mData);
+    
+    return noErr;
 }
 
-
+@interface AudioSignalAnalyzer ()
+- (OSStatus) createAudioUnit;
+@end
 
 @implementation AudioSignalAnalyzer
 
@@ -176,6 +189,34 @@ static void recordingCallback (
 	return &pulseData;
 }
 
+- (void) setupAudioFormat
+{
+    // these statements define the audio stream basic description
+    // for the file to record into.
+    audioFormat.mSampleRate			= 44100; //SAMPLE_RATE;
+    audioFormat.mFormatID			= kAudioFormatLinearPCM;
+    audioFormat.mFormatFlags		= kAudioFormatFlagIsSignedInteger | kAudioFormatFlagIsPacked;
+    audioFormat.mFramesPerPacket	= 1;
+    audioFormat.mChannelsPerFrame	= 1;
+    audioFormat.mBitsPerChannel		= 16;
+    audioFormat.mBytesPerPacket		= 2;
+    audioFormat.mBytesPerFrame		= 2;
+}
+
+- (void) createBuffers
+{
+    UInt32 maxFPS;
+    UInt32 size = sizeof(UInt32);
+    OSStatus err = AudioUnitGetProperty(audioUnit, kAudioUnitProperty_MaximumFramesPerSlice, kAudioUnitScope_Global, 0, &maxFPS, &size);
+    NSAssert1(err == noErr, @"Failed to get the remote I/O unit's max frames per slice: %ld", err);
+    if(sampleBuffer) {
+        free(sampleBuffer);
+        sampleBuffer = nil;
+    }
+    
+    sampleBuffer = malloc(sizeof(SAMPLE)*maxFPS);
+}
+
 - (id) init
 {
 	self = [super init];
@@ -183,32 +224,105 @@ static void recordingCallback (
 	if (self != nil) 
 	{
 		recognizers = [[NSMutableArray alloc] init];
-		// these statements define the audio stream basic description
-		// for the file to record into.
-		audioFormat.mSampleRate			= SAMPLE_RATE;
-		audioFormat.mFormatID			= kAudioFormatLinearPCM;
-		audioFormat.mFormatFlags		= kAudioFormatFlagIsSignedInteger | kAudioFormatFlagIsPacked;
-		audioFormat.mFramesPerPacket	= 1;
-		audioFormat.mChannelsPerFrame	= 1;
-		audioFormat.mBitsPerChannel		= 16;
-		audioFormat.mBytesPerPacket		= 2;
-		audioFormat.mBytesPerFrame		= 2;
-		
-		
-		OSStatus myStatus = AudioQueueNewInput (
-							&audioFormat,
-							recordingCallback,
-							self,									// userData
-							NULL,									// run loop
-							NULL,									// run loop mode
-							0,										// flags
-							&queueObject
-							);
-        
-        NSLog(@"AudioQueueNewInput retval: %ld", myStatus);
-		
+		[self setupAudioFormat];
+		[self createAudioUnit];
+		[self createBuffers];
 	}
 	return self;
+}
+
+- (void) diagnoseAudioUnit
+{
+    AudioStreamBasicDescription format;
+    UInt32 size = sizeof(AudioStreamBasicDescription);
+    OSStatus err;
+    
+    err = AudioUnitGetProperty(audioUnit, kAudioUnitProperty_StreamFormat, kAudioUnitScope_Input, 0, &format, &size);
+    if (err) {
+        printf("Error getting stream format: %ld\n", err);
+    }
+    else {
+        printf("Format\n\tsample rate: %f\n", format.mSampleRate);
+        printf("\tchannels: %ld\n", format.mChannelsPerFrame);
+        printf("\tbytes per frame: %ld\n", format.mBytesPerFrame);
+        printf("\tbytes per packet: %ld\n", format.mBytesPerPacket);        
+    }
+}
+
+- (OSStatus) createAudioUnit
+{
+    if (audioUnitInitialized) return noErr;
+    
+	AudioComponentDescription defaultOutputDescription;
+	defaultOutputDescription.componentType = kAudioUnitType_Output;
+	defaultOutputDescription.componentSubType = kAudioUnitSubType_RemoteIO;
+	defaultOutputDescription.componentManufacturer = kAudioUnitManufacturer_Apple;
+	defaultOutputDescription.componentFlags = 0;
+	defaultOutputDescription.componentFlagsMask = 0;
+	
+	// Get the default playback output unit
+	AudioComponent defaultOutput = AudioComponentFindNext(NULL, &defaultOutputDescription);
+	NSAssert(defaultOutput, @"Can't find default output");
+	
+	// Create a new unit based on this that we'll use for output
+	OSErr err = AudioComponentInstanceNew(defaultOutput, &audioUnit);
+	NSAssert1(audioUnit, @"Error creating unit: %ld", err);
+    
+    // Disable output
+    UInt32 enableOutput = NO;
+    err = AudioUnitSetProperty(audioUnit, 
+                               kAudioOutputUnitProperty_EnableIO, 
+                               kAudioUnitScope_Output, 
+                               kOutputBus, 
+                               &enableOutput, sizeof(UInt32));
+    NSAssert1(err == noErr, @"Error disabling output: %ld", err);
+    
+    // Enable input
+    UInt32 enableInput = YES;
+    err = AudioUnitSetProperty(audioUnit, 
+                               kAudioOutputUnitProperty_EnableIO, 
+                               kAudioUnitScope_Input, 
+                               kInputBus, 
+                               &enableInput, sizeof(UInt32));
+    NSAssert1(err == noErr, @"Error enabling input: %ld", err);
+    
+    // Disable voice noise reduction
+//    UInt32 shouldBypass = YES;
+//    err = AudioUnitSetProperty(audioUnit, 
+//                               kAUVoiceIOProperty_BypassVoiceProcessing, 
+//                               kAudioUnitScope_Input, 
+//                               0, 
+//                               &shouldBypass, sizeof(UInt32));
+//    NSAssert1(err == noErr, @"Error disabling noice reduction: %ld", err);
+	
+	// Set our tone rendering function on the unit
+	AURenderCallbackStruct input;
+	input.inputProc = recordingCallback;
+	input.inputProcRefCon = (__bridge void*)self;
+	err = AudioUnitSetProperty(audioUnit, 
+                               kAudioOutputUnitProperty_SetInputCallback, 
+                               kAudioUnitScope_Global,
+                               kInputBus, 
+                               &input, sizeof(AURenderCallbackStruct));
+	NSAssert1(err == noErr, @"Error setting callback: %ld", err);
+	
+	// Set the format to 32 bit, single channel, floating point, linear PCM
+	err = AudioUnitSetProperty (audioUnit,
+                                kAudioUnitProperty_StreamFormat,
+                                kAudioUnitScope_Input,
+                                kOutputBus,
+                                &audioFormat,
+                                sizeof(AudioStreamBasicDescription));
+    NSAssert1(err == noErr, @"Error setting stream format: %ld", err);
+    
+    [self diagnoseAudioUnit];
+    
+    err = AudioUnitInitialize(audioUnit);
+    NSAssert1(err == noErr, @"Error initializing audio unit", err);
+    
+    audioUnitInitialized = true;
+    
+    return noErr;
 }
 
 - (void) addRecognizer: (id<PatternRecognizer>)recognizer
@@ -218,23 +332,16 @@ static void recordingCallback (
 
 - (void) record
 {
-	[self setupRecording];
-	
+	[self setupRecording];	
 	[self reset];
 	
-	AudioQueueStart (
-					 queueObject,
-					 NULL			// start time. NULL means ASAP.
-					 );	
+    AudioOutputUnitStart(audioUnit);
 }
 
 
 - (void) stop
 {
-	AudioQueueStop (
-					queueObject,
-					TRUE
-					);
+    AudioOutputUnitStop(audioUnit);
 	
 	[self reset];
 }
@@ -243,25 +350,25 @@ static void recordingCallback (
 - (void) setupRecording
 {
 	// allocate and enqueue buffers
-	int bufferByteSize = 4096;		// this is the maximum buffer size used by the player class
-	int bufferIndex;
-	
-	for (bufferIndex = 0; bufferIndex < 20; ++bufferIndex) {
-		
-		AudioQueueBufferRef bufferRef;
-		
-		AudioQueueAllocateBuffer (
-								  queueObject,
-								  bufferByteSize, &bufferRef
-								  );
-		
-		AudioQueueEnqueueBuffer (
-								 queueObject,
-								 bufferRef,
-								 0,
-								 NULL
-								 );
-	}
+//	int bufferByteSize = 4096;		// this is the maximum buffer size used by the player class
+//	int bufferIndex;
+//	
+//	for (bufferIndex = 0; bufferIndex < 20; ++bufferIndex) {
+//		
+//		AudioQueueBufferRef bufferRef;
+//		
+//		AudioQueueAllocateBuffer (
+//								  queueObject,
+//								  bufferByteSize, &bufferRef
+//								  );
+//		
+//		AudioQueueEnqueueBuffer (
+//								 queueObject,
+//								 bufferRef,
+//								 0,
+//								 NULL
+//								 );
+//	}
 }
 
 - (void) idle: (unsigned)samples
@@ -290,9 +397,8 @@ static void recordingCallback (
 
 - (void) dealloc
 {
-	AudioQueueDispose (queueObject,
-					   TRUE);
-	
+//	AudioQueueDispose (queueObject,
+//					   TRUE);
 	[recognizers release];
 	
 	[super dealloc];

@@ -42,22 +42,29 @@ ETLDeviceInterface * __theDeviceInterface = NULL;
     // initialize the audio session object for this application,
 	//  registering the callback that Audio Session Services will invoke 
 	//  when there's an interruption
-	AudioSessionInitialize (NULL, NULL, interruptionListenerCallback, 
+	OSStatus err = AudioSessionInitialize (NULL, NULL, interruptionListenerCallback, 
                             (__bridge_retained void *)self);
+    NSAssert1(err == noErr, @"Failed to initialize session", err);
     
     // before instantiating the recording audio queue object, 
 	//  set the audio session category
 	UInt32 sessionCategory = kAudioSessionCategory_PlayAndRecord;
-	AudioSessionSetProperty (kAudioSessionProperty_AudioCategory,
+	err = AudioSessionSetProperty (kAudioSessionProperty_AudioCategory,
 							 sizeof (sessionCategory),
 							 &sessionCategory);
+    NSAssert1(err == noErr, @"Failed to set audio category", err);
+    
+    Float32 preferredBufferSize = .005;
+    err = AudioSessionSetProperty(kAudioSessionProperty_PreferredHardwareIOBufferDuration, sizeof(preferredBufferSize), &preferredBufferSize);
+    NSAssert1(err == noErr, @"Failed to set buffer duration", err);
 	
 	recognizer = [[FSKRecognizer alloc] init];
 	analyzer = [[AudioSignalAnalyzer alloc] init];
 	[analyzer addRecognizer:recognizer];
 	[recognizer addReceiver:receiver];
 	generator = [[FSKSerialGenerator alloc] init];
-	AudioSessionSetActive (true);
+	err = AudioSessionSetActive (true);
+    NSAssert1(err == noErr, @"Failed to set active session", err);
 
     return self;
 }

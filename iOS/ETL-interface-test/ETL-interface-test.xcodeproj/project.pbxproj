@@ -157,7 +157,7 @@
 		B5420FD415AB63EF001E3D15 /* ETLDoneProgrammingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLDoneProgrammingController.m; sourceTree = "<group>"; };
 		B5420FD815AB6853001E3D15 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		B558F83C1592D0D300CB6E24 /* libcommunications.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcommunications.a; path = "../../../Library/Developer/Xcode/DerivedData/Easy_Time_Lapse-grxhihygozrtdfccqjonwjemkieb/Build/Products/Debug-iphoneos/libcommunications.a"; sourceTree = "<group>"; };
-		B558F83F1592D16B00CB6E24 /* AudioQueueObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioQueueObject.h; path = ../../communications/communications/AudioQueueObject.h; sourceTree = "<group>"; };
+		B558F83F1592D16B00CB6E24 /* AudioUnitObject.h */ = {isa = PBXFileReference; fileEncoding = 4; name = AudioUnitObject.h; path = ../../communications/communications/AudioUnitObject.h; sourceTree = "<group>"; };
 		B558F8401592D16B00CB6E24 /* AudioSignalAnalyzer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioSignalAnalyzer.h; path = ../../communications/communications/AudioSignalAnalyzer.h; sourceTree = "<group>"; };
 		B558F8411592D16B00CB6E24 /* AudioSignalGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioSignalGenerator.h; path = ../../communications/communications/AudioSignalGenerator.h; sourceTree = "<group>"; };
 		B558F8421592D16B00CB6E24 /* CharReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CharReceiver.h; path = ../../communications/communications/CharReceiver.h; sourceTree = "<group>"; };
@@ -318,7 +318,7 @@
 			isa = PBXGroup;
 			children = (
 				B5272DC415A4DD3800F62549 /* Common.h */,
-				B558F83F1592D16B00CB6E24 /* AudioQueueObject.h */,
+				B558F83F1592D16B00CB6E24 /* AudioUnitObject.h */,
 				B558F8401592D16B00CB6E24 /* AudioSignalAnalyzer.h */,
 				B558F8411592D16B00CB6E24 /* AudioSignalGenerator.h */,
 				B558F8421592D16B00CB6E24 /* CharReceiver.h */,

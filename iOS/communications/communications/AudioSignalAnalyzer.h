@@ -6,9 +6,10 @@
 //  Copyright 2008 Perceptive Development. All rights reserved.
 //
 
-#import "AudioQueueObject.h"
+#import "AudioUnitObject.h"
 #import "PatternRecognizer.h"
 
+#define SAMPLE  SInt16
 //#define DETAILED_ANALYSIS
 
 typedef struct
@@ -31,10 +32,13 @@ typedef struct
 }
 analyzerData;
 
-@interface AudioSignalAnalyzer : AudioQueueObject {
+@interface AudioSignalAnalyzer : AudioUnitObject {
 	BOOL	stopping;
 	analyzerData pulseData;
 	NSMutableArray* recognizers;
+
+    @public
+    SAMPLE* sampleBuffer;
 }
 
 @property (readwrite) BOOL	stopping;

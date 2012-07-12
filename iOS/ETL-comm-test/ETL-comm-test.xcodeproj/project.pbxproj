@@ -68,7 +68,7 @@
 		FB20297A159D11C900707177 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FB20297C159D11C900707177 /* ETL_comm_testTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ETL_comm_testTests.h; sourceTree = "<group>"; };
 		FB20297D159D11C900707177 /* ETL_comm_testTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ETL_comm_testTests.m; sourceTree = "<group>"; };
-		FB20298B159E66D900707177 /* AudioQueueObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioQueueObject.h; path = ../../communications/communications/AudioQueueObject.h; sourceTree = "<group>"; };
+		FB20298B159E66D900707177 /* AudioUnitObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioUnitObject.h; path = ../../communications/communications/AudioUnitObject.h; sourceTree = "<group>"; };
 		FB20298C159E66D900707177 /* AudioSignalAnalyzer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioSignalAnalyzer.h; path = ../../communications/communications/AudioSignalAnalyzer.h; sourceTree = "<group>"; };
 		FB20298D159E66D900707177 /* AudioSignalGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioSignalGenerator.h; path = ../../communications/communications/AudioSignalGenerator.h; sourceTree = "<group>"; };
 		FB20298E159E66D900707177 /* CharReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CharReceiver.h; path = ../../communications/communications/CharReceiver.h; sourceTree = "<group>"; };
@@ -205,7 +205,7 @@
 			children = (
 				FBF7473115A662A8006194D1 /* crc.h */,
 				FBF7472F15A6621A006194D1 /* Common.h */,
-				FB20298B159E66D900707177 /* AudioQueueObject.h */,
+				FB20298B159E66D900707177 /* AudioUnitObject.h */,
 				FB20298C159E66D900707177 /* AudioSignalAnalyzer.h */,
 				FB20298D159E66D900707177 /* AudioSignalGenerator.h */,
 				FB20298E159E66D900707177 /* CharReceiver.h */,

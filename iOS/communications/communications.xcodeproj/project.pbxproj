@@ -8,8 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		B5272DC315A4DBDB00F62549 /* Common.h in Headers */ = {isa = PBXBuildFile; fileRef = B5272DC215A4DBDB00F62549 /* Common.h */; };
-		B5B2350D1592CD660046F3B5 /* AudioQueueObject.h in Headers */ = {isa = PBXBuildFile; fileRef = B5B234F11592CD660046F3B5 /* AudioQueueObject.h */; };
-		B5B2350E1592CD660046F3B5 /* AudioQueueObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B5B234F21592CD660046F3B5 /* AudioQueueObject.m */; };
+		B559B43915ADDF230070FA70 /* AudioQueueObject.h in Headers */ = {isa = PBXBuildFile; fileRef = B559B43715ADDF230070FA70 /* AudioQueueObject.h */; };
+		B559B43A15ADDF230070FA70 /* AudioQueueObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B559B43815ADDF230070FA70 /* AudioQueueObject.m */; };
+		B5B2350D1592CD660046F3B5 /* AudioUnitObject.h in Headers */ = {isa = PBXBuildFile; fileRef = B5B234F11592CD660046F3B5 /* AudioUnitObject.h */; };
+		B5B2350E1592CD660046F3B5 /* AudioUnitObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B5B234F21592CD660046F3B5 /* AudioUnitObject.m */; };
 		B5B2350F1592CD660046F3B5 /* AudioSignalAnalyzer.h in Headers */ = {isa = PBXBuildFile; fileRef = B5B234F31592CD660046F3B5 /* AudioSignalAnalyzer.h */; };
 		B5B235101592CD660046F3B5 /* AudioSignalAnalyzer.m in Sources */ = {isa = PBXBuildFile; fileRef = B5B234F41592CD660046F3B5 /* AudioSignalAnalyzer.m */; };
 		B5B235111592CD660046F3B5 /* AudioSignalGenerator.h in Headers */ = {isa = PBXBuildFile; fileRef = B5B234F51592CD660046F3B5 /* AudioSignalGenerator.h */; };
@@ -39,8 +41,10 @@
 
 /* Begin PBXFileReference section */
 		B5272DC215A4DBDB00F62549 /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Common.h; path = ../../../ETL_Firmware/ETL_V1/Common.h; sourceTree = "<group>"; };
-		B5B234F11592CD660046F3B5 /* AudioQueueObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioQueueObject.h; sourceTree = "<group>"; };
-		B5B234F21592CD660046F3B5 /* AudioQueueObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioQueueObject.m; sourceTree = "<group>"; };
+		B559B43715ADDF230070FA70 /* AudioQueueObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioQueueObject.h; sourceTree = "<group>"; };
+		B559B43815ADDF230070FA70 /* AudioQueueObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioQueueObject.m; sourceTree = "<group>"; };
+		B5B234F11592CD660046F3B5 /* AudioUnitObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioUnitObject.h; sourceTree = "<group>"; };
+		B5B234F21592CD660046F3B5 /* AudioUnitObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioUnitObject.m; sourceTree = "<group>"; };
 		B5B234F31592CD660046F3B5 /* AudioSignalAnalyzer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioSignalAnalyzer.h; sourceTree = "<group>"; };
 		B5B234F41592CD660046F3B5 /* AudioSignalAnalyzer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioSignalAnalyzer.m; sourceTree = "<group>"; };
 		B5B234F51592CD660046F3B5 /* AudioSignalGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioSignalGenerator.h; sourceTree = "<group>"; };
@@ -111,8 +115,10 @@
 			isa = PBXGroup;
 			children = (
 				B5272DC215A4DBDB00F62549 /* Common.h */,
-				B5B234F11592CD660046F3B5 /* AudioQueueObject.h */,
-				B5B234F21592CD660046F3B5 /* AudioQueueObject.m */,
+				B559B43715ADDF230070FA70 /* AudioQueueObject.h */,
+				B559B43815ADDF230070FA70 /* AudioQueueObject.m */,
+				B5B234F11592CD660046F3B5 /* AudioUnitObject.h */,
+				B5B234F21592CD660046F3B5 /* AudioUnitObject.m */,
 				B5B234F31592CD660046F3B5 /* AudioSignalAnalyzer.h */,
 				B5B234F41592CD660046F3B5 /* AudioSignalAnalyzer.m */,
 				B5B234F51592CD660046F3B5 /* AudioSignalGenerator.h */,
@@ -157,7 +163,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5B2350D1592CD660046F3B5 /* AudioQueueObject.h in Headers */,
+				B5B2350D1592CD660046F3B5 /* AudioUnitObject.h in Headers */,
 				B5B2350F1592CD660046F3B5 /* AudioSignalAnalyzer.h in Headers */,
 				B5B235111592CD660046F3B5 /* AudioSignalGenerator.h in Headers */,
 				B5B235131592CD660046F3B5 /* CharReceiver.h in Headers */,
@@ -173,6 +179,7 @@
 				B5B235251592CD660046F3B5 /* TablePickerController.h in Headers */,
 				B5B235271592CD660046F3B5 /* TypePadController.h in Headers */,
 				B5272DC315A4DBDB00F62549 /* Common.h in Headers */,
+				B559B43915ADDF230070FA70 /* AudioQueueObject.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,7 +234,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5B2350E1592CD660046F3B5 /* AudioQueueObject.m in Sources */,
+				B5B2350E1592CD660046F3B5 /* AudioUnitObject.m in Sources */,
 				B5B235101592CD660046F3B5 /* AudioSignalAnalyzer.m in Sources */,
 				B5B235121592CD660046F3B5 /* AudioSignalGenerator.m in Sources */,
 				B5B235141592CD660046F3B5 /* crc.c in Sources */,
@@ -238,6 +245,7 @@
 				B5B235241592CD660046F3B5 /* ScanCodeConverter.m in Sources */,
 				B5B235261592CD660046F3B5 /* TablePickerController.m in Sources */,
 				B5B235281592CD660046F3B5 /* TypePadController.m in Sources */,
+				B559B43A15ADDF230070FA70 /* AudioQueueObject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
