@@ -311,7 +311,7 @@ static OSStatus	recordingCallback(
     NSAssert1(err == noErr, @"Error enabling input: %ld", err);
     
     // Disable voice noise reduction
-    UInt32 shouldBypass = YES;
+//    UInt32 shouldBypass = YES;
 //    err = AudioUnitSetProperty(audioUnit, 
 //                               kAUVoiceIOProperty_BypassVoiceProcessing, 
 //                               kAudioUnitScope_Input, 
@@ -435,8 +435,7 @@ static OSStatus	recordingCallback(
 
 - (void) dealloc
 {
-//	AudioQueueDispose (queueObject,
-//					   TRUE);
+    AudioUnitUninitialize(audioUnit);
 	[recognizers release];
 	
 	[super dealloc];

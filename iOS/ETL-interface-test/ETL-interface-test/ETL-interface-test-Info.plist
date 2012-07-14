@@ -36,5 +36,7 @@
 	</array>
 	<key>UIMainStoryboardFile</key>
 	<string>Storyboard</string>
+	<key>CFBundleIconFile</key>
+	<string>icon.png</string>
 </dict>
 </plist>

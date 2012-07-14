@@ -53,7 +53,7 @@ static void playbackCallback (
 	if (self != nil) {
 		[self setupAudioFormat];
 		[self setupPlaybackAudioQueueObject];
-		self.stopped = NO;
+		self.stopped = YES;
 		self.audioPlayerShouldStopImmediately = NO;
 	}
 	
@@ -116,7 +116,7 @@ static void playbackCallback (
 
 
 - (void) play {
-	
+    stopped = NO;
 	[self setupAudioQueueBuffers];
 	
 	AudioQueueStart (
@@ -132,6 +132,7 @@ static void playbackCallback (
 					self.audioPlayerShouldStopImmediately
 					);
 	AudioQueueReset(self.queueObject);
+    stopped = YES;
 }
 
 
@@ -158,7 +159,7 @@ static void playbackCallback (
 					   queueObject, 
 					   YES
 					   );
-	
+    stopped = YES;
 	[super dealloc];
 }
 

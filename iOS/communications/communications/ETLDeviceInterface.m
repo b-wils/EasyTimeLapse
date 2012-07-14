@@ -24,27 +24,36 @@ void interruptionListenerCallback (void	*inUserData, UInt32	interruptionState)
 }
 
 // Location to store the singleton instance of ETLDeviceInterface
-ETLDeviceInterface * __theDeviceInterface = NULL;
-
 @implementation ETLDeviceInterface
+
+//static ETLDeviceInterface * __theDeviceInterface = NULL;
+static bool audioInitialized = false;
 
 @synthesize analyzer, generator, recognizer;
 
 - (id)initWithReceiver:(id <CharReceiver>)receiver
 {
     // TODO - verify that this works for singleton instantiation
-    if (__theDeviceInterface) {
-        return __theDeviceInterface;
-    }
+//    if (__theDeviceInterface) {
+//        return __theDeviceInterface;
+//    }
     
     self = [super init];
+//    __theDeviceInterface = self;
     
     // initialize the audio session object for this application,
 	//  registering the callback that Audio Session Services will invoke 
 	//  when there's an interruption
-	OSStatus err = AudioSessionInitialize (NULL, NULL, interruptionListenerCallback, 
-                            (__bridge_retained void *)self);
-    NSAssert1(err == noErr, @"Failed to initialize session", err);
+    OSStatus err;
+    
+    @synchronized([self class]) {
+        if(!audioInitialized) {
+            err = AudioSessionInitialize (NULL, NULL, interruptionListenerCallback, 
+                                    (__bridge_retained void *)self);
+            NSAssert1(err == noErr, @"Failed to initialize session", err);
+            audioInitialized = true;
+        }
+    }
     
     // before instantiating the recording audio queue object, 
 	//  set the audio session category
@@ -67,6 +76,13 @@ ETLDeviceInterface * __theDeviceInterface = NULL;
     NSAssert1(err == noErr, @"Failed to set active session", err);
 
     return self;
+}
+
+- (void)dealloc
+{
+    OSStatus err = AudioSessionSetActive(false);
+    NSAssert1(err == noErr, @"Failed to deactivate audio session", err);
+    [super dealloc];
 }
 
 - (void)startProgramming
@@ -103,8 +119,6 @@ ETLDeviceInterface * __theDeviceInterface = NULL;
 
 -(void)startPlayer
 {
-    //NSLog (@"player started.");    
-    
     [generator play];
 }
 
