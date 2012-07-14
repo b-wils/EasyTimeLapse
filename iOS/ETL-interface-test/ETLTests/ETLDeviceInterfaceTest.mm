@@ -7,13 +7,19 @@
 //
 
 #import <GHUnitIOS/GHUnit.h> 
+#import <OCMock/OCMock.h>
+#import "TestHelper.h"
+
 #import "ETLDeviceInterface.h"
-#import <OCMock.h>
+#import "FSKSerialGenerator.h"
+#import "AudioSignalAnalyzer.h"
 #import <vector>
 
 @interface ETLDeviceInterfaceTest : GHTestCase <CharReceiver>
 {
     ETLDeviceInterface * device;
+    id generatorMock, analyzerMock, listenerMock;
+    
     std::vector<char> dataBuffer;
 }
 @end
@@ -27,10 +33,16 @@
 
 - (void)setUp {
     device = [[ETLDeviceInterface alloc] initWithReceiver:self];
+    MOCKS_FOR(device)
+        WIRE(generatorMock, FSKSerialGenerator, generator)
+        WIRE(analyzerMock, AudioSignalAnalyzer, analyzer)
+    END
 }
 
 - (void)tearDown {
     device = nil;
+    VERIFY_MOCK(generatorMock);
+    VERIFY_MOCK(analyzerMock);
 }  
 
 - (void)receivedChar:(char)input
@@ -38,31 +50,22 @@
     dataBuffer.push_back(input);
 }
 
-#define bool_to_s(x) (x ? "true" : "false")
+- (void)testStartStopGenerator
+{ 
+    [[generatorMock expect] play];
+    [[generatorMock expect] stop];
 
-- (void)testInit
-{
-    GHAssertNotNil(device, @"device instance was nil");
-    GHAssertTrue(device.generator.stopped, 
-                 @"device.generator should be stopped, got: %s", bool_to_s(device.generator.stopped));
-//    bool isRunning = device.analyzer.isRunning; 
-//    GHAssertFalse(isRunning,
-//                  @"device.analyzer should not be running, got: %s", bool_to_s(isRunning));
+    [device startPlayer];
+    [device stopPlayer];
 }
 
-- (void)testStartStopGenerator
+- (void)testStartStopAnalyzer
 {
-    GHAssertTrue(device.generator.stopped, 
-                 @"device.generator should be stopped, got: %s", bool_to_s(device.generator.stopped));
-    [device startPlayer];
-    GHAssertFalse(device.generator.stopped, 
-                 @"device.generator should not be stopped, got: %s", bool_to_s(device.generator.stopped));
-    [device stopPlayer];
-    GHAssertTrue(device.generator.stopped, 
-                 @"device.generator should be stopped, got: %s", bool_to_s(device.generator.stopped));
-    [device startPlayer];
-    GHAssertFalse(device.generator.stopped, 
-                  @"device.generator should not be stopped, got: %s", bool_to_s(device.generator.stopped));
+    [[analyzerMock expect] record];
+    [[analyzerMock expect] stop];
+    
+    [device startReader];
+    [device stopReader];
 }
 
 @end

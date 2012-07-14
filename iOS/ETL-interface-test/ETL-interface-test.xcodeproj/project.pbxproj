@@ -14,7 +14,6 @@
 		B504997715AF5C2400F4AF31 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B504997515AF5C2400F4AF31 /* InfoPlist.strings */; };
 		B504997915AF5C2400F4AF31 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B504997815AF5C2400F4AF31 /* main.m */; };
 		B5049B7215AF611700F4AF31 /* ETLTimelapseTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B5049B7115AF611700F4AF31 /* ETLTimelapseTest.m */; };
-		B5049B7715AF66CC00F4AF31 /* ETLTimelapse.h in Sources */ = {isa = PBXBuildFile; fileRef = B504994D15AF560B00F4AF31 /* ETLTimelapse.h */; };
 		B5049B7815AF66CC00F4AF31 /* ETLTimelapse.m in Sources */ = {isa = PBXBuildFile; fileRef = B504994E15AF560B00F4AF31 /* ETLTimelapse.m */; };
 		B5049B7F15AF730000F4AF31 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B5049B7D15AF730000F4AF31 /* icon.png */; };
 		B5049B8015AF730000F4AF31 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5049B7E15AF730000F4AF31 /* icon@2x.png */; };
@@ -47,6 +46,33 @@
 		B5049BB715AF7E1800F4AF31 /* libcommunications.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B5049BB615AF7E1800F4AF31 /* libcommunications.a */; };
 		B5049BB815AF7E3300F4AF31 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5B9D2261592732E000444BB /* AudioToolbox.framework */; };
 		B5049BC315AF871500F4AF31 /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5049BC215AF871500F4AF31 /* GHUnitIOS.framework */; };
+		B5049BC515AF941200F4AF31 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B5049BC415AF941200F4AF31 /* libOCMock.a */; };
+		B5049BC815AFA3F100F4AF31 /* ETLTimelapseControllerTest.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5049BC715AFA3F100F4AF31 /* ETLTimelapseControllerTest.mm */; };
+		B5049BCA15AFA68300F4AF31 /* ETLTimelapseSlidersController.m in Sources */ = {isa = PBXBuildFile; fileRef = B50D23B6159B9C5F00F2FCCC /* ETLTimelapseSlidersController.m */; };
+		B5049BCC15AFA68300F4AF31 /* ETLTimelapseController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5990788159004DC0005C8E2 /* ETLTimelapseController.m */; };
+		B5049BCE15AFA6C400F4AF31 /* NSArray+ArrayUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = B5272DA715A3800E00F62549 /* NSArray+ArrayUtility.m */; };
+		B5049BD015AFA6C400F4AF31 /* ETLShotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B558F8AC1592D7F800CB6E24 /* ETLShotViewController.m */; };
+		B5049BD215AFA6C400F4AF31 /* ETLManualController.m in Sources */ = {isa = PBXBuildFile; fileRef = B599078B159007EE0005C8E2 /* ETLManualController.m */; };
+		B5049BD415AFA6C400F4AF31 /* ETLBulbController.m in Sources */ = {isa = PBXBuildFile; fileRef = B599078E159008AE0005C8E2 /* ETLBulbController.m */; };
+		B5049BD615AFA6C400F4AF31 /* ETLHdrController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5990791159009180005C8E2 /* ETLHdrController.m */; };
+		B5049BD915AFA6C400F4AF31 /* ETLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B599079515900F830005C8E2 /* ETLViewController.m */; };
+		B5049BDB15AFA6C400F4AF31 /* ETLHomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5990780158FFC9F0005C8E2 /* ETLHomeController.m */; };
+		B5049BDD15AFA6C400F4AF31 /* ETLProgramViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5ED520115924E5900B31083 /* ETLProgramViewController.m */; };
+		B5049BDF15AFA6C400F4AF31 /* ETLDoneProgrammingController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5420FD415AB63EF001E3D15 /* ETLDoneProgrammingController.m */; };
+		B5049BE115AFA6C400F4AF31 /* ETLBulbSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C1CD53159CF086005D6FC0 /* ETLBulbSettingsController.m */; };
+		B5049BE315AFA6E300F4AF31 /* ColorSwitcher.m in Sources */ = {isa = PBXBuildFile; fileRef = B5272DAB15A3857E00F62549 /* ColorSwitcher.m */; };
+		B5049BE515AFA6E300F4AF31 /* STSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = B5272D8B15A37CB700F62549 /* STSegmentedControl.m */; };
+		B5049BE715AFA6E300F4AF31 /* ADVPercentProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = B5272D9515A37CFB00F62549 /* ADVPercentProgressBar.m */; };
+		B5049BE915AFA6E300F4AF31 /* ADVPopoverProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = B5272D9715A37CFB00F62549 /* ADVPopoverProgressBar.m */; };
+		B5049BEB15AFA6E300F4AF31 /* RCSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = B5272D8E15A37CCD00F62549 /* RCSwitch.m */; };
+		B5049BED15AFA6E300F4AF31 /* RCSwitchOnOff.m in Sources */ = {isa = PBXBuildFile; fileRef = B5272D9015A37CCD00F62549 /* RCSwitchOnOff.m */; };
+		B5049BEF15AFA6E300F4AF31 /* UIView+FindAndResignFirstResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = B5ED08141590F77B0026432C /* UIView+FindAndResignFirstResponder.m */; };
+		B5049BF115AFA6E300F4AF31 /* ETLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B5990763158FFC000005C8E2 /* ETLAppDelegate.m */; };
+		B5049BF215AFA70200F4AF31 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5272DAD15A3871800F62549 /* CoreImage.framework */; };
+		B5049BF615AFCA8200F4AF31 /* ETLModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B5049BF515AFCA8200F4AF31 /* ETLModel.m */; };
+		B5049BF715AFCBE000F4AF31 /* ETLModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B5049BF515AFCA8200F4AF31 /* ETLModel.m */; };
+		B5049BF915AFD16800F4AF31 /* TestHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B5049BF815AFD16800F4AF31 /* TestHelper.m */; };
+		B5049BFB15AFE80600F4AF31 /* ETLModelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B5049BFA15AFE80600F4AF31 /* ETLModelTest.m */; };
 		B50D23B8159B9C5F00F2FCCC /* ETLTimelapseSlidersController.m in Sources */ = {isa = PBXBuildFile; fileRef = B50D23B6159B9C5F00F2FCCC /* ETLTimelapseSlidersController.m */; };
 		B50D23B9159B9C5F00F2FCCC /* TimelapseSliders.xib in Resources */ = {isa = PBXBuildFile; fileRef = B50D23B7159B9C5F00F2FCCC /* TimelapseSliders.xib */; };
 		B5272D5315A27E4900F62549 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = B5272D5115A27E4900F62549 /* settings.png */; };
@@ -183,6 +209,13 @@
 		B5049BB415AF7D7900F4AF31 /* ETLDeviceInterfaceTest.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ETLDeviceInterfaceTest.mm; sourceTree = "<group>"; };
 		B5049BB615AF7E1800F4AF31 /* libcommunications.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcommunications.a; path = "../../../../Library/Developer/Xcode/DerivedData/Easy_Time_Lapse-esesarfqcnuzabgtekrrydnolwuu/Build/Products/Debug-iphoneos/libcommunications.a"; sourceTree = "<group>"; };
 		B5049BC215AF871500F4AF31 /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GHUnitIOS.framework; path = ../../External/Frameworks/GHUnitIOS.framework; sourceTree = "<group>"; };
+		B5049BC415AF941200F4AF31 /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOCMock.a; path = ../../External/bin/libOCMock.a; sourceTree = "<group>"; };
+		B5049BC715AFA3F100F4AF31 /* ETLTimelapseControllerTest.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ETLTimelapseControllerTest.mm; sourceTree = "<group>"; };
+		B5049BF315AFAC4B00F4AF31 /* TestHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestHelper.h; sourceTree = "<group>"; };
+		B5049BF415AFCA8200F4AF31 /* ETLModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETLModel.h; sourceTree = "<group>"; };
+		B5049BF515AFCA8200F4AF31 /* ETLModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLModel.m; sourceTree = "<group>"; };
+		B5049BF815AFD16800F4AF31 /* TestHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestHelper.m; sourceTree = "<group>"; };
+		B5049BFA15AFE80600F4AF31 /* ETLModelTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLModelTest.m; sourceTree = "<group>"; };
 		B50D23B5159B9C5F00F2FCCC /* ETLTimelapseSlidersController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETLTimelapseSlidersController.h; sourceTree = "<group>"; };
 		B50D23B6159B9C5F00F2FCCC /* ETLTimelapseSlidersController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLTimelapseSlidersController.m; sourceTree = "<group>"; };
 		B50D23B7159B9C5F00F2FCCC /* TimelapseSliders.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimelapseSliders.xib; sourceTree = "<group>"; };
@@ -315,6 +348,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5049BF215AFA70200F4AF31 /* CoreImage.framework in Frameworks */,
+				B5049BC515AF941200F4AF31 /* libOCMock.a in Frameworks */,
 				B5049BC315AF871500F4AF31 /* GHUnitIOS.framework in Frameworks */,
 				B5049BB815AF7E3300F4AF31 /* AudioToolbox.framework in Frameworks */,
 				B5049BB715AF7E1800F4AF31 /* libcommunications.a in Frameworks */,
@@ -346,6 +381,8 @@
 			children = (
 				B504994D15AF560B00F4AF31 /* ETLTimelapse.h */,
 				B504994E15AF560B00F4AF31 /* ETLTimelapse.m */,
+				B5049BF415AFCA8200F4AF31 /* ETLModel.h */,
+				B5049BF515AFCA8200F4AF31 /* ETLModel.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -356,6 +393,10 @@
 				B504997315AF5C2400F4AF31 /* Supporting Files */,
 				B5049B7115AF611700F4AF31 /* ETLTimelapseTest.m */,
 				B5049BB415AF7D7900F4AF31 /* ETLDeviceInterfaceTest.mm */,
+				B5049BC715AFA3F100F4AF31 /* ETLTimelapseControllerTest.mm */,
+				B5049BF315AFAC4B00F4AF31 /* TestHelper.h */,
+				B5049BF815AFD16800F4AF31 /* TestHelper.m */,
+				B5049BFA15AFE80600F4AF31 /* ETLModelTest.m */,
 			);
 			path = ETLTests;
 			sourceTree = "<group>";
@@ -502,7 +543,6 @@
 		B5990744158FFC000005C8E2 = {
 			isa = PBXGroup;
 			children = (
-				B5049BB615AF7E1800F4AF31 /* libcommunications.a */,
 				B5420FD815AB6853001E3D15 /* Storyboard.storyboard */,
 				B5990759158FFC000005C8E2 /* ETL-interface-test */,
 				B504997215AF5C2300F4AF31 /* ETLTests */,
@@ -525,6 +565,8 @@
 		B5990752158FFC000005C8E2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B5049BC415AF941200F4AF31 /* libOCMock.a */,
+				B5049BB615AF7E1800F4AF31 /* libcommunications.a */,
 				B5049BC215AF871500F4AF31 /* GHUnitIOS.framework */,
 				B5272DAD15A3871800F62549 /* CoreImage.framework */,
 				B5B9D2261592732E000444BB /* AudioToolbox.framework */,
@@ -860,11 +902,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5049B7715AF66CC00F4AF31 /* ETLTimelapse.h in Sources */,
+				B5049BF715AFCBE000F4AF31 /* ETLModel.m in Sources */,
+				B5049BE315AFA6E300F4AF31 /* ColorSwitcher.m in Sources */,
+				B5049BE515AFA6E300F4AF31 /* STSegmentedControl.m in Sources */,
+				B5049BE715AFA6E300F4AF31 /* ADVPercentProgressBar.m in Sources */,
+				B5049BE915AFA6E300F4AF31 /* ADVPopoverProgressBar.m in Sources */,
+				B5049BEB15AFA6E300F4AF31 /* RCSwitch.m in Sources */,
+				B5049BED15AFA6E300F4AF31 /* RCSwitchOnOff.m in Sources */,
+				B5049BEF15AFA6E300F4AF31 /* UIView+FindAndResignFirstResponder.m in Sources */,
+				B5049BF115AFA6E300F4AF31 /* ETLAppDelegate.m in Sources */,
+				B5049BCE15AFA6C400F4AF31 /* NSArray+ArrayUtility.m in Sources */,
+				B5049BD015AFA6C400F4AF31 /* ETLShotViewController.m in Sources */,
+				B5049BD215AFA6C400F4AF31 /* ETLManualController.m in Sources */,
+				B5049BD415AFA6C400F4AF31 /* ETLBulbController.m in Sources */,
+				B5049BD615AFA6C400F4AF31 /* ETLHdrController.m in Sources */,
+				B5049BD915AFA6C400F4AF31 /* ETLViewController.m in Sources */,
+				B5049BDB15AFA6C400F4AF31 /* ETLHomeController.m in Sources */,
+				B5049BDD15AFA6C400F4AF31 /* ETLProgramViewController.m in Sources */,
+				B5049BDF15AFA6C400F4AF31 /* ETLDoneProgrammingController.m in Sources */,
+				B5049BE115AFA6C400F4AF31 /* ETLBulbSettingsController.m in Sources */,
+				B5049BCA15AFA68300F4AF31 /* ETLTimelapseSlidersController.m in Sources */,
+				B5049BCC15AFA68300F4AF31 /* ETLTimelapseController.m in Sources */,
 				B5049B7815AF66CC00F4AF31 /* ETLTimelapse.m in Sources */,
 				B504997915AF5C2400F4AF31 /* main.m in Sources */,
 				B5049B7215AF611700F4AF31 /* ETLTimelapseTest.m in Sources */,
 				B5049BB515AF7D7900F4AF31 /* ETLDeviceInterfaceTest.mm in Sources */,
+				B5049BC815AFA3F100F4AF31 /* ETLTimelapseControllerTest.mm in Sources */,
+				B5049BF915AFD16800F4AF31 /* TestHelper.m in Sources */,
+				B5049BFB15AFE80600F4AF31 /* ETLModelTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -894,6 +959,7 @@
 				B5272DAC15A3857E00F62549 /* ColorSwitcher.m in Sources */,
 				B5420FD615AB63EF001E3D15 /* ETLDoneProgrammingController.m in Sources */,
 				B504994F15AF560B00F4AF31 /* ETLTimelapse.m in Sources */,
+				B5049BF615AFCA8200F4AF31 /* ETLModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -22,8 +22,7 @@ typedef void (^ETLViewInitBlock)(ETLViewController *);
 @property(nonatomic, strong) id delegate;
 
 - (IBAction)hideFirstResponder:(id)sender;
-
-#pragma mark -
-#pragma mark Screen Transitions
 - (IBAction)goBack:(id)sender;
+
+- (void)observe:(id)sender forEvent:(NSString *)name andRun:(SEL)selector;
 @end

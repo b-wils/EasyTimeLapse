@@ -9,6 +9,7 @@
 #import "ETLViewController.h"
 #import "UIView+FindAndResignFirstResponder.h"
 #import <objc/runtime.h>
+#import <Foundation/Foundation.h>
 
 @interface ETLViewController ()
 
@@ -35,66 +36,12 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-// TODO - consider vairiants w/o fromNib: 
-/*
-- (void)transitionTo:(Class)type
-{
-    [self transitionTo:type fromNib:nil];
-}
-
-- (void)transitionTo:(Class)type fromNib:(NSString *)name
-{
-    [self transitionTo:type fromNib:name animated:YES];
-}
-
-- (void)transitionTo:(Class)type fromNib:(NSString *)name animated:(bool)animated {
-    [self transitionTo:type fromNib:name animated:animated withTransitionStyle:UIModalTransitionStyleFlipHorizontal];
-}
-
-- (void)transitionTo:(Class)type fromNib:(NSString *)name animated:(bool)animated withCustomInit:(ETLViewInitBlock)initBlock
-{
-    if(!name) {
-        name = [[NSString alloc] initWithCString: class_getName(type) 
-                                        encoding:NSStringEncodingConversionAllowLossy]; 
-        NSError * reError = nil;
-        NSRegularExpression * re = [NSRegularExpression 
-               regularExpressionWithPattern:@"ETL(.*)Controller" 
-               options:NSRegularExpressionCaseInsensitive 
-               error:&reError];
-        NSArray * matches = [re matchesInString:name options:NSRegularExpressionCaseInsensitive range:NSMakeRange(0, [name length])];
-        if ([matches count] > 0) 
-        {
-            NSTextCheckingResult *m = [matches objectAtIndex:0];
-            name = [name substringWithRange:[m rangeAtIndex:1]];
-        }
-    }
-    
-    ETLViewController * view = [[type alloc] initWithNibName:name bundle:nil];
-    if(initBlock) initBlock(view);
-    [self transitionTo:view animated:animated];
-}
-
-- (void)transitionTo:(Class)type fromNib:(NSString *)name animated:(bool)animated withTransitionStyle:(UIModalTransitionStyle) style
-{  
-    __block UIModalTransitionStyle _style = style;
-    ETLViewInitBlock initBlock = ^(ETLViewController * v) {
-        v.modalTransitionStyle = _style;
-    };
-    
-    [self transitionTo:type fromNib:name animated:animated withCustomInit:initBlock];
-}
-
-- (void)transitionTo:(ETLViewController *)view animated:(bool)animated
-{
-    view.delegate = self;
-    [self presentViewController:view animated:animated completion:NULL];
-} */
-
 #pragma mark -
-//- (void)resumeView
-//{
-//    [self dismissModalViewControllerAnimated: NO];
-//}
+
+- (void)observe:(id)sender forEvent:(NSString *)name andRun:(SEL)selector
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:selector name:name object:sender];
+}
 
 - (IBAction)hideFirstResponder:(id)sender
 {

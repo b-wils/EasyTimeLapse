@@ -7,10 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ETLModel.h"
 
-@interface ETLTimelapse : NSObject
+@interface ETLTimelapse : ETLModel
+{
+}
 
-@property (nonatomic) UInt64 interval;
+-(bool) continuousShooting;
+
+@property (nonatomic) UInt64 shotInterval;
 @property (nonatomic) UInt64 shotCount;
 @property (nonatomic) NSTimeInterval clipLength;
 @property (nonatomic) NSTimeInterval shootingTime;

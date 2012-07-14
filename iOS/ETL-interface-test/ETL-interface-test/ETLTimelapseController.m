@@ -16,14 +16,43 @@
 
 @implementation ETLTimelapseController
 
-@synthesize continuousShooting = _continuousShooting;
 @synthesize shotPeriodInMs = _shotPeriodInMs;
 @synthesize shotLimit = _shotLimit;
 @synthesize shotFramesPerSecond = _shotFramesPerSecond;
+    
+- (void)ensureInitialized {
+    if(!timelapse) {
+        periodUnits = [NSArray arrayWithObjects:
+                       @"ms",
+                       @"seconds",
+                       @"minutes",
+                       @"hours", nil]; 
+        NSArray * msTimes = [NSArray arrayWithObjects:
+                             [NSNumber numberWithInt:1], 
+                             [NSNumber numberWithInt:1000], 
+                             [NSNumber numberWithInt:1000*60], 
+                             [NSNumber numberWithInt:1000*3600], nil];
+        
+        msInUnit = [NSDictionary dictionaryWithObjects:msTimes forKeys:periodUnits];
+        
+        timelapse = [[ETLTimelapse alloc] init];
+        timelapse.shotInterval = 5000;
+        timelapse.shotCount = 100;
+        [self observe:timelapse forEvent:ModelUpdated andRun:@selector(updateUICalculations:)];   
+        
+        _shotFramesPerSecond = 24.0f;
+        
+        // TODO better automatic update for these data    
+        _shotPeriodInMs = 5000; // 5 sec default
+        _shotLimit = 100; // 100 shot default
+        periodUnit = [periodUnits objectAtIndex:1]; // "seconds"
+    }
+}
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+- (id)init {
+    self = [super init];
     if (self) {
+        [self ensureInitialized];
     }
     
     return self;
@@ -32,26 +61,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    periodUnits = [NSArray arrayWithObjects:
-                   @"ms",
-                   @"seconds",
-                   @"minutes",
-                   @"hours", nil]; 
-    NSArray * msTimes = [NSArray arrayWithObjects:
-                         [NSNumber numberWithInt:1], 
-                         [NSNumber numberWithInt:1000], 
-                         [NSNumber numberWithInt:1000*60], 
-                         [NSNumber numberWithInt:1000*3600], nil];
-    
-    msInUnit = [NSDictionary dictionaryWithObjects:msTimes forKeys:periodUnits];
-    
-    _shotFramesPerSecond = 24.0f;
-    
-    // TODO better automatic update for these data
-    _shotPeriodInMs = 5000; // 5 sec default
-    _shotLimit = 100; // 100 shot default
-    periodUnit = [periodUnits objectAtIndex:1]; // "seconds"
+    [self ensureInitialized];
 
     ETLPredicate pSwitch = ^bool (id obj) {return [obj class] == CLASS(UISwitch);};
     NSArray *switches = [[self view].subviews filterWith:pSwitch];
@@ -76,14 +86,6 @@
     shotLimitField.inputAccessoryView = numpadToolbar;
 }
 
-- (void)setContinuousShooting:(bool)value
-{
-    NSLog(@"Continuous shooting mode: %@", value ? @"true" : @"false");
-    _continuousShooting = value;
-    [self updateUICalculations];
-    shotLimitPanel.hidden = value;
-}
-
 - (NSString *)formatSeconds:(float_t)totalSeconds with:(NSString *)formatString
 {
     NSUInteger hours = floor(totalSeconds / 3600);
@@ -93,14 +95,15 @@
     return [NSString stringWithFormat:formatString, hours, minutes, seconds];
 }
 
-- (void)updateUICalculations
+- (void)updateUICalculations:(NSNotification *)notification
 {
-    if (!self.continuousShooting)
+    shotLimitPanel.hidden = timelapse.continuousShooting;
+    if (!timelapse.continuousShooting)
     {
-        float_t totalSeconds = _shotLimit / (float_t)_shotFramesPerSecond;
+        float_t totalSeconds = timelapse.shotCount / timelapse.clipFramesPerSecond;
         finalShotLengthLabel.text = [self formatSeconds:totalSeconds with:@"%u:%u:%2.2f"];
         
-        totalSeconds = (float_t)_shotLimit * ((float_t)_shotPeriodInMs / 1000.0);
+        totalSeconds = (float_t)timelapse.shotCount * ((float_t)timelapse.shotInterval / 1000.0);
         totalShootingTimeLabel.text = [self formatSeconds:totalSeconds with:@"%u:%u:%2.0f"];
     }
 }
@@ -108,19 +111,25 @@
 - (void)setShotPeriodInMs:(NSUInteger)value
 {
     _shotPeriodInMs = value;
-    [self updateUICalculations];
+    timelapse.shotInterval = value;
 }
 
 - (void)setShotLimit:(NSUInteger)value
 {
     _shotLimit = value;
-    [self updateUICalculations];
+    timelapse.shotCount = value;
 }
 
 - (IBAction)didSwitchContinuous:(id)sender
 {
+    NSLog(@"didSwitchContinuous:%@", sender);
     UISwitch * s = (UISwitch *)sender;
-    self.continuousShooting = s.on;
+    if (s.on) {
+        timelapse.shotCount = [shotLimitField.text integerValue];
+    }
+    else {
+        [timelapse setShotCount:0];
+    }
 }
 
 - (IBAction)didUpdatePeriod:(id)sender
@@ -128,7 +137,8 @@
     float_t value = [(UITextField *)sender text].floatValue;
     NSUInteger multiple = [(NSNumber *)[msInUnit objectForKey:periodUnit] unsignedIntegerValue];
     
-    self.shotPeriodInMs = floor(value * multiple);
+//    self.shotPeriodInMs = floor(value * multiple);
+    timelapse.shotInterval = floor(value * multiple); 
 }
 
 - (IBAction)didUpdateShotLimit:(id)sender
@@ -161,7 +171,6 @@
     periodUnit = [periodUnits objectAtIndex:row];
     [periodUnitButton setTitle:periodUnit forState:UIControlStateNormal];
     [periodUnitButton setTitle:periodUnit forState:UIControlStateHighlighted];
-    [periodUnitButton setTitle:periodUnit forState:UIControlStateSelected];
     periodUnitPicker.hidden = YES;
     
     [self didUpdatePeriod:shotPeriodField];

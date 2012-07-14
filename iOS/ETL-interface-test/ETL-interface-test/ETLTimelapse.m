@@ -10,49 +10,52 @@
 
 @implementation ETLTimelapse
 
-@synthesize interval, shotCount, clipFramesPerSecond;
+@synthesize shotInterval, clipFramesPerSecond, shotCount;
 
 -(id) init
 {
     self = [super init];
     if (self) {
-        interval = 5000;
+        shotInterval = 5000;
         clipFramesPerSecond = 23.97;
     }
     
     return self;
 }
 
--(void) setInterval:(UInt64)value
-{
-    interval = value;
+-(void)setShotInterval:(UInt64)value {
+    SimpleModelSetter(shotInterval)
 }
 
--(void) setShotCount:(UInt64)value
-{
-    shotCount = value;
+-(void)setShotCount:(UInt64)value{
+    SimpleModelSetter(shotCount)
 }
 
 -(NSTimeInterval)clipLength
 {
-    if(shotCount > 0) return shotCount / clipFramesPerSecond;
+    if(!self.continuousShooting) return shotCount / clipFramesPerSecond;
     return INFINITY;
 }
 
 -(void) setClipLength:(NSTimeInterval)value
 {
-    shotCount = value * clipFramesPerSecond;
+    self.shotCount = value * clipFramesPerSecond;
 }
 
 -(NSTimeInterval)shootingTime
 {
-    if(shotCount > 0) return shotCount * interval;
+    if(!self.continuousShooting) return shotCount * shotInterval;
     return INFINITY;
 }
 
 -(void)setShootingTime:(NSTimeInterval)value
 {
-    if(shotCount > 0) interval = value / shotCount;
+    if(!self.continuousShooting) self.shotInterval = value / shotCount;
+}
+
+-(bool)continuousShooting
+{
+    return shotCount == 0;
 }
 
 @end

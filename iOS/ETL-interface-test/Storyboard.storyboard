@@ -335,7 +335,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="OhQ-Fp-NC6" kind="push" id="tsv-Xu-yJX"/>
+                                    <segue destination="OhQ-Fp-NC6" kind="push" identifier="Program" id="tsv-Xu-yJX"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="En7-wR-E9r">
@@ -416,7 +416,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="OhQ-Fp-NC6" kind="push" id="DgK-kW-Jm5"/>
+                                    <segue destination="OhQ-Fp-NC6" kind="push" identifier="Program" id="DgK-kW-Jm5"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="5" borderStyle="roundedRect" minimumFontSize="17" id="oV0-0v-ghp">
@@ -821,7 +821,7 @@
                                 <color key="trackTintColor" cocoaTouchSystemColor="darkTextColor"/>
                             </progressView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Wev-L9-Q30">
-                                <rect key="frame" x="24" y="390" width="273" height="50"/>
+                                <rect key="frame" x="24" y="265" width="273" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                                 <state key="normal" title="Cancel" image="cancel.png">
@@ -998,7 +998,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="DgK-kW-Jm5"/>
         <segue reference="jON-PE-T2z"/>
-        <segue reference="oX6-ow-MBa"/>
     </inferredMetricsTieBreakers>
 </document>

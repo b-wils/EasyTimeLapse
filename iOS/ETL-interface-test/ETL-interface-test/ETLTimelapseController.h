@@ -7,12 +7,15 @@
 //
 
 #import "ETLShotViewController.h"
+#import "ETLTimelapse.h"
 
 @interface ETLTimelapseController : ETLShotViewController <UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
 {
     NSArray * periodUnits;
     NSDictionary * msInUnit;
     NSString * periodUnit;
+    
+    ETLTimelapse *timelapse;
     
     IBOutlet UITextField * shotPeriodField;
     IBOutlet UIButton * periodUnitButton;
@@ -27,7 +30,6 @@
     IBOutlet UIButton * readyButton;
 }
 
-@property(nonatomic, assign) bool continuousShooting;
 @property(nonatomic, assign) NSUInteger shotPeriodInMs;
 @property(nonatomic, assign) NSUInteger shotLimit;
 @property(nonatomic, assign) float_t shotFramesPerSecond;
@@ -36,5 +38,7 @@
 - (IBAction)didUpdatePeriod:(id)sender;
 - (IBAction)didUpdateShotLimit:(id)sender;
 - (IBAction)didClickPeriodUnit:(id)sender;
+
+- (void)updateUICalculations:(NSNotification *)notification;
 
 @end
