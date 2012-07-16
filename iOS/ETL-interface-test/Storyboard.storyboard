@@ -42,7 +42,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="7cD-pI-46L">
-                                <rect key="frame" x="20" y="112" width="130" height="130"/>
+                                <rect key="frame" x="20" y="87" width="130" height="130"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                                 <state key="normal" title="Timelapse" image="homebutton_timelapse.png">
@@ -57,7 +57,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="bJZ-xT-TTy">
-                                <rect key="frame" x="170" y="112" width="130" height="130"/>
+                                <rect key="frame" x="170" y="87" width="130" height="130"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                                 <state key="normal" title="Manual" image="homebutton_manual.png">
@@ -101,6 +101,34 @@
                                     <segue destination="x40-mc-p3d" kind="push" id="5iz-8J-uI2"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Time Lapse" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="fw0-Yb-4RQ">
+                                <rect key="frame" x="41" y="213" width="89" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.36862745879999997" green="0.31372550129999999" blue="0.31372550129999999" alpha="1" colorSpace="deviceRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="HDR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="hK0-30-KMA">
+                                <rect key="frame" x="41" y="388" width="89" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.36862745881080627" green="0.31372550129890442" blue="0.31372550129890442" alpha="1" colorSpace="deviceRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Bulb Ramp" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="eb1-Nh-Tv2">
+                                <rect key="frame" x="191" y="388" width="89" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.36862745881080627" green="0.31372550129890442" blue="0.31372550129890442" alpha="1" colorSpace="deviceRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Manual" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="cm5-vR-p43">
+                                <rect key="frame" x="191" y="213" width="89" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.36862745879999997" green="0.31372550129999999" blue="0.31372550129999999" alpha="1" colorSpace="deviceRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -625,8 +653,8 @@
                                     <segue destination="OhQ-Fp-NC6" kind="push" identifier="Program" id="oX6-ow-MBa"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="5" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" id="N65-ec-1S0">
-                                <rect key="frame" x="164" y="70" width="54" height="31"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="5" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" background="text_input.png" id="N65-ec-1S0">
+                                <rect key="frame" x="170" y="70" width="54" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad" keyboardAppearance="alert" returnKeyType="done"/>
@@ -903,18 +931,19 @@
         <image name="background.png" width="320" height="460"/>
         <image name="cancel.png" width="270" height="50"/>
         <image name="cancel_pressed.png" width="270" height="50"/>
-        <image name="homebutton_bulb.png" width="130" height="130"/>
-        <image name="homebutton_bulb_pressed.png" width="130" height="130"/>
-        <image name="homebutton_hdr.png" width="130" height="130"/>
-        <image name="homebutton_hdr_pressed.png" width="130" height="130"/>
-        <image name="homebutton_manual.png" width="130" height="130"/>
-        <image name="homebutton_manual_pressed.png" width="130" height="130"/>
-        <image name="homebutton_timelapse.png" width="130" height="130"/>
-        <image name="homebutton_timelapse_pressed.png" width="130" height="130"/>
+        <image name="homebutton_bulb.png" width="130" height="100"/>
+        <image name="homebutton_bulb_pressed.png" width="130" height="100"/>
+        <image name="homebutton_hdr.png" width="130" height="100"/>
+        <image name="homebutton_hdr_pressed.png" width="130" height="100"/>
+        <image name="homebutton_manual.png" width="130" height="100"/>
+        <image name="homebutton_manual_pressed.png" width="130" height="100"/>
+        <image name="homebutton_timelapse.png" width="130" height="100"/>
+        <image name="homebutton_timelapse_pressed.png" width="130" height="100"/>
         <image name="indent_mid.png" width="320" height="100"/>
         <image name="ready.png" width="270" height="50"/>
         <image name="ready_pressed.png" width="270" height="50"/>
         <image name="settings.png" width="27" height="27"/>
+        <image name="text_input.png" width="290" height="38"/>
         <image name="topbar_bulb.png" width="320" height="44"/>
         <image name="topbar_hdr.png" width="320" height="44"/>
         <image name="topbar_home.png" width="320" height="44"/>
@@ -998,7 +1027,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="DgK-kW-Jm5"/>
-        <segue reference="jON-PE-T2z"/>
+        <segue reference="arz-kM-dV9"/>
+        <segue reference="oX6-ow-MBa"/>
     </inferredMetricsTieBreakers>
 </document>
