@@ -51,9 +51,13 @@
       <ToolName>AVR Simulator</ToolName>
       <ToolNumber>
       </ToolNumber>
+      <KeepTimersRunning>true</KeepTimersRunning>
+      <OverrideVtor>false</OverrideVtor>
+      <OverrideVtorValue>
+      </OverrideVtorValue>
       <Channel>
         <host>127.0.0.1</host>
-        <port>25941</port>
+        <port>14075</port>
         <ssl>False</ssl>
       </Channel>
     </com_atmel_avrdbg_tool_simulator>
@@ -67,7 +71,7 @@
       </OverrideVtorValue>
       <Channel>
         <host>127.0.0.1</host>
-        <port>14075</port>
+        <port>20894</port>
         <ssl>False</ssl>
       </Channel>
       <ToolOptions>

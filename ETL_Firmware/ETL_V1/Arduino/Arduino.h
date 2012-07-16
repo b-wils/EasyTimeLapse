@@ -82,7 +82,8 @@ extern "C"{
 
 // the prescaler is set so that timer2 ticks every 64 clock cycles, and the
 // the overflow handler is called every 256 ticks.
-#define MICROSECONDS_PER_TIMER2_OVERFLOW (clockCyclesToMicroseconds(64 * 256))
+#define TIMER2_PRESCALER_SETTING (256) // 64
+#define MICROSECONDS_PER_TIMER2_OVERFLOW (clockCyclesToMicroseconds(((uint32_t) TIMER2_PRESCALER_SETTING) * 256))
 
 // the whole number of milliseconds per timer0 overflow
 #define MILLIS_PER_OVERFLOW (MICROSECONDS_PER_TIMER2_OVERFLOW / 1000)

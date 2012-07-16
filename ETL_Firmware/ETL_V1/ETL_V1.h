@@ -26,6 +26,9 @@
 //const int flashSensePin = A5;
 //const int micShortedPin = 4;
 //const int batteryMonitorPin = A0;
+//#define redLed 11
+//#define greenLed 9
+//#define blueLed 10
 
 // breadboard  1 pins
 #define buttonPin 2     // the number of the pushbutton pin
@@ -35,9 +38,12 @@
 #define flashSensePin A1
 #define micShortedPin 4
 #define batteryMonitorPin A2
-#define redLed 11
-#define greenLed 9
-#define blueLed 10
+#define redLed 9
+#define greenLed 10
+#define blueLed 11
+
+// TEMP FOR BREADBOARD
+#define useIdlePin 3
 
 #define BUTTON_TRANSMIT_PERIOD 1500 //ms
 #define BUTTON_STOP_TIMELAPSE_PERIOD 1500

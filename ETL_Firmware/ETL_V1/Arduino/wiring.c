@@ -62,6 +62,8 @@ unsigned long millis()
 	unsigned long m;
 	uint8_t oldSREG = SREG;
 
+	// TODO add our TCNT value to this if we are running at low speeds
+
 	// disable interrupts while we read timer0_millis or we might get an
 	// inconsistent value (e.g. in the middle of a write to timer0_millis)
 	cli();
@@ -184,8 +186,9 @@ void init()
 	sbi(TCCR0, CS21);
 	sbi(TCCR0, CS20);
 #elif defined(TCCR2B) && defined(CS21) && defined(CS20)
-	sbi(TCCR2B, CS22);
 	// this combination is for the standard 168/328/1280/2560
+	sbi(TCCR2B, CS22);
+	sbi(TCCR2B, CS21); // prescale 256
 #elif defined(TCCR2A) && defined(CS21) && defined(CS20)
 	// this combination is for the __AVR_ATmega645__ series
 	sbi(TCCR2A, CS21);

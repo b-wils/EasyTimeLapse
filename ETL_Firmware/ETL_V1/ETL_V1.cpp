@@ -157,6 +157,9 @@ void setup() {
     pinMode(flashPin, INPUT);
     digitalWrite(flashPin, HIGH);
     
+	pinMode(useIdlePin, INPUT);
+	digitalWrite(useIdlePin, HIGH);
+	
 	// not currently used
 	//pinMode(FSK_INPUT_FILTER_ENABLE_PIN, OUTPUT);
 	//digitalWrite(FSK_INPUT_FILTER_ENABLE_PIN, HIGH);
@@ -212,6 +215,7 @@ void ProcessIdle() {
 			//	DebugPrint("Led Soon");
 				return;
 			} else {
+				//DebugPrint("Led off");
 			    set_sleep_mode(SLEEP_MODE_PWR_SAVE);
 			}					
 		} else {
@@ -225,7 +229,7 @@ void ProcessIdle() {
 		return;
 	}
 
-	Serial.flush();
+	//Serial.flush();
 
     // If we've made it this far, we can idle!
     attachInterrupt(0,ButtonChange,CHANGE);
@@ -359,6 +363,8 @@ void loop() {
 		}
 	}
 	
-	//ProcessIdle();
+	if (digitalRead(useIdlePin) == LOW) {
+		ProcessIdle();
+	}
 	
 }
