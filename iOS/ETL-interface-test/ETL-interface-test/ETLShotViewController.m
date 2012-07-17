@@ -36,12 +36,12 @@
     // Release any retained subviews of the main view.
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([segue.identifier isEqualToString:@"Program"]) {
-        ETLProgramViewController *controller = [segue destinationViewController];
-        [controller setDeviceCommand:command withSections:sections];
-    }
-}
+//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+//{
+//    if ([segue.identifier isEqualToString:@"Program"]) {
+//        ETLProgramViewController *controller = [segue destinationViewController];
+//        [controller setDeviceCommand:command withSections:sections];
+//    }
+//}
 
 @end

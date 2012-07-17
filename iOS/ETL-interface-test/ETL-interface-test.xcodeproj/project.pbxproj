@@ -105,28 +105,17 @@
 		B5272DD415A66BCE00F62549 /* back_home@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5272DD015A66BCE00F62549 /* back_home@2x.png */; };
 		B5272DD515A66BCE00F62549 /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = B5272DD115A66BCE00F62549 /* back.png */; };
 		B5272DD615A66BCE00F62549 /* back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5272DD215A66BCE00F62549 /* back@2x.png */; };
-		B53DADE7159E7725000BBC31 /* homebutton_bulb_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = B53DADD7159E7725000BBC31 /* homebutton_bulb_pressed.png */; };
-		B53DADE8159E7725000BBC31 /* homebutton_bulb_pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B53DADD8159E7725000BBC31 /* homebutton_bulb_pressed@2x.png */; };
-		B53DADE9159E7725000BBC31 /* homebutton_bulb.png in Resources */ = {isa = PBXBuildFile; fileRef = B53DADD9159E7725000BBC31 /* homebutton_bulb.png */; };
-		B53DADEA159E7725000BBC31 /* homebutton_bulb@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B53DADDA159E7725000BBC31 /* homebutton_bulb@2x.png */; };
-		B53DADEB159E7725000BBC31 /* homebutton_hdr_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = B53DADDB159E7725000BBC31 /* homebutton_hdr_pressed.png */; };
-		B53DADEC159E7725000BBC31 /* homebutton_hdr_pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B53DADDC159E7725000BBC31 /* homebutton_hdr_pressed@2x.png */; };
-		B53DADED159E7725000BBC31 /* homebutton_hdr.png in Resources */ = {isa = PBXBuildFile; fileRef = B53DADDD159E7725000BBC31 /* homebutton_hdr.png */; };
-		B53DADEE159E7725000BBC31 /* homebutton_hdr@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B53DADDE159E7725000BBC31 /* homebutton_hdr@2x.png */; };
-		B53DADEF159E7725000BBC31 /* homebutton_manual_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = B53DADDF159E7725000BBC31 /* homebutton_manual_pressed.png */; };
-		B53DADF0159E7725000BBC31 /* homebutton_manual_pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B53DADE0159E7725000BBC31 /* homebutton_manual_pressed@2x.png */; };
-		B53DADF1159E7725000BBC31 /* homebutton_manual.png in Resources */ = {isa = PBXBuildFile; fileRef = B53DADE1159E7725000BBC31 /* homebutton_manual.png */; };
-		B53DADF2159E7725000BBC31 /* homebutton_manual@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B53DADE2159E7725000BBC31 /* homebutton_manual@2x.png */; };
-		B53DADF3159E7725000BBC31 /* homebutton_timelapse_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = B53DADE3159E7725000BBC31 /* homebutton_timelapse_pressed.png */; };
-		B53DADF4159E7725000BBC31 /* homebutton_timelapse_pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B53DADE4159E7725000BBC31 /* homebutton_timelapse_pressed@2x.png */; };
-		B53DADF5159E7725000BBC31 /* homebutton_timelapse.png in Resources */ = {isa = PBXBuildFile; fileRef = B53DADE5159E7725000BBC31 /* homebutton_timelapse.png */; };
-		B53DADF6159E7725000BBC31 /* homebutton_timelapse@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B53DADE6159E7725000BBC31 /* homebutton_timelapse@2x.png */; };
 		B5420FD215AB635F001E3D15 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = B5420FD115AB635F001E3D15 /* Default.png */; };
 		B5420FD615AB63EF001E3D15 /* ETLDoneProgrammingController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5420FD415AB63EF001E3D15 /* ETLDoneProgrammingController.m */; };
 		B5420FD915AB6853001E3D15 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5420FD815AB6853001E3D15 /* Storyboard.storyboard */; };
 		B558F83D1592D0D300CB6E24 /* libcommunications.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B558F83C1592D0D300CB6E24 /* libcommunications.a */; };
 		B558F8501592D24000CB6E24 /* libstdc++.6.0.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B558F84F1592D24000CB6E24 /* libstdc++.6.0.9.dylib */; };
 		B558F8AD1592D7F800CB6E24 /* ETLShotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B558F8AC1592D7F800CB6E24 /* ETLShotViewController.m */; };
+		B5720DB115B48B9B0092FA31 /* ETLProgrammer.m in Sources */ = {isa = PBXBuildFile; fileRef = B5720DB015B48B9B0092FA31 /* ETLProgrammer.m */; };
+		B5720DB215B48BBF0092FA31 /* ETLProgrammer.m in Sources */ = {isa = PBXBuildFile; fileRef = B5720DB015B48B9B0092FA31 /* ETLProgrammer.m */; };
+		B5720DB415B48DF70092FA31 /* ETLProgrammerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B5720DB315B48DF70092FA31 /* ETLProgrammerTest.m */; };
+		B5720DB715B49A9F0092FA31 /* TestArcHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B5720DB615B49A9F0092FA31 /* TestArcHelper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B5720DB915B4B1390092FA31 /* ETLProgramViewControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B5720DB815B4B1390092FA31 /* ETLProgramViewControllerTest.m */; };
 		B5990754158FFC000005C8E2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5990753158FFC000005C8E2 /* UIKit.framework */; };
 		B5990756158FFC000005C8E2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5990755158FFC000005C8E2 /* Foundation.framework */; };
 		B5990758158FFC000005C8E2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5990757158FFC000005C8E2 /* CoreGraphics.framework */; };
@@ -257,22 +246,6 @@
 		B5272DD015A66BCE00F62549 /* back_home@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "back_home@2x.png"; path = "../../../assets/v1/back_home@2x.png"; sourceTree = "<group>"; };
 		B5272DD115A66BCE00F62549 /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = back.png; path = ../../../assets/v1/back.png; sourceTree = "<group>"; };
 		B5272DD215A66BCE00F62549 /* back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "back@2x.png"; path = "../../../assets/v1/back@2x.png"; sourceTree = "<group>"; };
-		B53DADD7159E7725000BBC31 /* homebutton_bulb_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = homebutton_bulb_pressed.png; path = ../../../assets/v1/homebutton_bulb_pressed.png; sourceTree = "<group>"; };
-		B53DADD8159E7725000BBC31 /* homebutton_bulb_pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "homebutton_bulb_pressed@2x.png"; path = "../../../assets/v1/homebutton_bulb_pressed@2x.png"; sourceTree = "<group>"; };
-		B53DADD9159E7725000BBC31 /* homebutton_bulb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = homebutton_bulb.png; path = ../../../assets/v1/homebutton_bulb.png; sourceTree = "<group>"; };
-		B53DADDA159E7725000BBC31 /* homebutton_bulb@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "homebutton_bulb@2x.png"; path = "../../../assets/v1/homebutton_bulb@2x.png"; sourceTree = "<group>"; };
-		B53DADDB159E7725000BBC31 /* homebutton_hdr_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = homebutton_hdr_pressed.png; path = ../../../assets/v1/homebutton_hdr_pressed.png; sourceTree = "<group>"; };
-		B53DADDC159E7725000BBC31 /* homebutton_hdr_pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "homebutton_hdr_pressed@2x.png"; path = "../../../assets/v1/homebutton_hdr_pressed@2x.png"; sourceTree = "<group>"; };
-		B53DADDD159E7725000BBC31 /* homebutton_hdr.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = homebutton_hdr.png; path = ../../../assets/v1/homebutton_hdr.png; sourceTree = "<group>"; };
-		B53DADDE159E7725000BBC31 /* homebutton_hdr@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "homebutton_hdr@2x.png"; path = "../../../assets/v1/homebutton_hdr@2x.png"; sourceTree = "<group>"; };
-		B53DADDF159E7725000BBC31 /* homebutton_manual_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = homebutton_manual_pressed.png; path = ../../../assets/v1/homebutton_manual_pressed.png; sourceTree = "<group>"; };
-		B53DADE0159E7725000BBC31 /* homebutton_manual_pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "homebutton_manual_pressed@2x.png"; path = "../../../assets/v1/homebutton_manual_pressed@2x.png"; sourceTree = "<group>"; };
-		B53DADE1159E7725000BBC31 /* homebutton_manual.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = homebutton_manual.png; path = ../../../assets/v1/homebutton_manual.png; sourceTree = "<group>"; };
-		B53DADE2159E7725000BBC31 /* homebutton_manual@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "homebutton_manual@2x.png"; path = "../../../assets/v1/homebutton_manual@2x.png"; sourceTree = "<group>"; };
-		B53DADE3159E7725000BBC31 /* homebutton_timelapse_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = homebutton_timelapse_pressed.png; path = ../../../assets/v1/homebutton_timelapse_pressed.png; sourceTree = "<group>"; };
-		B53DADE4159E7725000BBC31 /* homebutton_timelapse_pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "homebutton_timelapse_pressed@2x.png"; path = "../../../assets/v1/homebutton_timelapse_pressed@2x.png"; sourceTree = "<group>"; };
-		B53DADE5159E7725000BBC31 /* homebutton_timelapse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = homebutton_timelapse.png; path = ../../../assets/v1/homebutton_timelapse.png; sourceTree = "<group>"; };
-		B53DADE6159E7725000BBC31 /* homebutton_timelapse@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "homebutton_timelapse@2x.png"; path = "../../../assets/v1/homebutton_timelapse@2x.png"; sourceTree = "<group>"; };
 		B5420FD115AB635F001E3D15 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../../../assets/v1/Default.png; sourceTree = "<group>"; };
 		B5420FD315AB63EF001E3D15 /* ETLDoneProgrammingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETLDoneProgrammingController.h; sourceTree = "<group>"; };
 		B5420FD415AB63EF001E3D15 /* ETLDoneProgrammingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLDoneProgrammingController.m; sourceTree = "<group>"; };
@@ -296,6 +269,12 @@
 		B558F84F1592D24000CB6E24 /* libstdc++.6.0.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.0.9.dylib"; path = "usr/lib/libstdc++.6.0.9.dylib"; sourceTree = SDKROOT; };
 		B558F8AB1592D7F800CB6E24 /* ETLShotViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETLShotViewController.h; sourceTree = "<group>"; };
 		B558F8AC1592D7F800CB6E24 /* ETLShotViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLShotViewController.m; sourceTree = "<group>"; };
+		B5720DAF15B48B9B0092FA31 /* ETLProgrammer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETLProgrammer.h; sourceTree = "<group>"; };
+		B5720DB015B48B9B0092FA31 /* ETLProgrammer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLProgrammer.m; sourceTree = "<group>"; };
+		B5720DB315B48DF70092FA31 /* ETLProgrammerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLProgrammerTest.m; sourceTree = "<group>"; };
+		B5720DB515B49A9F0092FA31 /* TestArcHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestArcHelper.h; sourceTree = "<group>"; };
+		B5720DB615B49A9F0092FA31 /* TestArcHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestArcHelper.m; sourceTree = "<group>"; };
+		B5720DB815B4B1390092FA31 /* ETLProgramViewControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLProgramViewControllerTest.m; sourceTree = "<group>"; };
 		B599074F158FFC000005C8E2 /* ETL-interface-test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ETL-interface-test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5990753158FFC000005C8E2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B5990755158FFC000005C8E2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -394,9 +373,13 @@
 				B5049B7115AF611700F4AF31 /* ETLTimelapseTest.m */,
 				B5049BB415AF7D7900F4AF31 /* ETLDeviceInterfaceTest.mm */,
 				B5049BC715AFA3F100F4AF31 /* ETLTimelapseControllerTest.mm */,
+				B5049BFA15AFE80600F4AF31 /* ETLModelTest.m */,
+				B5720DB315B48DF70092FA31 /* ETLProgrammerTest.m */,
+				B5720DB815B4B1390092FA31 /* ETLProgramViewControllerTest.m */,
 				B5049BF315AFAC4B00F4AF31 /* TestHelper.h */,
 				B5049BF815AFD16800F4AF31 /* TestHelper.m */,
-				B5049BFA15AFE80600F4AF31 /* ETLModelTest.m */,
+				B5720DB515B49A9F0092FA31 /* TestArcHelper.h */,
+				B5720DB615B49A9F0092FA31 /* TestArcHelper.m */,
 			);
 			path = ETLTests;
 			sourceTree = "<group>";
@@ -466,22 +449,6 @@
 		B53DADF7159E7729000BBC31 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				B53DADD7159E7725000BBC31 /* homebutton_bulb_pressed.png */,
-				B53DADD8159E7725000BBC31 /* homebutton_bulb_pressed@2x.png */,
-				B53DADD9159E7725000BBC31 /* homebutton_bulb.png */,
-				B53DADDA159E7725000BBC31 /* homebutton_bulb@2x.png */,
-				B53DADDB159E7725000BBC31 /* homebutton_hdr_pressed.png */,
-				B53DADDC159E7725000BBC31 /* homebutton_hdr_pressed@2x.png */,
-				B53DADDD159E7725000BBC31 /* homebutton_hdr.png */,
-				B53DADDE159E7725000BBC31 /* homebutton_hdr@2x.png */,
-				B53DADDF159E7725000BBC31 /* homebutton_manual_pressed.png */,
-				B53DADE0159E7725000BBC31 /* homebutton_manual_pressed@2x.png */,
-				B53DADE1159E7725000BBC31 /* homebutton_manual.png */,
-				B53DADE2159E7725000BBC31 /* homebutton_manual@2x.png */,
-				B53DADE3159E7725000BBC31 /* homebutton_timelapse_pressed.png */,
-				B53DADE4159E7725000BBC31 /* homebutton_timelapse_pressed@2x.png */,
-				B53DADE5159E7725000BBC31 /* homebutton_timelapse.png */,
-				B53DADE6159E7725000BBC31 /* homebutton_timelapse@2x.png */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -587,6 +554,8 @@
 				B599077E158FFC650005C8E2 /* Resources */,
 				B5990762158FFC000005C8E2 /* ETLAppDelegate.h */,
 				B5990763158FFC000005C8E2 /* ETLAppDelegate.m */,
+				B5720DAF15B48B9B0092FA31 /* ETLProgrammer.h */,
+				B5720DB015B48B9B0092FA31 /* ETLProgrammer.m */,
 				B599075A158FFC000005C8E2 /* Supporting Files */,
 			);
 			path = "ETL-interface-test";
@@ -825,22 +794,6 @@
 				B5C05842159E376F00750DC9 /* topbar_manual@2x.png in Resources */,
 				B5C05843159E376F00750DC9 /* topbar_timelapse.png in Resources */,
 				B5C05844159E376F00750DC9 /* topbar_timelapse@2x.png in Resources */,
-				B53DADE7159E7725000BBC31 /* homebutton_bulb_pressed.png in Resources */,
-				B53DADE8159E7725000BBC31 /* homebutton_bulb_pressed@2x.png in Resources */,
-				B53DADE9159E7725000BBC31 /* homebutton_bulb.png in Resources */,
-				B53DADEA159E7725000BBC31 /* homebutton_bulb@2x.png in Resources */,
-				B53DADEB159E7725000BBC31 /* homebutton_hdr_pressed.png in Resources */,
-				B53DADEC159E7725000BBC31 /* homebutton_hdr_pressed@2x.png in Resources */,
-				B53DADED159E7725000BBC31 /* homebutton_hdr.png in Resources */,
-				B53DADEE159E7725000BBC31 /* homebutton_hdr@2x.png in Resources */,
-				B53DADEF159E7725000BBC31 /* homebutton_manual_pressed.png in Resources */,
-				B53DADF0159E7725000BBC31 /* homebutton_manual_pressed@2x.png in Resources */,
-				B53DADF1159E7725000BBC31 /* homebutton_manual.png in Resources */,
-				B53DADF2159E7725000BBC31 /* homebutton_manual@2x.png in Resources */,
-				B53DADF3159E7725000BBC31 /* homebutton_timelapse_pressed.png in Resources */,
-				B53DADF4159E7725000BBC31 /* homebutton_timelapse_pressed@2x.png in Resources */,
-				B53DADF5159E7725000BBC31 /* homebutton_timelapse.png in Resources */,
-				B53DADF6159E7725000BBC31 /* homebutton_timelapse@2x.png in Resources */,
 				B5272D5315A27E4900F62549 /* settings.png in Resources */,
 				B5272D5415A27E4900F62549 /* settings@2x.png in Resources */,
 				B5272D6515A27E7900F62549 /* progress_count.png in Resources */,
@@ -902,6 +855,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5720DB215B48BBF0092FA31 /* ETLProgrammer.m in Sources */,
 				B5049BF715AFCBE000F4AF31 /* ETLModel.m in Sources */,
 				B5049BE315AFA6E300F4AF31 /* ColorSwitcher.m in Sources */,
 				B5049BE515AFA6E300F4AF31 /* STSegmentedControl.m in Sources */,
@@ -930,6 +884,9 @@
 				B5049BC815AFA3F100F4AF31 /* ETLTimelapseControllerTest.mm in Sources */,
 				B5049BF915AFD16800F4AF31 /* TestHelper.m in Sources */,
 				B5049BFB15AFE80600F4AF31 /* ETLModelTest.m in Sources */,
+				B5720DB415B48DF70092FA31 /* ETLProgrammerTest.m in Sources */,
+				B5720DB715B49A9F0092FA31 /* TestArcHelper.m in Sources */,
+				B5720DB915B4B1390092FA31 /* ETLProgramViewControllerTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -960,6 +917,7 @@
 				B5420FD615AB63EF001E3D15 /* ETLDoneProgrammingController.m in Sources */,
 				B504994F15AF560B00F4AF31 /* ETLTimelapse.m in Sources */,
 				B5049BF615AFCA8200F4AF31 /* ETLModel.m in Sources */,
+				B5720DB115B48B9B0092FA31 /* ETLProgrammer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

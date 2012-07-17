@@ -11,8 +11,8 @@
 
 @interface ETLShotViewController : ETLViewController
 {
-    CommandPacket command;
-    SectionConfig sections[MAX_CONFIGS];
+//    CommandPacket command;
+//    SectionConfig sections[MAX_CONFIGS];
 }
 
 @end

@@ -200,19 +200,12 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    /*  TODO - do something else for continuousShooting mode
-     if (self.continuousShooting) {
-     
-     }
-     else {*/
-    command.command = 10; // TODO - this is just grabbed from the sample, verify correct command
-    command.data = 1; // TODO - verify this is appropriate for the correct command
+    if ([segue.identifier isEqualToString:@"Program"]) {
+        ETLProgramViewController *controller = [segue destinationViewController];
+        controller.packetProvider = timelapse;
+    }
     
-    sections[0].shots = _shotLimit;
-    sections[0].interval = _shotPeriodInMs;
-    //    }
-    
-    [super prepareForSegue:segue sender:sender];
+//    [super prepareForSegue:segue sender:sender];
 }
 
 @end

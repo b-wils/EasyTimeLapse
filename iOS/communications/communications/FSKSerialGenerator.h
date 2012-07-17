@@ -8,6 +8,10 @@
 
 #import "AudioSignalGenerator.h"
 
+@protocol GeneratorStatusDelegate <NSObject>
+-(void) didWriteByte;
+@end
+
 @interface FSKSerialGenerator : AudioSignalGenerator {
 	unsigned nsBitProgress;
 	unsigned sineTableIndex;
@@ -23,7 +27,8 @@
 
 @property (nonatomic, retain) NSInputStream* bytesToSend;
 @property (nonatomic, retain) NSOutputStream* queuedBytes;
-@property (nonatomic, assign, readonly) NSUInteger numRawBitsWritten; 
+@property (nonatomic, assign) NSUInteger numRawBitsWritten; 
+@property (nonatomic, retain) id <GeneratorStatusDelegate> delegate;
 
 - (void) writeByte:(UInt8)byte;
 

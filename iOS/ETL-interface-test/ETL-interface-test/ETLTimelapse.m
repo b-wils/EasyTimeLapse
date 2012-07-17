@@ -58,4 +58,19 @@
     return shotCount == 0;
 }
 
+-(void) renderPacket:(UInt32)packetNumber to:(VariablePacket *)packet;
+{
+    packet->command = ETL_COMMAND_BASICTIMELAPSE;
+    packet->packetId = packetNumber;
+    
+    BasicTimelapse * timelapse = &packet->basicTimelapse;
+    timelapse->interval = shotInterval;
+    timelapse->shots = shotCount;
+    timelapse->exposureLengthPower = 0.0f;
+}
+
+- (UInt32)packetCount {
+    return 1;
+}
+
 @end

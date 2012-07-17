@@ -52,6 +52,7 @@ SAMPLE sineTable[SINE_TABLE_LENGTH];
 @synthesize bytesToSend;
 @synthesize queuedBytes;
 @synthesize numRawBitsWritten;
+@synthesize delegate;
 
 - (id) init
 {
@@ -142,8 +143,10 @@ SAMPLE sineTable[SINE_TABLE_LENGTH];
 				bits >>= 1;
 			}
 			nsBitProgress -= BIT_PERIOD;
-			if(!bitCount)
+			if(!bitCount) {
+                [self.delegate didWriteByte];
 				underflow = ![self getNextByte];
+            }
 		}
 		
 		sineTableIndex += (bits & 1)?TABLE_JUMP_HIGH:TABLE_JUMP_LOW;		

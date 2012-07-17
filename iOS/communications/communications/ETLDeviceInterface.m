@@ -23,23 +23,24 @@ void interruptionListenerCallback (void	*inUserData, UInt32	interruptionState)
 	}
 }
 
+@interface  ETLDeviceInterface ()
+{
+    UInt64 numBytesWritten;
+    UInt64 numTotalBytes;
+}
+
+@end
+
 // Location to store the singleton instance of ETLDeviceInterface
 @implementation ETLDeviceInterface
 
-//static ETLDeviceInterface * __theDeviceInterface = NULL;
 static bool audioInitialized = false;
 
-@synthesize analyzer, generator, recognizer;
+@synthesize analyzer, generator, recognizer, delegate;
 
 - (id)initWithReceiver:(id <CharReceiver>)receiver
-{
-    // TODO - verify that this works for singleton instantiation
-//    if (__theDeviceInterface) {
-//        return __theDeviceInterface;
-//    }
-    
+{    
     self = [super init];
-//    __theDeviceInterface = self;
     
     // initialize the audio session object for this application,
 	//  registering the callback that Audio Session Services will invoke 
@@ -72,6 +73,7 @@ static bool audioInitialized = false;
 	[analyzer addRecognizer:recognizer];
 	[recognizer addReceiver:receiver];
 	generator = [[FSKSerialGenerator alloc] init];
+    generator.delegate = self;
 	err = AudioSessionSetActive (true);
     NSAssert1(err == noErr, @"Failed to set active session", err);
 
@@ -86,33 +88,25 @@ static bool audioInitialized = false;
 }
 
 - (void)startProgramming
-{
-   // NSLog (@"Programming started.");    
-    
+{   
     [analyzer record];
     [generator play];
 }
 
 - (void)pauseProgramming
-{
-    //NSLog (@"Interrupted. Pausing programming.");
-    
+{   
     [analyzer stop];
     [generator pause];
 }
 
 - (void)resumeProgramming
-{
-    //NSLog (@"Resuming programming.");
-    
+{   
     [analyzer record];
     [generator resume];
 }
 
 - (void)stopProgramming
-{
-    //NSLog (@"Programming stopped.");    
-    
+{   
     [generator stop];
     [analyzer stop];
 }
@@ -123,40 +117,28 @@ static bool audioInitialized = false;
 }
 
 -(void)pausePlayer
-{
-    //NSLog (@"player paused.");    
-    
+{   
     [generator pause];
 }
 
 -(void)resumePlayer
-{
-   // NSLog (@"player resumed.");    
-    
+{   
     [generator resume];
 }
 
 -(void)stopPlayer
 {
-    //NSLog (@"player stopped.");    
-    
     [generator stop];
 }
 
 -(void)startReader
 {
-    //NSLog (@"reader started."); 
-    
     [analyzer record];
-
 }
 
 -(void)stopReader
-{
-    //NSLog (@"reader started."); 
-    
+{   
     [analyzer stop];
-    
 }
 
 - (void)writeBuffer:(unsigned char *)buffer ofSize:(size_t)bufferSize withCrc:(bool)withCrc
@@ -173,6 +155,9 @@ static bool audioInitialized = false;
 
 - (void)writeBuffer:(unsigned char *)buffer ofSize:(size_t)bufferSize
 {
+    numTotalBytes = bufferSize;
+    numBytesWritten = 0;
+    
     for (size_t i = 0; i < bufferSize; i++) [generator writeByte:buffer[i]];
 }
 
@@ -187,23 +172,11 @@ static bool audioInitialized = false;
     [self writeBuffer:(unsigned char *)section ofSize:sizeof(SectionConfig) withCrc:YES];
 }
 
-- (void)doTestProgram
-{    
-    SectionConfig section;
-    
-    //initEtlConfig(&section);
-
-    memset(&section, 0, sizeof(SectionConfig));
-    
-    section.shots = 100; //[shots.text intValue];
-    section.interval = 8; //[interval.text intValue];
-    
-    [self sendCommand:10 data:5];
-    [self sendSection:&section];
-    [self sendSection:&section];
-    [self sendSection:&section];
-    [self sendSection:&section];
-    [self sendSection:&section];
+- (void)didWriteByte
+{
+    numBytesWritten++;
+    if(numBytesWritten == numTotalBytes) 
+        [self.delegate didWriteBuffer];
 }
 
 @end

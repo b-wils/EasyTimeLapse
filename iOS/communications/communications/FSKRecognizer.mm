@@ -60,8 +60,7 @@ struct FSKByteQueue: public lock_free::queue<char> {
 	char input;
 	while (byteQueue->get(input))
 	{
-		//NSLog(@"Byte: %c (%02x)", input, (unsigned char)input);
-        printf("got byte: %c (%02x)\n", input, (unsigned char)input); 
+        printf("0x(%02x) ", (unsigned char)input); 
 		[receivers receivedChar:input];
 	}
 }

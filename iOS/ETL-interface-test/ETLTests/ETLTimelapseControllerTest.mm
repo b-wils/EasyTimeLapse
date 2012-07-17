@@ -6,11 +6,10 @@
 //  Copyright (c) 2012 Microsoft. All rights reserved.
 //
 
-#import <GHUnitIOS/GHUnit.h> 
-#import <OCMock/OCMock.h>
 #import "TestHelper.h"
 
 #import "ETLTimelapseController.h"
+#import "ETLProgramViewController.h"
 #import "ETLTimelapse.h"
 
 @interface ETLTimelapseControllerTest : GHTestCase
@@ -18,7 +17,7 @@
     ETLTimelapseController *controller;
     id timelapseMock, shotCountMock, switchMock, intervalMock,
        periodUnitMock, controllerMock, pickerMock, panelMock,
-       finalLengthMock, totalTimeMock;
+       finalLengthMock, totalTimeMock, segueMock;
     NSNotification * updateNotification;
 }
 @end
@@ -33,6 +32,7 @@
 - (void)setUp {
     controller = [[ETLTimelapseController alloc] init];
     SETUP_MOCK(switchMock, UISwitch)
+    SETUP_MOCK(segueMock, UIStoryboardSegue)
     MOCKS_FOR(controller)
         WIRE(timelapseMock, ETLTimelapse, timelapse)
         WIRE(shotCountMock, UITextField, shotLimitField)
@@ -59,6 +59,7 @@
     VERIFY_MOCK(shotCountMock)
     VERIFY_MOCK(intervalMock)
     VERIFY_MOCK(periodUnitMock)
+    VERIFY_MOCK(segueMock)
 }  
 
 //- (IBAction)didSwitchContinuous:(id)sender;
@@ -149,5 +150,16 @@
     [[totalTimeMock expect] setText:expectedTime];
     
     [controller updateUICalculations:updateNotification];
+}
+
+//     - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+-(void)testPrepareForSegue
+{
+    id nextControllerMock = [OCMockObject mockForClass:[ETLProgramViewController class]];
+    
+    [[[segueMock expect] andReturn:@"Program"] identifier];
+    [[[segueMock expect] andReturn:nextControllerMock] destinationViewController];
+    [[nextControllerMock expect] setPacketProvider:timelapseMock];
+    [controller prepareForSegue:segueMock sender:OCMOCK_ANY];
 }
 @end

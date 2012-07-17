@@ -8,12 +8,15 @@
 
 #import <Foundation/Foundation.h>
 #import "ETLModel.h"
+#import "Common.h"
+#import "ETLProgrammer.h"
 
-@interface ETLTimelapse : ETLModel
+@interface ETLTimelapse : ETLModel <PacketProvider>
 {
 }
 
 -(bool) continuousShooting;
+-(void) render:(BasicTimelapse *)packet;
 
 @property (nonatomic) UInt64 shotInterval;
 @property (nonatomic) UInt64 shotCount;

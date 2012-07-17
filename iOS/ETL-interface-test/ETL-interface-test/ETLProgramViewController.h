@@ -7,7 +7,7 @@
 //
 
 #import "ETLViewController.h"
-#import "ETLDeviceInterface.h"
+#import "ETLProgrammer.h"
 #import "CharReceiver.h"
 
 @interface ETLProgramViewController : ETLViewController <CharReceiver>
@@ -16,17 +16,13 @@
     IBOutlet UILabel * bytesTransferred;
     IBOutlet UIButton * cancelButton;
     
-    ETLDeviceInterface * deviceInterface;
+    ETLProgrammer *programmer;
     NSUInteger totalCommandBits;
     
     NSTimer * progressBarTimer, *startTimer;
 }
 
-- (void) setDeviceCommand:(CommandPacket)deviceCommand withSections:(SectionConfig *)commandSections;
-
 - (void) didFinishProgramming:(id)sender;
 
-@property (nonatomic, assign) CommandPacket command;
-@property (nonatomic, assign) SectionConfig *sections;
-
+@property (nonatomic, strong) id <PacketProvider> packetProvider;
 @end

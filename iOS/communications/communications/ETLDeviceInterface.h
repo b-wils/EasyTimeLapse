@@ -13,7 +13,13 @@
 #import "CharReceiver.h"
 #import "Common.h"
 
-@interface ETLDeviceInterface : NSObject
+@protocol DeviceStatusDelegate <NSObject>
+
+-(void)didWriteBuffer;
+
+@end
+
+@interface ETLDeviceInterface : NSObject <GeneratorStatusDelegate>
 {
     SectionConfig myConfigs[5];
     NSUInteger configIndex;
@@ -22,6 +28,7 @@
 @property (nonatomic, readonly) FSKRecognizer * recognizer;
 @property (nonatomic, readonly) AudioSignalAnalyzer * analyzer;
 @property (nonatomic, readonly) FSKSerialGenerator * generator;
+@property (nonatomic, retain) id <DeviceStatusDelegate> delegate;
 
 - (id)initWithReceiver:(id <CharReceiver>)receiver;
 

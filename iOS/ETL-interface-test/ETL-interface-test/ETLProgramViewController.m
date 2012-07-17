@@ -16,35 +16,42 @@
 
 @implementation ETLProgramViewController
 
-@synthesize command, sections;
+@synthesize packetProvider;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    deviceInterface = [[ETLDeviceInterface alloc] initWithReceiver:self];
+
+    programmer = [[ETLProgrammer alloc] init];
     UIProgressView *original = programmingProgress;
     programmingProgress = (UIProgressView *)[[ADVPopoverProgressBar alloc] initWithFrame:programmingProgress.frame];
-    [programmingProgress setProgress:0.6];
+    [programmingProgress setProgress:0];
     [original removeFromSuperview];
     [self.view addSubview:programmingProgress];
     
-    progressBarTimer = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(updateProgressBar:) userInfo:nil repeats:YES];
-    startTimer = [NSTimer scheduledTimerWithTimeInterval:0.75 target:self selector:@selector(startProgramming) userInfo:nil repeats:NO];
+    [self startProgramming];
 }
 
 - (void)startProgramming
 {
-    [deviceInterface startProgramming];
-    [deviceInterface sendCommand:command.command data:command.data];
-    for (NSUInteger i = 0; i < command.data; i++) {
-        [deviceInterface sendSection:sections + i];
-    }
+    programmer.packetProvider = packetProvider;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didRequestPacket:) name:PacketRequested object:programmer];
+    [programmer listen];
 }
 
 const NSUInteger streamBitsPerDataByte = 14;
+
+- (void)didRequestPacket:(NSNotification *)notification
+{
+    NSDictionary *userInfo = notification.userInfo;
+    UInt32 packetId; [(NSValue *)[userInfo objectForKey:@"sendingPacketId"] getValue:&packetId];
+    
+    programmingProgress.progress = packetId / 5.0;
+}
+
 - (void)updateProgressBar:(NSTimer *)timer
 {
-    NSUInteger bitCount = [deviceInterface.generator numRawBitsWritten];
+    NSUInteger bitCount = 0; //[deviceInterface.generator numRawBitsWritten];
     
     bytesTransferred.text = [NSString stringWithFormat:@"%i bytes sent", bitCount / streamBitsPerDataByte];
     if (bitCount < totalCommandBits) {        
@@ -57,7 +64,7 @@ const NSUInteger streamBitsPerDataByte = 14;
     if (programmingProgress.progress >= 0.999) {
         [timer invalidate];
         programmingProgress.progress = 1.0;
-        [deviceInterface stopProgramming];
+//        [deviceInterface stopProgramming];
         bytesTransferred.text = @"Done";
         cancelButton.hidden = true;
         
@@ -71,18 +78,10 @@ const NSUInteger streamBitsPerDataByte = 14;
     [self.navigationController pushViewController:controller animated:YES];
 }
 
-- (void) setDeviceCommand:(CommandPacket)deviceCommand withSections:(SectionConfig *)commandSections
-{
-    command = deviceCommand;
-    sections = commandSections;
-    
-    // TODO - review this calculation for general cases
-    totalCommandBits = (sizeof(CommandPacket) + sizeof(ETlModemPacket) * command.data) * streamBitsPerDataByte;
-}
-
 - (void)goBack:(id)sender
 {
-    [deviceInterface stopProgramming];
+//    [deviceInterface stopProgramming];
+    [programmer halt];
     [progressBarTimer invalidate];
     progressBarTimer = nil;
     [startTimer invalidate];

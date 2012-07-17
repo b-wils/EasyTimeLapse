@@ -40,40 +40,42 @@ enum deviceCommands {
 	ETL_COMMAND_HDRSHOT
 };
 
+#define PACKED __attribute__((__packed__))
+
 // TODO remove
 typedef struct {
 	crc_t Crc;
 	byte command;
 	byte data;
-} __attribute__((__packed__)) CommandPacket;
+} PACKED CommandPacket;
 
 typedef struct {
 	uint32_t StaticShutterLag;
 	uint8_t  ConfigSections;
-} __attribute__((__packed__)) DeviceSettings;
+} PACKED DeviceSettings;
 
 typedef struct {
 	uint32_t shots;
 	uint32_t interval;
 	float    exposureLengthPower;
-} __attribute__((__packed__)) BasicTimelapse;
+} PACKED BasicTimelapse;
 
 typedef struct {
 	float     exposureFstopChangePerMin;
     float     fstopSinAmplitude;
 	int8_t    fstopChangeOnPress;
-} __attribute__((__packed__)) BulbRamp;
+} PACKED BulbRamp;
 
 typedef struct {
 	uint32_t   intervalDelta;
     int8_t     repeatIndex;
     uint16_t   numRepeats;
-} __attribute__((__packed__)) IntervalRamp;
+} PACKED IntervalRamp;
 
 typedef struct {
 	float      fstopIncreasePerHDRShot;
     uint8_t    numHDRShots; // This is in addition to the initial exposure, eg value of 4 would result in 5 shots per bracket
-} __attribute__((__packed__)) HDRShot;
+} PACKED HDRShot;
 
 typedef struct {
 	crc_t crc;
@@ -86,7 +88,7 @@ typedef struct {
 		IntervalRamp   intervalRamp;
 		HDRShot        hdrShot;
 	};
-} __attribute__((__packed__)) VariablePacket;
+} PACKED VariablePacket;
 
 // TODO remove
 typedef struct {
@@ -102,13 +104,13 @@ typedef struct {
  float      fstopIncreasePerHDRShot;
  uint8_t    numHDRShots; // This is in addition to the initial exposure, eg value of 4 would result in 5 shots per bracket
  int8_t    fstopChangeOnPress;
-} __attribute__((__packed__)) SectionConfig;
+} PACKED SectionConfig;
 
 // TODO remove
 typedef struct  {
 	crc_t Crc;
 	SectionConfig SectConf;
-} __attribute__((__packed__)) ETlModemPacket;
+} PACKED ETlModemPacket;
 
 enum iosCommands {
 	IOS_COMMAND_INVALID = 0,
@@ -119,7 +121,7 @@ typedef struct {
     crc_t crc;
 	uint8_t command;
 	uint8_t data;
-} __attribute__((__packed__)) IPhonePacket;
+} PACKED IPhonePacket;
 
 // this is a test
 

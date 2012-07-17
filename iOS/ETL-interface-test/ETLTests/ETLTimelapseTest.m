@@ -128,7 +128,25 @@ MOCK_HANDLER(modelUpdated:)
 
 -(void) testRenderPacket
 {
-    BasicTimelapse packet;
-//    [[timelapse expect] renderPacket:&packet];
+    VariablePacket packet;
+    uint32_t expectedCount = 100;
+    uint32_t expectedInterval = 5000;
+    uint8_t packetNumber = 0;
+    uint8_t packetCommand = ETL_COMMAND_BASICTIMELAPSE;
+    float expectedPower = 0.0f;
+    timelapse.shotCount = expectedCount;
+    timelapse.shotInterval = expectedInterval;
+    
+    [timelapse renderPacket:0 to:&packet];
+    GHAssertEquals(packet.command, packetCommand, @"packet.command should equal %ld, got %d", packetCommand, packet.command);
+    GHAssertEquals(packet.packetId, packetNumber, @"packet.packetId should equal %ld, got %d", packetNumber, packet.packetId);
+    GHAssertEquals(packet.basicTimelapse.shots, expectedCount, @"packet.shots should equal %ld, got %d", expectedCount, packet.basicTimelapse.shots);
+    GHAssertEquals(packet.basicTimelapse.interval, expectedInterval, @"packet.interval should equal %ld, got %d", expectedInterval, packet.basicTimelapse.interval);
+    GHAssertEquals(packet.basicTimelapse.exposureLengthPower, expectedPower, @"packet.exposureLengthPower should equal %f, got %f", expectedPower, packet.basicTimelapse.exposureLengthPower);
+}
+
+-(void) testPacketCount 
+{
+    GHAssertEquals(timelapse.packetCount, (UInt32)1, @"timelapse.packetCount should equal 1, got: %d", timelapse.packetCount);
 }
 @end
