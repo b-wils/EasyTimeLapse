@@ -147,6 +147,22 @@
 		B5ED08151590F77B0026432C /* UIView+FindAndResignFirstResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = B5ED08141590F77B0026432C /* UIView+FindAndResignFirstResponder.m */; };
 		B5ED082315915FC00026432C /* NumpadDismissBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5ED082215915FC00026432C /* NumpadDismissBar.xib */; };
 		B5ED520215924E5900B31083 /* ETLProgramViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5ED520115924E5900B31083 /* ETLProgramViewController.m */; };
+		B5FF056215B50B6D00831EF7 /* homebutton_bulb_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = B5FF055215B50B6D00831EF7 /* homebutton_bulb_pressed.png */; };
+		B5FF056315B50B6D00831EF7 /* homebutton_bulb_pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5FF055315B50B6D00831EF7 /* homebutton_bulb_pressed@2x.png */; };
+		B5FF056415B50B6D00831EF7 /* homebutton_bulb.png in Resources */ = {isa = PBXBuildFile; fileRef = B5FF055415B50B6D00831EF7 /* homebutton_bulb.png */; };
+		B5FF056515B50B6D00831EF7 /* homebutton_bulb@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5FF055515B50B6D00831EF7 /* homebutton_bulb@2x.png */; };
+		B5FF056615B50B6D00831EF7 /* homebutton_hdr_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = B5FF055615B50B6D00831EF7 /* homebutton_hdr_pressed.png */; };
+		B5FF056715B50B6D00831EF7 /* homebutton_hdr_pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5FF055715B50B6D00831EF7 /* homebutton_hdr_pressed@2x.png */; };
+		B5FF056815B50B6D00831EF7 /* homebutton_hdr.png in Resources */ = {isa = PBXBuildFile; fileRef = B5FF055815B50B6D00831EF7 /* homebutton_hdr.png */; };
+		B5FF056915B50B6D00831EF7 /* homebutton_hdr@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5FF055915B50B6D00831EF7 /* homebutton_hdr@2x.png */; };
+		B5FF056A15B50B6D00831EF7 /* homebutton_manual_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = B5FF055A15B50B6D00831EF7 /* homebutton_manual_pressed.png */; };
+		B5FF056B15B50B6D00831EF7 /* homebutton_manual_pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5FF055B15B50B6D00831EF7 /* homebutton_manual_pressed@2x.png */; };
+		B5FF056C15B50B6D00831EF7 /* homebutton_manual.png in Resources */ = {isa = PBXBuildFile; fileRef = B5FF055C15B50B6D00831EF7 /* homebutton_manual.png */; };
+		B5FF056D15B50B6D00831EF7 /* homebutton_manual@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5FF055D15B50B6D00831EF7 /* homebutton_manual@2x.png */; };
+		B5FF056E15B50B6D00831EF7 /* homebutton_timelapse_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = B5FF055E15B50B6D00831EF7 /* homebutton_timelapse_pressed.png */; };
+		B5FF056F15B50B6D00831EF7 /* homebutton_timelapse_pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5FF055F15B50B6D00831EF7 /* homebutton_timelapse_pressed@2x.png */; };
+		B5FF057015B50B6D00831EF7 /* homebutton_timelapse.png in Resources */ = {isa = PBXBuildFile; fileRef = B5FF056015B50B6D00831EF7 /* homebutton_timelapse.png */; };
+		B5FF057115B50B6D00831EF7 /* homebutton_timelapse@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5FF056115B50B6D00831EF7 /* homebutton_timelapse@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -320,6 +336,22 @@
 		B5ED082215915FC00026432C /* NumpadDismissBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NumpadDismissBar.xib; sourceTree = "<group>"; };
 		B5ED520015924E5900B31083 /* ETLProgramViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETLProgramViewController.h; sourceTree = "<group>"; };
 		B5ED520115924E5900B31083 /* ETLProgramViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLProgramViewController.m; sourceTree = "<group>"; };
+		B5FF055215B50B6D00831EF7 /* homebutton_bulb_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = homebutton_bulb_pressed.png; path = ../../../assets/v1/homebutton_bulb_pressed.png; sourceTree = "<group>"; };
+		B5FF055315B50B6D00831EF7 /* homebutton_bulb_pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "homebutton_bulb_pressed@2x.png"; path = "../../../assets/v1/homebutton_bulb_pressed@2x.png"; sourceTree = "<group>"; };
+		B5FF055415B50B6D00831EF7 /* homebutton_bulb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = homebutton_bulb.png; path = ../../../assets/v1/homebutton_bulb.png; sourceTree = "<group>"; };
+		B5FF055515B50B6D00831EF7 /* homebutton_bulb@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "homebutton_bulb@2x.png"; path = "../../../assets/v1/homebutton_bulb@2x.png"; sourceTree = "<group>"; };
+		B5FF055615B50B6D00831EF7 /* homebutton_hdr_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = homebutton_hdr_pressed.png; path = ../../../assets/v1/homebutton_hdr_pressed.png; sourceTree = "<group>"; };
+		B5FF055715B50B6D00831EF7 /* homebutton_hdr_pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "homebutton_hdr_pressed@2x.png"; path = "../../../assets/v1/homebutton_hdr_pressed@2x.png"; sourceTree = "<group>"; };
+		B5FF055815B50B6D00831EF7 /* homebutton_hdr.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = homebutton_hdr.png; path = ../../../assets/v1/homebutton_hdr.png; sourceTree = "<group>"; };
+		B5FF055915B50B6D00831EF7 /* homebutton_hdr@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "homebutton_hdr@2x.png"; path = "../../../assets/v1/homebutton_hdr@2x.png"; sourceTree = "<group>"; };
+		B5FF055A15B50B6D00831EF7 /* homebutton_manual_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = homebutton_manual_pressed.png; path = ../../../assets/v1/homebutton_manual_pressed.png; sourceTree = "<group>"; };
+		B5FF055B15B50B6D00831EF7 /* homebutton_manual_pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "homebutton_manual_pressed@2x.png"; path = "../../../assets/v1/homebutton_manual_pressed@2x.png"; sourceTree = "<group>"; };
+		B5FF055C15B50B6D00831EF7 /* homebutton_manual.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = homebutton_manual.png; path = ../../../assets/v1/homebutton_manual.png; sourceTree = "<group>"; };
+		B5FF055D15B50B6D00831EF7 /* homebutton_manual@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "homebutton_manual@2x.png"; path = "../../../assets/v1/homebutton_manual@2x.png"; sourceTree = "<group>"; };
+		B5FF055E15B50B6D00831EF7 /* homebutton_timelapse_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = homebutton_timelapse_pressed.png; path = ../../../assets/v1/homebutton_timelapse_pressed.png; sourceTree = "<group>"; };
+		B5FF055F15B50B6D00831EF7 /* homebutton_timelapse_pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "homebutton_timelapse_pressed@2x.png"; path = "../../../assets/v1/homebutton_timelapse_pressed@2x.png"; sourceTree = "<group>"; };
+		B5FF056015B50B6D00831EF7 /* homebutton_timelapse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = homebutton_timelapse.png; path = ../../../assets/v1/homebutton_timelapse.png; sourceTree = "<group>"; };
+		B5FF056115B50B6D00831EF7 /* homebutton_timelapse@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "homebutton_timelapse@2x.png"; path = "../../../assets/v1/homebutton_timelapse@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -449,6 +481,22 @@
 		B53DADF7159E7729000BBC31 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				B5FF055215B50B6D00831EF7 /* homebutton_bulb_pressed.png */,
+				B5FF055315B50B6D00831EF7 /* homebutton_bulb_pressed@2x.png */,
+				B5FF055415B50B6D00831EF7 /* homebutton_bulb.png */,
+				B5FF055515B50B6D00831EF7 /* homebutton_bulb@2x.png */,
+				B5FF055615B50B6D00831EF7 /* homebutton_hdr_pressed.png */,
+				B5FF055715B50B6D00831EF7 /* homebutton_hdr_pressed@2x.png */,
+				B5FF055815B50B6D00831EF7 /* homebutton_hdr.png */,
+				B5FF055915B50B6D00831EF7 /* homebutton_hdr@2x.png */,
+				B5FF055A15B50B6D00831EF7 /* homebutton_manual_pressed.png */,
+				B5FF055B15B50B6D00831EF7 /* homebutton_manual_pressed@2x.png */,
+				B5FF055C15B50B6D00831EF7 /* homebutton_manual.png */,
+				B5FF055D15B50B6D00831EF7 /* homebutton_manual@2x.png */,
+				B5FF055E15B50B6D00831EF7 /* homebutton_timelapse_pressed.png */,
+				B5FF055F15B50B6D00831EF7 /* homebutton_timelapse_pressed@2x.png */,
+				B5FF056015B50B6D00831EF7 /* homebutton_timelapse.png */,
+				B5FF056115B50B6D00831EF7 /* homebutton_timelapse@2x.png */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -845,6 +893,22 @@
 				B5049BB015AF7CCE00F4AF31 /* indent_bot@2x.png in Resources */,
 				B5049BB115AF7CCE00F4AF31 /* indent_mid.png in Resources */,
 				B5049BB215AF7CCE00F4AF31 /* indent_mid@2x.png in Resources */,
+				B5FF056215B50B6D00831EF7 /* homebutton_bulb_pressed.png in Resources */,
+				B5FF056315B50B6D00831EF7 /* homebutton_bulb_pressed@2x.png in Resources */,
+				B5FF056415B50B6D00831EF7 /* homebutton_bulb.png in Resources */,
+				B5FF056515B50B6D00831EF7 /* homebutton_bulb@2x.png in Resources */,
+				B5FF056615B50B6D00831EF7 /* homebutton_hdr_pressed.png in Resources */,
+				B5FF056715B50B6D00831EF7 /* homebutton_hdr_pressed@2x.png in Resources */,
+				B5FF056815B50B6D00831EF7 /* homebutton_hdr.png in Resources */,
+				B5FF056915B50B6D00831EF7 /* homebutton_hdr@2x.png in Resources */,
+				B5FF056A15B50B6D00831EF7 /* homebutton_manual_pressed.png in Resources */,
+				B5FF056B15B50B6D00831EF7 /* homebutton_manual_pressed@2x.png in Resources */,
+				B5FF056C15B50B6D00831EF7 /* homebutton_manual.png in Resources */,
+				B5FF056D15B50B6D00831EF7 /* homebutton_manual@2x.png in Resources */,
+				B5FF056E15B50B6D00831EF7 /* homebutton_timelapse_pressed.png in Resources */,
+				B5FF056F15B50B6D00831EF7 /* homebutton_timelapse_pressed@2x.png in Resources */,
+				B5FF057015B50B6D00831EF7 /* homebutton_timelapse.png in Resources */,
+				B5FF057115B50B6D00831EF7 /* homebutton_timelapse@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
