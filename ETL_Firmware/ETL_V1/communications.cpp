@@ -36,6 +36,9 @@ void InitTransmitState() {
 	pinMode(focusPin, OUTPUT);
 	digitalWrite(focusPin, HIGH);
 	
+	pinMode(fskVCCFitlerPin, OUTPUT);
+	digitalWrite(fskVCCFitlerPin, HIGH);
+	
     modemPacketIndex = 1;
 	bytesRead = 0;
 	modem.begin();
@@ -73,7 +76,7 @@ void ProcessTransmitState() {
         ((char *) &recvPacket)[bytesRead] = modem.read();
         bytesRead++;
 		
-		Serial.println(((char *) &recvPacket)[bytesRead]);
+		//Serial.println(((char *) &recvPacket)[bytesRead]);
 		
 		if (bytesRead >= 16) {
 			IPhonePacket sendPacket;

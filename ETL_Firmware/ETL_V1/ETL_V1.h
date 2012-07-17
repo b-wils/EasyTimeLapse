@@ -40,6 +40,8 @@
 #define redLed 9
 #define greenLed 10
 #define blueLed 11
+#define fskVCCFitlerPin 8
+
 
 // TEMP FOR BREADBOARD
 #define useIdlePin 3
