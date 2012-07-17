@@ -60,18 +60,20 @@ SIGNAL(TIMER2_OVF_vect)
 unsigned long millis()
 {
 	unsigned long m;
+	uint8_t t;
 	uint8_t oldSREG = SREG;
 
 	// disable interrupts while we read timer0_millis or we might get an
 	// inconsistent value (e.g. in the middle of a write to timer0_millis)
 	cli();
 	m = timer2_millis;
+	t = TCNT2;
+	SREG = oldSREG;
 	
 	// Track the ms elapsed in the current tcnt
 	// We may want to add our fractional count here as well for increased accuracy
-	m += TCNT2 * MICROSECONDS_PER_TIMER2_TICK / 1000;
-
-	SREG = oldSREG;
+	// This operation takes too long to do while interrupts are disabled
+	m += t * MICROSECONDS_PER_TIMER2_TICK / 1000;
 
 	return m;
 }
