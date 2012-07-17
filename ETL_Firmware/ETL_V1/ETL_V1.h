@@ -22,7 +22,7 @@
 //const int buttonPin = 2;     // the number of the pushbutton pin
 //const int shutterPin = A2;
 //const int focusPin = A3;
-//const int flashPin = A4;
+//const int flashFeedbackPin = A4;
 //const int flashSensePin = A5;
 //const int micShortedPin = 4;
 //const int batteryMonitorPin = A0;
@@ -33,11 +33,10 @@
 // breadboard  1 pins
 #define buttonPin 2     // the number of the pushbutton pin
 #define shutterPin A5
-#define focusPin A4
-#define flashPin A0
+#define focusPin A2
+#define flashFeedbackPin A0
 #define flashSensePin A1
-#define micShortedPin 4
-#define batteryMonitorPin A2
+#define batteryMonitorPin A3
 #define redLed 9
 #define greenLed 10
 #define blueLed 11

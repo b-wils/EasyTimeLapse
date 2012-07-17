@@ -95,12 +95,21 @@ void TimelapseResume() {
 void InitTimelapseState() {
 	pinMode(flashSensePin, INPUT);
 	digitalWrite(flashSensePin, LOW);
-    SetLED(GREEN);
+	
+	// flash sense is connected to flash feedback when there is no switch plugged in
+	digitalWrite(flashFeedbackPin, HIGH);
+
+	// Technically these are output pins, but we can the 20k pullup resistors are enough
+	// to open our transistor and trigger the shutter. By using the pullups, we can go to low
+	// power mode
+    pinMode(shutterPin, INPUT);
+    digitalWrite(shutterPin, LOW);
+    pinMode(focusPin, INPUT);
+    digitalWrite(focusPin, LOW);
+	
+    //SetLED(GREEN);
     currentState = STATE_TIMELAPSE_WAITING;
     DebugPrint("Enter Timelapse");
-
-    pinMode(micShortedPin, INPUT);
-	digitalWrite(micShortedPin, HIGH);
 	
 	useFlashFeeback = 0;
 	
@@ -111,7 +120,9 @@ void InitTimelapseState() {
 		Serial.println("PC sync cable attached");
 	}
 	
-	byte micShorted = digitalRead(micShortedPin);
+	digitalWrite(flashFeedbackPin, LOW);
+	
+	//byte micShorted = digitalRead(micShortedPin);
 	
 	//if (micShorted == HIGH) {
 	    //DebugPrint("Mic not shorted");	
@@ -119,7 +130,7 @@ void InitTimelapseState() {
         //DebugPrint("Mic Shorted");	
 	//}		
 	
-	digitalWrite(micShortedPin, LOW);
+	//digitalWrite(micShortedPin, LOW);
 	
 	buttonClicked = false;
 	buttonHeld = false;
@@ -288,7 +299,10 @@ void ProcessTimelapseWaiting() {
 		Serial.println(exposureLength);
         digitalWrite(focusPin, HIGH);
         digitalWrite(shutterPin, HIGH);
-        SetLED(WHITE);
+        SetLEDCycle(LED_CYCLE_TAKE_PICTURE);
+		
+		// Set our pullup resistor for flash feedback
+		digitalWrite(flashFeedbackPin, HIGH);
 		
 		if (useFlashFeeback) {
             currentState = STATE_TIMELAPSE_WAITING_FLASH;
@@ -300,14 +314,16 @@ void ProcessTimelapseWaiting() {
 }
 
 void ProcessTimeLapseWaitingFlash() {
-    if (digitalRead(flashPin) == LOW) {
+    if (digitalRead(flashFeedbackPin) == LOW) {
         shutterOffTime = millis() + exposureLength;
         currentState = STATE_TIMELAPSE_EXPOSING;
+		digitalWrite(flashFeedbackPin, LOW);
     } else {
 		if (millis() >= nextPhotoTime) {
             digitalWrite(shutterPin, LOW);
             digitalWrite(focusPin, LOW);
 			DebugPrint("Flash timeout");
+			digitalWrite(flashFeedbackPin, LOW);
 			InitIdleState(); // TODO, get an error here
 		}
 	}

@@ -33,8 +33,8 @@ void InitTransmitState() {
 	
 	// This is our unused audio channel. This must go to ground otherwise something
 	// weird happens electrically. We could probably use the P/U resistor too.
-	pinMode(flashPin, OUTPUT);
-	digitalWrite(flashPin, HIGH);
+	pinMode(focusPin, OUTPUT);
+	digitalWrite(focusPin, HIGH);
 	
     modemPacketIndex = 1;
 	bytesRead = 0;
@@ -101,6 +101,8 @@ void ProcessTransmitState() {
 					
 		    if (myCrc != recvPacket.crc || failCrc) {
 			    DebugPrint("Crc mismatch!");
+				SetLEDCycle(LED_CYCLE_CRC_MISMATCH);
+				
 			    Serial.print(" recv_crc = ");
 			    Serial.print(recvPacket.crc, HEX);
                 Serial.print(" calc_Crc = ");
@@ -117,6 +119,8 @@ void ProcessTransmitState() {
 				
 				// TODO for now we always request a packet, need specifc retry code here
 		    } else {
+				SetLEDCycle(LED_CYCLE_CRC_MATCH);
+				
 			    Serial.print("packet success; crc = ");
 				Serial.println(myCrc, HEX);
 			    Serial.println();				

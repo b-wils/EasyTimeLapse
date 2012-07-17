@@ -62,12 +62,15 @@ unsigned long millis()
 	unsigned long m;
 	uint8_t oldSREG = SREG;
 
-	// TODO add our TCNT value to this if we are running at low speeds
-
 	// disable interrupts while we read timer0_millis or we might get an
 	// inconsistent value (e.g. in the middle of a write to timer0_millis)
 	cli();
 	m = timer2_millis;
+	
+	// Track the ms elapsed in the current tcnt
+	// We may want to add our fractional count here as well for increased accuracy
+	m += TCNT2 * MICROSECONDS_PER_TIMER2_TICK / 1000;
+
 	SREG = oldSREG;
 
 	return m;

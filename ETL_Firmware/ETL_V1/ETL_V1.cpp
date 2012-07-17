@@ -37,16 +37,20 @@ uint8_t currentState = 0;
 byte buttonClicked;
 byte buttonHeld;
 
+extern uint32_t printTimer;
+uint32_t incrementTimer;
+uint32_t incrementCount;
+
 void populateConfigs() {
     //myConfigs[0].type = CONFIG_SIN_P4
 	myConfigs[0].type = 0;
     myConfigs[0].repeatIndex = 0;
     myConfigs[0].numRepeats = 0;
     myConfigs[0].shots = 2;
-    myConfigs[0].interval = 2000;
+    myConfigs[0].interval = 20000;
     myConfigs[0].intervalDelta = 0;
     //myConfigs[0].exposureOffset = -2.841463415;
-	myConfigs[0].exposureOffset = -1;
+	myConfigs[0].exposureOffset = 2;
     myConfigs[0].exposureFstopChangePerMin = 0;
 	//myConfigs[0].fstopSinAmplitude = 0.158536585;
 	myConfigs[0].fstopSinAmplitude = 0;
@@ -96,7 +100,17 @@ void populateConfigs() {
 	numConfigs = 2;
 }
 
+void enableADC() {
+	sbi(ADCSRA, ADEN);
+}
+
+void disableADC() {
+	cbi(ADCSRA, ADEN);
+}
+
 void printBatteryLevel() {
+	enableADC(); // TODO we may need to give some time to get this value to stabilize
+	
 	int adcReading = analogRead(batteryMonitorPin);
 	int batLevel = (adcReading - ADC_EMPTY_VOLTAGE)/(ADC_FULL_VOLTAGE - ADC_EMPTY_VOLTAGE);
 	
@@ -108,6 +122,8 @@ void printBatteryLevel() {
 	Serial.println(adcReading);
     Serial.print("Percent: ");
 	delay(10);
+	
+	disableADC();
 }
 
 int main(void)
@@ -138,11 +154,22 @@ void InitIdleState() {
 //	SetLEDCycle(LED_CYCLE_IDLE);
     //LedCycle tempCycle = LED_CYCLE_OFF;
     SetLEDCycle(LED_CYCLE_OFF);
+	
 	printBatteryLevel();
+	disableADC();
     DebugPrint("Enter Idle");
 }
 
+void ProcessIdle();
+
 void setup() {
+	
+	// TEMP for power testing
+	//currentState = STATE_IDLE;
+	//disableADC();
+	//ProcessIdle();
+	printTimer = millis();
+	incrementTimer = millis();
 	
 	DebugInit();
 	
@@ -154,8 +181,8 @@ void setup() {
     pinMode(focusPin, OUTPUT);
     digitalWrite(focusPin, LOW);
     
-    pinMode(flashPin, INPUT);
-    digitalWrite(flashPin, HIGH);
+    pinMode(flashFeedbackPin, INPUT);
+    //digitalWrite(flashFeedbackPin, HIGH); // This will suck power if always on
     
 	pinMode(useIdlePin, INPUT);
 	digitalWrite(useIdlePin, HIGH);
@@ -179,10 +206,17 @@ void setup() {
 	
     InitIdleState();
 	
+	SetLED(OFF);
+	
 	SetLEDCycle(LED_CYCLE_START);
+	
+	printTimer = millis();
+	incrementTimer = millis();
+	incrementCount = 0;
 }
 
 extern uint32_t nextPhotoTime;
+extern uint32_t shutterOffTime;
 
 void ProcessIdle() {
 
@@ -190,9 +224,8 @@ void ProcessIdle() {
     set_sleep_mode(SLEEP_MODE_PWR_DOWN);
 
     switch (currentState) {
-		case STATE_TIMELAPSE_WAITING_FLASH:
-		case STATE_TIMELAPSE_EXPOSING:
-		case STATE_TRANSMIT:
+		case STATE_TIMELAPSE_WAITING_FLASH: // TODO: can we drop to low power and attach interrupt to flash pin?
+		case STATE_TRANSMIT: //  TODO: can we drop to idle mode with a timer
 		    // Dont Idle in these states
 		    return;
 			break;
@@ -203,9 +236,17 @@ void ProcessIdle() {
 				set_sleep_mode(SLEEP_MODE_PWR_SAVE);
 			}
 			break;
+		case STATE_TIMELAPSE_EXPOSING:
+			if (millis() > (shutterOffTime - (MILLIS_PER_OVERFLOW * 2))) {
+				return;
+			} else {
+				set_sleep_mode(SLEEP_MODE_PWR_SAVE);
+			}
+			break;
         case STATE_TIMELAPSE_PAUSE:
 		    // We will check LED state before actually going to idle here
 		    set_sleep_mode(SLEEP_MODE_PWR_SAVE);
+			break;
 	}
 
     if (currentLedCycle.NumLedPositions != 0) {
@@ -229,11 +270,12 @@ void ProcessIdle() {
 		return;
 	}
 
-	//Serial.flush();
+	Serial.flush();
 
     // If we've made it this far, we can idle!
     attachInterrupt(0,ButtonChange,CHANGE);
     sleep_enable();
+	sleep_bod_disable();
     sleep_cpu();
     sleep_disable();
     detachInterrupt(0);
@@ -312,6 +354,7 @@ void ProcessLEDCycle() {
 				} else {
 					currentLedCycle = LED_CYCLE_OFF;
 					SetLED(OFF);
+					return;
 				}					
 			}
 			
@@ -358,13 +401,29 @@ void loop() {
 				}
 				
 				break;
+			case 't':
+				// dump the current millis() value
+				Serial.print("millis() = ");
+				Serial.println(millis());
+				break;
 			default:
 				Serial.println("Unrecognized command ");
 		}
 	}
 	
-	if (digitalRead(useIdlePin) == LOW) {
+	//if (digitalRead(useIdlePin) == LOW) {
 		ProcessIdle();
-	}
+	//}
+	
+	//if (millis() > incrementTimer) {
+		//incrementCount++;
+		//incrementTimer = millis() + 5;
+	//}
+	//
+	//if (millis() > printTimer) {
+		//printTimer += 2000;
+		//Serial.println(incrementCount);
+		//incrementCount = 0;
+	//}
 	
 }

@@ -88,6 +88,9 @@ extern "C"{
 // the whole number of milliseconds per timer0 overflow
 #define MILLIS_PER_OVERFLOW (MICROSECONDS_PER_TIMER2_OVERFLOW / 1000)
 
+// micros per tick
+#define MICROSECONDS_PER_TIMER2_TICK (clockCyclesToMicroseconds((uint32_t) TIMER2_PRESCALER_SETTING))
+
 #define lowByte(w) ((uint8_t) ((w) & 0xff))
 #define highByte(w) ((uint8_t) ((w) >> 8))
 
