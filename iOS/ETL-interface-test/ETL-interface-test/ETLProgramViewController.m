@@ -46,28 +46,12 @@ const NSUInteger streamBitsPerDataByte = 14;
     NSDictionary *userInfo = notification.userInfo;
     UInt32 packetId; [(NSValue *)[userInfo objectForKey:@"sendingPacketId"] getValue:&packetId];
     
-    programmingProgress.progress = packetId / 5.0;
-}
-
-- (void)updateProgressBar:(NSTimer *)timer
-{
-    NSUInteger bitCount = 0; //[deviceInterface.generator numRawBitsWritten];
-    
-    bytesTransferred.text = [NSString stringWithFormat:@"%i bytes sent", bitCount / streamBitsPerDataByte];
-    if (bitCount < totalCommandBits) {        
-        programmingProgress.progress = (bitCount / (totalCommandBits * 1.0)) * 0.9;
-    }
-    else {
-        programmingProgress.progress += 0.001;
-    }
-    
+    programmingProgress.progress = packetId / (packetProvider.packetCount + 1.0);
     if (programmingProgress.progress >= 0.999) {
-        [timer invalidate];
         programmingProgress.progress = 1.0;
-//        [deviceInterface stopProgramming];
-        bytesTransferred.text = @"Done";
-        cancelButton.hidden = true;
-        
+        [programmer halt];
+        bytesTransferred.text = @"done";
+        cancelButton.hidden = true;        
         [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(didFinishProgramming:) userInfo:NULL repeats:NO];
     }
 }
@@ -80,19 +64,12 @@ const NSUInteger streamBitsPerDataByte = 14;
 
 - (void)goBack:(id)sender
 {
-//    [deviceInterface stopProgramming];
     [programmer halt];
     [progressBarTimer invalidate];
     progressBarTimer = nil;
     [startTimer invalidate];
     startTimer = nil;
     [super goBack:sender];
-    //[self dismissModalViewControllerAnimated:NO];
-}
-
-- (void) receivedChar:(char)input
-{
-    NSLog(@"Received character: %c", input);
 }
 
 @end

@@ -12,7 +12,7 @@
 @interface ETLProgramViewControllerTest : ETLTestCase
 {
     ETLProgramViewController *controller;
-    id programmerMock;
+    id programmerMock, providerMock;
 }
 @end
 
@@ -27,15 +27,19 @@
     controller = [[ETLProgramViewController alloc] init];
     MOCKS_FOR(controller)
         WIRE(programmerMock, ETLProgrammer, programmer)
+        WIRE_PROTOCOL(providerMock, PacketProvider, packetProvider)
     END
 }
 
 - (void)tearDown {
     VERIFY_MOCK(programmerMock)
+    VERIFY_MOCK(providerMock)
 }  
 
 - (void)testStartProgramming
 {
+    [[programmerMock expect] setPacketProvider:providerMock];
+    [[programmerMock expect] listen];
     [controller performSelector:@selector(startProgramming)];
 }
 @end

@@ -87,7 +87,8 @@
                       nil];
         [[NSNotificationCenter defaultCenter] postNotificationName:PacketRequested object:self userInfo:userInfo];
      
-        [self sendPacketNumber:packetId];
+        if (isValid && packetId > packetProvider.packetCount) return; 
+        else [self sendPacketNumber:packetId];
     }
 }
 

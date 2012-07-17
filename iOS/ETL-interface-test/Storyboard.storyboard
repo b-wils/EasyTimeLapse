@@ -883,6 +883,7 @@
                     <navigationItem key="navigationItem" id="h4A-F1-n9Y"/>
                     <connections>
                         <outlet property="bytesTransferred" destination="wWi-Vx-Yo1" id="3Sb-3V-pw0"/>
+                        <outlet property="cancelButton" destination="Wev-L9-Q30" id="kh6-nv-aqB"/>
                         <outlet property="programmingProgress" destination="gSH-xb-N0p" id="XEd-cG-xOv"/>
                     </connections>
                 </viewController>

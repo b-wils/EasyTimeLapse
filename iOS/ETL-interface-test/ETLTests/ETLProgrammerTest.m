@@ -26,6 +26,7 @@
 
 - (void)setUp {
     programmer = [[ETLProgrammer alloc] init];
+    [programmer halt];
     
     programmerMock = [OCMockObject partialMockForObject:programmer];
     MOCKS_FOR(programmer)
@@ -37,6 +38,7 @@
 - (void)tearDown {
     VERIFY_MOCK(programmerMock)
     VERIFY_MOCK(deviceMock)
+    VERIFY_MOCK(providerMock)
 }  
 
 - (void)testValidPacketReceived
@@ -48,8 +50,6 @@
     IPhonePacket packet = {0, 0, packetNumber};
     bool crcPass = true;
     
-    [[deviceMock expect] stopReader];
-    [[deviceMock expect] startPlayer];    
     [[[programmerMock expect] andReturnValue:OCMOCK_VALUE(crcPass)] performSelector:@selector(isCrcValid)];
     [[programmerMock expect] sendPacketNumber:packetNumber];
     
@@ -64,21 +64,21 @@
         WIRE(deviceMock, ETLDeviceInterface, device)
     END
     UInt32 packetNumber = 0;
-    IPhonePacket packet = {0, 0, packetNumber + 1};
+    IPhonePacket packet = {0, 0, packetNumber + 2};
     bool crcPass = false;
     
-    [[deviceMock expect] stopReader];
-    [[deviceMock expect] startPlayer];
     [[[programmerMock expect] andReturnValue:OCMOCK_VALUE(crcPass)] performSelector:@selector(isCrcValid)];
     [[programmerMock expect] sendPacketNumber:packetNumber];
     
     for (UInt32 i = 0; i < sizeof(IPhonePacket); i++) {
-        [programmer receivedChar:((char *)&packet)[i]];
+        [programmerMock receivedChar:((char *)&packet)[i]];
     }
 }
 
 - (void)testSendPacketNumber
 {
+    [[deviceMock stub] stopReader];
+    [[deviceMock stub] startPlayer]; 
     [[providerMock expect] renderPacket:0 to:[OCMArg anyPointer]];
     [programmer sendPacketNumber:0];
 }
