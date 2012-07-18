@@ -108,15 +108,15 @@ enum iosCommands {
 };
 
 typedef struct {
-	uint8_t MajorVersion;
-	uint8_t MinorVersion;
-	uint8_t BatteryLevel;
+	uint8_t majorVersion;
+	uint8_t minorVersion;
+	uint8_t batteryLevel;
 } PACKED DeviceInfo;
 
 typedef struct {
     crc_t crc;
 	uint8_t command;
-	uint8_t packetId;
+	uint8_t packetId; // TODO this is actually next packet we want, should we move this into the union?
 	union {
 		DeviceInfo deviceInfo;
 	};
