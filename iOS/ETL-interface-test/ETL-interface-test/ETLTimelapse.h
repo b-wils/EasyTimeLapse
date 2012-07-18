@@ -16,7 +16,6 @@
 }
 
 -(bool) continuousShooting;
--(void) render:(BasicTimelapse *)packet;
 
 @property (nonatomic) UInt64 shotInterval;
 @property (nonatomic) UInt64 shotCount;

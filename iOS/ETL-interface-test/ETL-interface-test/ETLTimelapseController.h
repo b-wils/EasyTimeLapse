@@ -30,10 +30,6 @@
     IBOutlet UIButton * readyButton;
 }
 
-@property(nonatomic, assign) NSUInteger shotPeriodInMs;
-@property(nonatomic, assign) NSUInteger shotLimit;
-@property(nonatomic, assign) float_t shotFramesPerSecond;
-
 - (IBAction)didSwitchContinuous:(id)sender;
 - (IBAction)didUpdatePeriod:(id)sender;
 - (IBAction)didUpdateShotLimit:(id)sender;

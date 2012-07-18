@@ -15,10 +15,6 @@
 @end
 
 @implementation ETLTimelapseController
-
-@synthesize shotPeriodInMs = _shotPeriodInMs;
-@synthesize shotLimit = _shotLimit;
-@synthesize shotFramesPerSecond = _shotFramesPerSecond;
     
 - (void)ensureInitialized {
     if(!timelapse) {
@@ -38,13 +34,9 @@
         timelapse = [[ETLTimelapse alloc] init];
         timelapse.shotInterval = 5000;
         timelapse.shotCount = 100;
+        timelapse.clipFramesPerSecond = 23.97f;
         [self observe:timelapse forEvent:ModelUpdated andRun:@selector(updateUICalculations:)];   
         
-        _shotFramesPerSecond = 24.0f;
-        
-        // TODO better automatic update for these data    
-        _shotPeriodInMs = 5000; // 5 sec default
-        _shotLimit = 100; // 100 shot default
         periodUnit = [periodUnits objectAtIndex:1]; // "seconds"
     }
 }
@@ -84,6 +76,8 @@
     [periodUnitPicker selectRow:1 inComponent:0 animated:NO];
     shotPeriodField.inputAccessoryView = numpadToolbar;
     shotLimitField.inputAccessoryView = numpadToolbar;
+    
+    [self updateUICalculations:nil];
 }
 
 - (NSString *)formatSeconds:(float_t)totalSeconds with:(NSString *)formatString
@@ -108,18 +102,6 @@
     }
 }
 
-- (void)setShotPeriodInMs:(NSUInteger)value
-{
-    _shotPeriodInMs = value;
-    timelapse.shotInterval = value;
-}
-
-- (void)setShotLimit:(NSUInteger)value
-{
-    _shotLimit = value;
-    timelapse.shotCount = value;
-}
-
 - (IBAction)didSwitchContinuous:(id)sender
 {
     NSLog(@"didSwitchContinuous:%@", sender);
@@ -137,13 +119,12 @@
     float_t value = [(UITextField *)sender text].floatValue;
     NSUInteger multiple = [(NSNumber *)[msInUnit objectForKey:periodUnit] unsignedIntegerValue];
     
-//    self.shotPeriodInMs = floor(value * multiple);
     timelapse.shotInterval = floor(value * multiple); 
 }
 
 - (IBAction)didUpdateShotLimit:(id)sender
 {
-    self.shotLimit = [(UITextField *)sender text].intValue;
+    timelapse.shotCount = [(UITextField *)sender text].intValue;
 }
 
 - (IBAction)didClickPeriodUnit:(id)sender {

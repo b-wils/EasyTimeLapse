@@ -10,18 +10,24 @@
 #include <Foundation/Foundation.h>
 
 @implementation ETLTestCase
-    
+
+- (void)unregisterNotification:(NSNotification *)notification
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:listenerMock name:notification.name object:notification.object];
+}
+
 - (void)expectCall:(SEL)selector from:(id)sender on:name
 {
     if (!listenerMock) SETUP_MOCK(listenerMock, [self class]);
 
     [[NSNotificationCenter defaultCenter] addObserver:listenerMock selector:selector name:name object:sender];
-    [[[listenerMock expect] andCall:@selector(unregisterNotification:) onObject:self]performSelector:selector withObject:OCMOCK_ANY];
-}
 
-- (void)unregisterNotification:(NSNotification *)notification
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:listenerMock name:notification.name object:notification.object];
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+    // Ignoring this warning since we're only calling the selector on a mock object, which won't leak.
+    [[[listenerMock expect] andCall:@selector(unregisterNotification:) onObject:self] 
+                            performSelector:selector withObject:OCMOCK_ANY];
+#pragma clang pop
 }
 
 - (void)tearDown

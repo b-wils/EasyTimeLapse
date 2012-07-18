@@ -1,5 +1,3 @@
-#import <GHUnitIOS/GHUnit.h> 
-#import <OCMock/OCMock.h>
 #import "TestHelper.h"
 
 #import "ETLTimelapse.h"
@@ -37,74 +35,62 @@ MOCK_HANDLER(modelUpdated:)
 
 - (void)testInit
 {
-    GHAssertNotNil(timelapse, @"timelapse instance was nil");
-    GHTestLog(@"timelapse.shotInterval: %d", timelapse.shotInterval);
-    GHAssertNotEquals(timelapse.shotInterval, (UInt64)0, 
-                      @"shotInterval must be non-zero");
-    GHAssertNotEquals(timelapse.clipFramesPerSecond, (double)0, 
-                      @"clipFramesPerSecond must be non-zero");
+    assertThat(timelapse, isNot(nil));
+    assertThatInt(timelapse.shotInterval, isNot(equalToInt(0)));
+    assertThatDouble(timelapse.clipFramesPerSecond, isNot(equalToDouble(0)));
 }
 
 - (void)testClipLength
 {
-    GHAssertEquals(timelapse.clipLength, __builtin_inf(), 
-                   @"clipLength should have been INFINITY, got %f", timelapse.clipLength);
+    assertThatDouble(timelapse.clipLength, equalToDouble(INFINITY));
+    
     timelapse.shotCount = 10;
-    GHAssertNotEquals(timelapse.clipLength, __builtin_inf(), 
-                      @"clipLength should not have been INFINITY, got %f", timelapse.clipLength);
+    assertThatDouble(timelapse.clipLength, isNot(equalToDouble(INFINITY)));
     
     double expectedLength = 10/timelapse.clipFramesPerSecond;
-    GHAssertEquals(timelapse.clipLength, expectedLength, 
-                   @"Expected clipLength of: %f, got: $f",expectedLength, timelapse.clipLength);
+    assertThatDouble(timelapse.clipLength, equalToDouble(expectedLength));
     
+    // Changing shotInterval should not affect clipLength
     expectedLength = timelapse.clipLength;
     timelapse.shotInterval = 5000;
-    GHAssertEquals(timelapse.clipLength, expectedLength, 
-                   @"Changing shotInterval should not affect clipLength");
+    assertThatDouble(timelapse.clipLength, equalToDouble(expectedLength));
     
     expectedLength *= 2;
     timelapse.shotCount *= 2;
-    GHAssertEquals(timelapse.clipLength, expectedLength,
-                   @"Doubling the shotCount should double the clipLength");
+    assertThatDouble(timelapse.clipLength, equalToDouble(expectedLength));
     
     UInt64 expectedCount = timelapse.shotCount / 2;
     timelapse.clipLength /= 2;
-    GHAssertEquals(timelapse.shotCount, expectedCount,
-                   @"Halving the clipLength should halve the shotCount");
+    assertThatInt(timelapse.shotCount, equalToInt(expectedCount));
 }
 
 - (void)testShootingTime
 {
-    GHAssertEquals(timelapse.shootingTime, __builtin_inf(), 
-                   @"shootingTime should have been INFINITY, got %f", timelapse.shootingTime);
+    assertThatFloat(timelapse.shootingTime, equalToFloat(INFINITY));
     
     timelapse.shotCount = 10;
-    GHAssertNotEquals(timelapse.shootingTime, __builtin_inf(), 
-                      @"shootingTime should not have been INFINITY, got %f", timelapse.shootingTime);
+    assertThatFloat(timelapse.shootingTime, isNot(equalToFloat(INFINITY)));
     
     double expectedLength = 10 * timelapse.shotInterval;
-    GHAssertEquals(timelapse.shootingTime, expectedLength, 
-                   @"Expected shootingTime of: %f, got: $f",expectedLength, timelapse.shootingTime);
+    assertThatDouble(timelapse.shootingTime, equalToDouble(expectedLength));
     
+    // Changing clipFramesPerSecond should not affect shootingTime
     expectedLength = timelapse.shootingTime;
     timelapse.clipFramesPerSecond = 30.0;
-    GHAssertEquals(timelapse.shootingTime, expectedLength, 
-                   @"Changing clipFramesPerSecond should not affect shootingTime");
+    assertThatDouble(timelapse.shootingTime, equalToDouble(expectedLength));
     
     expectedLength *= 2;
     timelapse.shotInterval *= 2;
-    GHAssertEquals(timelapse.shootingTime, expectedLength,
-                   @"Doubling the shotInterval should double the shootingTime");
+    assertThatDouble(timelapse.shootingTime, equalToDouble(expectedLength));
     
     UInt64 expectedInterval = timelapse.shotInterval / 2;
     timelapse.shootingTime /= 2;
-    GHAssertEquals(timelapse.shotInterval, expectedInterval,
-                   @"Halving the shootingTime should halve the shotInterval");
+    assertThatDouble(timelapse.shotInterval, equalToDouble(expectedInterval));
     
+    // Setting the shooting time should not change the shotInterval when there is no shot count
     timelapse.shotCount = 0;
     timelapse.shootingTime /= 2;
-    GHAssertEquals(timelapse.shotInterval, expectedInterval, 
-                   @"Setting the shooting time should not change the shotInterval when there is no shot count");
+    assertThatDouble(timelapse.shotInterval, equalToDouble(expectedInterval));
 }
 
 -(void) testNotifications
@@ -132,21 +118,20 @@ MOCK_HANDLER(modelUpdated:)
     uint32_t expectedCount = 100;
     uint32_t expectedInterval = 5000;
     uint8_t packetNumber = 0;
-    uint8_t packetCommand = ETL_COMMAND_BASICTIMELAPSE;
     float expectedPower = 0.0f;
     timelapse.shotCount = expectedCount;
     timelapse.shotInterval = expectedInterval;
     
     [timelapse renderPacket:0 to:&packet];
-    GHAssertEquals(packet.command, packetCommand, @"packet.command should equal %ld, got %d", packetCommand, packet.command);
-    GHAssertEquals(packet.packetId, packetNumber, @"packet.packetId should equal %ld, got %d", packetNumber, packet.packetId);
-    GHAssertEquals(packet.basicTimelapse.shots, expectedCount, @"packet.shots should equal %ld, got %d", expectedCount, packet.basicTimelapse.shots);
-    GHAssertEquals(packet.basicTimelapse.interval, expectedInterval, @"packet.interval should equal %ld, got %d", expectedInterval, packet.basicTimelapse.interval);
-    GHAssertEquals(packet.basicTimelapse.exposureLengthPower, expectedPower, @"packet.exposureLengthPower should equal %f, got %f", expectedPower, packet.basicTimelapse.exposureLengthPower);
+    assertThatInt(packet.command, equalToInt(ETL_COMMAND_BASICTIMELAPSE));
+    assertThatInt(packet.packetId, equalToInt(packetNumber));
+    assertThatInt(packet.basicTimelapse.shots, equalToInt(expectedCount));
+    assertThatInt(packet.basicTimelapse.interval, equalToInt(expectedInterval));
+    assertThatFloat(packet.basicTimelapse.exposureLengthPower, equalToFloat(expectedPower));
 }
 
 -(void) testPacketCount 
 {
-    GHAssertEquals(timelapse.packetCount, (UInt32)1, @"timelapse.packetCount should equal 1, got: %d", timelapse.packetCount);
+    assertThatInt(timelapse.packetCount, equalToInt(1));
 }
 @end

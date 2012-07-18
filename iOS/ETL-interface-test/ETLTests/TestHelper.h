@@ -11,6 +11,8 @@
 
 #import <OCMock/OCMock.h>
 #import <GHUnitIOS/GHUnit.h>
+#define HC_SHORTHAND
+#import <OCHamcrestIOS/OCHamcrestIOS.h>
 #import "TestArcHelper.h"
 
 #define VERIFY_MOCK(x) {    \
@@ -44,6 +46,7 @@
 }
 
 - (void)expectCall:(SEL)selector from:(id)sender on:name;
+- (void)unregisterNotification:(NSNotification *)notification;
 @end
 
 #endif

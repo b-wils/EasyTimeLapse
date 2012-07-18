@@ -8,12 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "CharReceiver.h"
-#import "TablePickerController.h"
+//#import "TablePickerController.h"
 
 @class ScanCodeConverter;
 @class TypePadCharLogger;
 
-@interface TypePadController : UIViewController <CharReceiver, TablePickerDelegate> {
+@interface TypePadController : UIViewController <CharReceiver> {
 	UITextView* textView;
 	UIBarButtonItem* selectButton;
 	NSMutableDictionary* converters;

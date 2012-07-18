@@ -10,7 +10,7 @@
 #import "ETLProgrammer.h"
 #import "CharReceiver.h"
 
-@interface ETLProgramViewController : ETLViewController <CharReceiver>
+@interface ETLProgramViewController : ETLViewController
 {
     IBOutlet UIProgressView * programmingProgress;
     IBOutlet UILabel * bytesTransferred;

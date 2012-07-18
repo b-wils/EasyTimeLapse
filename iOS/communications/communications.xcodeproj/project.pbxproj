@@ -32,8 +32,6 @@
 		B5B235221592CD660046F3B5 /* PatternRecognizer.h in Headers */ = {isa = PBXBuildFile; fileRef = B5B235061592CD660046F3B5 /* PatternRecognizer.h */; };
 		B5B235231592CD660046F3B5 /* ScanCodeConverter.h in Headers */ = {isa = PBXBuildFile; fileRef = B5B235071592CD660046F3B5 /* ScanCodeConverter.h */; };
 		B5B235241592CD660046F3B5 /* ScanCodeConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = B5B235081592CD660046F3B5 /* ScanCodeConverter.m */; };
-		B5B235251592CD660046F3B5 /* TablePickerController.h in Headers */ = {isa = PBXBuildFile; fileRef = B5B235091592CD660046F3B5 /* TablePickerController.h */; };
-		B5B235261592CD660046F3B5 /* TablePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5B2350A1592CD660046F3B5 /* TablePickerController.m */; };
 		B5B235271592CD660046F3B5 /* TypePadController.h in Headers */ = {isa = PBXBuildFile; fileRef = B5B2350B1592CD660046F3B5 /* TypePadController.h */; };
 		B5B235281592CD660046F3B5 /* TypePadController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5B2350C1592CD660046F3B5 /* TypePadController.m */; };
 		B5C44729159285AF009F1A98 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5C44728159285AF009F1A98 /* Foundation.framework */; };
@@ -65,8 +63,6 @@
 		B5B235061592CD660046F3B5 /* PatternRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PatternRecognizer.h; sourceTree = "<group>"; };
 		B5B235071592CD660046F3B5 /* ScanCodeConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanCodeConverter.h; sourceTree = "<group>"; };
 		B5B235081592CD660046F3B5 /* ScanCodeConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanCodeConverter.m; sourceTree = "<group>"; };
-		B5B235091592CD660046F3B5 /* TablePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TablePickerController.h; sourceTree = "<group>"; };
-		B5B2350A1592CD660046F3B5 /* TablePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TablePickerController.m; sourceTree = "<group>"; };
 		B5B2350B1592CD660046F3B5 /* TypePadController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TypePadController.h; sourceTree = "<group>"; };
 		B5B2350C1592CD660046F3B5 /* TypePadController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TypePadController.m; sourceTree = "<group>"; };
 		B5C44725159285AF009F1A98 /* libcommunications.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libcommunications.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -139,8 +135,6 @@
 				B5B235061592CD660046F3B5 /* PatternRecognizer.h */,
 				B5B235071592CD660046F3B5 /* ScanCodeConverter.h */,
 				B5B235081592CD660046F3B5 /* ScanCodeConverter.m */,
-				B5B235091592CD660046F3B5 /* TablePickerController.h */,
-				B5B2350A1592CD660046F3B5 /* TablePickerController.m */,
 				B5B2350B1592CD660046F3B5 /* TypePadController.h */,
 				B5B2350C1592CD660046F3B5 /* TypePadController.m */,
 				B5C4472B159285AF009F1A98 /* Supporting Files */,
@@ -176,7 +170,6 @@
 				B5B235201592CD660046F3B5 /* MultiDelegate.h in Headers */,
 				B5B235221592CD660046F3B5 /* PatternRecognizer.h in Headers */,
 				B5B235231592CD660046F3B5 /* ScanCodeConverter.h in Headers */,
-				B5B235251592CD660046F3B5 /* TablePickerController.h in Headers */,
 				B5B235271592CD660046F3B5 /* TypePadController.h in Headers */,
 				B5272DC315A4DBDB00F62549 /* Common.h in Headers */,
 				B559B43915ADDF230070FA70 /* AudioQueueObject.h in Headers */,
@@ -243,7 +236,6 @@
 				B5B2351D1592CD660046F3B5 /* FSKSerialGenerator.m in Sources */,
 				B5B235211592CD660046F3B5 /* MultiDelegate.m in Sources */,
 				B5B235241592CD660046F3B5 /* ScanCodeConverter.m in Sources */,
-				B5B235261592CD660046F3B5 /* TablePickerController.m in Sources */,
 				B5B235281592CD660046F3B5 /* TypePadController.m in Sources */,
 				B559B43A15ADDF230070FA70 /* AudioQueueObject.m in Sources */,
 			);

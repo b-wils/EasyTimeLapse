@@ -18,7 +18,7 @@
                     </navigationBar>
                     <connections>
                         <segue destination="tP2-Nh-xwe" kind="relationship" relationship="rootViewController" id="uhL-cD-ypg"/>
-                        <segue destination="JBh-wh-e8h" kind="push" id="KIh-aI-y3G"/>
+                        <segue destination="JBh-wh-e8h" kind="push" identifier="DoneProgramming" id="KIh-aI-y3G"/>
                     </connections>
                 </navigationController>
             </objects>
@@ -68,7 +68,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="shY-YR-N1D" kind="push" id="BRW-1P-d3m"/>
+                                    <segue destination="shY-YR-N1D" kind="push" identifier="Manual" id="BRW-1P-d3m"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="BHU-0o-ELB">
@@ -83,7 +83,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="2uI-kd-f2e" kind="push" id="HSx-CR-5pm"/>
+                                    <segue destination="2uI-kd-f2e" kind="push" identifier="HDR" id="HSx-CR-5pm"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="OEI-Bk-IHW">
@@ -98,7 +98,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="x40-mc-p3d" kind="push" id="5iz-8J-uI2"/>
+                                    <segue destination="x40-mc-p3d" kind="push" identifier="Bulb" id="5iz-8J-uI2"/>
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Time Lapse" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="fw0-Yb-4RQ">
@@ -378,7 +378,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Y0u-g9-Vhl" kind="push" id="jON-PE-T2z"/>
+                                    <segue destination="Y0u-g9-Vhl" kind="push" identifier="Timelapse" id="jON-PE-T2z"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -654,7 +654,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="5" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" background="text_input.png" id="N65-ec-1S0">
-                                <rect key="frame" x="170" y="70" width="54" height="31"/>
+                                <rect key="frame" x="163" y="70" width="54" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad" keyboardAppearance="alert" returnKeyType="done"/>
@@ -670,7 +670,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="HTU-Zm-ET8">
-                                <rect key="frame" x="164" y="109" width="79" height="27"/>
+                                <rect key="frame" x="163" y="109" width="79" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.14263999829999999" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <accessibility key="accessibilityConfiguration" label="Stop">
@@ -696,7 +696,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="116"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="100" borderStyle="roundedRect" minimumFontSize="17" id="9uJ-mP-nJf">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="100" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" id="9uJ-mP-nJf">
                                         <rect key="frame" x="163" y="8" width="54" height="31"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1028,7 +1028,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="arz-kM-dV9"/>
+        <segue reference="jON-PE-T2z"/>
         <segue reference="oX6-ow-MBa"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -10,7 +10,7 @@
 
 @implementation ETLTimelapse
 
-@synthesize shotInterval, clipFramesPerSecond, shotCount;
+@synthesize shotInterval, clipFramesPerSecond, shotCount, shootingTime;
 
 -(id) init
 {

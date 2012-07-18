@@ -163,6 +163,7 @@
 		B5FF056F15B50B6D00831EF7 /* homebutton_timelapse_pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5FF055F15B50B6D00831EF7 /* homebutton_timelapse_pressed@2x.png */; };
 		B5FF057015B50B6D00831EF7 /* homebutton_timelapse.png in Resources */ = {isa = PBXBuildFile; fileRef = B5FF056015B50B6D00831EF7 /* homebutton_timelapse.png */; };
 		B5FF057115B50B6D00831EF7 /* homebutton_timelapse@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5FF056115B50B6D00831EF7 /* homebutton_timelapse@2x.png */; };
+		B5FF057315B7168E00831EF7 /* OCHamcrestIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5FF057215B7168E00831EF7 /* OCHamcrestIOS.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -352,6 +353,7 @@
 		B5FF055F15B50B6D00831EF7 /* homebutton_timelapse_pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "homebutton_timelapse_pressed@2x.png"; path = "../../../assets/v1/homebutton_timelapse_pressed@2x.png"; sourceTree = "<group>"; };
 		B5FF056015B50B6D00831EF7 /* homebutton_timelapse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = homebutton_timelapse.png; path = ../../../assets/v1/homebutton_timelapse.png; sourceTree = "<group>"; };
 		B5FF056115B50B6D00831EF7 /* homebutton_timelapse@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "homebutton_timelapse@2x.png"; path = "../../../assets/v1/homebutton_timelapse@2x.png"; sourceTree = "<group>"; };
+		B5FF057215B7168E00831EF7 /* OCHamcrestIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OCHamcrestIOS.framework; path = ../../External/Frameworks/OCHamcrestIOS.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -359,6 +361,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5FF057315B7168E00831EF7 /* OCHamcrestIOS.framework in Frameworks */,
 				B5049BF215AFA70200F4AF31 /* CoreImage.framework in Frameworks */,
 				B5049BC515AF941200F4AF31 /* libOCMock.a in Frameworks */,
 				B5049BC315AF871500F4AF31 /* GHUnitIOS.framework in Frameworks */,
@@ -582,6 +585,7 @@
 			children = (
 				B5049BC415AF941200F4AF31 /* libOCMock.a */,
 				B5049BB615AF7E1800F4AF31 /* libcommunications.a */,
+				B5FF057215B7168E00831EF7 /* OCHamcrestIOS.framework */,
 				B5049BC215AF871500F4AF31 /* GHUnitIOS.framework */,
 				B5272DAD15A3871800F62549 /* CoreImage.framework */,
 				B5B9D2261592732E000444BB /* AudioToolbox.framework */,
@@ -1032,7 +1036,6 @@
 				INFOPLIST_FILE = "ETLTests/ETLTests-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/Easy_Time_Lapse-esesarfqcnuzabgtekrrydnolwuu/Build/Products/Debug-iphoneos\"",
 					"\"$(SRCROOT)/../../External/bin\"",
 				);
 				OTHER_LDFLAGS = (
@@ -1062,7 +1065,6 @@
 				INFOPLIST_FILE = "ETLTests/ETLTests-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/Easy_Time_Lapse-esesarfqcnuzabgtekrrydnolwuu/Build/Products/Debug-iphoneos\"",
 					"\"$(SRCROOT)/../../External/bin\"",
 				);
 				OTHER_LDFLAGS = (
@@ -1132,10 +1134,7 @@
 				GCC_PREFIX_HEADER = "ETL-interface-test/ETL-interface-test-Prefix.pch";
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				INFOPLIST_FILE = "ETL-interface-test/ETL-interface-test-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/Easy_Time_Lapse-grxhihygozrtdfccqjonwjemkieb/Build/Products/Debug-iphoneos\"",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = /Users/home/ben/source/iOS/communications/communications;
 				VALID_ARCHS = "armv6 armv7";
@@ -1155,10 +1154,7 @@
 				GCC_PREFIX_HEADER = "ETL-interface-test/ETL-interface-test-Prefix.pch";
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				INFOPLIST_FILE = "ETL-interface-test/ETL-interface-test-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/Easy_Time_Lapse-grxhihygozrtdfccqjonwjemkieb/Build/Products/Debug-iphoneos\"",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = /Users/home/ben/source/iOS/communications/communications;
 				VALID_ARCHS = "armv6 armv7";

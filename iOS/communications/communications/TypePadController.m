@@ -55,9 +55,9 @@
 
 - (IBAction) selectConverter:(id)sender
 {
-	[self.navigationController pushViewController:[TablePickerController controllerWithDictionary:converters 
-																						 delegate:self]
-	 animated:YES];
+//	[self.navigationController pushViewController:[TablePickerController controllerWithDictionary:converters 
+//																						 delegate:self]
+//	 animated:YES];
 }
 
 - (void) setConverter:(ScanCodeConverter*)converter named:(NSString*)name
@@ -66,11 +66,11 @@
 	selectedConverter = converter;
 }
 
-- (void) tablePicker:(TablePickerController*)tablePicker didSelectItem:(id)value named:(NSString*)name
-{
-	[self setConverter:value named:name];
-	[self.navigationController popViewControllerAnimated:YES];
-}
+//- (void) tablePicker:(TablePickerController*)tablePicker didSelectItem:(id)value named:(NSString*)name
+//{
+//	[self setConverter:value named:name];
+//	[self.navigationController popViewControllerAnimated:YES];
+//}
 
 - (void) addConverter:(ScanCodeConverter*)converter named:(NSString*)name
 {

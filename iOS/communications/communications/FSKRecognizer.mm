@@ -101,6 +101,10 @@ struct FSKByteQueue: public lock_free::queue<char> {
 			else
 				newState = FSKBits;
 			break;
+        case FSKSuccess:
+        case FSKFail:
+            assert("NYI - FSKSuccess and FSKFail");
+            break;
 	}
 	state = newState;
 }
