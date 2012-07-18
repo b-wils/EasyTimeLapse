@@ -16,7 +16,7 @@
     <Name>ETL_V1</Name>
     <RootNamespace>ETL_V1</RootNamespace>
     <ToolchainFlavour>Native</ToolchainFlavour>
-    <avrtool>com.atmel.avrdbg.tool.avrdragon</avrtool>
+    <avrtool>com.atmel.avrdbg.tool.ispmk2</avrtool>
     <avrtoolinterface>ISP</avrtoolinterface>
     <com_atmel_avrdbg_tool_ispmk2>
       <ToolType>com.atmel.avrdbg.tool.ispmk2</ToolType>
@@ -28,7 +28,7 @@
       </OverrideVtorValue>
       <Channel>
         <host>127.0.0.1</host>
-        <port>5230</port>
+        <port>30460</port>
         <ssl>False</ssl>
       </Channel>
       <ToolOptions>
@@ -71,7 +71,7 @@
       </OverrideVtorValue>
       <Channel>
         <host>127.0.0.1</host>
-        <port>17754</port>
+        <port>29049</port>
         <ssl>False</ssl>
       </Channel>
       <ToolOptions>
@@ -79,7 +79,7 @@
         <InterfaceProperties>
           <JtagDbgClock>1000000</JtagDbgClock>
           <JtagProgClock>1000000</JtagProgClock>
-          <IspClock>662071</IspClock>
+          <IspClock>691614</IspClock>
           <JtagInChain>false</JtagInChain>
           <JtagEnableExtResetOnStartSession>false</JtagEnableExtResetOnStartSession>
           <JtagDevicesBefore>0</JtagDevicesBefore>

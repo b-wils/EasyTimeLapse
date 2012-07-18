@@ -27,7 +27,7 @@ extern uint8_t numConfigs;
 extern uint8_t configPointer;
 
 void InitTransmitState() {
-    SetLED(YELLOW);
+    SetLEDCycle(LED_CYCLE_START_PROGRAM);
     currentState = STATE_TRANSMIT;
     DebugPrint("Enter Transmit");
 	
@@ -55,7 +55,7 @@ void InitTransmitState() {
 	IPhonePacket startPacket;
     memset(&startPacket, 0, sizeof(IPhonePacket));
 	startPacket.command = IOS_COMMAND_REQUESTPACKETID;
-	startPacket.data = 0x1;
+	startPacket.packetId = 0x1;
 
     startPacket.crc = crc_init();
 	startPacket.crc = crc_update(startPacket.crc, &startPacket.command, 2);
@@ -69,6 +69,16 @@ void LeaveTransmitState() {
 	InitIdleState();
 }
 
+void InitRequestPacket(IPhonePacket *packet, uint8_t requestId) {
+	memset(packet, 0, sizeof(IPhonePacket));
+	
+	packet->command = IOS_COMMAND_REQUESTPACKETID;
+	packet->packetId = requestId;
+
+    packet->crc = crc_init();
+	packet->crc = crc_update(packet->crc, ((uint8_t *) packet) + sizeof(crc_t), sizeof(IPhonePacket) - sizeof(crc_t));
+	packet->crc = crc_finalize(packet->crc);
+}
 
 void ProcessTransmitState() {
 	
@@ -110,8 +120,6 @@ void ProcessTransmitState() {
 			    Serial.print(recvPacket.crc, HEX);
                 Serial.print(" calc_Crc = ");
 			    Serial.println(myCrc, HEX);
-			    Serial.println();
-			    //SetLEDCycle(LED_CYCLE_CRC_ERROR);
 			    
 				Serial.print("Shots: ");
 				Serial.println(recvPacket.basicTimelapse.shots);
@@ -119,6 +127,7 @@ void ProcessTransmitState() {
 				Serial.println(recvPacket.basicTimelapse.exposureLengthPower);
 				Serial.print("interval: ");
 				Serial.println(recvPacket.basicTimelapse.interval);
+			    Serial.println();
 				
 				// TODO for now we always request a packet, need specifc retry code here
 		    } else {
@@ -129,6 +138,9 @@ void ProcessTransmitState() {
 			    Serial.println();				
 					
 			    if (modemPacketIndex == recvPacket.packetId) {
+					modemPacketIndex++;
+					InitRequestPacket(&sendPacket, modemPacketIndex);
+					
 				    switch (recvPacket.command) {
 	            
 	                case ETL_COMMAND_SETTINGS:
@@ -156,14 +168,15 @@ void ProcessTransmitState() {
 				        myConfigs[configPointer].fstopIncreasePerHDRShot = recvPacket.hdrShot.fstopIncreasePerHDRShot;
 					    myConfigs[configPointer].numHDRShots = recvPacket.hdrShot.numHDRShots;
 				        break;
+					case ETL_COMMAND_GETDEVICEINFO:
+						break;
 				    case ETL_COMMAND_INVALID:
 				    default:
 				        Serial.print("unrecognized command: ");
 					    Serial.println(recvPacket.command, HEX);
 				    }	
-				    modemPacketIndex++;
 			    } else {
-				    // TODO reqeust next packet
+				    InitRequestPacket(&sendPacket, modemPacketIndex);
 				}					
 		    }
 		
@@ -172,14 +185,6 @@ void ProcessTransmitState() {
 			// this should be async
 			// or ideally we will fix iphone so it can send receive simulteneously...
 		    delay(1000);
-			
-	        sendPacket.command = IOS_COMMAND_REQUESTPACKETID;
-	        sendPacket.data = modemPacketIndex;
-
-            sendPacket.crc = crc_init();
-	        sendPacket.crc = crc_update(sendPacket.crc, ((uint8_t *) &sendPacket) + sizeof(crc_t), sizeof(sendPacket) - sizeof(crc_t));
-	        sendPacket.crc = crc_finalize(sendPacket.crc);
-	
 	        modem.writeBytes((uint8_t *) &sendPacket, sizeof(sendPacket));
         }							
 	}	
@@ -196,7 +201,7 @@ void ProcessTransmitStateTest() {
 	//}
 	
 	while(modem.available()) {
-        byte myByte = modem.read();
+        //byte myByte = modem.read();
 		
 		//Serial.print("byte:");
 		//Serial.println(myByte, HEX);

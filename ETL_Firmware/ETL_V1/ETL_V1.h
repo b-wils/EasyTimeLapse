@@ -19,28 +19,29 @@
 // constants won't change. They're used here to 
 // set pin numbers:
 // prototype pins
-//const int buttonPin = 2;     // the number of the pushbutton pin
-//const int shutterPin = A2;
-//const int focusPin = A3;
-//const int flashFeedbackPin = A4;
-//const int flashSensePin = A5;
-//const int micShortedPin = 4;
-//const int batteryMonitorPin = A0;
-//#define redLed 11
-//#define greenLed 9
-//#define blueLed 10
+const int buttonPin = 2;     // the number of the pushbutton pin
+const int enableBatteryMonitorPin = A1;
+const int shutterPin = A2;
+const int focusPin = A3;
+const int flashFeedbackPin = A4;
+const int flashSensePin = A5;
+const int batteryMonitorPin = A0;
+#define redLed 11
+#define greenLed 9
+#define blueLed 10
+#define fskVCCFitlerPin 8 // NOT USED
 
 // breadboard  1 pins
-#define buttonPin 2     // the number of the pushbutton pin
-#define shutterPin A5
-#define focusPin A2
-#define flashFeedbackPin A0
-#define flashSensePin A1
-#define batteryMonitorPin A3
-#define redLed 9
-#define greenLed 10
-#define blueLed 11
-#define fskVCCFitlerPin 8
+//#define buttonPin 2     // the number of the pushbutton pin
+//#define shutterPin A5
+//#define focusPin A2
+//#define flashFeedbackPin A0
+//#define flashSensePin A1
+//#define batteryMonitorPin A3
+//#define redLed 9
+//#define greenLed 10
+//#define blueLed 11
+//#define fskVCCFitlerPin 8
 
 
 // TEMP FOR BREADBOARD

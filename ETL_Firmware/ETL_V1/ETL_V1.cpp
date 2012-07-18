@@ -111,6 +111,9 @@ void disableADC() {
 void printBatteryLevel() {
 	enableADC(); // TODO we may need to give some time to get this value to stabilize
 	
+	pinMode(enableBatteryMonitorPin, OUTPUT);
+	digitalWrite(enableBatteryMonitorPin, HIGH);
+		
 	int adcReading = analogRead(batteryMonitorPin);
 	int batLevel = (adcReading - ADC_EMPTY_VOLTAGE)/(ADC_FULL_VOLTAGE - ADC_EMPTY_VOLTAGE);
 	
@@ -122,6 +125,8 @@ void printBatteryLevel() {
 	Serial.println(adcReading);
     Serial.print("Percent: ");
 	delay(10);
+	pinMode(enableBatteryMonitorPin, INPUT);
+	digitalWrite(enableBatteryMonitorPin, LOW);
 	
 	disableADC();
 }

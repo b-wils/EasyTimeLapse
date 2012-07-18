@@ -37,17 +37,12 @@ enum deviceCommands {
 	ETL_COMMAND_BASICTIMELAPSE,
 	ETL_COMMAND_BULBRAMP,
 	ETL_COMMAND_INTERVALRAMP,
-	ETL_COMMAND_HDRSHOT
+	ETL_COMMAND_HDRSHOT,
+	ETL_COMMAND_GETDEVICEINFO,
+	ETL_COMMAND_SIGNOFF
 };
 
 #define PACKED __attribute__((__packed__))
-
-// TODO remove
-typedef struct {
-	crc_t Crc;
-	byte command;
-	byte data;
-} PACKED CommandPacket;
 
 typedef struct {
 	uint32_t StaticShutterLag;
@@ -106,21 +101,25 @@ typedef struct {
  int8_t    fstopChangeOnPress;
 } PACKED SectionConfig;
 
-// TODO remove
-typedef struct  {
-	crc_t Crc;
-	SectionConfig SectConf;
-} PACKED ETlModemPacket;
-
 enum iosCommands {
 	IOS_COMMAND_INVALID = 0,
-	IOS_COMMAND_REQUESTPACKETID
+	IOS_COMMAND_REQUESTPACKETID,
+	IOS_COMMAND_DEVICEINFO
 };
+
+typedef struct {
+	uint8_t MajorVersion;
+	uint8_t MinorVersion;
+	uint8_t BatteryLevel;
+} PACKED DeviceInfo;
 
 typedef struct {
     crc_t crc;
 	uint8_t command;
-	uint8_t data;
+	uint8_t packetId;
+	union {
+		DeviceInfo deviceInfo;
+	};
 } PACKED IPhonePacket;
 
 // this is a test
