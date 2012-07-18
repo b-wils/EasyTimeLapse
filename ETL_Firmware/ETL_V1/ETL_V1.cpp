@@ -412,7 +412,8 @@ void loop() {
 				Serial.println(millis());
 				break;
 			default:
-				Serial.println("Unrecognized command ");
+				Serial.print("Unrecognized command ");
+				Serial.println(incByte);
 		}
 	}
 	

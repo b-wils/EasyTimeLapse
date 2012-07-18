@@ -15,6 +15,7 @@ SoftModem modem;
 VariablePacket recvPacket;
 
 extern uint8_t currentState;
+extern uint32_t nextLedTime;
 
 uint32_t printTimer = 0;
 byte printval;
@@ -54,11 +55,15 @@ void InitTransmitState() {
 	
 	IPhonePacket startPacket;
     memset(&startPacket, 0, sizeof(IPhonePacket));
-	startPacket.command = IOS_COMMAND_REQUESTPACKETID;
+	startPacket.command = IOS_COMMAND_DEVICEINFO;
 	startPacket.packetId = 0x1;
 
+	startPacket.deviceInfo.batteryLevel = 0;
+	startPacket.deviceInfo.majorVersion = 1;
+	startPacket.deviceInfo.minorVersion = 1;
+
     startPacket.crc = crc_init();
-	startPacket.crc = crc_update(startPacket.crc, &startPacket.command, 2);
+	startPacket.crc = crc_update(startPacket.crc, &startPacket.command, sizeof(startPacket) - sizeof(crc_t));
 	startPacket.crc = crc_finalize(startPacket.crc);
 	
 	modem.writeBytes((uint8_t *) &startPacket, sizeof(startPacket));
@@ -138,7 +143,7 @@ void ProcessTransmitState() {
 			    Serial.println();				
 					
 			    if (modemPacketIndex == recvPacket.packetId) {
-					modemPacketIndex++;
+					modemPacketIndex++; 
 					InitRequestPacket(&sendPacket, modemPacketIndex);
 					
 				    switch (recvPacket.command) {
@@ -169,6 +174,13 @@ void ProcessTransmitState() {
 					    myConfigs[configPointer].numHDRShots = recvPacket.hdrShot.numHDRShots;
 				        break;
 					case ETL_COMMAND_GETDEVICEINFO:
+						Serial.println("device info");
+						break;
+					case ETL_COMMAND_SIGNOFF:
+						Serial.println("programming complete!");
+						LeaveTransmitState();
+						SetLEDCycle(LED_CYCLE_END_PROGRAM);
+						return;
 						break;
 				    case ETL_COMMAND_INVALID:
 				    default:
@@ -186,6 +198,8 @@ void ProcessTransmitState() {
 			// or ideally we will fix iphone so it can send receive simulteneously...
 		    delay(1000);
 	        modem.writeBytes((uint8_t *) &sendPacket, sizeof(sendPacket));
+			
+			nextLedTime = millis(); // TEMP so we still flash after these sync processing
         }							
 	}	
 }
