@@ -35,8 +35,62 @@
 //        NSLog(@"interval ramp size %ld", sizeof(IntervalRamp));
 //        NSLog(@"hdr size %ld", sizeof(HDRShot));
         
-        memset(sentPackets, 0, sizeof(CommandPacket) * MAX_PACKETS);
+        
+        
+        [self populatePackets];
     }
+}
+
+-(void) initBulbRampPacket: (VariablePacket *)packet packetId:(uint8_t)packetId fstopChange:(float)fstopChange fstopSinAmp:(float)fstopSinAmp fstopChangePress:(int8_t)fstopChangePress
+{
+    packet->command = ETL_COMMAND_BULBRAMP;
+    packet->packetId = packetId;
+    
+    packet->bulbRamp.exposureFstopChangePerMin = fstopChange;
+    packet->bulbRamp.fstopChangeOnPress = fstopChangePress;
+    packet->bulbRamp.fstopSinAmplitude = fstopSinAmp;
+    
+    packet->crc = crc_init();
+    packet->crc =  crc_update(packet->crc, ((uint8_t *) packet) + sizeof(crc_t), sizeof(VariablePacket) - sizeof(crc_t));
+    packet->crc = crc_finalize(packet->crc);
+}
+
+-(void) initTimelapsePacket: (VariablePacket *)packet packetId:(uint8_t)packetId shots:(uint32_t)shots interval:(uint32_t)interval expLength:(float)expLength
+{
+    packet->command = ETL_COMMAND_BASICTIMELAPSE;
+    packet->packetId = packetId;
+    
+    packet->basicTimelapse.shots = shots;
+    packet->basicTimelapse.interval = interval;
+    packet->basicTimelapse.exposureLengthPower = expLength;
+    
+    packet->crc = crc_init();
+    packet->crc =  crc_update(packet->crc, ((uint8_t *) packet) + sizeof(crc_t), sizeof(VariablePacket) - sizeof(crc_t));
+    packet->crc = crc_finalize(packet->crc);  
+}
+
+-(void) initSignoffPacket: (VariablePacket *)packet packetId:(uint8_t)packetId
+{
+    packet->command = ETL_COMMAND_SIGNOFF;
+    packet->packetId = packetId;
+    
+    packet->crc = crc_init();
+    packet->crc =  crc_update(packet->crc, ((uint8_t *) packet) + sizeof(crc_t), sizeof(VariablePacket) - sizeof(crc_t));
+    packet->crc = crc_finalize(packet->crc);  
+}
+
+- (void)populatePackets
+{
+    
+    memset(sentPackets, 0, sizeof(VariablePacket) * MAX_PACKETS);
+
+    [self initBulbRampPacket:&sentPackets[1] packetId:1 fstopChange:-0.15 fstopSinAmp:0 fstopChangePress:0];
+    [self initTimelapsePacket:&sentPackets[2] packetId:2 shots:10 interval:2000 expLength:-1];
+    [self initBulbRampPacket:&sentPackets[3] packetId:3 fstopChange:-0.1 fstopSinAmp:0 fstopChangePress:0];
+    [self initTimelapsePacket:&sentPackets[4] packetId:4 shots:5 interval:2000 expLength:-1];
+    [self initSignoffPacket:&sentPackets[5] packetId:5];
+    
+    return;
 }
 
 - (void)viewDidUnload
@@ -77,7 +131,7 @@
         
         // randomly fail our crc check to check for robustness
         if (random() % 2 == 0) {
-            NSLog(@"fail crc");
+            //NSLog(@"fail crc");
             //failCrc = TRUE;
         }
         
@@ -96,43 +150,54 @@
             [deviceInterface writeBuffer:(uint8_t *) &sentPackets[packetIndex] ofSize:sizeof(sentPackets[packetIndex])];
             totalCommandBits = 32;
         } else {
-            NSLog(@"crc match; cmd: %x, data %x", receivePacket.command, receivePacket.data);
+            NSLog(@"crc match; cmd: %x, data %x", receivePacket.command, receivePacket.packetId);
             // Initialize and send the next packet
             
             //NSLog(@"sleep wake");
             
-            packetIndex = receivePacket.data;
-            
-            if (packetIndex > 4) {
-                NSLog(@"EndLoop");
-                packetIndex = 1;
-                return;
+            switch (receivePacket.command) {
+                case IOS_COMMAND_REQUESTPACKETID:
+                    // we will send next packet anyway
+                    break;
+                case IOS_COMMAND_DEVICEINFO:
+                    NSLog(@"Device info:");
+                    NSLog(@"  Major Version: %d", receivePacket.deviceInfo.MajorVersion);
+                    NSLog(@"  Minor Version: %d", receivePacket.deviceInfo.MinorVersion);
+                    NSLog(@"  BatteryLevel: %d", receivePacket.deviceInfo.BatteryLevel);
+                    break;
+                case IOS_COMMAND_INVALID:
+                default:
+                    NSLog(@"Unrecognized command %x", receivePacket.command);
+                    break;
+                    
             }
-             
+            
+            packetIndex = receivePacket.packetId;
+                         
             NSLog(@"packet %d request", packetIndex);
             [deviceInterface stopReader];
             
             usleep(500000);
             
-            if (packetIndex % 2 == 0) {
-            
-            sentPackets[packetIndex].command = ETL_COMMAND_BASICTIMELAPSE;
-            sentPackets[packetIndex].packetId = packetIndex;
-        
-            sentPackets[packetIndex].basicTimelapse.shots = packetIndex;
-            sentPackets[packetIndex].basicTimelapse.interval = 2000;
-            sentPackets[packetIndex].basicTimelapse.exposureLengthPower = -2;
-            } else {
-                sentPackets[packetIndex].command = ETL_COMMAND_BULBRAMP;
-                sentPackets[packetIndex].packetId = packetIndex;
-                
-                sentPackets[packetIndex].bulbRamp.exposureFstopChangePerMin = 0.15;
-            }
-            
-            
-            sentPackets[packetIndex].crc = crc_init();
-            sentPackets[packetIndex].crc =  crc_update(sentPackets[packetIndex].crc, ((uint8_t *) &sentPackets[packetIndex]) + sizeof(crc_t), sizeof(VariablePacket) - sizeof(crc_t));
-            sentPackets[packetIndex].crc = crc_finalize(sentPackets[packetIndex].crc);
+//            if (packetIndex % 2 == 0) {
+//            
+//            sentPackets[packetIndex].command = ETL_COMMAND_BASICTIMELAPSE;
+//            sentPackets[packetIndex].packetId = packetIndex;
+//        
+//            sentPackets[packetIndex].basicTimelapse.shots = packetIndex;
+//            sentPackets[packetIndex].basicTimelapse.interval = 2000;
+//            sentPackets[packetIndex].basicTimelapse.exposureLengthPower = -2;
+//            } else {
+//                sentPackets[packetIndex].command = ETL_COMMAND_BULBRAMP;
+//                sentPackets[packetIndex].packetId = packetIndex;
+//                
+//                sentPackets[packetIndex].bulbRamp.exposureFstopChangePerMin = 0.15;
+//            }
+//            
+//            
+//            sentPackets[packetIndex].crc = crc_init();
+//            sentPackets[packetIndex].crc =  crc_update(sentPackets[packetIndex].crc, ((uint8_t *) &sentPackets[packetIndex]) + sizeof(crc_t), sizeof(VariablePacket) - sizeof(crc_t));
+//            sentPackets[packetIndex].crc = crc_finalize(sentPackets[packetIndex].crc);
             
             NSLog(@"packet %d request crc %x", packetIndex, sentPackets[packetIndex].crc);
             

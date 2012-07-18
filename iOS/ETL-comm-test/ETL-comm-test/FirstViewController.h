@@ -40,5 +40,10 @@
 -(IBAction)programButtonPush;
 -(IBAction)listenButtonPush;
 -(IBAction)stopButtonPush;
+- (void) populatePackets;
+-(void) initBulbRampPacket: (VariablePacket *)packet packetId:(uint8_t)packetId fstopChange:(float)fstopChange fstopSinAmp:(float)fstopSinAmp fstopChangePress:(int8_t)fstopChangePress;
+
+-(void) initTimelapsePacket: (VariablePacket *)packet packetId:(uint8_t)packetId shots:(uint32_t)shots interval:(uint32_t)interval expLength:(float)expLength;
+-(void) initSignoffPacket: (VariablePacket *)packet packetId:(uint8_t)packetId;
 
 @end
