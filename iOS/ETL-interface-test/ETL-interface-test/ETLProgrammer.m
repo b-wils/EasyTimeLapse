@@ -79,7 +79,7 @@
         readOffset = 0;
         
         bool isValid = [self isCrcValid];
-        UInt32 packetId = isValid ? inPacket.data : currentPacket;
+        UInt32 packetId = isValid ? inPacket.packetId : currentPacket;
         
         NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
                       VALUE_WITH_BYTES(&isValid, bool), @"isCrcValid",
