@@ -26,6 +26,7 @@ size_t modemPacketIndex = 0;
 extern SectionConfig myConfigs[MAX_CONFIGS];
 extern uint8_t numConfigs;
 extern uint8_t configPointer;
+uint32_t idleTimer;
 
 void InitTransmitState() {
     SetLEDCycle(LED_CYCLE_START_PROGRAM);
@@ -67,6 +68,8 @@ void InitTransmitState() {
 	startPacket.crc = crc_finalize(startPacket.crc);
 	
 	modem.writeBytes((uint8_t *) &startPacket, sizeof(startPacket));
+	
+	idleTimer = millis();
 }
 
 void LeaveTransmitState() {
@@ -88,6 +91,7 @@ void InitRequestPacket(IPhonePacket *packet, uint8_t requestId) {
 void ProcessTransmitState() {
 	
 	while(modem.available()) {
+
         ((char *) &recvPacket)[bytesRead] = modem.read();
         bytesRead++;
 		
@@ -200,8 +204,14 @@ void ProcessTransmitState() {
 	        modem.writeBytes((uint8_t *) &sendPacket, sizeof(sendPacket));
 			
 			nextLedTime = millis(); // TEMP so we still flash after these sync processing
-        }							
-	}	
+        }
+		idleTimer = millis();
+	}
+	
+	if (millis() > idleTimer + IDLE_TIMEOUT_PERIOD) {
+		Serial.println("Idle timeout");
+		LeaveTransmitState();
+	}
 }
 
 void ProcessTransmitStateTest() {

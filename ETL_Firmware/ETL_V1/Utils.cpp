@@ -21,8 +21,6 @@ void DebugInit() {
 	Serial.begin(19200);
 	Serial.println("ETL version 0.1");
 	
-	Serial.println(MILLIS_PER_OVERFLOW);
-	
 	//Serial.print("DeviceSettings size: ");
 	//Serial.println(sizeof(DeviceSettings));
 		//
