@@ -89,6 +89,8 @@ static bool audioInitialized = false;
 
 - (void)startProgramming
 {   
+    AudioSessionSetActive(true);
+//    NSAssert1(err == noErr, @"Failed to deactivate audio session", err);
     [analyzer record];
     [generator play];
 }
@@ -107,6 +109,8 @@ static bool audioInitialized = false;
 
 - (void)stopProgramming
 {   
+    AudioSessionSetActive(false);
+//    NSAssert1(err == noErr, @"Failed to deactivate audio session", err);
     [generator stop];
     [analyzer stop];
 }

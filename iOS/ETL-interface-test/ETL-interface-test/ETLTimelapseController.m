@@ -33,7 +33,7 @@
         
         timelapse = [[ETLTimelapse alloc] init];
         timelapse.shotInterval = 5000;
-        timelapse.shotCount = 100;
+        timelapse.shotCount = 0;
         timelapse.clipFramesPerSecond = 23.97f;
         [self observe:timelapse forEvent:ModelUpdated andRun:@selector(updateUICalculations:)];   
         
@@ -55,11 +55,9 @@
     [super viewDidLoad];
     [self ensureInitialized];
 
-    ETLPredicate pSwitch = ^bool (id obj) {return [obj class] == CLASS(UISwitch);};
-    NSArray *switches = [[self view].subviews filterWith:pSwitch];
-    
-    [switches eachWith:^void (id obj) {
-        UISwitch *s = (UISwitch *)obj;
+    NSArray *switchNames = [NSArray arrayWithObjects:@"continuousSwitch", nil];    
+    [switchNames eachWith:^void (id obj) {
+        UISwitch *s = (UISwitch *)[self valueForKey:obj];
         RCSwitchOnOff *res = [[RCSwitchOnOff alloc] initWithFrame:s.frame];
         [res setOn:[s isOn]];
         
@@ -70,6 +68,7 @@
         
         [[self view] addSubview:res];
         [s removeFromSuperview];
+        [self setValue:res forKey:obj];
     }];
     
     
@@ -104,9 +103,8 @@
 
 - (IBAction)didSwitchContinuous:(id)sender
 {
-    NSLog(@"didSwitchContinuous:%@", sender);
     UISwitch * s = (UISwitch *)sender;
-    if (s.on) {
+    if (!s.on) {
         timelapse.shotCount = [shotLimitField.text integerValue];
     }
     else {
@@ -124,7 +122,14 @@
 
 - (IBAction)didUpdateShotLimit:(id)sender
 {
-    timelapse.shotCount = [(UITextField *)sender text].intValue;
+    NSInteger newValue = [(UITextField *)sender text].intValue;
+    if (newValue < 1) {
+        newValue = 0;
+        ((UITextField *)sender).text = [NSString stringWithFormat:@"%i", timelapse.shotCount];
+        [continuousSwitch setOn:!continuousSwitch.on animated:YES];
+    }
+    
+    timelapse.shotCount = newValue;
 }
 
 - (IBAction)didClickPeriodUnit:(id)sender {

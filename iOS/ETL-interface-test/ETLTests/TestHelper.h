@@ -21,12 +21,15 @@
     [__mock_tmp__ verify];  \
 }
 
+//#define VERIFY_MOCKS(__
+
 #define DISABLE_MOCK(x) VERIFY_MOCK(x)
 
 #define MOCKS_FOR(x) {id __mock_target__ = x;
 #define END }
 
 #define SETUP_MOCK(mock,klass) { mock = [OCMockObject mockForClass:[klass class]]; }
+#define SETUP_PROTOCOL_MOCK(mock,proto) { mock = [OCMockObject mockForProtocol:@protocol(proto)]; }
 
 #define WIRE_CLASS(mock,klass,name) {                   \
     mock = [OCMockObject mockForClass:[klass class]];   \

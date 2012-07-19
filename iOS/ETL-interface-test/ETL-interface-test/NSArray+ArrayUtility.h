@@ -10,10 +10,12 @@
 
 typedef bool (^ETLPredicate)(id object);
 typedef id (^ETLMapper)(id object);
+typedef id (^ETLReducer)(id acc, id object);
 typedef void (^ETLAction)(id object);
 
 @interface NSArray (ArrayUtility)
 - (NSArray *)filterWith:(ETLPredicate)filter;
 - (NSArray *)mapWith:(ETLMapper)mapper;
 - (void)eachWith:(ETLAction)block;
+- (id) reduceFrom:(id)initial with:(ETLReducer)block;
 @end

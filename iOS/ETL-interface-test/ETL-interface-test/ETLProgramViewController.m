@@ -36,6 +36,7 @@
 {
     programmer.packetProvider = packetProvider;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didRequestPacket:) name:PacketRequested object:programmer];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didCompleteProgramming:) name:ProgrammingComplete object:programmer];
     [programmer listen];
 }
 
@@ -47,28 +48,27 @@ const NSUInteger streamBitsPerDataByte = 14;
     UInt32 packetId; [(NSValue *)[userInfo objectForKey:@"sendingPacketId"] getValue:&packetId];
     
     programmingProgress.progress = packetId / (packetProvider.packetCount + 1.0);
-    if (programmingProgress.progress >= 0.999) {
-        programmingProgress.progress = 1.0;
-        [programmer halt];
-        bytesTransferred.text = @"done";
-        cancelButton.hidden = true;        
-        [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(didFinishProgramming:) userInfo:NULL repeats:NO];
-    }
+}
+
+- (void)didCompleteProgramming:(NSNotification *)notificatoin
+{
+    programmingProgress.progress = 1.0;
+    [programmer halt];
+    bytesTransferred.text = @"done";
+    cancelButton.hidden = true;        
+    [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(didFinishProgramming:) userInfo:NULL repeats:NO];
 }
 
 - (void)didFinishProgramming:(id)sender
 {
     ETLDoneProgrammingController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"DoneProgramming"];
     [self.navigationController pushViewController:controller animated:YES];
+    programmer = nil;
 }
 
 - (void)goBack:(id)sender
 {
     [programmer halt];
-    [progressBarTimer invalidate];
-    progressBarTimer = nil;
-    [startTimer invalidate];
-    startTimer = nil;
     [super goBack:sender];
 }
 

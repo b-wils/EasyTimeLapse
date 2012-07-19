@@ -35,4 +35,13 @@
 {
     for (id obj in self) block(obj);
 }
+
+- (id) reduceFrom:(id)initial with:(ETLReducer)block
+{
+    for (id obj in self) {
+        initial = block(initial, obj);
+    }
+    
+    return initial;
+}
 @end

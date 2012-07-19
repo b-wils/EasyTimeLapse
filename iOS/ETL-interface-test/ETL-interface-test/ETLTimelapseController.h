@@ -21,6 +21,7 @@
     IBOutlet UIButton * periodUnitButton;
     IBOutlet UIPickerView * periodUnitPicker;
     
+    IBOutlet UISwitch * continuousSwitch;
     IBOutlet UIView * shotLimitPanel;
     IBOutlet UITextField * shotLimitField;
     

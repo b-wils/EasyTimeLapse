@@ -7,11 +7,14 @@
 //
 
 #import "ETLShotViewController.h"
+#import "ETLHdrShot.h"
 
-@interface ETLHdrController : ETLShotViewController
+@interface ETLHdrController : ETLShotViewController <UITextFieldDelegate>
 {
-    IBOutlet UITextField * bracketCountField;
-    IBOutlet UITextField * initialExposureField;
-    IBOutlet UITextField * finalExposureField;
+    ETLHdrShot *hdr;
+    
+    IBOutlet UITextField *bracketCountField;
+    IBOutlet UITextField *initialExposureField;
+    IBOutlet UITextField *finalExposureField;
 }
 @end

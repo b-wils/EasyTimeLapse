@@ -19,7 +19,7 @@
                     <connections>
                         <segue destination="tP2-Nh-xwe" kind="relationship" relationship="rootViewController" id="uhL-cD-ypg"/>
                         <segue destination="JBh-wh-e8h" kind="push" identifier="DoneProgramming" id="KIh-aI-y3G"/>
-                        <segue destination="bWH-Z2-4Nh" kind="push" id="QMX-0j-4Og"/>
+                        <segue destination="bWH-Z2-4Nh" kind="push" identifier="Settings" id="QMX-0j-4Og"/>
                     </connections>
                 </navigationController>
             </objects>
@@ -982,6 +982,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="L5D-UO-7pa"/>
                     <connections>
+                        <outlet property="continuousSwitch" destination="HTU-Zm-ET8" id="LUY-Kh-2FJ"/>
                         <outlet property="finalShotLengthLabel" destination="Msg-rn-tFm" id="WTQ-3c-LFm"/>
                         <outlet property="periodUnitButton" destination="YB2-AI-0C4" id="dAO-5U-62D"/>
                         <outlet property="periodUnitPicker" destination="V0B-2Z-m9E" id="1G7-Hs-lRu"/>
@@ -1172,6 +1173,7 @@
                 <relationship kind="action" name="didSwitchContinuous:"/>
                 <relationship kind="action" name="didUpdatePeriod:"/>
                 <relationship kind="action" name="didUpdateShotLimit:"/>
+                <relationship kind="outlet" name="continuousSwitch" candidateClass="UISwitch"/>
                 <relationship kind="outlet" name="finalShotLengthLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="periodUnitButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="periodUnitPicker" candidateClass="UIPickerView"/>

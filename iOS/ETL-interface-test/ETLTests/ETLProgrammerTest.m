@@ -47,14 +47,16 @@
         WIRE(deviceMock, ETLDeviceInterface, device)
     END
     UInt32 packetNumber = 1;
-    IPhonePacket packet = {0, 0, packetNumber};
+    UInt32 packetCount = 1;
+    IPhonePacket packet = {0, IOS_COMMAND_REQUESTPACKETID, packetNumber};
     bool crcPass = true;
     
     [[[programmerMock expect] andReturnValue:OCMOCK_VALUE(crcPass)] performSelector:@selector(isCrcValid)];
     [[programmerMock expect] sendPacketNumber:packetNumber];
+    [[[providerMock stub] andReturnValue:OCMOCK_VALUE(packetCount)] packetCount];
     
     for (UInt32 i = 0; i < sizeof(IPhonePacket); i++) {
-        [programmer receivedChar:((char *)&packet)[i]];
+        [programmerMock receivedChar:((char *)&packet)[i]];
     }
 }
 

@@ -17,6 +17,13 @@
 
 #define ByteReceived @"ByteReceived"
 #define PacketRequested @"PacketRequested"
+#define ProgrammingComplete @"ProgrammingComplete"
+#define GotDeviceInfo @"GotDeviceInfo"
+
+#define NOTIFY(msg, info)                   \
+    [[NSNotificationCenter defaultCenter]   \
+    postNotificationName:msg                \
+    object:self userInfo:info]
 
 @interface ETLProgrammer : NSObject <CharReceiver, DeviceStatusDelegate>
 

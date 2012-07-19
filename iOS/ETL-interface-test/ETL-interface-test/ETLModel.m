@@ -10,6 +10,17 @@
 
 @implementation ETLModel
 
+@synthesize updateIdentity;
+
+- (id)init {
+    self = [super init];
+    if (self) {
+        updateIdentity = self;
+    }
+    
+    return self;
+}
+
 - (void)beginUpdate {
     if(!pendingUpdates) { 
         updateDepth = 0;
@@ -24,7 +35,7 @@
         
         for (id msg in pendingUpdates) {
             [[NSNotificationCenter defaultCenter]
-                postNotificationName:msg object:self];
+                postNotificationName:msg object:updateIdentity];
         }
         pendingUpdates = nil;
     }

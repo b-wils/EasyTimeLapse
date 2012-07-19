@@ -48,25 +48,38 @@
 -(bool)isCrcValid
 {
     crc_t crc = crc_init();
-    crc = crc_update(crc, ((byte *) &inPacket) + sizeof(crc_t), sizeof(inPacket) - sizeof(crc_t));
+    crc = crc_update(crc, ((byte *) &inPacket) + sizeof(crc_t), sizeof(IPhonePacket) - sizeof(crc_t));
     crc = crc_finalize(crc);
     
     return crc == inPacket.crc;
 }
 
+-(void)sendPacket:(VariablePacket *)packet
+{
+    printf("writing: ");
+    packet->crc = crc_update(crc_init(), ((byte *)packet) + sizeof(crc_t), sizeof(VariablePacket) - sizeof(crc_t));
+    packet->crc = crc_finalize(packet->crc);
+
+    totalCommandBits = sizeof(VariablePacket)*14;
+    [device stopReader];
+    [device startPlayer];
+    [device writeBuffer:(uint8_t *)packet ofSize:sizeof(VariablePacket)];
+}
+
 -(void)sendPacketNumber:(UInt32)number 
 {
-    [device stopReader];
-    
     currentPacket = number;
     VariablePacket packet;
     [self.packetProvider renderPacket:currentPacket to:&packet];
-    packet.crc = crc_update(crc_init(), ((byte *)&packet) + sizeof(crc_t), sizeof(VariablePacket) - sizeof(crc_t));
-    packet.crc = crc_finalize(packet.crc);
-    
-    [device startPlayer];
-    [device writeBuffer:(uint8_t *)&packet ofSize:sizeof(packet)];
-    totalCommandBits = sizeof(packet)*14;
+    [self sendPacket:&packet];
+}
+
+-(void)sendSignoffPacket
+{   
+    VariablePacket packet;
+    packet.command = ETL_COMMAND_SIGNOFF;
+    packet.packetId = currentPacket + 1;
+    [self sendPacket:&packet];
 }
 
 #define VALUE_WITH_BYTES(data,type) [NSValue valueWithBytes:data objCType:@encode(type)]
@@ -85,22 +98,57 @@
                       VALUE_WITH_BYTES(&isValid, bool), @"isCrcValid",
                       VALUE_WITH_BYTES(&packetId, UInt32), @"sendingPacketId",
                       nil];
-        [[NSNotificationCenter defaultCenter] postNotificationName:PacketRequested object:self userInfo:userInfo];
      
-        if (isValid && packetId > packetProvider.packetCount) return; 
-        else [self sendPacketNumber:packetId];
+        if (isValid) {
+            switch (inPacket.command) {
+                case IOS_COMMAND_REQUESTPACKETID:
+                    if (packetId <= packetProvider.packetCount) {
+                        NOTIFY(PacketRequested, userInfo);
+                        [self sendPacketNumber:packetId];
+                    }
+                    else {
+                        NOTIFY(ProgrammingComplete, userInfo);
+                        [self sendSignoffPacket];
+                    }
+                    break;
+                case IOS_COMMAND_DEVICEINFO: {
+                    printf("\nDevice info:\n");
+                    printf("  Major Version: %d\n", inPacket.deviceInfo.majorVersion);
+                    printf("  Minor Version: %d\n", inPacket.deviceInfo.minorVersion);
+                    printf("  BatteryLevel: %d\n", inPacket.deviceInfo.batteryLevel);
+                    NSDictionary *deviceInfo = [NSDictionary dictionaryWithObjectsAndKeys:
+                        VALUE_WITH_BYTES(&inPacket.deviceInfo.majorVersion, uint8_t), @"majorVersion",
+                        VALUE_WITH_BYTES(&inPacket.deviceInfo.minorVersion, uint8_t), @"minorVersion",
+                        VALUE_WITH_BYTES(&inPacket.deviceInfo.batteryLevel, uint8_t), @"batteryLevel",
+                        nil];
+                    NOTIFY(GotDeviceInfo, deviceInfo);
+                    NOTIFY(PacketRequested, userInfo);
+                    [self sendPacketNumber:packetId];
+                    break; 
+                }
+                case IOS_COMMAND_INVALID:
+                default:
+                    printf("unrecognized command %x\n", inPacket.command);
+                    [self sendPacketNumber:0];
+                    break;
+            }
+        }
+        else {
+            printf("bad crc\n");
+            [self sendPacketNumber:packetId];
+        }
     }
 }
 
 - (void)finalizeWrite:(NSTimer *)timer
 {
-    printf("finalizing write... ");
+    printf("-> finalizing... ");
     [timer invalidate];
     device.generator.numRawBitsWritten = 0;
     usleep(500000);
     [device stopProgramming];
     [device startReader];
-    printf("done\n");
+    printf("done\nreading: ");
 }
 
 -(void)halt 

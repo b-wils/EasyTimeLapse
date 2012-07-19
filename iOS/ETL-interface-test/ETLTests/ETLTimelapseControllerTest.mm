@@ -66,7 +66,7 @@
 - (void)testDidSwitchContinuous {
     const NSString *shotCountString = @"100";
     const UInt64 shotCount = [shotCountString integerValue];
-    BOOL isOn = false;
+    BOOL isOn = true;
 
     [[[shotCountMock stub] andReturn:shotCountString] text];
     
@@ -75,7 +75,7 @@
     [[controllerMock expect] updateUICalculations:OCMOCK_ANY];
     [controller didSwitchContinuous:switchMock];
     
-    isOn = true;
+    isOn = false;
     [[[switchMock expect] andReturnValue:OCMOCK_VALUE(isOn)] isOn];
     [[[timelapseMock expect] andPost:updateNotification] setShotCount:shotCount];
     [[controllerMock expect] updateUICalculations:updateNotification];

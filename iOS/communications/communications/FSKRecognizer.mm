@@ -60,7 +60,7 @@ struct FSKByteQueue: public lock_free::queue<char> {
 	char input;
 	while (byteQueue->get(input))
 	{
-        printf("0x(%02x) ", (unsigned char)input); 
+        printf("%02x ", (unsigned char)input); 
 		[receivers receivedChar:input];
 	}
 }

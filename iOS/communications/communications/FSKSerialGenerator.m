@@ -167,6 +167,8 @@ SAMPLE sineTable[SINE_TABLE_LENGTH];
 		[self.queuedBytes write:&byte maxLength:1];
 		hasQueuedBytes = YES;
 	}
+    
+    printf("%02x ", byte);
 }
 
 @end

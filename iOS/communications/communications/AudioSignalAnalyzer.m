@@ -373,6 +373,7 @@ static OSStatus	recordingCallback(
 	[self setupRecording];	
 	[self reset];
 	
+    AudioUnitInitialize(audioUnit);
     AudioOutputUnitStart(audioUnit);
 }
 
@@ -380,6 +381,7 @@ static OSStatus	recordingCallback(
 - (void) stop
 {
     AudioOutputUnitStop(audioUnit);
+    AudioUnitUninitialize(audioUnit);
 	
 	[self reset];
 }

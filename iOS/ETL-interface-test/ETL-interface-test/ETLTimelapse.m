@@ -10,7 +10,9 @@
 
 @implementation ETLTimelapse
 
-@synthesize shotInterval, clipFramesPerSecond, shotCount, shootingTime;
+ModelSynthesize(UInt64, shotInterval, setShotInterval)
+ModelSynthesize(UInt64, shotCount, setShotCount)
+ModelSynthesize(double, clipFramesPerSecond, setClipFramesPerSecond)
 
 -(id) init
 {
@@ -21,14 +23,6 @@
     }
     
     return self;
-}
-
--(void)setShotInterval:(UInt64)value {
-    SimpleModelSetter(shotInterval)
-}
-
--(void)setShotCount:(UInt64)value{
-    SimpleModelSetter(shotCount)
 }
 
 -(NSTimeInterval)clipLength

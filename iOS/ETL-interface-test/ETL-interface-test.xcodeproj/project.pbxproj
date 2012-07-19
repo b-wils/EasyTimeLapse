@@ -170,6 +170,14 @@
 		B5FF057015B50B6D00831EF7 /* homebutton_timelapse.png in Resources */ = {isa = PBXBuildFile; fileRef = B5FF056015B50B6D00831EF7 /* homebutton_timelapse.png */; };
 		B5FF057115B50B6D00831EF7 /* homebutton_timelapse@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5FF056115B50B6D00831EF7 /* homebutton_timelapse@2x.png */; };
 		B5FF057315B7168E00831EF7 /* OCHamcrestIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5FF057215B7168E00831EF7 /* OCHamcrestIOS.framework */; };
+		B5FF057F15B739AC00831EF7 /* ETLHdrShot.m in Sources */ = {isa = PBXBuildFile; fileRef = B5FF057E15B739AC00831EF7 /* ETLHdrShot.m */; };
+		B5FF058015B739AC00831EF7 /* ETLHdrShot.m in Sources */ = {isa = PBXBuildFile; fileRef = B5FF057E15B739AC00831EF7 /* ETLHdrShot.m */; };
+		B5FF058315B73BE200831EF7 /* ETLBulbRamp.m in Sources */ = {isa = PBXBuildFile; fileRef = B5FF058215B73BE200831EF7 /* ETLBulbRamp.m */; };
+		B5FF058415B73BE200831EF7 /* ETLBulbRamp.m in Sources */ = {isa = PBXBuildFile; fileRef = B5FF058215B73BE200831EF7 /* ETLBulbRamp.m */; };
+		B5FF058615B74FD200831EF7 /* ETLHdrControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B5FF058515B74FD200831EF7 /* ETLHdrControllerTest.m */; };
+		B5FF059D15B8B1AA00831EF7 /* ETLShot.m in Sources */ = {isa = PBXBuildFile; fileRef = B5FF059C15B8B1AA00831EF7 /* ETLShot.m */; };
+		B5FF059E15B8B1AA00831EF7 /* ETLShot.m in Sources */ = {isa = PBXBuildFile; fileRef = B5FF059C15B8B1AA00831EF7 /* ETLShot.m */; };
+		B5FF05A015B8B1EA00831EF7 /* ETLShotTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B5FF059F15B8B1EA00831EF7 /* ETLShotTest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -366,6 +374,14 @@
 		B5FF056015B50B6D00831EF7 /* homebutton_timelapse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = homebutton_timelapse.png; path = ../../../assets/v1/homebutton_timelapse.png; sourceTree = "<group>"; };
 		B5FF056115B50B6D00831EF7 /* homebutton_timelapse@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "homebutton_timelapse@2x.png"; path = "../../../assets/v1/homebutton_timelapse@2x.png"; sourceTree = "<group>"; };
 		B5FF057215B7168E00831EF7 /* OCHamcrestIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OCHamcrestIOS.framework; path = ../../External/Frameworks/OCHamcrestIOS.framework; sourceTree = "<group>"; };
+		B5FF057D15B739AC00831EF7 /* ETLHdrShot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETLHdrShot.h; sourceTree = "<group>"; };
+		B5FF057E15B739AC00831EF7 /* ETLHdrShot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLHdrShot.m; sourceTree = "<group>"; };
+		B5FF058115B73BE200831EF7 /* ETLBulbRamp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETLBulbRamp.h; sourceTree = "<group>"; };
+		B5FF058215B73BE200831EF7 /* ETLBulbRamp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLBulbRamp.m; sourceTree = "<group>"; };
+		B5FF058515B74FD200831EF7 /* ETLHdrControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLHdrControllerTest.m; sourceTree = "<group>"; };
+		B5FF059B15B8B1AA00831EF7 /* ETLShot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETLShot.h; sourceTree = "<group>"; };
+		B5FF059C15B8B1AA00831EF7 /* ETLShot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLShot.m; sourceTree = "<group>"; };
+		B5FF059F15B8B1EA00831EF7 /* ETLShotTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLShotTest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -409,6 +425,12 @@
 				B504994E15AF560B00F4AF31 /* ETLTimelapse.m */,
 				B5049BF415AFCA8200F4AF31 /* ETLModel.h */,
 				B5049BF515AFCA8200F4AF31 /* ETLModel.m */,
+				B5FF057D15B739AC00831EF7 /* ETLHdrShot.h */,
+				B5FF057E15B739AC00831EF7 /* ETLHdrShot.m */,
+				B5FF058115B73BE200831EF7 /* ETLBulbRamp.h */,
+				B5FF058215B73BE200831EF7 /* ETLBulbRamp.m */,
+				B5FF059B15B8B1AA00831EF7 /* ETLShot.h */,
+				B5FF059C15B8B1AA00831EF7 /* ETLShot.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -417,6 +439,7 @@
 			isa = PBXGroup;
 			children = (
 				B504997315AF5C2400F4AF31 /* Supporting Files */,
+				B5FF058515B74FD200831EF7 /* ETLHdrControllerTest.m */,
 				B5049B7115AF611700F4AF31 /* ETLTimelapseTest.m */,
 				B5049BB415AF7D7900F4AF31 /* ETLDeviceInterfaceTest.mm */,
 				B5049BC715AFA3F100F4AF31 /* ETLTimelapseControllerTest.mm */,
@@ -427,6 +450,7 @@
 				B5049BF815AFD16800F4AF31 /* TestHelper.m */,
 				B5720DB515B49A9F0092FA31 /* TestArcHelper.h */,
 				B5720DB615B49A9F0092FA31 /* TestArcHelper.m */,
+				B5FF059F15B8B1EA00831EF7 /* ETLShotTest.m */,
 			);
 			path = ETLTests;
 			sourceTree = "<group>";
@@ -979,6 +1003,11 @@
 				B5720DB415B48DF70092FA31 /* ETLProgrammerTest.m in Sources */,
 				B5720DB715B49A9F0092FA31 /* TestArcHelper.m in Sources */,
 				B5720DB915B4B1390092FA31 /* ETLProgramViewControllerTest.m in Sources */,
+				B5FF058015B739AC00831EF7 /* ETLHdrShot.m in Sources */,
+				B5FF058415B73BE200831EF7 /* ETLBulbRamp.m in Sources */,
+				B5FF058615B74FD200831EF7 /* ETLHdrControllerTest.m in Sources */,
+				B5FF059E15B8B1AA00831EF7 /* ETLShot.m in Sources */,
+				B5FF05A015B8B1EA00831EF7 /* ETLShotTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1010,6 +1039,9 @@
 				B504994F15AF560B00F4AF31 /* ETLTimelapse.m in Sources */,
 				B5049BF615AFCA8200F4AF31 /* ETLModel.m in Sources */,
 				B5720DB115B48B9B0092FA31 /* ETLProgrammer.m in Sources */,
+				B5FF057F15B739AC00831EF7 /* ETLHdrShot.m in Sources */,
+				B5FF058315B73BE200831EF7 /* ETLBulbRamp.m in Sources */,
+				B5FF059D15B8B1AA00831EF7 /* ETLShot.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
