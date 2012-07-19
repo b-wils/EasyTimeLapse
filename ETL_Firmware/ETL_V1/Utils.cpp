@@ -39,7 +39,6 @@ void DebugInit() {
 
 void DebugPrint( const char* myString) {
 	Serial.println(myString);
-    delay(30);
 }
 
 void PrintSectionConfig(SectionConfig SecConf) {
@@ -58,20 +57,20 @@ void PrintSectionConfig(SectionConfig SecConf) {
 	//Serial.print("  numRepeats: ");
 	//Serial.println(SecConf.numRepeats);
 	//
-	Serial.print("  shots: ");
-	Serial.println(SecConf.shots);
-	
-	Serial.print("  interval: ");
-	Serial.println(SecConf.interval);
+	//Serial.print("  shots: ");
+	//Serial.println(SecConf.shots);
+	//
+	//Serial.print("  interval: ");
+	//Serial.println(SecConf.interval);
 	//
 	//Serial.print("  intervalDelta: ");
 	//Serial.println(SecConf.intervalDelta);
 	//
-	Serial.print("  exposureOffset: ");
-	Serial.println(SecConf.exposureOffset);
+	//Serial.print("  exposureOffset: ");
+	//Serial.println(SecConf.exposureOffset);
 	//
-	Serial.print("  exposureFstopChangePerMin: ");
-	Serial.println(SecConf.exposureFstopChangePerMin);
+	//Serial.print("  exposureFstopChangePerMin: ");
+	//Serial.println(SecConf.exposureFstopChangePerMin);
 //
 	//Serial.print("  fstopSinAmplitude: ");
 	//Serial.println(SecConf.fstopSinAmplitude);

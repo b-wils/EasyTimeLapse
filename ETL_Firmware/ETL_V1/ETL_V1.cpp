@@ -46,11 +46,11 @@ void populateConfigs() {
 	myConfigs[0].type = 0;
     myConfigs[0].repeatIndex = 0;
     myConfigs[0].numRepeats = 0;
-    myConfigs[0].shots = 2;
-    myConfigs[0].interval = 20000;
+    myConfigs[0].shots = 3;
+    myConfigs[0].interval = 2000;
     myConfigs[0].intervalDelta = 0;
     //myConfigs[0].exposureOffset = -2.841463415;
-	myConfigs[0].exposureOffset = 2;
+	myConfigs[0].exposureOffset = -2;
     myConfigs[0].exposureFstopChangePerMin = 0;
 	//myConfigs[0].fstopSinAmplitude = 0.158536585;
 	myConfigs[0].fstopSinAmplitude = 0;
@@ -124,7 +124,6 @@ void printBatteryLevel() {
 	Serial.print("Current: ");
 	Serial.println(adcReading);
     Serial.print("Percent: ");
-	delay(10);
 	pinMode(enableBatteryMonitorPin, INPUT);
 	digitalWrite(enableBatteryMonitorPin, LOW);
 	
@@ -156,6 +155,7 @@ void CableSenseChange(void) {}
 
 void InitIdleState() {
     currentState = STATE_IDLE;
+	
 //	SetLEDCycle(LED_CYCLE_IDLE);
     //LedCycle tempCycle = LED_CYCLE_OFF;
     SetLEDCycle(LED_CYCLE_OFF);
@@ -196,7 +196,7 @@ void setup() {
 	//pinMode(FSK_INPUT_FILTER_ENABLE_PIN, OUTPUT);
 	//digitalWrite(FSK_INPUT_FILTER_ENABLE_PIN, HIGH);
 	
-    delay(20);
+    //delay(20);
 	
 	nextLedTime = millis();
     
@@ -210,7 +210,7 @@ void setup() {
 	pinMode(blueLed, OUTPUT);
 	
     InitIdleState();
-	
+	//InitManualTimelapseState();
 	SetLED(OFF);
 	
 	SetLEDCycle(LED_CYCLE_START);
@@ -231,6 +231,7 @@ void ProcessIdle() {
     switch (currentState) {
 		case STATE_TIMELAPSE_WAITING_FLASH: // TODO: can we drop to low power and attach interrupt to flash pin?
 		case STATE_TRANSMIT: //  TODO: can we drop to idle mode with a timer
+		case STATE_TIMELAPSE_MANUAL_TRANSMIT:
 		    // Dont Idle in these states
 		    return;
 			break;
@@ -252,6 +253,13 @@ void ProcessIdle() {
 		    // We will check LED state before actually going to idle here
 		    set_sleep_mode(SLEEP_MODE_PWR_SAVE);
 			break;
+		case STATE_IDLE:
+		case STATE_TIMELAPSE_MANUAL:
+			break;
+		case STATE_INVALID:
+		default:
+			Serial.println("Process Idle: Unrecognized state");
+			return;
 	}
 
     if (currentLedCycle.NumLedPositions != 0) {
@@ -335,9 +343,25 @@ void ProcessButton() {
                     case STATE_TRANSMIT:
                         LeaveTransmitState();
                         break;
+					case STATE_TIMELAPSE_MANUAL:
+						EndExposure();
+						InitTransmitState();
+						break;
+					case STATE_INVALID:
+					default:
+						Serial.println("Unknown state");
+						break;
 	            }
             } else {
                 buttonPressTime = millis();
+				switch (currentState) {
+				case STATE_TIMELAPSE_MANUAL_TRANSMIT:
+					LeaveTransmitState();
+					// FALL THROUGH
+				case STATE_TIMELAPSE_MANUAL:
+					StartExposure();
+					break;
+				}					
             }
         }    
     }  
@@ -385,7 +409,16 @@ void loop() {
             ProcessTimeLapseExposing();
             break;
         case STATE_TRANSMIT:
+		case STATE_TIMELAPSE_MANUAL_TRANSMIT:
 		    ProcessTransmitState();
+			break;
+		case STATE_IDLE:
+		case STATE_TIMELAPSE_MANUAL:
+			break;
+		case STATE_INVALID:
+		default:
+			//Serial.print("loop: unrecognized state ");
+			//Serial.println(currentState, HEX);
 			break;
     }        
 	

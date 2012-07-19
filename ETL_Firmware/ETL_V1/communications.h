@@ -9,7 +9,7 @@
 #ifndef COMMUNICATIONS_H_
 #define COMMUNICATIONS_H_
 
-#define IDLE_TIMEOUT_PERIOD 15000
+#define IDLE_TIMEOUT_PERIOD 5000
 
 void InitTransmitState();
 void LeaveTransmitState();

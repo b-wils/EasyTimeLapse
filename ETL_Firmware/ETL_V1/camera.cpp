@@ -32,6 +32,16 @@ extern byte buttonHeld;
 extern SectionConfig myConfigs[MAX_CONFIGS];
 extern uint8_t numConfigs;
 
+void StartExposure() {
+    digitalWrite(shutterPin, HIGH);
+    digitalWrite(focusPin, HIGH);
+}
+
+void EndExposure() {
+    digitalWrite(shutterPin, LOW);
+    digitalWrite(focusPin, LOW);
+}
+
 void SetConfig(int index) {
 
 	Serial.print("set config index ");
@@ -90,6 +100,20 @@ void TimelapseResume() {
 	}
 	SetLEDCycle(LED_CYCLE_OFF);
 	currentState = STATE_TIMELAPSE_WAITING;
+}
+
+void InitManualTimelapseState() {
+	Serial.println("Init manual timelapse");
+	
+	// Technically these are output pins, but we can the 20k pullup resistors are enough
+	// to open our transistor and trigger the shutter. By using the pullups, we can go to low
+	// power mode
+    pinMode(shutterPin, INPUT);
+    digitalWrite(shutterPin, LOW);
+    pinMode(focusPin, INPUT);
+    digitalWrite(focusPin, LOW);
+	
+	currentState = STATE_TIMELAPSE_MANUAL;
 }
 
 void InitTimelapseState() {
@@ -297,8 +321,7 @@ void ProcessTimelapseWaiting() {
 					
 		Serial.print("Exp length ");
 		Serial.println(exposureLength);
-        digitalWrite(focusPin, HIGH);
-        digitalWrite(shutterPin, HIGH);
+		StartExposure();
         SetLEDCycle(LED_CYCLE_TAKE_PICTURE);
 		
 		// Set our pullup resistor for flash feedback
@@ -331,9 +354,7 @@ void ProcessTimeLapseWaitingFlash() {
 
 void ProcessTimeLapseExposing() {
     if (millis() >= shutterOffTime) {
-        SetLED(OFF);
-        digitalWrite(shutterPin, LOW);
-        digitalWrite(focusPin, LOW);
+		EndExposure();
         currentState = STATE_TIMELAPSE_WAITING;
     }
 }

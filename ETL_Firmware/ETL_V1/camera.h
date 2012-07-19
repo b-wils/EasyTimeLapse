@@ -9,8 +9,11 @@
 #ifndef CAMERA_H_
 #define CAMERA_H_
 
+void StartExposure();
+void EndExposure();
 void TimelapseResume();
 void InitTimelapseState();
+void InitManualTimelapseState();
 void InitTimelapsePauseState();
 void ProcessTimelapseWaiting();
 void ProcessTimeLapseWaitingFlash();

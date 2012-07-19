@@ -412,42 +412,42 @@ void SoftModem::handleAnalogComp(bool high)
 
 void SoftModem::demodulateTest(void)
 {
-	Serial.print("bit period = ");
-	Serial.println(SOFT_MODEM_BIT_PERIOD);
-
-	Serial.print("low usec = ");
-	Serial.println(SOFT_MODEM_LOW_USEC);
-
-	Serial.print("high usec = ");
-	Serial.println(SOFT_MODEM_HIGH_USEC);
-
-	Serial.print("low cnt = ");
-	Serial.println(SOFT_MODEM_LOW_CNT);
-
-	Serial.print("high cnt = ");
-	Serial.println(SOFT_MODEM_HIGH_CNT);
-
-	Serial.print("low adj = ");
-	Serial.println(SOFT_MODEM_LOW_ADJ);
-
-	Serial.print("high adj = ");
-	Serial.println(SOFT_MODEM_HIGH_ADJ);
-
-	Serial.print("TMC micros = ");
-	Serial.println(MICROS_PER_TIMER_COUNT);
-
-	Serial.println("low freq TMC > ");
-	Serial.println(TCNT_LOW_FREQ,DEC);
-	Serial.println(TCNT_LOW_TH_L,DEC);
-	Serial.println(TCNT_LOW_TH_H,DEC);
-
-	Serial.println("high freq TMC > ");
-	Serial.println(TCNT_HIGH_FREQ,DEC);
-	Serial.println(TCNT_HIGH_TH_L,DEC);
-	Serial.println(TCNT_HIGH_TH_H,DEC);
-
-	Serial.print("bit period TMC = ");
-	Serial.println(TCNT_BIT_PERIOD,DEC);
+	//Serial.print("bit period = ");
+	//Serial.println(SOFT_MODEM_BIT_PERIOD);
+//
+	//Serial.print("low usec = ");
+	//Serial.println(SOFT_MODEM_LOW_USEC);
+//
+	//Serial.print("high usec = ");
+	//Serial.println(SOFT_MODEM_HIGH_USEC);
+//
+	//Serial.print("low cnt = ");
+	//Serial.println(SOFT_MODEM_LOW_CNT);
+//
+	//Serial.print("high cnt = ");
+	//Serial.println(SOFT_MODEM_HIGH_CNT);
+//
+	//Serial.print("low adj = ");
+	//Serial.println(SOFT_MODEM_LOW_ADJ);
+//
+	//Serial.print("high adj = ");
+	//Serial.println(SOFT_MODEM_HIGH_ADJ);
+//
+	//Serial.print("TMC micros = ");
+	//Serial.println(MICROS_PER_TIMER_COUNT);
+//
+	//Serial.println("low freq TMC > ");
+	//Serial.println(TCNT_LOW_FREQ,DEC);
+	//Serial.println(TCNT_LOW_TH_L,DEC);
+	//Serial.println(TCNT_LOW_TH_H,DEC);
+//
+	//Serial.println("high freq TMC > ");
+	//Serial.println(TCNT_HIGH_FREQ,DEC);
+	//Serial.println(TCNT_HIGH_TH_L,DEC);
+	//Serial.println(TCNT_HIGH_TH_H,DEC);
+//
+	//Serial.print("bit period TMC = ");
+	//Serial.println(TCNT_BIT_PERIOD,DEC);
 
 	begin();
 

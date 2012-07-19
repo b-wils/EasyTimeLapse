@@ -10,6 +10,7 @@
 #include "Arduino/Arduino.h"
 #include "SoftModem.h"
 #include "Utils.h"
+#include "camera.h"
 
 SoftModem modem;
 VariablePacket recvPacket;
@@ -30,7 +31,16 @@ uint32_t idleTimer;
 
 void InitTransmitState() {
     SetLEDCycle(LED_CYCLE_START_PROGRAM);
-    currentState = STATE_TRANSMIT;
+    
+	switch (currentState) {
+		case STATE_IDLE:
+			currentState = STATE_TRANSMIT;
+			break;
+		case STATE_TIMELAPSE_MANUAL:
+			currentState = STATE_TIMELAPSE_MANUAL_TRANSMIT;
+			break;
+	}
+	
     DebugPrint("Enter Transmit");
 	
 	// This is our unused audio channel. This must go to ground otherwise something
@@ -74,7 +84,16 @@ void InitTransmitState() {
 
 void LeaveTransmitState() {
 	modem.end();
-	InitIdleState();
+	switch (currentState) {
+	case STATE_TRANSMIT:
+		InitIdleState();	
+		break;
+	case STATE_TIMELAPSE_MANUAL_TRANSMIT:
+		InitManualTimelapseState();
+		break;
+	default:
+		Serial.println("Bad attempt to leave transmit state");
+	}
 }
 
 void InitRequestPacket(IPhonePacket *packet, uint8_t requestId) {
@@ -198,7 +217,7 @@ void ProcessTransmitState() {
 		
 		
 			// need to make sure iphone is ready to receive again
-			// this should be async
+			// this should be async. Interferes with ability to do manual shots
 			// or ideally we will fix iphone so it can send receive simulteneously...
 		    delay(1000);
 	        modem.writeBytes((uint8_t *) &sendPacket, sizeof(sendPacket));
