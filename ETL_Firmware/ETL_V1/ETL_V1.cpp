@@ -111,19 +111,22 @@ void disableADC() {
 void printBatteryLevel() {
 	enableADC(); // TODO we may need to give some time to get this value to stabilize
 	
+	pinMode(3, OUTPUT);
+	digitalWrite(3,HIGH);
+	
 	pinMode(enableBatteryMonitorPin, OUTPUT);
 	digitalWrite(enableBatteryMonitorPin, HIGH);
 		
-	int adcReading = analogRead(batteryMonitorPin);
+	uint8_t adcReading = analogRead(batteryMonitorPin);
 	int batLevel = (adcReading - ADC_EMPTY_VOLTAGE)/(ADC_FULL_VOLTAGE - ADC_EMPTY_VOLTAGE);
 	
-	Serial.print("Min BAT ADC: ");
-	Serial.println(ADC_EMPTY_VOLTAGE);
-	Serial.print("Max BAT ADC: ");
-	Serial.println(ADC_FULL_VOLTAGE);
-	Serial.print("Current: ");
-	Serial.println(adcReading);
-    Serial.print("Percent: ");
+	DebugPrint("Min BAT ADC: ");
+	DebugPrintln(ADC_EMPTY_VOLTAGE);
+	DebugPrint("Max BAT ADC: ");
+	DebugPrintln(ADC_FULL_VOLTAGE);
+	DebugPrint("Current: ");
+	DebugPrintln(adcReading);
+    DebugPrint("Percent: ");
 	pinMode(enableBatteryMonitorPin, INPUT);
 	digitalWrite(enableBatteryMonitorPin, LOW);
 	
@@ -162,7 +165,7 @@ void InitIdleState() {
 	
 	printBatteryLevel();
 	disableADC();
-    DebugPrint("Enter Idle");
+    DebugPrintln("Enter Idle");
 }
 
 void ProcessIdle();
@@ -258,7 +261,7 @@ void ProcessIdle() {
 			break;
 		case STATE_INVALID:
 		default:
-			Serial.println("Process Idle: Unrecognized state");
+			DebugPrintln("Process Idle: Unrecognized state");
 			return;
 	}
 
@@ -308,7 +311,7 @@ void ProcessButton() {
         // reset the debouncing timer
         lastDebounceTime = millis();
 		
-		//Serial.print("button change");
+		//DebugPrint("button change");
     } 
   
     if ((millis() - lastDebounceTime) > BUTTON_DEBOUNCE_PERIOD) {
@@ -349,7 +352,7 @@ void ProcessButton() {
 						break;
 					case STATE_INVALID:
 					default:
-						Serial.println("Unknown state");
+						DebugPrintln("Unknown state");
 						break;
 	            }
             } else {
@@ -417,8 +420,8 @@ void loop() {
 			break;
 		case STATE_INVALID:
 		default:
-			//Serial.print("loop: unrecognized state ");
-			//Serial.println(currentState, HEX);
+			//DebugPrint("loop: unrecognized state ");
+			//DebugPrintln(currentState, HEX);
 			break;
     }        
 	
@@ -430,23 +433,23 @@ void loop() {
 		switch (incByte) {
 			case 'p':
 				// dump our shots
-				Serial.print("num configs: ");
-				Serial.println(numConfigs);
+				DebugPrint("num configs: ");
+				DebugPrintln(numConfigs);
 				for (int i = 0; i < numConfigs; i++) {
-					Serial.print("config #");
-					Serial.println(i);
+					DebugPrint("config #");
+					DebugPrintln(i);
 					PrintSectionConfig(myConfigs[i]);	
 				}
 				
 				break;
 			case 't':
 				// dump the current millis() value
-				Serial.print("millis() = ");
-				Serial.println(millis());
+				DebugPrint("millis() = ");
+				DebugPrintln(millis());
 				break;
 			default:
-				Serial.print("Unrecognized command ");
-				Serial.println(incByte);
+				DebugPrint("Unrecognized command ");
+				DebugPrintln(incByte);
 		}
 	}
 	
@@ -461,7 +464,7 @@ void loop() {
 	//
 	//if (millis() > printTimer) {
 		//printTimer += 2000;
-		//Serial.println(incrementCount);
+		//DebugPrintln(incrementCount);
 		//incrementCount = 0;
 	//}
 	

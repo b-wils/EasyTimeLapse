@@ -89,7 +89,79 @@ struct LedCycle {
 #define LED_CYCLE_END_PROGRAM LedCycle(200, 6, 0, YELLOW,GREEN,YELLOW,GREEN,YELLOW,GREEN)
 void DebugInit();
 
-void DebugPrint( const char* myString);
+//#define DEBUGPRINT
+
+// Debug print statements
+
+static inline
+void DebugPrintln() {
+#ifdef DEBUGPRINT
+	Serial.println();
+#endif
+}
+
+static inline
+void DebugPrintln(const char* myString) {
+#ifdef DEBUGPRINT
+	Serial.println(myString);
+#endif
+}
+
+static inline
+void DebugPrint(const char* myString) {
+#ifdef DEBUGPRINT
+	Serial.print(myString);
+#endif
+}
+
+static inline
+void DebugPrintln(int myString) {
+#ifdef DEBUGPRINT
+	Serial.println(myString);
+#endif
+}
+
+static inline
+void DebugPrintln(uint16_t myString) {
+#ifdef DEBUGPRINT
+	Serial.println(myString);
+#endif
+}
+
+static inline
+void DebugPrintln(uint32_t myString) {
+#ifdef DEBUGPRINT
+	Serial.println(myString);
+#endif
+}
+
+static inline
+void DebugPrintln(int32_t myString) {
+#ifdef DEBUGPRINT
+	Serial.println(myString);
+#endif
+}
+
+static inline
+void DebugPrintln(double myString) {
+#ifdef DEBUGPRINT
+	Serial.println(myString);
+#endif
+}
+
+static inline
+void DebugPrintln(int myString, int format) {
+#ifdef DEBUGPRINT
+	Serial.println(myString, format);
+#endif
+}
+
+static inline
+void DebugPrint(int myString, int format) {
+#ifdef DEBUGPRINT
+	Serial.println(myString, format);
+#endif
+}
 
 void PrintSectionConfig(SectionConfig SecConf);
 

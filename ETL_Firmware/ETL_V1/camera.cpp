@@ -44,22 +44,22 @@ void EndExposure() {
 
 void SetConfig(int index) {
 
-	Serial.print("set config index ");
-	Serial.println(index);
+	DebugPrint("set config index ");
+	DebugPrintln(index);
     shotsRemaining = myConfigs[index].shots;
     currentInterval = myConfigs[index].interval;
 	HDRShotNumber = 0;
 	//
-		//Serial.print("use flash: ");
-		//Serial.println(useFlashFeeback, HEX);
+		//DebugPrint("use flash: ");
+		//DebugPrintln(useFlashFeeback, HEX);
 	
 	if (repeatsRemaining == -1 && myConfigs[index].numRepeats != 0) {
 		repeatsRemaining = myConfigs[index].numRepeats;
 	}
 	
 	
-	Serial.print("config type: ");
-	Serial.println(myConfigs[index].type);
+	DebugPrint("config type: ");
+	DebugPrintln(myConfigs[index].type);
 	if (myConfigs[index].type & _BV(CONFIG_PAUSE)) {
 	    InitTimelapsePauseState();
 	}
@@ -88,12 +88,12 @@ void SetConfig(int index) {
 
 void InitTimelapsePauseState() {
 	currentState = STATE_TIMELAPSE_PAUSE;
-	DebugPrint("Timelapse Paused");
+	DebugPrintln("Timelapse Paused");
 	SetLEDCycle(LED_CYCLE_TIMELAPSE_PAUSE);
 }
 
 void TimelapseResume() {
-	DebugPrint("Resume Timelapse");
+	DebugPrintln("Resume Timelapse");
 	if (millis() > nextPhotoTime) {
 		nextPhotoTime = millis();
 		// TODO we should to a time adjustment to our exposure reference time
@@ -103,7 +103,7 @@ void TimelapseResume() {
 }
 
 void InitManualTimelapseState() {
-	Serial.println("Init manual timelapse");
+	DebugPrintln("Init manual timelapse");
 	
 	// Technically these are output pins, but we can the 20k pullup resistors are enough
 	// to open our transistor and trigger the shutter. By using the pullups, we can go to low
@@ -133,15 +133,15 @@ void InitTimelapseState() {
 	
     //SetLED(GREEN);
     currentState = STATE_TIMELAPSE_WAITING;
-    DebugPrint("Enter Timelapse");
+    DebugPrintln("Enter Timelapse");
 	
 	useFlashFeeback = 0;
 	
 	byte flashSense = digitalRead(flashSensePin);
 	if (flashSense == HIGH) {
-		Serial.println("No PC sync cable");
+		DebugPrintln("No PC sync cable");
 	} else {
-		Serial.println("PC sync cable attached");
+		DebugPrintln("PC sync cable attached");
 	}
 	
 	digitalWrite(flashFeedbackPin, LOW);
@@ -149,9 +149,9 @@ void InitTimelapseState() {
 	//byte micShorted = digitalRead(micShortedPin);
 	
 	//if (micShorted == HIGH) {
-	    //DebugPrint("Mic not shorted");	
+	    //DebugPrintln("Mic not shorted");	
     //} else {
-        //DebugPrint("Mic Shorted");	
+        //DebugPrintln("Mic Shorted");	
 	//}		
 	
 	//digitalWrite(micShortedPin, LOW);
@@ -171,7 +171,7 @@ void TimelapseSettingComplete() {
 	if (myConfigs[configIndex].numRepeats != 0 && repeatsRemaining > 0) {
 		repeatsRemaining--;
 	    configIndex = myConfigs[configIndex].repeatIndex;
-		DebugPrint("Repeat!");
+		DebugPrintln("Repeat!");
 		SetConfig(configIndex);
 	} else {
 	    configIndex++;
@@ -207,14 +207,14 @@ uint32_t CalcExpTime(uint32_t startTime, uint32_t endTime, float fstopSinAmplitu
 	exposureLength = pow(2, fstopExpFactor) * 1000;
 	exposureLength -= STATIC_SHUTTER_LAG;
 	
-    //Serial.print("CalcExpTime timeDiffMin: ");
-	//Serial.println(timeDiffMin);
+    //DebugPrint("CalcExpTime timeDiffMin: ");
+	//DebugPrintln(timeDiffMin);
 //
-    //Serial.print("CalcExpTime fstop: ");
-	//Serial.println(fstopExpFactor);
+    //DebugPrint("CalcExpTime fstop: ");
+	//DebugPrintln(fstopExpFactor);
 	//
-	//Serial.print("CalcExpTime exposureLength: ");
-	//Serial.println(exposureLength);
+	//DebugPrint("CalcExpTime exposureLength: ");
+	//DebugPrintln(exposureLength);
 	
 	return exposureLength;
 }
@@ -222,7 +222,7 @@ uint32_t CalcExpTime(uint32_t startTime, uint32_t endTime, float fstopSinAmplitu
 void ProcessTimelapseWaiting() {
 	
 	if (buttonHeld == true) {
-		DebugPrint("Abandon Timelapse");
+		DebugPrintln("Abandon Timelapse");
         SetLEDCycle(LED_CYCLE_TIMELAPSE_ABANDON);
 		InitIdleState();
 	}
@@ -234,7 +234,7 @@ void ProcessTimelapseWaiting() {
 	if (buttonClicked == true) {
 		// TODO we should only advance if specified in the config
 		buttonClicked = false;
-		DebugPrint("Button Click");
+		DebugPrintln("Button Click");
         //TimelapseSettingComplete();
 		
 		if (myConfigs[configIndex].fstopChangeOnPress != 0) {
@@ -246,17 +246,17 @@ void ProcessTimelapseWaiting() {
 			
 			// Check exposure bounds before setting
 			if (tempExposure < 20) {
-				DebugPrint("Exposure too low");
+				DebugPrintln("Exposure too low");
 			} else if (tempExposure > (myConfigs[configIndex].interval - BUFFER_RECOVER_TIME)) {
-				DebugPrint("Exposure too high");
+				DebugPrintln("Exposure too high");
 			} else {
 				// TODO track exposure offset in a local variable, not from config
 				myConfigs[configIndex].exposureOffset += myConfigs[configIndex].fstopChangeOnPress;
 				int32_t newOffset = myConfigs[configIndex].exposureOffset;
-				Serial.print("tempExposure: ");
-				Serial.println(tempExposure);
-                Serial.print("newOffset: ");
-				Serial.println(newOffset);
+				DebugPrint("tempExposure: ");
+				DebugPrintln(tempExposure);
+                DebugPrint("newOffset: ");
+				DebugPrintln(newOffset);
 			}
 			
 		}
@@ -268,11 +268,11 @@ void ProcessTimelapseWaiting() {
 		    myConfigs[configIndex].exposureFstopChangePerMin, myConfigs[configIndex].exposureOffset);
 		
 		if (exposureLength > (myConfigs[configIndex].interval - BUFFER_RECOVER_TIME)) {
-			DebugPrint("Exposure length/interval collision");
+			DebugPrintln("Exposure length/interval collision");
 		}
 		
 		if (exposureLength < MINIMUM_PHOTO_LENGTH) {
-			DebugPrint("Exposure length less than minimum");
+			DebugPrintln("Exposure length less than minimum");
 		}
 		
 		// Detect if there is a collision soon
@@ -283,15 +283,15 @@ void ProcessTimelapseWaiting() {
 		    uint32_t tempExposure = CalcExpTime(expRefTime, millis() + EXPOSURE_WARNING_TIME_OFFSET, myConfigs[configIndex].fstopSinAmplitude,
 		            myConfigs[configIndex].exposureFstopChangePerMin, myConfigs[configIndex].exposureOffset);
 			
-			//Serial.print("temp tempFstopExpFactor: ");
-			//Serial.println((int)tempFstopExpFactor);
-			//Serial.print("temp tempExposure: ");
-			//Serial.println(tempExposure);
+			//DebugPrint("temp tempFstopExpFactor: ");
+			//DebugPrintln((int)tempFstopExpFactor);
+			//DebugPrint("temp tempExposure: ");
+			//DebugPrintln(tempExposure);
 			
 			if (tempExposure < 50) {
-				DebugPrint("Warning: impending low exposure collision");
+				DebugPrintln("Warning: impending low exposure collision");
 			} else if (tempExposure > (myConfigs[configIndex].interval - BUFFER_RECOVER_TIME) ){
-				DebugPrint("Warning: impending high exposure collision");
+				DebugPrintln("Warning: impending high exposure collision");
 			}
 		}
 		
@@ -306,7 +306,7 @@ void ProcessTimelapseWaiting() {
 				nextPhotoTime = nextHDRBracketTime;
 				shotsRemaining--;
 				HDRShotNumber = 0;
-				DebugPrint("Bracket Complete");
+				DebugPrintln("Bracket Complete");
 			} else {
 				HDRShotNumber++;
 				// TODO should we set the next photo time after the shot is complete?
@@ -319,8 +319,8 @@ void ProcessTimelapseWaiting() {
 			shotsRemaining--;
 		}
 					
-		Serial.print("Exp length ");
-		Serial.println(exposureLength);
+		DebugPrint("Exp length ");
+		DebugPrintln(exposureLength);
 		StartExposure();
         SetLEDCycle(LED_CYCLE_TAKE_PICTURE);
 		
@@ -345,7 +345,7 @@ void ProcessTimeLapseWaitingFlash() {
 		if (millis() >= nextPhotoTime) {
             digitalWrite(shutterPin, LOW);
             digitalWrite(focusPin, LOW);
-			DebugPrint("Flash timeout");
+			DebugPrintln("Flash timeout");
 			digitalWrite(flashFeedbackPin, LOW);
 			InitIdleState(); // TODO, get an error here
 		}

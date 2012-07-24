@@ -1,5 +1,6 @@
 #include "SoftModem.h"
 #include "Arduino\Arduino.h"
+#include "Utils.h"
 
 #if SOFT_MODEM_DEBUG
 #include "Arduino/HardwareSerial.h"
@@ -412,42 +413,42 @@ void SoftModem::handleAnalogComp(bool high)
 
 void SoftModem::demodulateTest(void)
 {
-	//Serial.print("bit period = ");
-	//Serial.println(SOFT_MODEM_BIT_PERIOD);
+	//DebugPrint("bit period = ");
+	//DebugPrintln(SOFT_MODEM_BIT_PERIOD);
 //
-	//Serial.print("low usec = ");
-	//Serial.println(SOFT_MODEM_LOW_USEC);
+	//DebugPrint("low usec = ");
+	//DebugPrintln(SOFT_MODEM_LOW_USEC);
 //
-	//Serial.print("high usec = ");
-	//Serial.println(SOFT_MODEM_HIGH_USEC);
+	//DebugPrint("high usec = ");
+	//DebugPrintln(SOFT_MODEM_HIGH_USEC);
 //
-	//Serial.print("low cnt = ");
-	//Serial.println(SOFT_MODEM_LOW_CNT);
+	//DebugPrint("low cnt = ");
+	//DebugPrintln(SOFT_MODEM_LOW_CNT);
 //
-	//Serial.print("high cnt = ");
-	//Serial.println(SOFT_MODEM_HIGH_CNT);
+	//DebugPrint("high cnt = ");
+	//DebugPrintln(SOFT_MODEM_HIGH_CNT);
 //
-	//Serial.print("low adj = ");
-	//Serial.println(SOFT_MODEM_LOW_ADJ);
+	//DebugPrint("low adj = ");
+	//DebugPrintln(SOFT_MODEM_LOW_ADJ);
 //
-	//Serial.print("high adj = ");
-	//Serial.println(SOFT_MODEM_HIGH_ADJ);
+	//DebugPrint("high adj = ");
+	//DebugPrintln(SOFT_MODEM_HIGH_ADJ);
 //
-	//Serial.print("TMC micros = ");
-	//Serial.println(MICROS_PER_TIMER_COUNT);
+	//DebugPrint("TMC micros = ");
+	//DebugPrintln(MICROS_PER_TIMER_COUNT);
 //
-	//Serial.println("low freq TMC > ");
-	//Serial.println(TCNT_LOW_FREQ,DEC);
-	//Serial.println(TCNT_LOW_TH_L,DEC);
-	//Serial.println(TCNT_LOW_TH_H,DEC);
+	//DebugPrintln("low freq TMC > ");
+	//DebugPrintln(TCNT_LOW_FREQ,DEC);
+	//DebugPrintln(TCNT_LOW_TH_L,DEC);
+	//DebugPrintln(TCNT_LOW_TH_H,DEC);
 //
-	//Serial.println("high freq TMC > ");
-	//Serial.println(TCNT_HIGH_FREQ,DEC);
-	//Serial.println(TCNT_HIGH_TH_L,DEC);
-	//Serial.println(TCNT_HIGH_TH_H,DEC);
+	//DebugPrintln("high freq TMC > ");
+	//DebugPrintln(TCNT_HIGH_FREQ,DEC);
+	//DebugPrintln(TCNT_HIGH_TH_L,DEC);
+	//DebugPrintln(TCNT_HIGH_TH_H,DEC);
 //
-	//Serial.print("bit period TMC = ");
-	//Serial.println(TCNT_BIT_PERIOD,DEC);
+	//DebugPrint("bit period TMC = ");
+	//DebugPrintln(TCNT_BIT_PERIOD,DEC);
 
 	begin();
 
@@ -504,14 +505,14 @@ void SoftModem::demodulateTest(void)
 
 	delay(300);
 
-	Serial.println("--");
-	Serial.println(_recvStat,HEX);
-	Serial.println(_lastTCNT,HEX);
-	Serial.println(_recvBits,HEX);
+	DebugPrintln("--");
+	DebugPrintln(_recvStat,HEX);
+	DebugPrintln(_lastTCNT,HEX);
+	DebugPrintln(_recvBits,HEX);
 
 	while(available()){
-		Serial.print("data=");
-		Serial.println(read(),HEX);
+		DebugPrint("data=");
+		DebugPrintln(read(),HEX);
 	}
 
 	end();
@@ -519,34 +520,34 @@ void SoftModem::demodulateTest(void)
 
 void SoftModem::printDebugInfo(short resetCounts)
 {
-	Serial.println();
+	DebugPrintln();
 
-	//Serial.print("  anaIsrCnt=");
-	//Serial.println(anaISRCnt,DEC);
+	//DebugPrint("  anaIsrCnt=");
+	//DebugPrintln(anaISRCnt,DEC);
 	//
-	//Serial.print("  timer2ISRCnt=");
-	//Serial.println(timer2ISRCnt,DEC);
+	//DebugPrint("  timer2ISRCnt=");
+	//DebugPrintln(timer2ISRCnt,DEC);
 	
-	//Serial.print("  errs=");
-	//Serial.println(errs,DEC);
+	//DebugPrint("  errs=");
+	//DebugPrintln(errs,DEC);
 	//
-	//Serial.print("  ints=");
-	//Serial.println(ints,DEC);
+	//DebugPrint("  ints=");
+	//DebugPrintln(ints,DEC);
 	
-	Serial.print("  lowNoiseCnt=");
-	Serial.println(lowNoiseCnt,DEC);
+	DebugPrint("  lowNoiseCnt=");
+	DebugPrintln(lowNoiseCnt,DEC);
 	
-    //Serial.print("  midNoiseCnt=");
-	//Serial.println(midNoiseCnt,DEC);
+    //DebugPrint("  midNoiseCnt=");
+	//DebugPrintln(midNoiseCnt,DEC);
 	//
-	Serial.print("  highNoiseCnt=");
-	Serial.println(highNoiseCnt,DEC);
+	DebugPrint("  highNoiseCnt=");
+	DebugPrintln(highNoiseCnt,DEC);
 	
-	Serial.print("  lowSignalCnt=");
-	Serial.println(lowSignalCnt,DEC);
+	DebugPrint("  lowSignalCnt=");
+	DebugPrintln(lowSignalCnt,DEC);
 	
-	Serial.print("  highSignalCnt=");
-	Serial.println(highSignalCnt,DEC);
+	DebugPrint("  highSignalCnt=");
+	DebugPrintln(highSignalCnt,DEC);
 	
 	if (resetCounts) {
         resetSignalCounts();

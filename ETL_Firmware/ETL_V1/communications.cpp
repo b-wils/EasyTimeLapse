@@ -41,7 +41,7 @@ void InitTransmitState() {
 			break;
 	}
 	
-    DebugPrint("Enter Transmit");
+    DebugPrintln("Enter Transmit");
 	
 	// This is our unused audio channel. This must go to ground otherwise something
 	// weird happens electrically. We could probably use the P/U resistor too.
@@ -92,7 +92,7 @@ void LeaveTransmitState() {
 		InitManualTimelapseState();
 		break;
 	default:
-		Serial.println("Bad attempt to leave transmit state");
+		DebugPrintln("Bad attempt to leave transmit state");
 	}
 }
 
@@ -114,7 +114,7 @@ void ProcessTransmitState() {
         ((char *) &recvPacket)[bytesRead] = modem.read();
         bytesRead++;
 		
-		//Serial.println(((char *) &recvPacket)[bytesRead]);
+		//DebugPrintln(((char *) &recvPacket)[bytesRead]);
 		
 		if (bytesRead >= 16) {
 			IPhonePacket sendPacket;
@@ -127,43 +127,43 @@ void ProcessTransmitState() {
 		    myCrc = crc_update(myCrc, (byte*) &recvPacket + sizeof(crc_t), sizeof(recvPacket) - sizeof(crc_t));
 		    myCrc = crc_finalize(myCrc);
 					
-		    Serial.print(" command: ");
-		    Serial.println(recvPacket.command, HEX);
+		    DebugPrint(" command: ");
+		    DebugPrintln(recvPacket.command, HEX);
 					
-		    Serial.print(" packetId: ");
-		    Serial.println(recvPacket.packetId, HEX);
+		    DebugPrint(" packetId: ");
+		    DebugPrintln(recvPacket.packetId, HEX);
 					
 		    bool failCrc = false;
 					
 		    //if (random(2) == 0) {
 			    //failCrc = true;
-			    //Serial.println("force fail crc");
+			    //DebugPrintln("force fail crc");
 		    //}
 					
 		    if (myCrc != recvPacket.crc || failCrc) {
-			    DebugPrint("Crc mismatch!");
+			    DebugPrintln("Crc mismatch!");
 				SetLEDCycle(LED_CYCLE_CRC_MISMATCH);
 				
-			    Serial.print(" recv_crc = ");
-			    Serial.print(recvPacket.crc, HEX);
-                Serial.print(" calc_Crc = ");
-			    Serial.println(myCrc, HEX);
+			    DebugPrint(" recv_crc = ");
+			    DebugPrint(recvPacket.crc, HEX);
+                DebugPrint(" calc_Crc = ");
+			    DebugPrintln(myCrc, HEX);
 			    
-				Serial.print("Shots: ");
-				Serial.println(recvPacket.basicTimelapse.shots);
-				Serial.print("exposure: ");
-				Serial.println(recvPacket.basicTimelapse.exposureLengthPower);
-				Serial.print("interval: ");
-				Serial.println(recvPacket.basicTimelapse.interval);
-			    Serial.println();
+				DebugPrint("Shots: ");
+				DebugPrintln(recvPacket.basicTimelapse.shots);
+				DebugPrint("exposure: ");
+				DebugPrintln(recvPacket.basicTimelapse.exposureLengthPower);
+				DebugPrint("interval: ");
+				DebugPrintln(recvPacket.basicTimelapse.interval);
+			    DebugPrintln();
 				
 				// TODO for now we always request a packet, need specifc retry code here
 		    } else {
 				SetLEDCycle(LED_CYCLE_CRC_MATCH);
 				
-			    Serial.print("packet success; crc = ");
-				Serial.println(myCrc, HEX);
-			    Serial.println();				
+			    DebugPrint("packet success; crc = ");
+				DebugPrintln(myCrc, HEX);
+			    DebugPrintln();				
 					
 			    if (modemPacketIndex == recvPacket.packetId) {
 					modemPacketIndex++; 
@@ -199,22 +199,22 @@ void ProcessTransmitState() {
 				        break;
 					case ETL_COMMAND_GETDEVICEINFO:
 						// TODO populate and send device info
-						Serial.println("device info");
+						DebugPrintln("device info");
 						break;
 					case ETL_COMMAND_MANUALMODE:
 						// Can probably signoff here
 						currentState = STATE_TIMELAPSE_MANUAL_TRANSMIT;
 						break;
 					case ETL_COMMAND_SIGNOFF:
-						Serial.println("programming complete!");
+						DebugPrintln("programming complete!");
 						LeaveTransmitState();
 						SetLEDCycle(LED_CYCLE_END_PROGRAM);
 						return;
 						break;
 				    case ETL_COMMAND_INVALID:
 				    default:
-				        Serial.print("unrecognized command: ");
-					    Serial.println(recvPacket.command, HEX);
+				        DebugPrint("unrecognized command: ");
+					    DebugPrintln(recvPacket.command, HEX);
 				    }	
 			    } else {
 				    InitRequestPacket(&sendPacket, modemPacketIndex);
@@ -234,7 +234,7 @@ void ProcessTransmitState() {
 	}
 	
 	if (millis() > idleTimer + IDLE_TIMEOUT_PERIOD) {
-		Serial.println("Idle timeout");
+		DebugPrintln("Idle timeout");
 		LeaveTransmitState();
 	}
 }
@@ -252,8 +252,8 @@ void ProcessTransmitStateTest() {
 	while(modem.available()) {
         //byte myByte = modem.read();
 		
-		//Serial.print("byte:");
-		//Serial.println(myByte, HEX);
+		//DebugPrint("byte:");
+		//DebugPrintln(myByte, HEX);
 		
 		//printTimer = millis() + 3000;
 	}		
