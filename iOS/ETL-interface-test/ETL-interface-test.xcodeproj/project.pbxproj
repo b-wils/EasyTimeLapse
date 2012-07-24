@@ -153,6 +153,8 @@
 		B5ED08151590F77B0026432C /* UIView+FindAndResignFirstResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = B5ED08141590F77B0026432C /* UIView+FindAndResignFirstResponder.m */; };
 		B5ED082315915FC00026432C /* NumpadDismissBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5ED082215915FC00026432C /* NumpadDismissBar.xib */; };
 		B5ED520215924E5900B31083 /* ETLProgramViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5ED520115924E5900B31083 /* ETLProgramViewController.m */; };
+		B5F7392515BF3B7700A784A4 /* ETLManual.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F7392415BF3B7700A784A4 /* ETLManual.m */; };
+		B5F7392615BF3B7700A784A4 /* ETLManual.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F7392415BF3B7700A784A4 /* ETLManual.m */; };
 		B5FF056215B50B6D00831EF7 /* homebutton_bulb_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = B5FF055215B50B6D00831EF7 /* homebutton_bulb_pressed.png */; };
 		B5FF056315B50B6D00831EF7 /* homebutton_bulb_pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5FF055315B50B6D00831EF7 /* homebutton_bulb_pressed@2x.png */; };
 		B5FF056415B50B6D00831EF7 /* homebutton_bulb.png in Resources */ = {isa = PBXBuildFile; fileRef = B5FF055415B50B6D00831EF7 /* homebutton_bulb.png */; };
@@ -357,6 +359,8 @@
 		B5ED082215915FC00026432C /* NumpadDismissBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NumpadDismissBar.xib; sourceTree = "<group>"; };
 		B5ED520015924E5900B31083 /* ETLProgramViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETLProgramViewController.h; sourceTree = "<group>"; };
 		B5ED520115924E5900B31083 /* ETLProgramViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLProgramViewController.m; sourceTree = "<group>"; };
+		B5F7392315BF3B7700A784A4 /* ETLManual.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETLManual.h; sourceTree = "<group>"; };
+		B5F7392415BF3B7700A784A4 /* ETLManual.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLManual.m; sourceTree = "<group>"; };
 		B5FF055215B50B6D00831EF7 /* homebutton_bulb_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = homebutton_bulb_pressed.png; path = ../../../assets/v1/homebutton_bulb_pressed.png; sourceTree = "<group>"; };
 		B5FF055315B50B6D00831EF7 /* homebutton_bulb_pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "homebutton_bulb_pressed@2x.png"; path = "../../../assets/v1/homebutton_bulb_pressed@2x.png"; sourceTree = "<group>"; };
 		B5FF055415B50B6D00831EF7 /* homebutton_bulb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = homebutton_bulb.png; path = ../../../assets/v1/homebutton_bulb.png; sourceTree = "<group>"; };
@@ -431,6 +435,8 @@
 				B5FF058215B73BE200831EF7 /* ETLBulbRamp.m */,
 				B5FF059B15B8B1AA00831EF7 /* ETLShot.h */,
 				B5FF059C15B8B1AA00831EF7 /* ETLShot.m */,
+				B5F7392315BF3B7700A784A4 /* ETLManual.h */,
+				B5F7392415BF3B7700A784A4 /* ETLManual.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -1008,6 +1014,7 @@
 				B5FF058615B74FD200831EF7 /* ETLHdrControllerTest.m in Sources */,
 				B5FF059E15B8B1AA00831EF7 /* ETLShot.m in Sources */,
 				B5FF05A015B8B1EA00831EF7 /* ETLShotTest.m in Sources */,
+				B5F7392615BF3B7700A784A4 /* ETLManual.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1042,6 +1049,7 @@
 				B5FF057F15B739AC00831EF7 /* ETLHdrShot.m in Sources */,
 				B5FF058315B73BE200831EF7 /* ETLBulbRamp.m in Sources */,
 				B5FF059D15B8B1AA00831EF7 /* ETLShot.m in Sources */,
+				B5F7392515BF3B7700A784A4 /* ETLManual.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

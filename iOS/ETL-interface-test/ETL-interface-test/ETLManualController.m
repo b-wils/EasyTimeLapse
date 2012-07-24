@@ -7,11 +7,21 @@
 //
 
 #import "ETLManualController.h"
+#import "ETLProgramViewController.h"
+#import "ETLManual.h"
 
 @interface ETLManualController ()
-
+    
 @end
 
 @implementation ETLManualController
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"Program"]) {
+        ETLProgramViewController *controller = [segue destinationViewController];
+        controller.packetProvider = [[ETLManual alloc] init];;
+    }
+}
 
 @end
