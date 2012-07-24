@@ -174,6 +174,7 @@ void ProcessTransmitState() {
 	                case ETL_COMMAND_SETTINGS:
 				        break;
 	                case ETL_COMMAND_BASICTIMELAPSE:
+						currentState = STATE_TRANSMIT; // If we were in manual mode
 				        myConfigs[configPointer].shots = recvPacket.basicTimelapse.shots;
 					    myConfigs[configPointer].exposureOffset = recvPacket.basicTimelapse.exposureLengthPower;
 					    myConfigs[configPointer].interval = recvPacket.basicTimelapse.interval;
@@ -197,7 +198,12 @@ void ProcessTransmitState() {
 					    myConfigs[configPointer].numHDRShots = recvPacket.hdrShot.numHDRShots;
 				        break;
 					case ETL_COMMAND_GETDEVICEINFO:
+						// TODO populate and send device info
 						Serial.println("device info");
+						break;
+					case ETL_COMMAND_MANUALMODE:
+						// Can probably signoff here
+						currentState = STATE_TIMELAPSE_MANUAL_TRANSMIT;
 						break;
 					case ETL_COMMAND_SIGNOFF:
 						Serial.println("programming complete!");

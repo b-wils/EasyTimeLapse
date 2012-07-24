@@ -39,14 +39,15 @@ enum deviceCommands {
 	ETL_COMMAND_INTERVALRAMP,
 	ETL_COMMAND_HDRSHOT,
 	ETL_COMMAND_GETDEVICEINFO,
+	ETL_COMMAND_MANUALMODE,
 	ETL_COMMAND_SIGNOFF
 };
 
 #define PACKED __attribute__((__packed__))
 
 typedef struct {
-	uint32_t StaticShutterLag;
-	uint8_t  ConfigSections;
+	uint32_t staticShutterLag;
+	uint8_t  configSections;
 } PACKED DeviceSettings;
 
 typedef struct {
