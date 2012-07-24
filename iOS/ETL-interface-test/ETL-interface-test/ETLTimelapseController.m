@@ -71,13 +71,55 @@
         [self setValue:res forKey:obj];
     }];
     
-    
+    periodUnitPicker = [[UIPickerView alloc] init];
+    periodUnitPicker.delegate = self;
+    periodUnitPicker.dataSource = self;
     [periodUnitPicker selectRow:1 inComponent:0 animated:NO];
+    periodUnitPicker.hidden = YES;
+    periodUnitPicker.frame = CGRectMake(0,
+                                      self.view.frame.size.height,
+                                      self.view.frame.size.width,
+                                      periodUnitPicker.frame.size.height);
+    [self.view addSubview:periodUnitPicker];
+    
     shotPeriodField.inputAccessoryView = numpadToolbar;
     shotLimitField.inputAccessoryView = numpadToolbar;
     
     [self updateUICalculations:nil];
 }
+
+- (void)displayPicker:(bool)show animated:(bool)animated
+{
+    if (show != periodUnitPicker.hidden) return;
+    
+    periodUnitPicker.hidden = NO;
+    float duration = animated ? 0.25 : 0.0;
+    CGRect targetBounds = show 
+    ? CGRectMake(0,
+                 self.view.frame.size.height - periodUnitPicker.frame.size.height,
+                 periodUnitPicker.frame.size.width,
+                 periodUnitPicker.frame.size.height)
+    : CGRectMake(0,
+                 self.view.frame.size.height,
+                 self.view.frame.size.width,
+                 periodUnitPicker.frame.size.height);
+    
+    [UIView 
+        animateWithDuration:duration 
+        animations:^{
+            [periodUnitPicker setFrame:targetBounds];            
+        }
+        completion:^(BOOL finished) {
+            if (finished) periodUnitPicker.hidden = !show;
+//            if (callback) callback();
+        }
+    ];
+}
+
+//- (void)displayPicker:(bool)show animated:(bool)animated 
+//{
+//    [self displayPicker:show animated:animated andThen:nil];
+//}
 
 - (NSString *)formatSeconds:(float_t)totalSeconds with:(NSString *)formatString
 {
@@ -133,13 +175,21 @@
 }
 
 - (IBAction)didClickPeriodUnit:(id)sender {
-    [periodUnitPicker setHidden:NO];
+//    [periodUnitPicker setHidden:NO];
+    [self displayPicker:YES animated:YES];
+    [self hideFirstResponder:sender];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
     return YES;
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    printf("'%s' didBeginEditing", [textField.text cStringUsingEncoding:NSUTF8StringEncoding]);
+    [self displayPicker:NO animated:YES];
 }
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
@@ -157,7 +207,7 @@
     periodUnit = [periodUnits objectAtIndex:row];
     [periodUnitButton setTitle:periodUnit forState:UIControlStateNormal];
     [periodUnitButton setTitle:periodUnit forState:UIControlStateHighlighted];
-    periodUnitPicker.hidden = YES;
+    [self displayPicker:NO animated:YES];
     
     [self didUpdatePeriod:shotPeriodField];
 }
@@ -180,8 +230,7 @@
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    NSLog(@"Detected touches...");
-    periodUnitPicker.hidden = YES;
+    [self displayPicker:NO animated:YES];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

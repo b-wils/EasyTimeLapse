@@ -12,6 +12,10 @@
 #import "ETLProgramViewController.h"
 #import "ETLTimelapse.h"
 
+@interface ETLTimelapseController ()
+- (void)displayPicker:(bool)show animated:(bool)animated;
+@end
+
 @interface ETLTimelapseControllerTest : GHTestCase
 {
     ETLTimelapseController *controller;
@@ -60,6 +64,7 @@
     VERIFY_MOCK(intervalMock)
     VERIFY_MOCK(periodUnitMock)
     VERIFY_MOCK(segueMock)
+    VERIFY_MOCK(pickerMock)
 }  
 
 //- (IBAction)didSwitchContinuous:(id)sender;
@@ -106,7 +111,8 @@
 //    - (IBAction)didClickPeriodUnit:(id)sender;
 - (void)testDidClickPeriodUnit
 {
-    [[pickerMock expect] setHidden:NO];
+    [[controllerMock expect] displayPicker:YES animated:YES];
+    [[controllerMock expect] hideFirstResponder:OCMOCK_ANY];
     [controller didClickPeriodUnit:periodUnitMock];
 }
 
@@ -117,7 +123,7 @@
     
     [[periodUnitMock expect] setTitle:expectedTitle forState:UIControlStateNormal];
     [[periodUnitMock expect] setTitle:expectedTitle forState:UIControlStateHighlighted];
-    [[pickerMock expect] setHidden:YES];
+    [[controllerMock expect] displayPicker:NO animated:YES];
     [[controllerMock expect] didUpdatePeriod:intervalMock];
     [controller pickerView:pickerMock didSelectRow:minutesRow inComponent:0];
 }
@@ -161,5 +167,13 @@
     [[[segueMock expect] andReturn:nextControllerMock] destinationViewController];
     [[nextControllerMock expect] setPacketProvider:timelapseMock];
     [controller prepareForSegue:segueMock sender:OCMOCK_ANY];
+}
+
+//     - (void)textFieldDidBeginEditing:(UITextField *)textField
+-(void)testTextFieldDidBeginEditing
+{
+    [[controllerMock expect] displayPicker:NO animated:YES];
+    [[[intervalMock stub] andReturn:@"5"] text];
+    [controller textFieldDidBeginEditing:intervalMock];
 }
 @end
