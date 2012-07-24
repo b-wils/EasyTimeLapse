@@ -154,6 +154,7 @@
 -(void)halt 
 {
     [device stopProgramming];
+    device = nil;
     [progressTimer invalidate];
     progressTimer = 0;
 }

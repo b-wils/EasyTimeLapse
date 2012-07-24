@@ -109,7 +109,7 @@ static bool audioInitialized = false;
 
 - (void)stopProgramming
 {   
-    AudioSessionSetActive(false);
+    OSStatus err = AudioSessionSetActive(false);
 //    NSAssert1(err == noErr, @"Failed to deactivate audio session", err);
     [generator stop];
     [analyzer stop];

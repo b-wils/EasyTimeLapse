@@ -111,15 +111,9 @@
         }
         completion:^(BOOL finished) {
             if (finished) periodUnitPicker.hidden = !show;
-//            if (callback) callback();
         }
     ];
 }
-
-//- (void)displayPicker:(bool)show animated:(bool)animated 
-//{
-//    [self displayPicker:show animated:animated andThen:nil];
-//}
 
 - (NSString *)formatSeconds:(float_t)totalSeconds with:(NSString *)formatString
 {
