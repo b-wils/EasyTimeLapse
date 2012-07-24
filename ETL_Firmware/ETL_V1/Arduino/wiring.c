@@ -174,6 +174,24 @@ void init()
 	// work there
 	sei();
 	
+	//TODO this is for enabling the external async timer. Relevant code below needs to be removed
+	//TIMSK2 = 0;
+	//
+	//sbi(ASSR, AS2); // asynchronous
+	//
+	//TCNT2 = 0;
+//
+	//// enable timer2
+	//cbi(TCCR2B, CS22); // prescale
+	//cbi(TCCR2B, CS21);
+	//sbi(TCCR2B, CS20);
+	//
+	//while (!(ASSR & ((1<<TCN2UB)|(1<<TCR2BUB))));
+	//
+	//sbi(TIFR2, TOV2);
+	//
+	//sbi(TIMSK2, TOIE2); // interrupt
+	
 	// on the ATmega168, timer 0 is also used for fast hardware pwm
 	// (using phase-correct PWM would mean that timer 0 overflowed half as often
 	// resulting in different millis() behavior on the ATmega8 and ATmega168)
