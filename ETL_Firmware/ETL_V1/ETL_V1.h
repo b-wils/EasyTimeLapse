@@ -53,7 +53,7 @@ const int batteryMonitorPin = A0;
 #define CABLE_DEBOUNCE_PERIOD 100
 
 #define DEFAULT_EXPOSURE 100 //ms
-#define HDR_INTERVAL 1000 // TODO this should be configurable
+#define HDR_INTERVAL 500 // TODO this should be configurable
 #define SHUTTER_FEEDBACK_TIMEOUT 1000
 
 #define SNAP_PHOTO (1)
@@ -84,7 +84,7 @@ enum {
  STATE_TIMELAPSE_MANUAL_TRANSMIT // Hybird state... should we move manual to it's own variable?
 };
 
-void InitIdleState();
+void InitIdleState(); //__attribute__ ((section (".idleinit")));
 void SetConfig(int index);
 
 #endif /* ETL_V1_H_ */

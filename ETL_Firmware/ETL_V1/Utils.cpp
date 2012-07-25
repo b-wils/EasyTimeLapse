@@ -58,29 +58,29 @@ void PrintSectionConfig(SectionConfig SecConf) {
 	//DebugPrint("  numRepeats: ");
 	//DebugPrintln(SecConf.numRepeats);
 	//
-	//DebugPrint("  shots: ");
-	//DebugPrintln(SecConf.shots);
-	//
-	//DebugPrint("  interval: ");
-	//DebugPrintln(SecConf.interval);
-	//
+	DebugPrint("  shots: ");
+	DebugPrintln(SecConf.shots);
+	
+	DebugPrint("  interval: ");
+	DebugPrintln(SecConf.interval);
+	
 	//DebugPrint("  intervalDelta: ");
 	//DebugPrintln(SecConf.intervalDelta);
-	//
-	//DebugPrint("  exposureOffset: ");
-	//DebugPrintln(SecConf.exposureOffset);
+	
+	DebugPrint("  exposureOffset: ");
+	DebugPrintln(SecConf.exposureOffset);
 	//
 	//DebugPrint("  exposureFstopChangePerMin: ");
 	//DebugPrintln(SecConf.exposureFstopChangePerMin);
 //
 	//DebugPrint("  fstopSinAmplitude: ");
 	//DebugPrintln(SecConf.fstopSinAmplitude);
+	
+	DebugPrint("  fstopIncreasePerHDRShot: ");
+	DebugPrintln(SecConf.fstopIncreasePerHDRShot);
 	//
-	//DebugPrint("  fstopIncreasePerHDRShot: ");
-	//DebugPrintln(SecConf.fstopIncreasePerHDRShot);
-	////
-	//DebugPrint("  numHDRShots: ");
-	//DebugPrintln(SecConf.numHDRShots);
+	DebugPrint("  numHDRShots: ");
+	DebugPrintln(SecConf.numHDRShots);
 	////
 	//DebugPrint("  fstopChangeOnPress: ");
 	//DebugPrintln(SecConf.fstopChangeOnPress);

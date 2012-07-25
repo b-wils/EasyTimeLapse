@@ -29,9 +29,7 @@ extern uint8_t numConfigs;
 extern uint8_t configPointer;
 uint32_t idleTimer;
 
-void InitTransmitState() {
-    SetLEDCycle(LED_CYCLE_START_PROGRAM);
-    
+void InitTransmitState() {    
 	switch (currentState) {
 		case STATE_IDLE:
 			currentState = STATE_TRANSMIT;
@@ -40,6 +38,9 @@ void InitTransmitState() {
 			currentState = STATE_TIMELAPSE_MANUAL_TRANSMIT;
 			break;
 	}
+	
+	// TODO we should only zero this once we start receiving data
+	memset(&myConfigs[0], 0, sizeof(SectionConfig) * MAX_CONFIGS);
 	
     DebugPrintln("Enter Transmit");
 	
@@ -80,6 +81,8 @@ void InitTransmitState() {
 	modem.writeBytes((uint8_t *) &startPacket, sizeof(startPacket));
 	
 	idleTimer = millis();
+	
+	SetLEDCycle(LED_CYCLE_START_PROGRAM);
 }
 
 void LeaveTransmitState() {
@@ -127,10 +130,8 @@ void ProcessTransmitState() {
 		    myCrc = crc_update(myCrc, (byte*) &recvPacket + sizeof(crc_t), sizeof(recvPacket) - sizeof(crc_t));
 		    myCrc = crc_finalize(myCrc);
 					
-		    DebugPrint(" command: ");
+		    DebugPrintln(" command packetId: ");
 		    DebugPrintln(recvPacket.command, HEX);
-					
-		    DebugPrint(" packetId: ");
 		    DebugPrintln(recvPacket.packetId, HEX);
 					
 		    bool failCrc = false;
@@ -149,13 +150,13 @@ void ProcessTransmitState() {
                 DebugPrint(" calc_Crc = ");
 			    DebugPrintln(myCrc, HEX);
 			    
-				DebugPrint("Shots: ");
-				DebugPrintln(recvPacket.basicTimelapse.shots);
-				DebugPrint("exposure: ");
-				DebugPrintln(recvPacket.basicTimelapse.exposureLengthPower);
-				DebugPrint("interval: ");
-				DebugPrintln(recvPacket.basicTimelapse.interval);
-			    DebugPrintln();
+				//DebugPrint("Shots: ");
+				//DebugPrintln(recvPacket.basicTimelapse.shots);
+				//DebugPrint("exposure: ");
+				//DebugPrintln(recvPacket.basicTimelapse.exposureLengthPower);
+				//DebugPrint("interval: ");
+				//DebugPrintln(recvPacket.basicTimelapse.interval);
+			    //DebugPrintln();
 				
 				// TODO for now we always request a packet, need specifc retry code here
 		    } else {

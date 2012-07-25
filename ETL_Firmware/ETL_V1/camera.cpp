@@ -178,6 +178,7 @@ void TimelapseSettingComplete() {
         if (configIndex < numConfigs) {
 		    SetConfig(configIndex);
 	    } else {
+			Serial.println("timelapse complete");
 			SetLEDCycle(LED_CYCLE_TIMELAPSE_COMPLETE);
             InitIdleState();
 	    }
@@ -225,11 +226,8 @@ void ProcessTimelapseWaiting() {
 		DebugPrintln("Abandon Timelapse");
         SetLEDCycle(LED_CYCLE_TIMELAPSE_ABANDON);
 		InitIdleState();
+		return;
 	}
-	
-    if (shotsRemaining <= 0) {
-		TimelapseSettingComplete();
-    }
 	
 	if (buttonClicked == true) {
 		// TODO we should only advance if specified in the config
@@ -265,7 +263,8 @@ void ProcessTimelapseWaiting() {
     if (millis() >= nextPhotoTime) {
 		
         exposureLength = CalcExpTime(expRefTime, millis(), myConfigs[configIndex].fstopSinAmplitude,
-		    myConfigs[configIndex].exposureFstopChangePerMin, myConfigs[configIndex].exposureOffset);
+		    myConfigs[configIndex].exposureFstopChangePerMin, myConfigs[configIndex].exposureOffset
+			+ (HDRShotNumber * myConfigs[configIndex].fstopIncreasePerHDRShot));
 		
 		if (exposureLength > (myConfigs[configIndex].interval - BUFFER_RECOVER_TIME)) {
 			DebugPrintln("Exposure length/interval collision");
@@ -295,6 +294,9 @@ void ProcessTimelapseWaiting() {
 			}
 		}
 		
+		DebugPrint("Exp length ");
+		DebugPrintln(exposureLength);
+		
 		if (myConfigs[configIndex].numHDRShots > 0) {
 			if (HDRShotNumber == 0) {
 			    nextHDRBracketTime += currentInterval;
@@ -311,7 +313,7 @@ void ProcessTimelapseWaiting() {
 				HDRShotNumber++;
 				// TODO should we set the next photo time after the shot is complete?
 				// Consistency in HDR shot time vs how quick we can shoot
-				nextPhotoTime += exposureLength + HDR_INTERVAL;
+				//nextPhotoTime += exposureLength + HDR_INTERVAL;
 			}
 		} else {
 			nextPhotoTime += currentInterval;
@@ -319,8 +321,6 @@ void ProcessTimelapseWaiting() {
 			shotsRemaining--;
 		}
 					
-		DebugPrint("Exp length ");
-		DebugPrintln(exposureLength);
 		StartExposure();
         SetLEDCycle(LED_CYCLE_TAKE_PICTURE);
 		
@@ -333,6 +333,10 @@ void ProcessTimelapseWaiting() {
 			currentState = STATE_TIMELAPSE_EXPOSING;
 			shutterOffTime = millis() + exposureLength;
 		}						
+    }
+	
+    if (shotsRemaining <= 0) {
+		TimelapseSettingComplete();
     }
 }
 
@@ -347,6 +351,7 @@ void ProcessTimeLapseWaitingFlash() {
             digitalWrite(focusPin, LOW);
 			DebugPrintln("Flash timeout");
 			digitalWrite(flashFeedbackPin, LOW);
+			DebugPrintln("Flash timeout");
 			InitIdleState(); // TODO, get an error here
 		}
 	}
@@ -356,5 +361,8 @@ void ProcessTimeLapseExposing() {
     if (millis() >= shutterOffTime) {
 		EndExposure();
         currentState = STATE_TIMELAPSE_WAITING;
+		if (HDRShotNumber != 0) {
+			nextPhotoTime = millis() + HDR_INTERVAL;
+		}			
     }
 }

@@ -89,7 +89,7 @@ struct LedCycle {
 #define LED_CYCLE_END_PROGRAM LedCycle(200, 6, 0, YELLOW,GREEN,YELLOW,GREEN,YELLOW,GREEN)
 void DebugInit();
 
-//#define DEBUGPRINT
+#define DEBUGPRINT
 
 // Debug print statements
 

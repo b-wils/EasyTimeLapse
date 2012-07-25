@@ -505,14 +505,14 @@ void SoftModem::demodulateTest(void)
 
 	delay(300);
 
-	DebugPrintln("--");
-	DebugPrintln(_recvStat,HEX);
-	DebugPrintln(_lastTCNT,HEX);
-	DebugPrintln(_recvBits,HEX);
+	//DebugPrintln("--");
+	//DebugPrintln(_recvStat,HEX);
+	//DebugPrintln(_lastTCNT,HEX);
+	//DebugPrintln(_recvBits,HEX);
 
 	while(available()){
-		DebugPrint("data=");
-		DebugPrintln(read(),HEX);
+		//DebugPrint("data=");
+		//DebugPrintln(read(),HEX);
 	}
 
 	end();
@@ -534,20 +534,20 @@ void SoftModem::printDebugInfo(short resetCounts)
 	//DebugPrint("  ints=");
 	//DebugPrintln(ints,DEC);
 	
-	DebugPrint("  lowNoiseCnt=");
-	DebugPrintln(lowNoiseCnt,DEC);
-	
-    //DebugPrint("  midNoiseCnt=");
-	//DebugPrintln(midNoiseCnt,DEC);
+	//DebugPrint("  lowNoiseCnt=");
+	//DebugPrintln(lowNoiseCnt,DEC);
 	//
-	DebugPrint("  highNoiseCnt=");
-	DebugPrintln(highNoiseCnt,DEC);
-	
-	DebugPrint("  lowSignalCnt=");
-	DebugPrintln(lowSignalCnt,DEC);
-	
-	DebugPrint("  highSignalCnt=");
-	DebugPrintln(highSignalCnt,DEC);
+    ////DebugPrint("  midNoiseCnt=");
+	////DebugPrintln(midNoiseCnt,DEC);
+	////
+	//DebugPrint("  highNoiseCnt=");
+	//DebugPrintln(highNoiseCnt,DEC);
+	//
+	//DebugPrint("  lowSignalCnt=");
+	//DebugPrintln(lowSignalCnt,DEC);
+	//
+	//DebugPrint("  highSignalCnt=");
+	//DebugPrintln(highSignalCnt,DEC);
 	
 	if (resetCounts) {
         resetSignalCounts();

@@ -46,16 +46,16 @@ void populateConfigs() {
 	myConfigs[0].type = 0;
     myConfigs[0].repeatIndex = 0;
     myConfigs[0].numRepeats = 0;
-    myConfigs[0].shots = 3;
-    myConfigs[0].interval = 2000;
+    myConfigs[0].shots = 2;
+    myConfigs[0].interval = 5000;
     myConfigs[0].intervalDelta = 0;
     //myConfigs[0].exposureOffset = -2.841463415;
-	myConfigs[0].exposureOffset = -2;
+	myConfigs[0].exposureOffset = -3.32;
     myConfigs[0].exposureFstopChangePerMin = 0;
 	//myConfigs[0].fstopSinAmplitude = 0.158536585;
 	myConfigs[0].fstopSinAmplitude = 0;
-    myConfigs[0].fstopIncreasePerHDRShot = 0;
-    myConfigs[0].numHDRShots = 0;
+    myConfigs[0].fstopIncreasePerHDRShot = 1.66;
+    myConfigs[0].numHDRShots = 1;
 	myConfigs[0].fstopChangeOnPress = 0;
 	
     myConfigs[1].type = 0;
@@ -97,7 +97,7 @@ void populateConfigs() {
     //myConfigs[3].numHDRShots = 0;
 	//myConfigs[3].fstopChangeOnPress = 0;
 	
-	numConfigs = 2;
+	numConfigs = 1;
 }
 
 void enableADC() {
@@ -120,13 +120,13 @@ void printBatteryLevel() {
 	uint8_t adcReading = analogRead(batteryMonitorPin);
 	int batLevel = (adcReading - ADC_EMPTY_VOLTAGE)/(ADC_FULL_VOLTAGE - ADC_EMPTY_VOLTAGE);
 	
-	DebugPrint("Min BAT ADC: ");
-	DebugPrintln(ADC_EMPTY_VOLTAGE);
-	DebugPrint("Max BAT ADC: ");
-	DebugPrintln(ADC_FULL_VOLTAGE);
-	DebugPrint("Current: ");
-	DebugPrintln(adcReading);
-    DebugPrint("Percent: ");
+	//DebugPrint("Min BAT ADC: ");
+	//DebugPrintln(ADC_EMPTY_VOLTAGE);
+	//DebugPrint("Max BAT ADC: ");
+	//DebugPrintln(ADC_FULL_VOLTAGE);
+	//DebugPrint("Current: ");
+	//DebugPrintln(adcReading);
+    //DebugPrint("Percent: ");
 	pinMode(enableBatteryMonitorPin, INPUT);
 	digitalWrite(enableBatteryMonitorPin, LOW);
 	
@@ -261,7 +261,7 @@ void ProcessIdle() {
 			break;
 		case STATE_INVALID:
 		default:
-			DebugPrintln("Process Idle: Unrecognized state");
+			//DebugPrintln("Process Idle: Unrecognized state");
 			return;
 	}
 
@@ -352,7 +352,8 @@ void ProcessButton() {
 						break;
 					case STATE_INVALID:
 					default:
-						DebugPrintln("Unknown state");
+						DebugPrint("Unknown state ");
+						DebugPrintln(currentState);
 						break;
 	            }
             } else {
@@ -454,7 +455,7 @@ void loop() {
 	}
 	
 	//if (digitalRead(useIdlePin) == LOW) {
-		ProcessIdle();
+		//ProcessIdle();
 	//}
 	
 	//if (millis() > incrementTimer) {

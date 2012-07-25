@@ -16,7 +16,7 @@
     <Name>ETL_V1</Name>
     <RootNamespace>ETL_V1</RootNamespace>
     <ToolchainFlavour>Native</ToolchainFlavour>
-    <avrtool>com.atmel.avrdbg.tool.avrdragon</avrtool>
+    <avrtool>com.atmel.avrdbg.tool.ispmk2</avrtool>
     <avrtoolinterface>ISP</avrtoolinterface>
     <com_atmel_avrdbg_tool_ispmk2>
       <ToolType>com.atmel.avrdbg.tool.ispmk2</ToolType>
@@ -28,13 +28,13 @@
       </OverrideVtorValue>
       <Channel>
         <host>127.0.0.1</host>
-        <port>45369</port>
+        <port>39946</port>
         <ssl>False</ssl>
       </Channel>
       <ToolOptions>
         <InterfaceName>ISP</InterfaceName>
         <InterfaceProperties>
-          <JtagDbgClock>1000000</JtagDbgClock>
+          <JtagDbgClock>877076</JtagDbgClock>
           <JtagProgClock>1000000</JtagProgClock>
           <IspClock>877076</IspClock>
           <JtagInChain>false</JtagInChain>
@@ -127,33 +127,33 @@
     <OutputFileName>ETL_V1</OutputFileName>
     <OutputFileExtension>.elf</OutputFileExtension>
     <ToolchainSettings>
-      <AvrGccCpp xmlns="">
-        <avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>True</avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>
-        <avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>
-        <avrgcc.compiler.optimization.PrepareFunctionsForGarbageCollection>True</avrgcc.compiler.optimization.PrepareFunctionsForGarbageCollection>
-        <avrgcc.compiler.optimization.PackStructureMembers>True</avrgcc.compiler.optimization.PackStructureMembers>
-        <avrgcc.compiler.optimization.AllocateBytesNeededForEnum>True</avrgcc.compiler.optimization.AllocateBytesNeededForEnum>
-        <avrgcc.compiler.warnings.AllWarnings>True</avrgcc.compiler.warnings.AllWarnings>
-        <avrgcccpp.compiler.general.ChangeDefaultCharTypeUnsigned>True</avrgcccpp.compiler.general.ChangeDefaultCharTypeUnsigned>
-        <avrgcccpp.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcccpp.compiler.general.ChangeDefaultBitFieldUnsigned>
-        <avrgcccpp.compiler.optimization.level>Optimize for size (-Os)</avrgcccpp.compiler.optimization.level>
-        <avrgcccpp.compiler.optimization.OtherFlags>-fdata-sections</avrgcccpp.compiler.optimization.OtherFlags>
-        <avrgcccpp.compiler.optimization.PrepareFunctionsForGarbageCollection>True</avrgcccpp.compiler.optimization.PrepareFunctionsForGarbageCollection>
-        <avrgcccpp.compiler.optimization.PackStructureMembers>True</avrgcccpp.compiler.optimization.PackStructureMembers>
-        <avrgcccpp.compiler.optimization.AllocateBytesNeededForEnum>True</avrgcccpp.compiler.optimization.AllocateBytesNeededForEnum>
-        <avrgcccpp.compiler.optimization.DebugLevel>Default (-g2)</avrgcccpp.compiler.optimization.DebugLevel>
-        <avrgcccpp.compiler.warnings.AllWarnings>True</avrgcccpp.compiler.warnings.AllWarnings>
-        <avrgcccpp.linker.libraries.Libraries>
-          <ListValues>
-            <Value>m</Value>
-          </ListValues>
-        </avrgcccpp.linker.libraries.Libraries>
-        <avrgcccpp.linker.optimization.GarbageCollectUnusedSections>True</avrgcccpp.linker.optimization.GarbageCollectUnusedSections>
-        <avrgcccpp.linker.optimization.RelaxBranches>True</avrgcccpp.linker.optimization.RelaxBranches>
-        <avrgcccpp.linker.memorysettings.InitialStack>0x800</avrgcccpp.linker.memorysettings.InitialStack>
-        <avrgcccpp.linker.miscellaneous.LinkerFlags>-Wl,-lm</avrgcccpp.linker.miscellaneous.LinkerFlags>
-        <avrgcccpp.assembler.debugging.DebugLevel>Default (-Wa,-g)</avrgcccpp.assembler.debugging.DebugLevel>
-      </AvrGccCpp>
+      <AvrGccCpp>
+  <avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>True</avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>
+  <avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>
+  <avrgcc.compiler.optimization.PrepareFunctionsForGarbageCollection>True</avrgcc.compiler.optimization.PrepareFunctionsForGarbageCollection>
+  <avrgcc.compiler.optimization.PackStructureMembers>True</avrgcc.compiler.optimization.PackStructureMembers>
+  <avrgcc.compiler.optimization.AllocateBytesNeededForEnum>True</avrgcc.compiler.optimization.AllocateBytesNeededForEnum>
+  <avrgcc.compiler.warnings.AllWarnings>True</avrgcc.compiler.warnings.AllWarnings>
+  <avrgcccpp.compiler.general.ChangeDefaultCharTypeUnsigned>True</avrgcccpp.compiler.general.ChangeDefaultCharTypeUnsigned>
+  <avrgcccpp.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcccpp.compiler.general.ChangeDefaultBitFieldUnsigned>
+  <avrgcccpp.compiler.optimization.level>Optimize for size (-Os)</avrgcccpp.compiler.optimization.level>
+  <avrgcccpp.compiler.optimization.OtherFlags>-fdata-sections</avrgcccpp.compiler.optimization.OtherFlags>
+  <avrgcccpp.compiler.optimization.PrepareFunctionsForGarbageCollection>True</avrgcccpp.compiler.optimization.PrepareFunctionsForGarbageCollection>
+  <avrgcccpp.compiler.optimization.PackStructureMembers>True</avrgcccpp.compiler.optimization.PackStructureMembers>
+  <avrgcccpp.compiler.optimization.AllocateBytesNeededForEnum>True</avrgcccpp.compiler.optimization.AllocateBytesNeededForEnum>
+  <avrgcccpp.compiler.optimization.DebugLevel>Default (-g2)</avrgcccpp.compiler.optimization.DebugLevel>
+  <avrgcccpp.compiler.warnings.AllWarnings>True</avrgcccpp.compiler.warnings.AllWarnings>
+  <avrgcccpp.linker.libraries.Libraries>
+    <ListValues>
+      <Value>m</Value>
+    </ListValues>
+  </avrgcccpp.linker.libraries.Libraries>
+  <avrgcccpp.linker.optimization.GarbageCollectUnusedSections>True</avrgcccpp.linker.optimization.GarbageCollectUnusedSections>
+  <avrgcccpp.linker.optimization.RelaxBranches>True</avrgcccpp.linker.optimization.RelaxBranches>
+  <avrgcccpp.linker.memorysettings.InitialStack>0x800</avrgcccpp.linker.memorysettings.InitialStack>
+  <avrgcccpp.linker.miscellaneous.LinkerFlags>-Wl,-lm</avrgcccpp.linker.miscellaneous.LinkerFlags>
+  <avrgcccpp.assembler.debugging.DebugLevel>Default (-Wa,-g)</avrgcccpp.assembler.debugging.DebugLevel>
+</AvrGccCpp>
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
