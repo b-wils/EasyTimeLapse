@@ -464,6 +464,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad" returnKeyType="done"/>
+                                <connections>
+                                    <outlet property="delegate" destination="2uI-kd-f2e" id="8Ym-Fa-DRE"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Bracket count" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="oTm-82-64P">
                                 <rect key="frame" x="20" y="73" width="94" height="21"/>
@@ -472,6 +475,26 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="3" textAlignment="center" minimumFontSize="17" background="text_input.png" id="xqW-mj-mpi">
+                                <rect key="frame" x="143" y="146" width="53" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad" returnKeyType="done"/>
+                                <connections>
+                                    <action selector="didUpdateExposureField:" destination="2uI-kd-f2e" eventType="editingDidEnd" id="WHI-iP-WxC"/>
+                                    <outlet property="delegate" destination="2uI-kd-f2e" id="z9Y-82-vHc"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="3" textAlignment="center" minimumFontSize="17" background="text_input.png" id="ZC8-N0-JvH">
+                                <rect key="frame" x="143" y="107" width="53" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad" returnKeyType="done"/>
+                                <connections>
+                                    <action selector="didUpdateExposureField:" destination="2uI-kd-f2e" eventType="editingDidEnd" id="YVQ-He-jo6"/>
+                                    <outlet property="delegate" destination="2uI-kd-f2e" id="4kB-Oa-hw6"/>
+                                </connections>
+                            </textField>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="1st Exposure" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="mOw-7Q-v1J">
                                 <rect key="frame" x="20" y="112" width="94" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -487,7 +510,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Amw-hv-hiE">
-                                <rect key="frame" x="129" y="105" width="80" height="35"/>
+                                <rect key="frame" x="215" y="105" width="80" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                                 <state key="normal" title="f-stop" backgroundImage="text_input.png">
@@ -499,10 +522,11 @@
                                 </state>
                                 <connections>
                                     <action selector="didClickPeriodUnit:" destination="Y0u-g9-Vhl" eventType="touchUpInside" id="0ga-LT-1aT"/>
+                                    <action selector="didPressStop:" destination="2uI-kd-f2e" eventType="touchUpInside" id="gY2-6T-udB"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="1GN-M1-ihP">
-                                <rect key="frame" x="129" y="144" width="80" height="35"/>
+                                <rect key="frame" x="215" y="144" width="80" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                                 <state key="normal" title="f-stop" backgroundImage="text_input.png">
@@ -514,16 +538,9 @@
                                 </state>
                                 <connections>
                                     <action selector="didClickPeriodUnit:" destination="Y0u-g9-Vhl" eventType="touchUpInside" id="Ywe-pn-eeh"/>
+                                    <action selector="didPressStop:" destination="2uI-kd-f2e" eventType="touchUpInside" id="c9O-HN-tfD"/>
                                 </connections>
                             </button>
-                            <pickerView hidden="YES" contentMode="scaleToFill" id="oe1-wM-6vh">
-                                <rect key="frame" x="0.0" y="242" width="320" height="216"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="Y0u-g9-Vhl" id="uor-mS-Ew1"/>
-                                    <outlet property="delegate" destination="Y0u-g9-Vhl" id="ggx-0M-y6M"/>
-                                </connections>
-                            </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="6OE-xi-eaw">
                                 <rect key="frame" x="25" y="390" width="270" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -560,6 +577,10 @@
                     <navigationItem key="navigationItem" id="9u9-sL-5rM"/>
                     <connections>
                         <outlet property="bracketCountField" destination="r2R-Ek-c6Y" id="k11-wa-Gho"/>
+                        <outlet property="finalExposureButton" destination="1GN-M1-ihP" id="Y64-az-kuh"/>
+                        <outlet property="finalExposureField" destination="xqW-mj-mpi" id="70Z-XW-NmA"/>
+                        <outlet property="initialExposureButton" destination="Amw-hv-hiE" id="esp-uX-aKG"/>
+                        <outlet property="initialExposureField" destination="ZC8-N0-JvH" id="Bl9-Nu-ohC"/>
                     </connections>
                 </viewController>
             </objects>
@@ -840,7 +861,7 @@
                                 <rect key="frame" x="163" y="70" width="54" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad" keyboardAppearance="alert" returnKeyType="done"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad" returnKeyType="done"/>
                                 <connections>
                                     <action selector="didUpdatePeriod:" destination="Y0u-g9-Vhl" eventType="editingDidEnd" id="fX0-K5-hyT"/>
                                     <outlet property="delegate" destination="Y0u-g9-Vhl" id="wrT-LK-lia"/>
@@ -884,7 +905,7 @@
                                         <rect key="frame" x="163" y="8" width="54" height="31"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad" keyboardAppearance="alert" returnKeyType="done"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad" returnKeyType="done"/>
                                         <connections>
                                             <action selector="didUpdateShotLimit:" destination="Y0u-g9-Vhl" eventType="editingDidEnd" id="A9t-jV-Djt"/>
                                             <outlet property="delegate" destination="Y0u-g9-Vhl" id="K3O-Bs-ZNc"/>
@@ -956,14 +977,6 @@
                                     <action selector="didClickPeriodUnit:" destination="Y0u-g9-Vhl" eventType="touchUpInside" id="Rgk-Sn-I9Z"/>
                                 </connections>
                             </button>
-                            <pickerView hidden="YES" contentMode="scaleToFill" id="V0B-2Z-m9E">
-                                <rect key="frame" x="0.0" y="244" width="320" height="216"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="Y0u-g9-Vhl" id="vfi-Hx-i6U"/>
-                                    <outlet property="delegate" destination="Y0u-g9-Vhl" id="rkj-0z-K8v"/>
-                                </connections>
-                            </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="OIa-8i-s9k">
                                 <rect key="frame" x="6" y="6" width="50" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -987,7 +1000,6 @@
                         <outlet property="continuousSwitch" destination="HTU-Zm-ET8" id="LUY-Kh-2FJ"/>
                         <outlet property="finalShotLengthLabel" destination="Msg-rn-tFm" id="WTQ-3c-LFm"/>
                         <outlet property="periodUnitButton" destination="YB2-AI-0C4" id="dAO-5U-62D"/>
-                        <outlet property="periodUnitPicker" destination="V0B-2Z-m9E" id="1G7-Hs-lRu"/>
                         <outlet property="readyButton" destination="EPa-fy-ERG" id="9C0-VS-7gG"/>
                         <outlet property="shotLimitField" destination="9uJ-mP-nJf" id="0BQ-Vx-BbY"/>
                         <outlet property="shotLimitPanel" destination="1bY-1O-x7s" id="Xfi-Sy-ydA"/>
@@ -1146,8 +1158,12 @@
         <class className="ETLHdrController" superclassName="ETLShotViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ETLHdrController.h"/>
             <relationships>
+                <relationship kind="action" name="didPressStop:"/>
+                <relationship kind="action" name="didUpdateExposureField:"/>
                 <relationship kind="outlet" name="bracketCountField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="finalExposureButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="finalExposureField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="initialExposureButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="initialExposureField" candidateClass="UITextField"/>
             </relationships>
         </class>
@@ -1178,7 +1194,6 @@
                 <relationship kind="outlet" name="continuousSwitch" candidateClass="UISwitch"/>
                 <relationship kind="outlet" name="finalShotLengthLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="periodUnitButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="periodUnitPicker" candidateClass="UIPickerView"/>
                 <relationship kind="outlet" name="readyButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="shotLimitField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="shotLimitPanel" candidateClass="UIView"/>
@@ -1201,7 +1216,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="tsv-Xu-yJX"/>
         <segue reference="jON-PE-T2z"/>
-        <segue reference="oX6-ow-MBa"/>
     </inferredMetricsTieBreakers>
 </document>

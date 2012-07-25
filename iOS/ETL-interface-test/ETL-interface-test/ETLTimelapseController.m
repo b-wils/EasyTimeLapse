@@ -11,7 +11,14 @@
 #import "RCSwitchOnOff.h"
 
 @interface ETLTimelapseController ()
+{
+    NSArray * periodUnits;
+    NSDictionary * msInUnit;
+    NSString * periodUnit;
 
+    ETLTimelapse *timelapse;
+    UIPickerView * periodUnitPicker;
+}
 @end
 
 @implementation ETLTimelapseController
@@ -82,8 +89,8 @@
                                       periodUnitPicker.frame.size.height);
     [self.view addSubview:periodUnitPicker];
     
-    shotPeriodField.inputAccessoryView = numpadToolbar;
-    shotLimitField.inputAccessoryView = numpadToolbar;
+//    shotPeriodField.inputAccessoryView = numpadToolbar;
+//    shotLimitField.inputAccessoryView = numpadToolbar;
     
     [self updateUICalculations:nil];
 }
@@ -91,6 +98,7 @@
 - (void)displayPicker:(bool)show animated:(bool)animated
 {
     if (show != periodUnitPicker.hidden) return;
+    if (show) [self hideFirstResponder:nil];
     
     periodUnitPicker.hidden = NO;
     float duration = animated ? 0.25 : 0.0;
@@ -169,9 +177,7 @@
 }
 
 - (IBAction)didClickPeriodUnit:(id)sender {
-//    [periodUnitPicker setHidden:NO];
     [self displayPicker:YES animated:YES];
-    [self hideFirstResponder:sender];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -182,7 +188,6 @@
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
-    printf("'%s' didBeginEditing", [textField.text cStringUsingEncoding:NSUTF8StringEncoding]);
     [self displayPicker:NO animated:YES];
 }
 
@@ -225,6 +230,7 @@
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [self displayPicker:NO animated:YES];
+    [self hideFirstResponder:nil];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

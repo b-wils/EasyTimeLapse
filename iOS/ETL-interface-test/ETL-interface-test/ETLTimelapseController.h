@@ -10,16 +10,9 @@
 #import "ETLTimelapse.h"
 
 @interface ETLTimelapseController : ETLShotViewController <UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
-{
-    NSArray * periodUnits;
-    NSDictionary * msInUnit;
-    NSString * periodUnit;
-    
-    ETLTimelapse *timelapse;
-    
+{    
     IBOutlet UITextField * shotPeriodField;
     IBOutlet UIButton * periodUnitButton;
-    IBOutlet UIPickerView * periodUnitPicker;
     
     IBOutlet UISwitch * continuousSwitch;
     IBOutlet UIView * shotLimitPanel;

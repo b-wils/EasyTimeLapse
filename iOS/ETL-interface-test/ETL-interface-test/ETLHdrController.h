@@ -9,12 +9,17 @@
 #import "ETLShotViewController.h"
 #import "ETLHdrShot.h"
 
-@interface ETLHdrController : ETLShotViewController <UITextFieldDelegate>
+@interface ETLHdrController : ETLShotViewController <UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
 {
     ETLHdrShot *hdr;
     
     IBOutlet UITextField *bracketCountField;
     IBOutlet UITextField *initialExposureField;
     IBOutlet UITextField *finalExposureField;
+    IBOutlet UIButton *initialExposureButton;
+    IBOutlet UIButton *finalExposureButton;
 }
+
+- (IBAction)didPressStop:(id)sender;
+- (IBAction)didUpdateExposureField:(id)sender;
 @end

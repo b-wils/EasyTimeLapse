@@ -59,7 +59,7 @@ ModelSynthesize(double, clipFramesPerSecond, setClipFramesPerSecond)
     
     BasicTimelapse * timelapse = &packet->basicTimelapse;
     timelapse->interval = shotInterval;
-    timelapse->shots = shotCount;
+    timelapse->shots = shotCount ? shotCount : INT32_MAX;
     timelapse->exposureLengthPower = 0.0f;
 }
 

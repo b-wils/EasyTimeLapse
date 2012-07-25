@@ -112,7 +112,6 @@
 - (void)testDidClickPeriodUnit
 {
     [[controllerMock expect] displayPicker:YES animated:YES];
-    [[controllerMock expect] hideFirstResponder:OCMOCK_ANY];
     [controller didClickPeriodUnit:periodUnitMock];
 }
 
