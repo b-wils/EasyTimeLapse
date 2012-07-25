@@ -15,6 +15,8 @@
 
 @implementation ETLShotViewController
 
+@synthesize packetProvider;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -36,12 +38,12 @@
     // Release any retained subviews of the main view.
 }
 
-//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-//{
-//    if ([segue.identifier isEqualToString:@"Program"]) {
-//        ETLProgramViewController *controller = [segue destinationViewController];
-//        [controller setDeviceCommand:command withSections:sections];
-//    }
-//}
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"Program"]) {
+        ETLProgramViewController *controller = [segue destinationViewController];
+        controller.packetProvider = self.packetProvider;
+    }
+}
 
 @end

@@ -16,15 +16,30 @@
     NSDictionary * msInUnit;
     NSString * periodUnit;
 
-    ETLTimelapse *timelapse;
     UIPickerView * periodUnitPicker;
 }
 @end
 
 @implementation ETLTimelapseController
-    
+
+@synthesize timelapse;
+
+- (void)setTimelapse:(ETLTimelapse *)value {
+    if (timelapse) [[NSNotificationCenter defaultCenter] removeObserver:self name:ModelUpdated object:timelapse];
+
+    timelapse = value;
+    [self observe:timelapse forEvent:ModelUpdated andRun:@selector(updateUICalculations:)];   
+}
+
 - (void)ensureInitialized {
     if(!timelapse) {
+        timelapse = [[ETLTimelapse alloc] init];
+        timelapse.shotInterval = 5000;
+        timelapse.shotCount = 0;
+        timelapse.clipFramesPerSecond = 23.97f;
+    }
+    
+    if (!periodUnits) {
         periodUnits = [NSArray arrayWithObjects:
                        @"ms",
                        @"seconds",
@@ -38,13 +53,11 @@
         
         msInUnit = [NSDictionary dictionaryWithObjects:msTimes forKeys:periodUnits];
         
-        timelapse = [[ETLTimelapse alloc] init];
-        timelapse.shotInterval = 5000;
-        timelapse.shotCount = 0;
-        timelapse.clipFramesPerSecond = 23.97f;
-        [self observe:timelapse forEvent:ModelUpdated andRun:@selector(updateUICalculations:)];   
-        
         periodUnit = [periodUnits objectAtIndex:1]; // "seconds"
+    }
+    
+    if(!self.packetProvider) {
+        self.packetProvider = timelapse;
     }
 }
 
@@ -231,16 +244,6 @@
 {
     [self displayPicker:NO animated:YES];
     [self hideFirstResponder:nil];
-}
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([segue.identifier isEqualToString:@"Program"]) {
-        ETLProgramViewController *controller = [segue destinationViewController];
-        controller.packetProvider = timelapse;
-    }
-    
-//    [super prepareForSegue:segue sender:sender];
 }
 
 @end

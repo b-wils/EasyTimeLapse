@@ -7,25 +7,48 @@
 //
 
 #import "ETLHdrShot.h"
+#import "ETLTimelapse.h"
 
 @implementation ETLHdrShot
 
-ModelSynthesize(UInt32, bracketCount, setBracketCount)
-ModelSynthesize(UInt32, initialExposure, setInitialExposure)
-ModelSynthesize(UInt32, finalExposure, setFinalExposure)
+@synthesize timelapse;
+
+ModelSynthesize(UInt32, bracketCount, setBracketCount);
+ModelSynthesize(UInt32, initialExposure, setInitialExposure);
+ModelSynthesize(UInt32, finalExposure, setFinalExposure);
+
+- (id)init {
+    self = [super init];
+    if(self) {
+        timelapse = [[ETLTimelapse alloc] init];
+        timelapse.shotCount = 1;
+    }
+    return self;
+}
 
 -(void) renderPacket:(UInt32)packetNumber to:(VariablePacket *)packet;
 {
-    packet->command = ETL_COMMAND_HDRSHOT;
-    packet->packetId = packetNumber;
-    
-    HDRShot * hdr = &packet->hdrShot;
-    hdr->numHDRShots = bracketCount;
-    hdr->fstopIncreasePerHDRShot = (finalExposure - initialExposure) / ((float)bracketCount);
+    switch (packetNumber) {
+        case 1:
+            packet->command = ETL_COMMAND_HDRSHOT;
+            packet->packetId = packetNumber;
+            
+            HDRShot * hdr = &packet->hdrShot;
+            hdr->numHDRShots = bracketCount - 1;
+            hdr->fstopIncreasePerHDRShot = log2f((float)finalExposure / (float)initialExposure) / bracketCount;
+            break;
+        case 2:
+            [timelapse renderPacket:2 to:packet];
+            packet->basicTimelapse.exposureLengthPower = log2f(initialExposure/1000.0);
+            break;
+        default:
+            // TODO - error
+            break;
+    }
 }
 
 - (UInt32)packetCount {
-    return 1;
+    return 2;
 }
 
 @end

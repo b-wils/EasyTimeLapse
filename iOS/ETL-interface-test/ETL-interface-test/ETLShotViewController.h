@@ -7,12 +7,10 @@
 //
 
 #import "ETLViewController.h"
-#import "Common.h"
+#import "ETLProgrammer.h"
 
 @interface ETLShotViewController : ETLViewController
-{
-//    CommandPacket command;
-//    SectionConfig sections[MAX_CONFIGS];
-}
+
+@property (nonatomic, assign) id <PacketProvider> packetProvider;
 
 @end

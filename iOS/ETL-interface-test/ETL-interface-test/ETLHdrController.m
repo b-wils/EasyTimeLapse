@@ -9,6 +9,7 @@
 #import "ETLHdrController.h"
 #import "UIButton+setAllTitles.h"
 #import "ETLProgramViewController.h"
+#import "ETLTimelapseController.h"
 
 @interface ETLHdrController ()
 {
@@ -29,6 +30,15 @@
 - (void)ensureInitialized
 {
     if(!hdr) {
+        hdr = [[ETLHdrShot alloc] init];
+        hdr.bracketCount = 2;
+        hdr.initialExposure = 100;
+        hdr.finalExposure = 1000;
+        
+        [self observe:hdr forEvent:ModelUpdated andRun:@selector(updateUICalculations:)];   
+    }
+
+    if (!fStops) {
         fStops = Array(@"ms", @"1/15", @"1/13", @"1/10", @"1/8", @"1/6", @"1/5", @"1/4", 
                        @"0\"3", @"0\"4", @"0\"5", @"0\"6", @"0\"8", @"1\"", @"1\"3", @"1\"6",
                        @"2\"", @"2\"5", @"3\"2", @"4\"", @"5\"", @"6\"", @"8\"", 
@@ -42,15 +52,12 @@
         msForStop = [NSDictionary dictionaryWithObjects:msTimes forKeys:fStops];
         stopForMs = [NSDictionary dictionaryWithObjects:fStops forKeys:msTimes];
         
-        hdr = [[ETLHdrShot alloc] init];
-        hdr.bracketCount = 2;
-        hdr.initialExposure = 100;
-        hdr.finalExposure = 1000;
-        
-        [self observe:hdr forEvent:ModelUpdated andRun:@selector(updateUICalculations:)];   
-        
 //        periodUnit = [periodUnits objectAtIndex:1]; // "seconds"
         initialMsMode = finalMsMode = false;
+    }
+    
+    if (!self.packetProvider) {
+        self.packetProvider = hdr;
     }
 }
 
@@ -211,15 +218,14 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"Program"]) {
-        ETLProgramViewController *controller = [segue destinationViewController];
+    if ([segue.identifier isEqualToString:@"Timelapse"]) {
+        ETLTimelapseController *controller = [segue destinationViewController];
+        controller.timelapse = hdr.timelapse;
         controller.packetProvider = hdr;
     }
-    if ([segue.identifier isEqualToString:@"Timelapse"]) {
-        // TODO - support composition with timelapse
+    else {
+        [super prepareForSegue:segue sender:sender];
     }
-    
-    //    [super prepareForSegue:segue sender:sender];
 }
 
 @end

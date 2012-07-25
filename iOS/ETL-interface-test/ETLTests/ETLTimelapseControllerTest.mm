@@ -165,6 +165,7 @@
     [[[segueMock expect] andReturn:@"Program"] identifier];
     [[[segueMock expect] andReturn:nextControllerMock] destinationViewController];
     [[nextControllerMock expect] setPacketProvider:timelapseMock];
+    [[[controllerMock stub] andReturn:timelapseMock] packetProvider];
     [controller prepareForSegue:segueMock sender:OCMOCK_ANY];
 }
 

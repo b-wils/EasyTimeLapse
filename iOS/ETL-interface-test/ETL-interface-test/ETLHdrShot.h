@@ -7,10 +7,11 @@
 //
 
 #import "ETLModel.h"
-#import "ETLProgrammer.h"
+#import "ETLTimelapse.h"
 
 @interface ETLHdrShot : ETLModel <PacketProvider>
 
+@property (nonatomic, strong) ETLTimelapse * timelapse;
 @property (nonatomic) UInt32 bracketCount;
 @property (nonatomic) UInt32 initialExposure;
 @property (nonatomic) UInt32 finalExposure;

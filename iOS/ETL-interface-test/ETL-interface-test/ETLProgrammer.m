@@ -70,6 +70,7 @@
 {
     currentPacket = number;
     VariablePacket packet;
+    memset(&packet, 0, sizeof(VariablePacket));
     [self.packetProvider renderPacket:currentPacket to:&packet];
     [self sendPacket:&packet];
 }
@@ -77,6 +78,7 @@
 -(void)sendSignoffPacket
 {   
     VariablePacket packet;
+    memset(&packet, 0, sizeof(VariablePacket));
     packet.command = ETL_COMMAND_SIGNOFF;
     packet.packetId = currentPacket + 1;
     [self sendPacket:&packet];

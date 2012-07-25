@@ -31,4 +31,6 @@
 
 - (void)updateUICalculations:(NSNotification *)notification;
 
+@property (nonatomic, strong)  ETLTimelapse *timelapse;
+
 @end
