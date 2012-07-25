@@ -31,6 +31,7 @@
 
 - (void)updateUICalculations:(NSNotification *)notification;
 
-@property (nonatomic, strong)  ETLTimelapse *timelapse;
+@property (nonatomic, strong) ETLTimelapse *timelapse;
+@property (nonatomic, strong) NSString *periodUnit;
 
 @end

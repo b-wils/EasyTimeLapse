@@ -22,11 +22,18 @@ ModelSynthesize(UInt32, finalExposure, setFinalExposure);
     if(self) {
         timelapse = [[ETLTimelapse alloc] init];
         timelapse.shotCount = 1;
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(synchronizeTimelapse) name:ModelUpdated object:self];
     }
     return self;
 }
 
--(void) renderPacket:(UInt32)packetNumber to:(VariablePacket *)packet;
+- (void)synchronizeTimelapse
+{
+    timelapse.shotInterval = finalExposure * 2;
+}
+
+- (void)renderPacket:(UInt32)packetNumber to:(VariablePacket *)packet;
 {
     switch (packetNumber) {
         case 1:
