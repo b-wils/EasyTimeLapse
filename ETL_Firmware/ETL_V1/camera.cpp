@@ -9,7 +9,7 @@
 #include "Utils.h"
 
 double fstopSinPhase;
-double fstopSinPeriodMin;
+double sinPeriodMin;
 
 int32_t shotsRemaining;
 uint32_t currentInterval;
@@ -20,7 +20,7 @@ uint32_t expRefTime;
 uint8_t configIndex = 0;
 int16_t repeatsRemaining;
 uint32_t exposureLength = 0;
-uint8_t useFlashFeeback = 0;
+uint8_t useFlashFeeback = 1;
 uint8_t HDRShotNumber;
 
 uint32_t nextPhotoTime;
@@ -66,7 +66,7 @@ void SetConfig(int index) {
 	
 	if (myConfigs[index].fstopSinAmplitude != 0) {
 		uint8_t sinSetting = myConfigs[index].type;// & CONFIG_SIN_MASK;
-		fstopSinPeriodMin = myConfigs[index].interval * myConfigs[index].shots / 60 / 1000;
+		sinPeriodMin = myConfigs[index].interval * myConfigs[index].shots / 60 / 1000;
 		switch (sinSetting) {
 	    case CONFIG_SIN_P1:
 		    fstopSinPhase = 0;
@@ -135,7 +135,7 @@ void InitTimelapseState() {
     currentState = STATE_TIMELAPSE_WAITING;
     DebugPrintln("Enter Timelapse");
 	
-	useFlashFeeback = 0;
+	useFlashFeeback = 1;
 	
 	byte flashSense = digitalRead(flashSensePin);
 	if (flashSense == HIGH) {
@@ -196,7 +196,7 @@ uint32_t CalcExpTime(uint32_t startTime, uint32_t endTime, float fstopSinAmplitu
 	
 	if (fstopSinAmplitude != 0) {
 	
-	    fstopExpFactor += fstopSinAmplitude * sin(M_PI_2 * timeDiffMin / fstopSinPeriodMin + fstopSinPhase);
+	    fstopExpFactor += fstopSinAmplitude * sin(M_PI_2 * timeDiffMin / sinPeriodMin + fstopSinPhase);
 	}
 
     if (fstopchange != 0) {
@@ -315,6 +315,8 @@ void ProcessTimelapseWaiting() {
 				// Consistency in HDR shot time vs how quick we can shoot
 				//nextPhotoTime += exposureLength + HDR_INTERVAL;
 			}
+			// For flash timeout, this will actually be updated after exposure is complete
+			nextPhotoTime = millis() + HDR_INTERVAL + exposureLength; 
 		} else {
 			nextPhotoTime += currentInterval;
 			currentInterval += myConfigs[configIndex].intervalDelta;
@@ -334,10 +336,6 @@ void ProcessTimelapseWaiting() {
 			shutterOffTime = millis() + exposureLength;
 		}						
     }
-	
-    if (shotsRemaining <= 0) {
-		TimelapseSettingComplete();
-    }
 }
 
 void ProcessTimeLapseWaitingFlash() {
@@ -349,7 +347,6 @@ void ProcessTimeLapseWaitingFlash() {
 		if (millis() >= nextPhotoTime) {
             digitalWrite(shutterPin, LOW);
             digitalWrite(focusPin, LOW);
-			DebugPrintln("Flash timeout");
 			digitalWrite(flashFeedbackPin, LOW);
 			DebugPrintln("Flash timeout");
 			InitIdleState(); // TODO, get an error here
@@ -363,6 +360,9 @@ void ProcessTimeLapseExposing() {
         currentState = STATE_TIMELAPSE_WAITING;
 		if (HDRShotNumber != 0) {
 			nextPhotoTime = millis() + HDR_INTERVAL;
-		}			
+		}
+		if (shotsRemaining <= 0) {
+			TimelapseSettingComplete();
+		}	
     }
 }

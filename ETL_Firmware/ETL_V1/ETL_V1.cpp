@@ -50,11 +50,11 @@ void populateConfigs() {
     myConfigs[0].interval = 5000;
     myConfigs[0].intervalDelta = 0;
     //myConfigs[0].exposureOffset = -2.841463415;
-	myConfigs[0].exposureOffset = -3.32;
+	myConfigs[0].exposureOffset = -2;
     myConfigs[0].exposureFstopChangePerMin = 0;
 	//myConfigs[0].fstopSinAmplitude = 0.158536585;
 	myConfigs[0].fstopSinAmplitude = 0;
-    myConfigs[0].fstopIncreasePerHDRShot = 1.66;
+    myConfigs[0].fstopIncreasePerHDRShot = 2;
     myConfigs[0].numHDRShots = 1;
 	myConfigs[0].fstopChangeOnPress = 0;
 	
