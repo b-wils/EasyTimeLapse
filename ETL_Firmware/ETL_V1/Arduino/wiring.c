@@ -298,7 +298,7 @@ void init()
 	// XXX: this will not work properly for other clock speeds, and
 	// this code should use F_CPU to determine the prescale factor.
 	sbi(ADCSRA, ADPS2);
-	sbi(ADCSRA, ADPS1);
+	cbi(ADCSRA, ADPS1);
 	sbi(ADCSRA, ADPS0);
 
 	// enable a2d conversions

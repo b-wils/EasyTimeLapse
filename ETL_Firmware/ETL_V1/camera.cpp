@@ -135,7 +135,7 @@ void InitTimelapseState() {
     currentState = STATE_TIMELAPSE_WAITING;
     DebugPrintln("Enter Timelapse");
 	
-	useFlashFeeback = 1;
+	useFlashFeeback = 0;
 	
 	byte flashSense = digitalRead(flashSensePin);
 	if (flashSense == HIGH) {
@@ -179,8 +179,8 @@ void TimelapseSettingComplete() {
 		    SetConfig(configIndex);
 	    } else {
 			Serial.println("timelapse complete");
+			InitIdleState();
 			SetLEDCycle(LED_CYCLE_TIMELAPSE_COMPLETE);
-            InitIdleState();
 	    }
 	}
 }
@@ -225,7 +225,8 @@ void ProcessTimelapseWaiting() {
 	if (buttonHeld == true) {
 		DebugPrintln("Abandon Timelapse");
         SetLEDCycle(LED_CYCLE_TIMELAPSE_ABANDON);
-		InitIdleState();
+		InitTransmitState();
+		buttonHeld = false;
 		return;
 	}
 	
@@ -256,7 +257,8 @@ void ProcessTimelapseWaiting() {
                 DebugPrint("newOffset: ");
 				DebugPrintln(newOffset);
 			}
-			
+		} else {
+			SetLEDCycle(LED_CYCLE_BAD_CLICK);
 		}
 	}
 	

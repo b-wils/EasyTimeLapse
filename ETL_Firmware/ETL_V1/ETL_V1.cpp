@@ -41,12 +41,14 @@ extern uint32_t printTimer;
 uint32_t incrementTimer;
 uint32_t incrementCount;
 
+uint8_t timelapseValid;
+
 void populateConfigs() {
     //myConfigs[0].type = CONFIG_SIN_P4
 	myConfigs[0].type = 0;
     myConfigs[0].repeatIndex = 0;
     myConfigs[0].numRepeats = 0;
-    myConfigs[0].shots = 2;
+    myConfigs[0].shots = 5;
     myConfigs[0].interval = 5000;
     myConfigs[0].intervalDelta = 0;
     //myConfigs[0].exposureOffset = -2.841463415;
@@ -109,24 +111,30 @@ void disableADC() {
 }
 
 void printBatteryLevel() {
+	analogReference(INTERNAL);
+	
 	enableADC(); // TODO we may need to give some time to get this value to stabilize
 	
-	pinMode(3, OUTPUT);
-	digitalWrite(3,HIGH);
+	//delay(100);
+	
+	//pinMode(3, OUTPUT);
+	//digitalWrite(3,HIGH);
 	
 	pinMode(enableBatteryMonitorPin, OUTPUT);
 	digitalWrite(enableBatteryMonitorPin, HIGH);
-		
-	uint8_t adcReading = analogRead(batteryMonitorPin);
+	
+	
+	// need to throw out the first reading after enabling the ADC
+	uint16_t adcReading = analogRead(batteryMonitorPin);
+	adcReading = analogRead(batteryMonitorPin);
 	int batLevel = (adcReading - ADC_EMPTY_VOLTAGE)/(ADC_FULL_VOLTAGE - ADC_EMPTY_VOLTAGE);
 	
 	//DebugPrint("Min BAT ADC: ");
 	//DebugPrintln(ADC_EMPTY_VOLTAGE);
 	//DebugPrint("Max BAT ADC: ");
 	//DebugPrintln(ADC_FULL_VOLTAGE);
-	//DebugPrint("Current: ");
-	//DebugPrintln(adcReading);
-    //DebugPrint("Percent: ");
+	DebugPrint("Battery reading: ");
+	DebugPrintln(adcReading);
 	pinMode(enableBatteryMonitorPin, INPUT);
 	digitalWrite(enableBatteryMonitorPin, LOW);
 	
@@ -163,7 +171,7 @@ void InitIdleState() {
     //LedCycle tempCycle = LED_CYCLE_OFF;
     SetLEDCycle(LED_CYCLE_OFF);
 	
-	printBatteryLevel();
+	//printBatteryLevel();
 	disableADC();
     DebugPrintln("Enter Idle");
 }
@@ -218,9 +226,13 @@ void setup() {
 	
 	SetLEDCycle(LED_CYCLE_START);
 	
+	printBatteryLevel();
+	
 	printTimer = millis();
 	incrementTimer = millis();
 	incrementCount = 0;
+	
+	timelapseValid = true;
 }
 
 extern uint32_t nextPhotoTime;
@@ -297,6 +309,8 @@ void ProcessIdle() {
     detachInterrupt(0);
 }
 
+extern uint32_t idleTimer;
+
 void ProcessButton() {
     
     // read the state of the switch into a local variable:
@@ -338,13 +352,27 @@ void ProcessButton() {
 		            case STATE_IDLE:
                         if (millis() - buttonPressTime > BUTTON_TRANSMIT_PERIOD) {
 			                InitTransmitState();
+							SetLEDCycle(LED_CYCLE_START_PROGRAM);
                         } else {
 							// Send to idle state after we finish the current exposure
-                            InitTimelapseState();
+							if (timelapseValid) {
+								InitTimelapseState();
+							} else {
+								SetLEDCycle(LED_CYCLE_TIMELAPSE_INVALID);
+							}																
                         }                                                        
 			            break;
                     case STATE_TRANSMIT:
-                        LeaveTransmitState();
+						if (millis() - buttonPressTime > BUTTON_TRANSMIT_PERIOD) {
+							idleTimer = millis();
+                        } else {
+							if (timelapseValid) {
+								InitTimelapseState();
+							} else {
+								InitIdleState();
+								SetLEDCycle(LED_CYCLE_TIMELAPSE_INVALID);
+							}
+						}							
                         break;
 					case STATE_TIMELAPSE_MANUAL:
 						EndExposure();
@@ -448,6 +476,13 @@ void loop() {
 				DebugPrint("millis() = ");
 				DebugPrintln(millis());
 				break;
+			case 'b':
+				printBatteryLevel();
+				break;
+			case 13:
+			case 10:
+				// new line characters
+				break;
 			default:
 				DebugPrint("Unrecognized command ");
 				DebugPrintln(incByte);
@@ -464,9 +499,10 @@ void loop() {
 	//}
 	//
 	//if (millis() > printTimer) {
-		//printTimer += 2000;
-		//DebugPrintln(incrementCount);
-		//incrementCount = 0;
+		//uint32_t printplus = ((uint32_t) 1000) * 10 * 60;
+		//printTimer += printplus;
+		//printBatteryLevel();
+		////digitalWrite(greenLed, HIGH);
 	//}
 	
 }

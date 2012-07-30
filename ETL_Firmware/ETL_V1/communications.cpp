@@ -27,21 +27,21 @@ size_t modemPacketIndex = 0;
 extern SectionConfig myConfigs[MAX_CONFIGS];
 extern uint8_t numConfigs;
 extern uint8_t configPointer;
+extern uint8_t timelapseValid;
+
 uint32_t idleTimer;
 
 void InitTransmitState() {    
 	switch (currentState) {
 		case STATE_IDLE:
+		case STATE_TIMELAPSE_WAITING:
 			currentState = STATE_TRANSMIT;
 			break;
 		case STATE_TIMELAPSE_MANUAL:
 			currentState = STATE_TIMELAPSE_MANUAL_TRANSMIT;
 			break;
 	}
-	
-	// TODO we should only zero this once we start receiving data
-	memset(&myConfigs[0], 0, sizeof(SectionConfig) * MAX_CONFIGS);
-	
+		
     DebugPrintln("Enter Transmit");
 	
 	// This is our unused audio channel. This must go to ground otherwise something
@@ -58,7 +58,6 @@ void InitTransmitState() {
 	printTimer = millis();
 	printval = 'A';
 	
-	numConfigs = 0;
 	configPointer = 0;
 	
 	//
@@ -81,8 +80,6 @@ void InitTransmitState() {
 	modem.writeBytes((uint8_t *) &startPacket, sizeof(startPacket));
 	
 	idleTimer = millis();
-	
-	SetLEDCycle(LED_CYCLE_START_PROGRAM);
 }
 
 void LeaveTransmitState() {
@@ -176,6 +173,14 @@ void ProcessTransmitState() {
 				        break;
 	                case ETL_COMMAND_BASICTIMELAPSE:
 						currentState = STATE_TRANSMIT; // If we were in manual mode
+						
+						// TODO we should only zero this on other partial packets
+						if (configPointer == 0) {
+							memset(&myConfigs[0], 0, sizeof(SectionConfig) * MAX_CONFIGS);
+							numConfigs = 0;
+							timelapseValid = false;
+						}							
+						
 				        myConfigs[configPointer].shots = recvPacket.basicTimelapse.shots;
 					    myConfigs[configPointer].exposureOffset = recvPacket.basicTimelapse.exposureLengthPower;
 					    myConfigs[configPointer].interval = recvPacket.basicTimelapse.interval;
@@ -208,6 +213,7 @@ void ProcessTransmitState() {
 						break;
 					case ETL_COMMAND_SIGNOFF:
 						DebugPrintln("programming complete!");
+						timelapseValid = true;
 						LeaveTransmitState();
 						SetLEDCycle(LED_CYCLE_END_PROGRAM);
 						return;

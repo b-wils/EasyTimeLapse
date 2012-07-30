@@ -21,6 +21,9 @@ void DebugInit() {
 	Serial.begin(19200);
 	DebugPrintln("ETL version 0.1");
 	
+	//__FlashStringHelper test = F("hi");	
+	
+//	Serial.println(F("ETL version 0.1"));
 	//DebugPrint("DeviceSettings size: ");
 	//DebugPrintln(sizeof(DeviceSettings));
 		//

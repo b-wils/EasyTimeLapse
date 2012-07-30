@@ -11,6 +11,7 @@
 
 #include "Arduino/HardwareSerial.h"
 #include "ETL_V1.h"
+#include "communications.h"
 #include <avr/sleep.h>
 #include <avr/interrupt.h>
 
@@ -75,18 +76,20 @@ struct LedCycle {
 };
 
 #define LED_CYCLE_OFF LedCycle(0,0,0,OFF,OFF,OFF,OFF,OFF,OFF)
-#define LED_CYCLE_START LedCycle(200,6,0,RED,OFF,GREEN,OFF,BLUE,OFF)
+#define LED_CYCLE_START LedCycle(200,5,0,RED,OFF,YELLOW,OFF,GREEN,OFF)
 #define LED_CYCLE_TIMELAPSE_PAUSE LedCycle(200,2,1,GREEN,OFF,OFF,OFF,OFF,OFF)
-#define LED_CYCLE_TIMELAPSE_COMPLETE LedCycle(333,6,0,YELLOW,OFF,YELLOW,OFF,GREEN,OFF)
-#define LED_CYCLE_TIMELAPSE_ABANDON LedCycle(333,6,0,RED,OFF,RED,OFF,GREEN,OFF)
+#define LED_CYCLE_TIMELAPSE_COMPLETE LedCycle(333,5,0,GREEN,OFF,GREEN,OFF,GREEN,OFF)
+#define LED_CYCLE_TIMELAPSE_ABANDON LedCycle(333,5,0,RED,OFF,RED,OFF,RED,OFF)
 #define LED_CYCLE_IDLE LedCycle(333, 8, 1, PURPLE, OFF,OFF,OFF,OFF,OFF)
 #define LED_CYCLE_CRC_MISMATCH LedCycle(200, 1, 0, RED,OFF,OFF,OFF,OFF,OFF)
 #define LED_CYCLE_CRC_MATCH LedCycle(200, 1, 0, GREEN,OFF,OFF,OFF,OFF,OFF)
-#define LED_CYCLE_CRC_SUCCESS LedCycle(333, 2, 1, GREEN,YELLOW,OFF,OFF,OFF,OFF)
 #define LED_CYCLE_COLOR_COMBOS LedCycle(500, 4, 1, PURPLE,YELLOW,CYAN,WHITE,OFF,OFF)
-#define LED_CYCLE_TAKE_PICTURE LedCycle(50, 1, 0, WHITE,OFF,OFF,OFF,OFF,OFF)
-#define LED_CYCLE_START_PROGRAM LedCycle(200, 5, 0, YELLOW,OFF,YELLOW,OFF,YELLOW,OFF)
-#define LED_CYCLE_END_PROGRAM LedCycle(200, 6, 0, YELLOW,GREEN,YELLOW,GREEN,YELLOW,GREEN)
+#define LED_CYCLE_TAKE_PICTURE LedCycle(50, 1, 0, GREEN,OFF,OFF,OFF,OFF,OFF)
+#define LED_CYCLE_START_PROGRAM LedCycle(333, 5, 0, YELLOW,OFF,YELLOW,OFF,YELLOW,OFF)
+#define LED_CYCLE_END_PROGRAM LedCycle(333, 6, 0, YELLOW,GREEN,YELLOW,GREEN,YELLOW,GREEN)
+#define LED_CYCLE_BAD_CLICK LedCycle(200, 1, 0, YELLOW,OFF,OFF,OFF,OFF,OFF)
+#define LED_CYCLE_TIMELAPSE_INVALID LedCycle(333,5,0,RED,OFF,RED,OFF,RED,OFF)
+
 void DebugInit();
 
 #define DEBUGPRINT
@@ -109,6 +112,20 @@ void DebugPrintln(const char* myString) {
 
 static inline
 void DebugPrint(const char* myString) {
+#ifdef DEBUGPRINT
+	Serial.print(myString);
+#endif
+}
+
+static inline
+void DebugPrintln(__FlashStringHelper *myString) {
+#ifdef DEBUGPRINT
+	Serial.println(myString);
+#endif
+}
+
+static inline
+void DebugPrint(__FlashStringHelper * myString) {
 #ifdef DEBUGPRINT
 	Serial.print(myString);
 #endif
