@@ -13,4 +13,6 @@
 
 @property (nonatomic, assign) id <PacketProvider> packetProvider;
 
+- (IBAction)gotoSettings;
+
 @end

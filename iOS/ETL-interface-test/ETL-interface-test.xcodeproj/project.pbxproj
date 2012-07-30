@@ -87,6 +87,8 @@
 		B5049BFB15AFE80600F4AF31 /* ETLModelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B5049BFA15AFE80600F4AF31 /* ETLModelTest.m */; };
 		B50D23B8159B9C5F00F2FCCC /* ETLTimelapseSlidersController.m in Sources */ = {isa = PBXBuildFile; fileRef = B50D23B6159B9C5F00F2FCCC /* ETLTimelapseSlidersController.m */; };
 		B50D23B9159B9C5F00F2FCCC /* TimelapseSliders.xib in Resources */ = {isa = PBXBuildFile; fileRef = B50D23B7159B9C5F00F2FCCC /* TimelapseSliders.xib */; };
+		B5161D4E15C74B760037F120 /* ETLSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5161D4D15C74B760037F120 /* ETLSettingsViewController.m */; };
+		B5161D4F15C74B760037F120 /* ETLSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5161D4D15C74B760037F120 /* ETLSettingsViewController.m */; };
 		B5272D5315A27E4900F62549 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = B5272D5115A27E4900F62549 /* settings.png */; };
 		B5272D5415A27E4900F62549 /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5272D5215A27E4900F62549 /* settings@2x.png */; };
 		B5272D6515A27E7900F62549 /* progress_count.png in Resources */ = {isa = PBXBuildFile; fileRef = B5272D5515A27E7900F62549 /* progress_count.png */; };
@@ -261,6 +263,8 @@
 		B50D23B5159B9C5F00F2FCCC /* ETLTimelapseSlidersController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETLTimelapseSlidersController.h; sourceTree = "<group>"; };
 		B50D23B6159B9C5F00F2FCCC /* ETLTimelapseSlidersController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLTimelapseSlidersController.m; sourceTree = "<group>"; };
 		B50D23B7159B9C5F00F2FCCC /* TimelapseSliders.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimelapseSliders.xib; sourceTree = "<group>"; };
+		B5161D4C15C74B760037F120 /* ETLSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETLSettingsViewController.h; sourceTree = "<group>"; };
+		B5161D4D15C74B760037F120 /* ETLSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLSettingsViewController.m; sourceTree = "<group>"; };
 		B5272D5115A27E4900F62549 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = settings.png; path = ../../../assets/v1/settings.png; sourceTree = "<group>"; };
 		B5272D5215A27E4900F62549 /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "settings@2x.png"; path = "../../../assets/v1/settings@2x.png"; sourceTree = "<group>"; };
 		B5272D5515A27E7900F62549 /* progress_count.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = progress_count.png; path = ../../../assets/v1/progress_count.png; sourceTree = "<group>"; };
@@ -804,6 +808,8 @@
 				B5420FD415AB63EF001E3D15 /* ETLDoneProgrammingController.m */,
 				B5C1CD52159CF085005D6FC0 /* ETLBulbSettingsController.h */,
 				B5C1CD53159CF086005D6FC0 /* ETLBulbSettingsController.m */,
+				B5161D4C15C74B760037F120 /* ETLSettingsViewController.h */,
+				B5161D4D15C74B760037F120 /* ETLSettingsViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -1046,6 +1052,7 @@
 				B5FF05A015B8B1EA00831EF7 /* ETLShotTest.m in Sources */,
 				B5F7392615BF3B7700A784A4 /* ETLManual.m in Sources */,
 				B5F7392E15BF5F3E00A784A4 /* UIButton+setAllTitles.m in Sources */,
+				B5161D4F15C74B760037F120 /* ETLSettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1082,6 +1089,7 @@
 				B5FF059D15B8B1AA00831EF7 /* ETLShot.m in Sources */,
 				B5F7392515BF3B7700A784A4 /* ETLManual.m in Sources */,
 				B5F7392D15BF5F3E00A784A4 /* UIButton+setAllTitles.m in Sources */,
+				B5161D4E15C74B760037F120 /* ETLSettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

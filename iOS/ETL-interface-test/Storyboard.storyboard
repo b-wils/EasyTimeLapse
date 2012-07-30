@@ -68,6 +68,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="bWH-Z2-4Nh" kind="push" id="WEr-fs-VHr"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="bJZ-xT-TTy">
                                 <rect key="frame" x="170" y="87" width="130" height="130"/>
@@ -185,6 +188,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="gotoSettings" destination="shY-YR-N1D" eventType="touchUpInside" id="7Py-a4-bbi"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ldu-Hi-dmX">
                                 <rect key="frame" x="25" y="390" width="270" height="50"/>
@@ -222,13 +228,13 @@
                     <navigationItem key="navigationItem" id="I1L-6O-gQ5"/>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="1418" y="-366"/>
+            <point key="canvasLocation" x="1396" y="916"/>
         </scene>
-        <!--Remote Controller-->
+        <!--View Controller-->
         <scene sceneID="MwY-pB-QmC">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wGS-qz-KQL" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="ehp-Qf-Jjj" customClass="ETLRemoteController" sceneMemberID="viewController">
+                <viewController id="ehp-Qf-Jjj" customClass="ETLViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KiE-gZ-f06">
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -298,6 +304,7 @@
                                 </state>
                                 <connections>
                                     <action selector="goBack:" destination="shY-YR-N1D" eventType="touchUpInside" id="DEp-5B-LxQ"/>
+                                    <action selector="goBack:" destination="ehp-Qf-Jjj" eventType="touchUpInside" id="PHf-RL-BBo"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="kbb-kk-ehk">
@@ -311,6 +318,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="bWH-Z2-4Nh" kind="push" id="e5W-2h-EQi"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -318,13 +328,13 @@
                     <navigationItem key="navigationItem" id="uYZ-s8-nXy"/>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="948" y="-68"/>
+            <point key="canvasLocation" x="948" y="1196"/>
         </scene>
-        <!--Bimodal Controller-->
+        <!--View Controller-->
         <scene sceneID="NwC-I8-GL2">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="slh-fU-5TW" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="Tsi-pV-1SK" customClass="ETLBimodalController" sceneMemberID="viewController">
+                <viewController id="Tsi-pV-1SK" customClass="ETLViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bfN-zT-Ohj">
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -412,6 +422,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="bWH-Z2-4Nh" kind="push" id="RpZ-Wg-K2n"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="woe-Mx-4ns">
                                 <rect key="frame" x="6" y="6" width="50" height="32"/>
@@ -426,6 +439,7 @@
                                 </state>
                                 <connections>
                                     <action selector="goBack:" destination="shY-YR-N1D" eventType="touchUpInside" id="J8n-kR-cNR"/>
+                                    <action selector="goBack:" destination="Tsi-pV-1SK" eventType="touchUpInside" id="e9u-gL-tmr"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="7GQ-Mv-yYo">
@@ -449,13 +463,13 @@
                     <navigationItem key="navigationItem" id="BGN-IY-voW"/>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="1421" y="237"/>
+            <point key="canvasLocation" x="1399" y="1519"/>
         </scene>
-        <!--Settings-->
+        <!--Settings View Controller-->
         <scene sceneID="IzL-sO-Bve">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AmR-e3-Zxf" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="bWH-Z2-4Nh" customClass="ETLSettings" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Settings" id="bWH-Z2-4Nh" customClass="ETLSettingsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NwZ-I9-iZC">
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -551,6 +565,7 @@
                                 </state>
                                 <connections>
                                     <action selector="goBack:" destination="2uI-kd-f2e" eventType="touchUpInside" id="PaD-ab-NN4"/>
+                                    <action selector="goBack:" destination="bWH-Z2-4Nh" eventType="touchUpInside" id="uOd-3o-dHI"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -589,6 +604,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="gotoSettings" destination="2uI-kd-f2e" eventType="touchUpInside" id="k8W-zC-ZGs"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="bDK-vL-Yuz">
                                 <rect key="frame" x="6" y="6" width="50" height="32"/>
@@ -730,7 +748,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="948" y="545"/>
+            <point key="canvasLocation" x="948" y="-97"/>
         </scene>
         <!--Bulb Controller-->
         <scene sceneID="Nnq-Tc-tb9">
@@ -950,6 +968,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="gotoSettings" destination="x40-mc-p3d" eventType="touchUpInside" id="2jW-NQ-9SK"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -957,7 +978,7 @@
                     <navigationItem key="navigationItem" id="ttj-dI-M1d"/>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="948" y="1189"/>
+            <point key="canvasLocation" x="948" y="539"/>
         </scene>
         <!--Timelapse Controller-->
         <scene sceneID="gew-Ag-kQ7">
@@ -987,6 +1008,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="gotoSettings" destination="Y0u-g9-Vhl" eventType="touchUpInside" id="na0-gu-sOp"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="EPa-fy-ERG">
                                 <rect key="frame" x="25" y="390" width="270" height="50"/>
@@ -1344,8 +1368,14 @@
                 <relationship kind="outlet" name="programmingProgress" candidateClass="UIProgressView"/>
             </relationships>
         </class>
+        <class className="ETLSettingsViewController" superclassName="ETLViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ETLSettingsViewController.h"/>
+        </class>
         <class className="ETLShotViewController" superclassName="ETLViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ETLShotViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="gotoSettings"/>
+            </relationships>
         </class>
         <class className="ETLTimelapseController" superclassName="ETLShotViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ETLTimelapseController.h"/>
@@ -1379,7 +1409,8 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="jON-PE-T2z"/>
+        <segue reference="RpZ-Wg-K2n"/>
         <segue reference="rBU-MJ-KTo"/>
+        <segue reference="jON-PE-T2z"/>
     </inferredMetricsTieBreakers>
 </document>

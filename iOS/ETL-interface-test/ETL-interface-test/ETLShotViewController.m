@@ -46,4 +46,10 @@
     }
 }
 
+- (IBAction)gotoSettings
+{
+    UIViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"Settings"];
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
 @end
