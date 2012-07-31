@@ -92,8 +92,8 @@ typedef struct {
  int8_t     repeatIndex;
  uint16_t   numRepeats;
  uint32_t   shots;
- uint32_t   interval;
- uint32_t   intervalDelta;
+ int32_t   interval;
+ int32_t   intervalDelta;
  float      exposureOffset;
  float      exposureFstopChangePerMin;
  float     fstopSinAmplitude;

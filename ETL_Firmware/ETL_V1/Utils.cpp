@@ -19,11 +19,12 @@ const int colorLoop_elements = 8;
 
 void DebugInit() {	
 	Serial.begin(19200);
-	DebugPrintln("ETL version 0.1");
+	DebugPrintln(F("ETL version 0.1"));
 	
-	//__FlashStringHelper test = F("hi");	
+	//Serial.print("testprint");
+	//Serial.print(PSTR("testprint"));
+	//DebugPrint(PSTR("testprint"));
 	
-//	Serial.println(F("ETL version 0.1"));
 	//DebugPrint("DeviceSettings size: ");
 	//DebugPrintln(sizeof(DeviceSettings));
 		//
@@ -61,16 +62,16 @@ void PrintSectionConfig(SectionConfig SecConf) {
 	//DebugPrint("  numRepeats: ");
 	//DebugPrintln(SecConf.numRepeats);
 	//
-	DebugPrint("  shots: ");
-	DebugPrintln(SecConf.shots);
-	
-	DebugPrint("  interval: ");
-	DebugPrintln(SecConf.interval);
+	//DebugPrint("  shots: ");
+	//DebugPrintln(SecConf.shots);
+	//
+	//DebugPrint("  interval: ");
+	//DebugPrintln(SecConf.interval);
 	
 	//DebugPrint("  intervalDelta: ");
 	//DebugPrintln(SecConf.intervalDelta);
 	
-	DebugPrint("  exposureOffset: ");
+	DebugPrint(F("  exposureOffset: "));
 	DebugPrintln(SecConf.exposureOffset);
 	//
 	//DebugPrint("  exposureFstopChangePerMin: ");
@@ -79,11 +80,11 @@ void PrintSectionConfig(SectionConfig SecConf) {
 	//DebugPrint("  fstopSinAmplitude: ");
 	//DebugPrintln(SecConf.fstopSinAmplitude);
 	
-	DebugPrint("  fstopIncreasePerHDRShot: ");
-	DebugPrintln(SecConf.fstopIncreasePerHDRShot);
-	//
-	DebugPrint("  numHDRShots: ");
-	DebugPrintln(SecConf.numHDRShots);
+	//DebugPrint("  fstopIncreasePerHDRShot: ");
+	//DebugPrintln(SecConf.fstopIncreasePerHDRShot);
+	////
+	//DebugPrint("  numHDRShots: ");
+	//DebugPrintln(SecConf.numHDRShots);
 	////
 	//DebugPrint("  fstopChangeOnPress: ");
 	//DebugPrintln(SecConf.fstopChangeOnPress);

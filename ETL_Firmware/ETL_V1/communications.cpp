@@ -42,7 +42,7 @@ void InitTransmitState() {
 			break;
 	}
 		
-    DebugPrintln("Enter Transmit");
+    DebugPrintln(F("Enter Transmit"));
 	
 	// This is our unused audio channel. This must go to ground otherwise something
 	// weird happens electrically. We could probably use the P/U resistor too.
@@ -92,7 +92,7 @@ void LeaveTransmitState() {
 		InitManualTimelapseState();
 		break;
 	default:
-		DebugPrintln("Bad attempt to leave transmit state");
+		DebugPrintln(F("Bad attempt to leave transmit state"));
 	}
 }
 
@@ -127,7 +127,7 @@ void ProcessTransmitState() {
 		    myCrc = crc_update(myCrc, (byte*) &recvPacket + sizeof(crc_t), sizeof(recvPacket) - sizeof(crc_t));
 		    myCrc = crc_finalize(myCrc);
 					
-		    DebugPrintln(" command packetId: ");
+		    DebugPrintln(F(" command packetId: "));
 		    DebugPrintln(recvPacket.command, HEX);
 		    DebugPrintln(recvPacket.packetId, HEX);
 					
@@ -139,12 +139,12 @@ void ProcessTransmitState() {
 		    //}
 					
 		    if (myCrc != recvPacket.crc || failCrc) {
-			    DebugPrintln("Crc mismatch!");
+			    DebugPrintln(F("Crc mismatch!"));
 				SetLEDCycle(LED_CYCLE_CRC_MISMATCH);
 				
-			    DebugPrint(" recv_crc = ");
+			    DebugPrint(F(" recv_crc = "));
 			    DebugPrint(recvPacket.crc, HEX);
-                DebugPrint(" calc_Crc = ");
+                DebugPrint(F(" calc_Crc = "));
 			    DebugPrintln(myCrc, HEX);
 			    
 				//DebugPrint("Shots: ");
@@ -159,7 +159,7 @@ void ProcessTransmitState() {
 		    } else {
 				SetLEDCycle(LED_CYCLE_CRC_MATCH);
 				
-			    DebugPrint("packet success; crc = ");
+			    DebugPrint(F("packet success; crc = "));
 				DebugPrintln(myCrc, HEX);
 			    DebugPrintln();				
 					
@@ -172,13 +172,12 @@ void ProcessTransmitState() {
 	                case ETL_COMMAND_SETTINGS:
 				        break;
 	                case ETL_COMMAND_BASICTIMELAPSE:
-						currentState = STATE_TRANSMIT; // If we were in manual mode
-						
 						// TODO we should only zero this on other partial packets
 						if (configPointer == 0) {
 							memset(&myConfigs[0], 0, sizeof(SectionConfig) * MAX_CONFIGS);
 							numConfigs = 0;
 							timelapseValid = false;
+							currentState = STATE_TRANSMIT; // If we were in manual mode
 						}							
 						
 				        myConfigs[configPointer].shots = recvPacket.basicTimelapse.shots;
@@ -212,7 +211,7 @@ void ProcessTransmitState() {
 						currentState = STATE_TIMELAPSE_MANUAL_TRANSMIT;
 						break;
 					case ETL_COMMAND_SIGNOFF:
-						DebugPrintln("programming complete!");
+						DebugPrintln(F("programming complete!"));
 						timelapseValid = true;
 						LeaveTransmitState();
 						SetLEDCycle(LED_CYCLE_END_PROGRAM);
@@ -220,7 +219,7 @@ void ProcessTransmitState() {
 						break;
 				    case ETL_COMMAND_INVALID:
 				    default:
-				        DebugPrint("unrecognized command: ");
+				        DebugPrint(F("unrecognized command: "));
 					    DebugPrintln(recvPacket.command, HEX);
 				    }	
 			    } else {
@@ -241,7 +240,7 @@ void ProcessTransmitState() {
 	}
 	
 	if (millis() > idleTimer + IDLE_TIMEOUT_PERIOD) {
-		DebugPrintln("Idle timeout");
+		DebugPrintln(F("Idle timeout"));
 		LeaveTransmitState();
 	}
 }

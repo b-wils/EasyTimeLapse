@@ -61,7 +61,7 @@ const int batteryMonitorPin = A0;
 #define STATIC_SHUTTER_LAG 30 //ms
 #define BUFFER_RECOVER_TIME 200 //ms
 #define EXPOSURE_WARNING_TIME_OFFSET ((uint32_t) 120000) //ms
-#define MINIMUM_PHOTO_LENGTH 40 //ms
+#define MINIMUM_PHOTO_LENGTH 20 //ms
 
 // Voltage Divider
 #define VOTLAGE_DIV_FACTOR 11 // (R1 + R2)/R2

@@ -48,17 +48,17 @@ void populateConfigs() {
 	myConfigs[0].type = 0;
     myConfigs[0].repeatIndex = 0;
     myConfigs[0].numRepeats = 0;
-    myConfigs[0].shots = 5;
-    myConfigs[0].interval = 5000;
+    myConfigs[0].shots = 500;
+    myConfigs[0].interval = 2000;
     myConfigs[0].intervalDelta = 0;
     //myConfigs[0].exposureOffset = -2.841463415;
 	myConfigs[0].exposureOffset = -2;
-    myConfigs[0].exposureFstopChangePerMin = 0;
+    myConfigs[0].exposureFstopChangePerMin = -2;
 	//myConfigs[0].fstopSinAmplitude = 0.158536585;
 	myConfigs[0].fstopSinAmplitude = 0;
-    myConfigs[0].fstopIncreasePerHDRShot = 2;
-    myConfigs[0].numHDRShots = 1;
-	myConfigs[0].fstopChangeOnPress = 0;
+    myConfigs[0].fstopIncreasePerHDRShot = 0;
+    myConfigs[0].numHDRShots = 0;
+	myConfigs[0].fstopChangeOnPress = 2;
 	
     myConfigs[1].type = 0;
     myConfigs[1].repeatIndex = 0;
@@ -133,7 +133,7 @@ void printBatteryLevel() {
 	//DebugPrintln(ADC_EMPTY_VOLTAGE);
 	//DebugPrint("Max BAT ADC: ");
 	//DebugPrintln(ADC_FULL_VOLTAGE);
-	DebugPrint("Battery reading: ");
+	//DebugPrint("Battery reading: ");
 	DebugPrintln(adcReading);
 	pinMode(enableBatteryMonitorPin, INPUT);
 	digitalWrite(enableBatteryMonitorPin, LOW);
@@ -173,7 +173,7 @@ void InitIdleState() {
 	
 	//printBatteryLevel();
 	disableADC();
-    DebugPrintln("Enter Idle");
+    //DebugPrintln("Enter Idle");
 }
 
 void ProcessIdle();
@@ -380,7 +380,7 @@ void ProcessButton() {
 						break;
 					case STATE_INVALID:
 					default:
-						DebugPrint("Unknown state ");
+						DebugPrint(F("Unknown state "));
 						DebugPrintln(currentState);
 						break;
 	            }
@@ -462,7 +462,7 @@ void loop() {
 		switch (incByte) {
 			case 'p':
 				// dump our shots
-				DebugPrint("num configs: ");
+				DebugPrint(F("num configs: "));
 				DebugPrintln(numConfigs);
 				for (int i = 0; i < numConfigs; i++) {
 					DebugPrint("config #");
@@ -473,7 +473,7 @@ void loop() {
 				break;
 			case 't':
 				// dump the current millis() value
-				DebugPrint("millis() = ");
+				DebugPrint(F("millis() = "));
 				DebugPrintln(millis());
 				break;
 			case 'b':
@@ -484,7 +484,7 @@ void loop() {
 				// new line characters
 				break;
 			default:
-				DebugPrint("Unrecognized command ");
+				DebugPrint(F("Unrecognized command "));
 				DebugPrintln(incByte);
 		}
 	}

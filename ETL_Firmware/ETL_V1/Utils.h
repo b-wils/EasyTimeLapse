@@ -89,6 +89,10 @@ struct LedCycle {
 #define LED_CYCLE_END_PROGRAM LedCycle(333, 6, 0, YELLOW,GREEN,YELLOW,GREEN,YELLOW,GREEN)
 #define LED_CYCLE_BAD_CLICK LedCycle(200, 1, 0, YELLOW,OFF,OFF,OFF,OFF,OFF)
 #define LED_CYCLE_TIMELAPSE_INVALID LedCycle(333,5,0,RED,OFF,RED,OFF,RED,OFF)
+#define LED_CYCLE_TIMELAPSE_CHANGE_READY LedCycle(250, 1, 0, YELLOW,OFF,OFF,OFF,OFF,OFF)
+#define LED_CYCLE_TIMELAPSE_EXP_COLLISION LedCycle(250, 1, 0, RED,OFF,OFF,OFF,OFF,OFF)
+#define LED_CYCLE_STOP_CHANGE_SUCCESS LedCycle(250,5,0,GREEN,OFF,GREEN,OFF,GREEN,OFF)
+#define LED_CYCLE_STOP_CHANGE_FAILURE LedCycle(250,5,0,RED,OFF,RED,OFF,RED,OFF)
 
 void DebugInit();
 
@@ -118,14 +122,14 @@ void DebugPrint(const char* myString) {
 }
 
 static inline
-void DebugPrintln(__FlashStringHelper *myString) {
+void DebugPrintln(const __FlashStringHelper *myString) {
 #ifdef DEBUGPRINT
 	Serial.println(myString);
 #endif
 }
 
 static inline
-void DebugPrint(__FlashStringHelper * myString) {
+void DebugPrint(const __FlashStringHelper * myString) {
 #ifdef DEBUGPRINT
 	Serial.print(myString);
 #endif

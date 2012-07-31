@@ -520,7 +520,7 @@ void SoftModem::demodulateTest(void)
 
 void SoftModem::printDebugInfo(short resetCounts)
 {
-	DebugPrintln();
+	//DebugPrintln();
 
 	//DebugPrint("  anaIsrCnt=");
 	//DebugPrintln(anaISRCnt,DEC);
