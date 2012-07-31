@@ -24,6 +24,8 @@ byte printval;
 uint8_t bytesRead = 0;
 size_t modemPacketIndex = 0;
 
+bool firstPacketReceived;
+
 extern SectionConfig myConfigs[MAX_CONFIGS];
 extern uint8_t numConfigs;
 extern uint8_t configPointer;
@@ -31,7 +33,8 @@ extern uint8_t timelapseValid;
 
 uint32_t idleTimer;
 
-void InitTransmitState() {    
+void InitTransmitState() { 
+	firstPacketReceived = false;
 	switch (currentState) {
 		case STATE_IDLE:
 		case STATE_TIMELAPSE_WAITING:
@@ -167,19 +170,20 @@ void ProcessTransmitState() {
 					modemPacketIndex++; 
 					InitRequestPacket(&sendPacket, modemPacketIndex);
 					
+					if (firstPacketReceived == false) {
+						firstPacketReceived = true;
+						
+						memset(&myConfigs[0], 0, sizeof(SectionConfig) * MAX_CONFIGS);
+						numConfigs = 0;
+						timelapseValid = false;
+						currentState = STATE_TRANSMIT; // If we were in manual mode
+					}
+					
 				    switch (recvPacket.command) {
 	            
 	                case ETL_COMMAND_SETTINGS:
 				        break;
-	                case ETL_COMMAND_BASICTIMELAPSE:
-						// TODO we should only zero this on other partial packets
-						if (configPointer == 0) {
-							memset(&myConfigs[0], 0, sizeof(SectionConfig) * MAX_CONFIGS);
-							numConfigs = 0;
-							timelapseValid = false;
-							currentState = STATE_TRANSMIT; // If we were in manual mode
-						}							
-						
+	                case ETL_COMMAND_BASICTIMELAPSE:						
 				        myConfigs[configPointer].shots = recvPacket.basicTimelapse.shots;
 					    myConfigs[configPointer].exposureOffset = recvPacket.basicTimelapse.exposureLengthPower;
 					    myConfigs[configPointer].interval = recvPacket.basicTimelapse.interval;
@@ -216,6 +220,7 @@ void ProcessTransmitState() {
 						LeaveTransmitState();
 						dumpToEEProm();
 						SetLEDCycle(LED_CYCLE_END_PROGRAM);
+						
 						return;
 						break;
 				    case ETL_COMMAND_INVALID:

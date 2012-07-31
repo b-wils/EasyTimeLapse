@@ -80,11 +80,11 @@ void PrintSectionConfig(SectionConfig SecConf) {
 	//DebugPrint("  fstopSinAmplitude: ");
 	//DebugPrintln(SecConf.fstopSinAmplitude);
 	
-	//DebugPrint("  fstopIncreasePerHDRShot: ");
-	//DebugPrintln(SecConf.fstopIncreasePerHDRShot);
-	////
-	//DebugPrint("  numHDRShots: ");
-	//DebugPrintln(SecConf.numHDRShots);
+	DebugPrint(F("  fstopIncreasePerHDRShot: "));
+	DebugPrintln(SecConf.fstopIncreasePerHDRShot);
+	//
+	DebugPrint(F("  numHDRShots: "));
+	DebugPrintln(SecConf.numHDRShots);
 	////
 	//DebugPrint("  fstopChangeOnPress: ");
 	//DebugPrintln(SecConf.fstopChangeOnPress);
