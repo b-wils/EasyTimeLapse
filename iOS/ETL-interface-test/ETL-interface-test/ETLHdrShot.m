@@ -41,8 +41,8 @@ ModelSynthesize(UInt32, finalExposure, setFinalExposure);
             packet->packetId = packetNumber;
             
             HDRShot * hdr = &packet->hdrShot;
-            hdr->numHDRShots = bracketCount;
-            hdr->fstopIncreasePerHDRShot = log2f((float)finalExposure / (float)initialExposure) / bracketCount;
+            hdr->numHDRShots = bracketCount - 1;
+            hdr->fstopIncreasePerHDRShot = log2f((float)finalExposure / (float)initialExposure) / (bracketCount - 1);
             break;
         case 2:
             [timelapse renderPacket:2 to:packet];

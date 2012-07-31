@@ -635,6 +635,7 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad" returnKeyType="done"/>
                                 <connections>
+                                    <action selector="didUpdateBracketCount:" destination="2uI-kd-f2e" eventType="editingDidEnd" id="MXb-1F-kfY"/>
                                     <outlet property="delegate" destination="2uI-kd-f2e" id="8Ym-Fa-DRE"/>
                                 </connections>
                             </textField>
@@ -1380,6 +1381,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ETLHdrController.h"/>
             <relationships>
                 <relationship kind="action" name="didPressStop:"/>
+                <relationship kind="action" name="didUpdateBracketCount:"/>
                 <relationship kind="action" name="didUpdateExposureField:"/>
                 <relationship kind="outlet" name="bracketCountField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="finalExposureButton" candidateClass="UIButton"/>
@@ -1447,8 +1449,8 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="RpZ-Wg-K2n"/>
+        <segue reference="Sgc-tO-3CH"/>
         <segue reference="jON-PE-T2z"/>
-        <segue reference="xs5-sS-DIA"/>
+        <segue reference="RpZ-Wg-K2n"/>
     </inferredMetricsTieBreakers>
 </document>

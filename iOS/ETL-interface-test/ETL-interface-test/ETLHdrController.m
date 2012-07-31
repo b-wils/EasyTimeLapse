@@ -193,6 +193,11 @@
     }
 }
 
+- (IBAction)didUpdateBracketCount:(id)sender 
+{
+    hdr.bracketCount = [[sender text] intValue];
+}
+
 - (void)viewDidUnload
 {
     [super viewDidUnload];

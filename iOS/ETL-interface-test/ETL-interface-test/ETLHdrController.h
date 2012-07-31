@@ -22,4 +22,5 @@
 
 - (IBAction)didPressStop:(id)sender;
 - (IBAction)didUpdateExposureField:(id)sender;
+- (IBAction)didUpdateBracketCount:(id)sender;
 @end
