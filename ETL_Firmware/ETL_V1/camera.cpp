@@ -138,13 +138,13 @@ void InitTimelapseState() {
     currentState = STATE_TIMELAPSE_WAITING;
     DebugPrintln("Enter Timelapse");
 	
-	useFlashFeeback = 0;
-	
 	byte flashSense = digitalRead(flashSensePin);
 	if (flashSense == HIGH) {
 		DebugPrintln("No PC sync cable");
+		useFlashFeeback = 0;
 	} else {
 		DebugPrintln("PC sync cable attached");
+		useFlashFeeback = 1;
 	}
 	
 	digitalWrite(flashFeedbackPin, LOW);
