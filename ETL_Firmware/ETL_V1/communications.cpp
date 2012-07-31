@@ -214,6 +214,7 @@ void ProcessTransmitState() {
 						DebugPrintln(F("programming complete!"));
 						timelapseValid = true;
 						LeaveTransmitState();
+						dumpToEEProm();
 						SetLEDCycle(LED_CYCLE_END_PROGRAM);
 						return;
 						break;

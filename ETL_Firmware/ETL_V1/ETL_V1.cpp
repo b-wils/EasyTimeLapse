@@ -6,6 +6,7 @@
  */ 
 
 #include <avr/io.h>
+#include <avr/eeprom.h>
 #include "Arduino/Arduino.h"
 #include "Arduino/HardwareSerial.h"
 #include "Utils.h"
@@ -42,6 +43,45 @@ uint32_t incrementTimer;
 uint32_t incrementCount;
 
 uint8_t timelapseValid;
+
+void dumpToEEProm() {
+	EEPromHeader header;
+	uint16_t eepromPointer = 0;
+	memset(&header, 0, sizeof(EEPromHeader));
+	
+	header.numConfigs = numConfigs;
+	
+	if (header.numConfigs > MAX_CONFIGS) {
+		DebugPrint(F("Invalid eeprom header num "));
+		DebugPrintln(header.numConfigs);
+		return;
+	}
+	
+	eeprom_write_block(&header, (void *) eepromPointer, sizeof(EEPromHeader));
+	
+	eepromPointer += sizeof(EEPromHeader);
+	
+	eeprom_write_block(&myConfigs[0], (void*) eepromPointer, sizeof(SectionConfig) * numConfigs);
+}
+
+void initFromEEProm() {
+	EEPromHeader header;
+	uint16_t eepromPointer = 0;
+	
+	eeprom_read_block(&header, (void *) eepromPointer, sizeof(EEPromHeader));
+	
+	if (header.numConfigs > MAX_CONFIGS) {
+		DebugPrint(F("Init Invalid eeprom header num "));
+		DebugPrintln(header.numConfigs);
+		return;
+	}
+	
+	numConfigs = header.numConfigs;	
+	
+	eepromPointer += sizeof(EEPromHeader);
+	
+	eeprom_read_block(&myConfigs[0], (void *) eepromPointer, sizeof(SectionConfig) * numConfigs);
+}
 
 void populateConfigs() {
     //myConfigs[0].type = CONFIG_SIN_P4
@@ -211,7 +251,8 @@ void setup() {
 	
 	nextLedTime = millis();
     
-	populateConfigs();
+	//populateConfigs();
+	initFromEEProm();
 	
 	analogReference(INTERNAL);
 	
@@ -458,7 +499,7 @@ void loop() {
 	
 	if (Serial.available()) {
 		uint8_t incByte = Serial.read();
-		
+		uint8_t temp;
 		switch (incByte) {
 			case 'p':
 				// dump our shots
@@ -478,6 +519,15 @@ void loop() {
 				break;
 			case 'b':
 				printBatteryLevel();
+				break;
+			case 'r':
+				//
+				temp = eeprom_read_byte(0);
+				DebugPrint("temp eeprom: ");
+				DebugPrintln(temp);
+				break;
+			case 'w':
+				eeprom_write_byte(0, 5);
 				break;
 			case 13:
 			case 10:

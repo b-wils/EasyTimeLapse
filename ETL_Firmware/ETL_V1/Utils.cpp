@@ -62,11 +62,11 @@ void PrintSectionConfig(SectionConfig SecConf) {
 	//DebugPrint("  numRepeats: ");
 	//DebugPrintln(SecConf.numRepeats);
 	//
-	//DebugPrint("  shots: ");
-	//DebugPrintln(SecConf.shots);
+	DebugPrint(F("  shots: "));
+	DebugPrintln(SecConf.shots);
 	//
-	//DebugPrint("  interval: ");
-	//DebugPrintln(SecConf.interval);
+	DebugPrint(F("  interval: "));
+	DebugPrintln(SecConf.interval);
 	
 	//DebugPrint("  intervalDelta: ");
 	//DebugPrintln(SecConf.intervalDelta);

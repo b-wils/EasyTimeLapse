@@ -13,6 +13,14 @@
 #include "Arduino/Arduino.h"
 #include "Utils.h"
 
+#if 1
+#undef PROGMEM 
+#define PROGMEM __attribute__(( section(".progmem.data") )) 
+
+#undef PSTR 
+#define PSTR(s) (__extension__({static prog_char __c[] PROGMEM = (s); &__c[0];})) 
+#endif 
+
 #define MS_PER_SEC 1000
 #define SEC_PER_MIN 60
 
@@ -84,7 +92,12 @@ enum {
  STATE_TIMELAPSE_MANUAL_TRANSMIT // Hybird state... should we move manual to it's own variable?
 };
 
+struct EEPromHeader {
+	uint8_t numConfigs;
+};
+
 void InitIdleState(); //__attribute__ ((section (".idleinit")));
 void SetConfig(int index);
+void dumpToEEProm();
 
 #endif /* ETL_V1_H_ */
