@@ -17,6 +17,7 @@ typedef void (^ETLViewInitBlock)(ETLViewController *);
 @interface ETLViewController : UIViewController
 {
     IBOutlet UIView * numpadToolbar;
+    IBOutlet UIButton * backOrHomeButton;
 }
 
 @property(nonatomic, strong) id delegate;

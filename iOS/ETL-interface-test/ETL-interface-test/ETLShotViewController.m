@@ -7,7 +7,7 @@
 //
 
 #import "ETLShotViewController.h"
-#import "ETLProgramViewController.h"
+#import "ETLPreProgrammingController.h"
 
 @interface ETLShotViewController ()
 
@@ -41,8 +41,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"Program"]) {
-        ETLProgramViewController *controller = [segue destinationViewController];
-        controller.packetProvider = self.packetProvider;
+        [[segue destinationViewController] performSelector:@selector(setPacketProvider:) withObject:self.packetProvider];
     }
 }
 

@@ -32,13 +32,6 @@
 }
 
 - (void)ensureInitialized {
-    if(!timelapse) {
-        self.timelapse = [[ETLTimelapse alloc] init];
-        timelapse.shotInterval = 5000;
-        timelapse.shotCount = 0;
-        timelapse.clipFramesPerSecond = 23.97f;
-    }
-    
     if (!periodUnits) {
         periodUnits = [NSArray arrayWithObjects:
                        @"ms",
@@ -56,6 +49,13 @@
     
     if (!periodUnit) {
         periodUnit = [periodUnits objectAtIndex:1]; // "seconds"
+    }
+    
+    if(!timelapse) {
+        self.timelapse = [[ETLTimelapse alloc] init];
+        timelapse.shotInterval = 5000;
+        timelapse.shotCount = 0;
+        timelapse.clipFramesPerSecond = 23.97f;
     }
     
     if (!self.packetProvider) {

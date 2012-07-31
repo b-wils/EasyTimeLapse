@@ -109,8 +109,9 @@
                         [self sendPacketNumber:packetId];
                     }
                     else {
-                        NOTIFY(ProgrammingComplete, userInfo);
+                        NOTIFY(PacketRequested, userInfo);
                         [self sendSignoffPacket];
+                        NOTIFY(ProgrammingComplete, userInfo);
                     }
                     break;
                 case IOS_COMMAND_DEVICEINFO: {

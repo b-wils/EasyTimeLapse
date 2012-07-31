@@ -26,7 +26,15 @@
     {
         [[NSBundle mainBundle] loadNibNamed:@"NumpadDismissBar" owner:self options:nil];
     }
-
+    
+    if (backOrHomeButton)
+    {
+        if ([[[self navigationController] viewControllers] count] > 2) 
+        {
+            [backOrHomeButton setImage:[UIImage imageNamed:@"back_dark.png"] forState:UIControlStateNormal];
+            [backOrHomeButton setImage:[UIImage imageNamed:@"back_dark.png"] forState:UIControlStateHighlighted];
+        }
+    }
 }
 
 #pragma mark -

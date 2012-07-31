@@ -41,7 +41,7 @@ ModelSynthesize(UInt32, finalExposure, setFinalExposure);
             packet->packetId = packetNumber;
             
             HDRShot * hdr = &packet->hdrShot;
-            hdr->numHDRShots = bracketCount - 1;
+            hdr->numHDRShots = bracketCount;
             hdr->fstopIncreasePerHDRShot = log2f((float)finalExposure / (float)initialExposure) / bracketCount;
             break;
         case 2:

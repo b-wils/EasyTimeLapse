@@ -204,7 +204,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Kwb-qY-YKn" kind="push" id="de8-ju-hDA"/>
+                                    <segue destination="Kwb-qY-YKn" kind="push" identifier="Program" id="de8-ju-hDA"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="B4q-41-6Hb">
@@ -226,6 +226,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="I1L-6O-gQ5"/>
+                    <connections>
+                        <outlet property="backOrHomeButton" destination="B4q-41-6Hb" id="HS9-fX-odG"/>
+                    </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="1396" y="916"/>
@@ -439,7 +442,7 @@
                                 </state>
                                 <connections>
                                     <action selector="goBack:" destination="shY-YR-N1D" eventType="touchUpInside" id="J8n-kR-cNR"/>
-                                    <action selector="goBack:" destination="Tsi-pV-1SK" eventType="touchUpInside" id="e9u-gL-tmr"/>
+                                    <action selector="goBack:" destination="Tsi-pV-1SK" eventType="touchUpInside" id="awe-JT-wGW"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="7GQ-Mv-yYo">
@@ -454,13 +457,16 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Kwb-qY-YKn" kind="push" id="rBU-MJ-KTo"/>
+                                    <segue destination="Kwb-qY-YKn" kind="push" identifier="Program" id="rBU-MJ-KTo"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="BGN-IY-voW"/>
+                    <connections>
+                        <outlet property="backOrHomeButton" destination="woe-Mx-4ns" id="4mu-No-qDL"/>
+                    </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="1399" y="1519"/>
@@ -717,7 +723,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Kwb-qY-YKn" kind="push" id="Sgc-tO-3CH"/>
+                                    <segue destination="Kwb-qY-YKn" kind="push" identifier="Program" id="Sgc-tO-3CH"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="En7-wR-E9r">
@@ -800,7 +806,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Kwb-qY-YKn" kind="push" id="xs5-sS-DIA"/>
+                                    <segue destination="Kwb-qY-YKn" kind="push" identifier="Program" id="xs5-sS-DIA"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="5" minimumFontSize="17" background="text_input.png" id="oV0-0v-ghp">
@@ -1024,7 +1030,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Kwb-qY-YKn" kind="push" id="2P8-c0-vOa"/>
+                                    <segue destination="Kwb-qY-YKn" kind="push" identifier="Program" id="2P8-c0-vOa"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="5" textAlignment="center" minimumFontSize="17" background="text_input.png" id="N65-ec-1S0">
@@ -1167,6 +1173,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="L5D-UO-7pa"/>
                     <connections>
+                        <outlet property="backOrHomeButton" destination="OIa-8i-s9k" id="96W-UH-8cH"/>
                         <outlet property="continuousSwitch" destination="HTU-Zm-ET8" id="LUY-Kh-2FJ"/>
                         <outlet property="finalShotLengthLabel" destination="Msg-rn-tFm" id="WTQ-3c-LFm"/>
                         <outlet property="periodUnitButton" destination="YB2-AI-0C4" id="dAO-5U-62D"/>
@@ -1184,7 +1191,7 @@
         <scene sceneID="bRz-xP-dvo">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6cE-KZ-sf5" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="OhQ-Fp-NC6" customClass="ETLProgramViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProgramView" id="OhQ-Fp-NC6" customClass="ETLProgramViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ipo-9h-X47">
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1239,7 +1246,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="2372" y="17"/>
+            <point key="canvasLocation" x="2444" y="17"/>
         </scene>
         <!--Done Programming Controller-->
         <scene sceneID="4PW-yk-Zpl">
@@ -1287,6 +1294,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     </imageView>
                     <navigationItem key="navigationItem" id="rVp-dy-SGZ"/>
+                    <connections>
+                        <segue destination="OhQ-Fp-NC6" kind="push" identifier="Program" id="57I-1c-g3q"/>
+                    </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="1933" y="17"/>
@@ -1360,6 +1370,9 @@
         <class className="ETLManualController" superclassName="ETLShotViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ETLManualController.h"/>
         </class>
+        <class className="ETLPreProgrammingController" superclassName="ETLShotViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ETLPreProgrammingController.h"/>
+        </class>
         <class className="ETLProgramViewController" superclassName="ETLViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ETLProgramViewController.h"/>
             <relationships>
@@ -1399,6 +1412,7 @@
             <relationships>
                 <relationship kind="action" name="goBack:"/>
                 <relationship kind="action" name="hideFirstResponder:"/>
+                <relationship kind="outlet" name="backOrHomeButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="numpadToolbar" candidateClass="UIView"/>
             </relationships>
         </class>
