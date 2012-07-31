@@ -47,8 +47,9 @@
             [processedImages setObject:[UIImage imageNamed:@"progress_fill.png"] forKey:@"progress-fill"];
             /*[processedImages setObject:[UIImage imageNamed:@"segmented-control-blue-left.png"] forKey:@"segmented-control-left"];
             [processedImages setObject:[UIImage imageNamed:@"segmented-control-blue-middle.png"] forKey:@"segmented-control-middle"];
-            [processedImages setObject:[UIImage imageNamed:@"segmented-control-blue-right.png"] forKey:@"segmented-control-right"];
-            [processedImages setObject:[UIImage imageNamed:@"switch-on-blue.png"] forKey:@"switch-on"];* /
+            [processedImages setObject:[UIImage imageNamed:@"segmented-control-blue-right.png"] forKey:@"segmented-control-right"];*/
+            [processedImages setObject:[UIImage imageNamed:@"switch_on.png"] forKey:@"switch-on"];
+        /*
         }
         else if([scheme isEqualToString:@"brown"])
         {

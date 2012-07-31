@@ -47,7 +47,7 @@
 	[self regenerateImages];
 	
     
-    sliderOff = [[UIImage imageNamed:@"switch-off.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 12, 0, 12)];
+    sliderOff = [[UIImage imageNamed:@"switch_off.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 12, 0, 12)];
 	
     if([[UIScreen mainScreen] respondsToSelector:@selector(scale)])
 		scale = [[UIScreen mainScreen] scale];
@@ -81,7 +81,7 @@
 	
 	{
 
-        UIImage *knobTmpImage = [UIImage imageNamed:@"switch-thumb.png"];
+        UIImage *knobTmpImage = [UIImage imageNamed:@"switch_thumb.png"];
         
 		UIImage *knobImageStretch = [knobTmpImage resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
 
@@ -100,7 +100,7 @@
 	}
 	
 	{
-        UIImage *knobTmpImage = [UIImage imageNamed:@"switch-thumb.png"];
+        UIImage *knobTmpImage = [UIImage imageNamed:@"switch_thumb.png"];
         
         UIImage *knobImageStretch = [knobTmpImage resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
 		
