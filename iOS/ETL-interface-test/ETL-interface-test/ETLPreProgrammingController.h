@@ -9,5 +9,4 @@
 #import "ETLShotViewController.h"
 
 @interface ETLPreProgrammingController : ETLShotViewController
-
 @end

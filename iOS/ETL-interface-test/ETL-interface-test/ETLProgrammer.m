@@ -84,6 +84,11 @@
     [self sendPacket:&packet];
 }
 
+-(UInt32)lastPacketSent
+{
+    return currentPacket;
+}
+
 #define VALUE_WITH_BYTES(data,type) [NSValue valueWithBytes:data objCType:@encode(type)]
 
 -(void)receivedChar:(char)input 

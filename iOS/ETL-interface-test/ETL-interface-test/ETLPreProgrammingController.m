@@ -7,9 +7,13 @@
 //
 
 #import "ETLPreProgrammingController.h"
+#import "ETLProgramViewController.h"
+#import "ETLProgrammer.h"
 
 @interface ETLPreProgrammingController ()
-
+{
+    ETLProgramViewController *programView;
+}
 @end
 
 @implementation ETLPreProgrammingController
@@ -26,7 +30,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self performSegueWithIdentifier:@"Program" sender:self];
+    programView = [self.storyboard instantiateViewControllerWithIdentifier:@"ProgramView"];
+    programView.packetProvider = self.packetProvider;
+    [programView ensureInitialized];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didRequestPacket:) name:PacketRequested object:programView.programmer];
+}
+
+- (void)didRequestPacket:(NSNotification *)notification
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[self navigationController] pushViewController:programView animated:YES];
 }
 
 - (void)viewDidUnload

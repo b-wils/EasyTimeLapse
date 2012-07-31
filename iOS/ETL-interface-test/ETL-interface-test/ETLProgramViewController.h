@@ -15,14 +15,15 @@
     IBOutlet UIProgressView * programmingProgress;
     IBOutlet UILabel * bytesTransferred;
     IBOutlet UIButton * cancelButton;
-    
-    ETLProgrammer *programmer;
+
     NSUInteger totalCommandBits;
     
     NSTimer * progressBarTimer, *startTimer;
 }
 
-- (void) didFinishProgramming:(id)sender;
+- (void)didFinishProgramming:(id)sender;
+- (void)ensureInitialized;
 
 @property (nonatomic, strong) id <PacketProvider> packetProvider;
+@property (nonatomic, strong) ETLProgrammer *programmer;
 @end

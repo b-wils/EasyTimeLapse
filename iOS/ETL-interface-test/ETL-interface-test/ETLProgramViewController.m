@@ -16,20 +16,28 @@
 
 @implementation ETLProgramViewController
 
-@synthesize packetProvider;
+@synthesize packetProvider, programmer;
+
+- (void)ensureInitialized 
+{
+    if (!programmer) {
+        programmer = [[ETLProgrammer alloc] init];
+        [self startProgramming];
+    }
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 
-    programmer = [[ETLProgrammer alloc] init];
+    [self ensureInitialized];
     UIProgressView *original = programmingProgress;
     programmingProgress = (UIProgressView *)[[ADVPopoverProgressBar alloc] initWithFrame:programmingProgress.frame];
     [programmingProgress setProgress:0];
     [original removeFromSuperview];
     [self.view addSubview:programmingProgress];
     
-    [self startProgramming];
+    programmingProgress.progress = 1 / (packetProvider.packetCount + 1.0);
 }
 
 - (void)startProgramming
@@ -53,7 +61,6 @@ const NSUInteger streamBitsPerDataByte = 14;
 - (void)didCompleteProgramming:(NSNotification *)notificatoin
 {
     programmingProgress.progress = 1.0;
-    [programmer halt];
     bytesTransferred.text = @"done";
     cancelButton.hidden = true;        
     [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(didFinishProgramming:) userInfo:NULL repeats:NO];
@@ -61,9 +68,11 @@ const NSUInteger streamBitsPerDataByte = 14;
 
 - (void)didFinishProgramming:(id)sender
 {
+    [programmer halt];
+    programmer = nil;
+    
     ETLDoneProgrammingController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"DoneProgramming"];
     [self.navigationController pushViewController:controller animated:YES];
-    programmer = nil;
 }
 
 - (void)goBack:(id)sender

@@ -32,5 +32,6 @@
 -(void)sendPacketNumber:(UInt32)number;
 
 @property (nonatomic, strong) id <PacketProvider> packetProvider;
+@property (nonatomic, readonly) UInt32 lastPacketSent;
 
 @end
