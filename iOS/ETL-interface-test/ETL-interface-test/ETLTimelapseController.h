@@ -29,8 +29,6 @@
 - (IBAction)didUpdateShotLimit:(id)sender;
 - (IBAction)didClickPeriodUnit:(id)sender;
 
-- (void)updateUICalculations:(NSNotification *)notification;
-
 @property (nonatomic, strong) ETLTimelapse *timelapse;
 @property (nonatomic, strong) NSString *periodUnit;
 

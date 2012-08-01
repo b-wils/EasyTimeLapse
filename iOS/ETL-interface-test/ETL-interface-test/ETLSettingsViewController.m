@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 Microsoft. All rights reserved.
 //
 
-#import "ETLSettingsViewController.h"
+#import "ETLViewControllers.h"
 
 @interface ETLSettingsViewController ()
 

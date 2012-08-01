@@ -1,20 +1,18 @@
 //
-//  ETLBulbSettingsControllerViewController.m
+//  ETLBimodalController.m
 //  ETL-interface-test
 //
-//  Created by Carll Hoffman on 6/28/12.
+//  Created by Carll Hoffman on 8/1/12.
 //  Copyright (c) 2012 Microsoft. All rights reserved.
 //
 
-#import "ETLBulbSettingsController.h"
+#import "ETLBimodalController.h"
 
-@interface ETLBulbSettingsController ()
+@interface ETLBimodalController ()
 
 @end
 
-@implementation ETLBulbSettingsController
-@synthesize latencyField;
-@synthesize latencyLabel;
+@implementation ETLBimodalController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -28,16 +26,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+	// Do any additional setup after loading the view.
 }
 
 - (void)viewDidUnload
 {
-    [self setLatencyField:nil];
-    [self setLatencyLabel:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -45,6 +40,4 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-- (IBAction)latencyValueChanged:(id)sender {
-}
 @end

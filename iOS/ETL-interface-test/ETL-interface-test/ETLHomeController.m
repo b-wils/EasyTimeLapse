@@ -6,7 +6,6 @@
 //  Copyright (c) 2012 Microsoft. All rights reserved.
 //
 
-#import "ETLHomeController.h"
 #import "ETLViewControllers.h"
 
 @implementation ETLHomeController

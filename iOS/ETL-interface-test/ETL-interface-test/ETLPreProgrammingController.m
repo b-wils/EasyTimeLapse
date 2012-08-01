@@ -6,8 +6,7 @@
 //  Copyright (c) 2012 Microsoft. All rights reserved.
 //
 
-#import "ETLPreProgrammingController.h"
-#import "ETLProgramViewController.h"
+#import "ETLViewControllers.h"
 #import "ETLProgrammer.h"
 
 @interface ETLPreProgrammingController ()

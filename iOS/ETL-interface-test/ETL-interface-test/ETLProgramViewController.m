@@ -6,7 +6,6 @@
 //  Copyright (c) 2012 Microsoft. All rights reserved.
 //
 
-#import "ETLProgramViewController.h"
 #import "ETLViewControllers.h"
 #import "ADVPopoverProgressBar.h"
 

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ETLUtil.h"
 
 #define ModelUpdated @"Updated:"
 #define PropertyUpdated(x) ([ModelUpdated stringByAppendingString: @#x ])

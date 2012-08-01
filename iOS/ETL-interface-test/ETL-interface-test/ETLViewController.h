@@ -26,4 +26,6 @@ typedef void (^ETLViewInitBlock)(ETLViewController *);
 - (IBAction)goBack:(id)sender;
 
 - (void)observe:(id)sender forEvent:(NSString *)name andRun:(SEL)selector;
+
+- (void)updateUICalculations:(NSNotification *)notification;
 @end

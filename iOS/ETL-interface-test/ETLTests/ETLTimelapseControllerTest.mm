@@ -11,6 +11,7 @@
 #import "ETLTimelapseController.h"
 #import "ETLProgramViewController.h"
 #import "ETLTimelapse.h"
+#import "UIButton+setAllTitles.h"
 
 @interface ETLTimelapseController ()
 - (void)displayPicker:(bool)show animated:(bool)animated;
@@ -76,14 +77,12 @@
     [[[shotCountMock stub] andReturn:shotCountString] text];
     
     [[[switchMock expect] andReturnValue:OCMOCK_VALUE(isOn)] isOn];
-    [[[timelapseMock expect] andPost:updateNotification] setShotCount:0];
-    [[controllerMock expect] updateUICalculations:OCMOCK_ANY];
+    [[timelapseMock expect] setShotCount:0];
     [controller didSwitchContinuous:switchMock];
     
     isOn = false;
     [[[switchMock expect] andReturnValue:OCMOCK_VALUE(isOn)] isOn];
-    [[[timelapseMock expect] andPost:updateNotification] setShotCount:shotCount];
-    [[controllerMock expect] updateUICalculations:updateNotification];
+    [[timelapseMock expect] setShotCount:shotCount];
     [controller didSwitchContinuous:switchMock];
 }
 
@@ -93,8 +92,7 @@
     const UInt64 intervalSecondsInMs = 5000;
     
     [[[intervalMock stub] andReturn:intervalString] text];
-    [[[timelapseMock expect] andPost:updateNotification] setShotInterval:intervalSecondsInMs];
-    [[controllerMock expect] updateUICalculations:updateNotification];
+    [[timelapseMock expect] setShotInterval:intervalSecondsInMs];
     [controller didUpdatePeriod:intervalMock];
 }
 
@@ -104,10 +102,10 @@
     const UInt64 shotCount = [shotCountString integerValue];
     
     [[[shotCountMock stub] andReturn:shotCountString] text];
-    [[[timelapseMock expect] andPost:updateNotification] setShotCount:shotCount];
-    [[controllerMock expect] updateUICalculations:OCMOCK_ANY];
+    [[timelapseMock expect] setShotCount:shotCount];
     [controller didUpdateShotLimit:shotCountMock];
 }
+
 //    - (IBAction)didClickPeriodUnit:(id)sender;
 - (void)testDidClickPeriodUnit
 {
@@ -118,10 +116,7 @@
 //    - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 - (void)testPickerView_didSelectrow_inComponent {
     const NSInteger minutesRow = 2;
-    NSString *expectedTitle = @"minutes";
     
-    [[periodUnitMock expect] setTitle:expectedTitle forState:UIControlStateNormal];
-    [[periodUnitMock expect] setTitle:expectedTitle forState:UIControlStateHighlighted];
     [[controllerMock expect] displayPicker:NO animated:YES];
     [[controllerMock expect] didUpdatePeriod:intervalMock];
     [controller pickerView:pickerMock didSelectRow:minutesRow inComponent:0];
@@ -131,8 +126,14 @@
 -(void)testUpdateUICalculationsContinuous
 {
     bool continuous = true;
+    UInt64 interval = 5000;
+    NSString *intervalText = [NSString stringWithFormat:@"%u", interval / 1000];
+    
     [[[timelapseMock stub] andReturnValue:OCMOCK_VALUE(continuous)] continuousShooting];
+    [[[timelapseMock stub] andReturnValue:OCMOCK_VALUE(interval)] shotInterval];
     [[panelMock expect] setHidden:YES];
+    [[intervalMock expect] setText:intervalText];
+    [[periodUnitMock expect] setAllTitles:@"seconds"];
     [controller updateUICalculations:updateNotification];
 }
 
@@ -140,18 +141,23 @@
 {
     bool continuous = false;
     UInt64 numShots = 100;
+    NSString *numShotsText = [NSString stringWithFormat:@"%u", numShots];
     UInt64 interval = 5000;
+    NSString *intervalText = [NSString stringWithFormat:@"%u", interval / 1000];
     double fps = 23.97;
     NSString *expectedLength = @"0:0:4.17";
     NSString *expectedTime = @"0:8:20";
     
     [[[timelapseMock stub] andReturnValue:OCMOCK_VALUE(continuous)] continuousShooting];
+    [[[timelapseMock stub] andReturnValue:OCMOCK_VALUE(numShots)] shotCount];
+    [[[timelapseMock stub] andReturnValue:OCMOCK_VALUE(fps)] clipFramesPerSecond];
+    [[[timelapseMock stub] andReturnValue:OCMOCK_VALUE(interval)] shotInterval];
+    
     [[panelMock expect] setHidden:NO];
-    [[[timelapseMock expect] andReturnValue:OCMOCK_VALUE(numShots)] shotCount];
-    [[[timelapseMock expect] andReturnValue:OCMOCK_VALUE(fps)] clipFramesPerSecond];
+    [[intervalMock expect] setText:intervalText];
+    [[periodUnitMock expect] setAllTitles:@"seconds"];
+    [[shotCountMock expect] setText:numShotsText];
     [[finalLengthMock expect] setText:expectedLength];
-    [[[timelapseMock expect] andReturnValue:OCMOCK_VALUE(numShots)] shotCount];
-    [[[timelapseMock expect] andReturnValue:OCMOCK_VALUE(interval)] shotInterval];
     [[totalTimeMock expect] setText:expectedTime];
     
     [controller updateUICalculations:updateNotification];

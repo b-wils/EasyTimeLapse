@@ -71,7 +71,6 @@
 		B5049BDB15AFA6C400F4AF31 /* ETLHomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5990780158FFC9F0005C8E2 /* ETLHomeController.m */; };
 		B5049BDD15AFA6C400F4AF31 /* ETLProgramViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5ED520115924E5900B31083 /* ETLProgramViewController.m */; };
 		B5049BDF15AFA6C400F4AF31 /* ETLDoneProgrammingController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5420FD415AB63EF001E3D15 /* ETLDoneProgrammingController.m */; };
-		B5049BE115AFA6C400F4AF31 /* ETLBulbSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C1CD53159CF086005D6FC0 /* ETLBulbSettingsController.m */; };
 		B5049BE315AFA6E300F4AF31 /* ColorSwitcher.m in Sources */ = {isa = PBXBuildFile; fileRef = B5272DAB15A3857E00F62549 /* ColorSwitcher.m */; };
 		B5049BE515AFA6E300F4AF31 /* STSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = B5272D8B15A37CB700F62549 /* STSegmentedControl.m */; };
 		B5049BE715AFA6E300F4AF31 /* ADVPercentProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = B5272D9515A37CFB00F62549 /* ADVPercentProgressBar.m */; };
@@ -121,6 +120,9 @@
 		B5272DD415A66BCE00F62549 /* back_home@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5272DD015A66BCE00F62549 /* back_home@2x.png */; };
 		B5272DD515A66BCE00F62549 /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = B5272DD115A66BCE00F62549 /* back.png */; };
 		B5272DD615A66BCE00F62549 /* back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5272DD215A66BCE00F62549 /* back@2x.png */; };
+		B5336FEB15C9BEE30074D73A /* ETLStopList.m in Sources */ = {isa = PBXBuildFile; fileRef = B5336FEA15C9BEE30074D73A /* ETLStopList.m */; };
+		B5336FEC15C9BEE30074D73A /* ETLStopList.m in Sources */ = {isa = PBXBuildFile; fileRef = B5336FEA15C9BEE30074D73A /* ETLStopList.m */; };
+		B5336FEF15C9C5770074D73A /* ETLStopListTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B5336FED15C9BF150074D73A /* ETLStopListTest.m */; };
 		B5420FD215AB635F001E3D15 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = B5420FD115AB635F001E3D15 /* Default.png */; };
 		B5420FD615AB63EF001E3D15 /* ETLDoneProgrammingController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5420FD415AB63EF001E3D15 /* ETLDoneProgrammingController.m */; };
 		B5420FD915AB6853001E3D15 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5420FD815AB6853001E3D15 /* Storyboard.storyboard */; };
@@ -144,6 +146,8 @@
 		B599078F159008AF0005C8E2 /* ETLBulbController.m in Sources */ = {isa = PBXBuildFile; fileRef = B599078E159008AE0005C8E2 /* ETLBulbController.m */; };
 		B5990792159009180005C8E2 /* ETLHdrController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5990791159009180005C8E2 /* ETLHdrController.m */; };
 		B599079615900F830005C8E2 /* ETLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B599079515900F830005C8E2 /* ETLViewController.m */; };
+		B5B1E63415C9A95D001720C2 /* ETLBimodalController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5B1E63315C9A95D001720C2 /* ETLBimodalController.m */; };
+		B5B1E63515C9A95D001720C2 /* ETLBimodalController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5B1E63315C9A95D001720C2 /* ETLBimodalController.m */; };
 		B5B9D2271592732E000444BB /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5B9D2261592732E000444BB /* AudioToolbox.framework */; };
 		B5C0582F159E311200750DC9 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = B5C0582D159E311200750DC9 /* background.png */; };
 		B5C05830159E311200750DC9 /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5C0582E159E311200750DC9 /* background@2x.png */; };
@@ -158,8 +162,9 @@
 		B5C05843159E376F00750DC9 /* topbar_timelapse.png in Resources */ = {isa = PBXBuildFile; fileRef = B5C0583B159E376F00750DC9 /* topbar_timelapse.png */; };
 		B5C05844159E376F00750DC9 /* topbar_timelapse@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5C0583C159E376F00750DC9 /* topbar_timelapse@2x.png */; };
 		B5C1CD51159CE5B0005D6FC0 /* gears.png in Resources */ = {isa = PBXBuildFile; fileRef = B5C1CD50159CE5B0005D6FC0 /* gears.png */; };
-		B5C1CD55159CF086005D6FC0 /* ETLBulbSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C1CD53159CF086005D6FC0 /* ETLBulbSettingsController.m */; };
 		B5C1CD56159CF086005D6FC0 /* BulbSettings.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5C1CD54159CF086005D6FC0 /* BulbSettings.xib */; };
+		B5E68DB315C9CAF9008115D9 /* ETLPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E68DB215C9CAF9008115D9 /* ETLPickerView.m */; };
+		B5E68DB415C9CAF9008115D9 /* ETLPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E68DB215C9CAF9008115D9 /* ETLPickerView.m */; };
 		B5ED08151590F77B0026432C /* UIView+FindAndResignFirstResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = B5ED08141590F77B0026432C /* UIView+FindAndResignFirstResponder.m */; };
 		B5ED082315915FC00026432C /* NumpadDismissBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5ED082215915FC00026432C /* NumpadDismissBar.xib */; };
 		B5ED520215924E5900B31083 /* ETLProgramViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5ED520115924E5900B31083 /* ETLProgramViewController.m */; };
@@ -307,6 +312,10 @@
 		B5272DD015A66BCE00F62549 /* back_home@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "back_home@2x.png"; path = "../../../assets/v1/back_home@2x.png"; sourceTree = "<group>"; };
 		B5272DD115A66BCE00F62549 /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = back.png; path = ../../../assets/v1/back.png; sourceTree = "<group>"; };
 		B5272DD215A66BCE00F62549 /* back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "back@2x.png"; path = "../../../assets/v1/back@2x.png"; sourceTree = "<group>"; };
+		B5336FE915C9BEE30074D73A /* ETLStopList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETLStopList.h; sourceTree = "<group>"; };
+		B5336FEA15C9BEE30074D73A /* ETLStopList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLStopList.m; sourceTree = "<group>"; };
+		B5336FED15C9BF150074D73A /* ETLStopListTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ETLStopListTest.m; sourceTree = "<group>"; };
+		B5336FEE15C9C08A0074D73A /* ETLUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ETLUtil.h; sourceTree = "<group>"; };
 		B5420FD115AB635F001E3D15 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../../../assets/v1/Default.png; sourceTree = "<group>"; };
 		B5420FD315AB63EF001E3D15 /* ETLDoneProgrammingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETLDoneProgrammingController.h; sourceTree = "<group>"; };
 		B5420FD415AB63EF001E3D15 /* ETLDoneProgrammingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLDoneProgrammingController.m; sourceTree = "<group>"; };
@@ -359,6 +368,8 @@
 		B599079315900EF10005C8E2 /* ETLViewControllers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETLViewControllers.h; sourceTree = "<group>"; };
 		B599079415900F830005C8E2 /* ETLViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETLViewController.h; sourceTree = "<group>"; };
 		B599079515900F830005C8E2 /* ETLViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLViewController.m; sourceTree = "<group>"; };
+		B5B1E63215C9A95D001720C2 /* ETLBimodalController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETLBimodalController.h; sourceTree = "<group>"; };
+		B5B1E63315C9A95D001720C2 /* ETLBimodalController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLBimodalController.m; sourceTree = "<group>"; };
 		B5B9D2261592732E000444BB /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		B5C0582D159E311200750DC9 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = background.png; path = ../../../assets/v1/background.png; sourceTree = "<group>"; };
 		B5C0582E159E311200750DC9 /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "background@2x.png"; path = "../../../assets/v1/background@2x.png"; sourceTree = "<group>"; };
@@ -373,9 +384,10 @@
 		B5C0583B159E376F00750DC9 /* topbar_timelapse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = topbar_timelapse.png; path = ../../../assets/v1/topbar_timelapse.png; sourceTree = "<group>"; };
 		B5C0583C159E376F00750DC9 /* topbar_timelapse@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "topbar_timelapse@2x.png"; path = "../../../assets/v1/topbar_timelapse@2x.png"; sourceTree = "<group>"; };
 		B5C1CD50159CE5B0005D6FC0 /* gears.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gears.png; sourceTree = SOURCE_ROOT; };
-		B5C1CD52159CF085005D6FC0 /* ETLBulbSettingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETLBulbSettingsController.h; sourceTree = "<group>"; };
-		B5C1CD53159CF086005D6FC0 /* ETLBulbSettingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLBulbSettingsController.m; sourceTree = "<group>"; };
 		B5C1CD54159CF086005D6FC0 /* BulbSettings.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BulbSettings.xib; sourceTree = "<group>"; };
+		B5E68DB115C9CAF9008115D9 /* ETLPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETLPickerView.h; sourceTree = "<group>"; };
+		B5E68DB215C9CAF9008115D9 /* ETLPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLPickerView.m; sourceTree = "<group>"; };
+		B5E68DB515C9CB0B008115D9 /* ETLPickerViewTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLPickerViewTest.m; sourceTree = "<group>"; };
 		B5ED08131590F77B0026432C /* UIView+FindAndResignFirstResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+FindAndResignFirstResponder.h"; sourceTree = "<group>"; };
 		B5ED08141590F77B0026432C /* UIView+FindAndResignFirstResponder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FindAndResignFirstResponder.m"; sourceTree = "<group>"; };
 		B5ED082215915FC00026432C /* NumpadDismissBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NumpadDismissBar.xib; sourceTree = "<group>"; };
@@ -449,6 +461,7 @@
 		B504994C15AF55E900F4AF31 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				B5336FE815C9BEB70074D73A /* View */,
 				B504994D15AF560B00F4AF31 /* ETLTimelapse.h */,
 				B504994E15AF560B00F4AF31 /* ETLTimelapse.m */,
 				B5049BF415AFCA8200F4AF31 /* ETLModel.h */,
@@ -481,6 +494,8 @@
 				B5720DB515B49A9F0092FA31 /* TestArcHelper.h */,
 				B5720DB615B49A9F0092FA31 /* TestArcHelper.m */,
 				B5FF059F15B8B1EA00831EF7 /* ETLShotTest.m */,
+				B5336FED15C9BF150074D73A /* ETLStopListTest.m */,
+				B5E68DB515C9CB0B008115D9 /* ETLPickerViewTest.m */,
 			);
 			path = ETLTests;
 			sourceTree = "<group>";
@@ -545,6 +560,15 @@
 				B5272DAB15A3857E00F62549 /* ColorSwitcher.m */,
 			);
 			name = ColorSwitcher;
+			sourceTree = "<group>";
+		};
+		B5336FE815C9BEB70074D73A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B5336FE915C9BEE30074D73A /* ETLStopList.h */,
+				B5336FEA15C9BEE30074D73A /* ETLStopList.m */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 		B53DADF7159E7729000BBC31 /* Home */ = {
@@ -668,6 +692,7 @@
 				B504994C15AF55E900F4AF31 /* Models */,
 				B5272D8115A37C4A00F62549 /* Libraries */,
 				B5ED08121590F7440026432C /* Utility */,
+				B5E68DB015C9CADD008115D9 /* Views */,
 				B5ED08101590F7140026432C /* Controllers */,
 				B599077E158FFC650005C8E2 /* Resources */,
 				B5990762158FFC000005C8E2 /* ETLAppDelegate.h */,
@@ -795,8 +820,19 @@
 				B599078E159008AE0005C8E2 /* ETLBulbController.m */,
 				B5990790159009180005C8E2 /* ETLHdrController.h */,
 				B5990791159009180005C8E2 /* ETLHdrController.m */,
+				B5B1E63215C9A95D001720C2 /* ETLBimodalController.h */,
+				B5B1E63315C9A95D001720C2 /* ETLBimodalController.m */,
 			);
 			name = Shots;
+			sourceTree = "<group>";
+		};
+		B5E68DB015C9CADD008115D9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B5E68DB115C9CAF9008115D9 /* ETLPickerView.h */,
+				B5E68DB215C9CAF9008115D9 /* ETLPickerView.m */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		B5ED08101590F7140026432C /* Controllers */ = {
@@ -810,8 +846,6 @@
 				B5ED520115924E5900B31083 /* ETLProgramViewController.m */,
 				B5420FD315AB63EF001E3D15 /* ETLDoneProgrammingController.h */,
 				B5420FD415AB63EF001E3D15 /* ETLDoneProgrammingController.m */,
-				B5C1CD52159CF085005D6FC0 /* ETLBulbSettingsController.h */,
-				B5C1CD53159CF086005D6FC0 /* ETLBulbSettingsController.m */,
 				B5161D4C15C74B760037F120 /* ETLSettingsViewController.h */,
 				B5161D4D15C74B760037F120 /* ETLSettingsViewController.m */,
 				B5161D5015C77E610037F120 /* ETLPreProgrammingController.h */,
@@ -829,6 +863,7 @@
 				B5272DA715A3800E00F62549 /* NSArray+ArrayUtility.m */,
 				B5F7392B15BF5F3E00A784A4 /* UIButton+setAllTitles.h */,
 				B5F7392C15BF5F3E00A784A4 /* UIButton+setAllTitles.m */,
+				B5336FEE15C9C08A0074D73A /* ETLUtil.h */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -1019,6 +1054,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5336FEF15C9C5770074D73A /* ETLStopListTest.m in Sources */,
 				B5720DB215B48BBF0092FA31 /* ETLProgrammer.m in Sources */,
 				B5049BF715AFCBE000F4AF31 /* ETLModel.m in Sources */,
 				B5049BE315AFA6E300F4AF31 /* ColorSwitcher.m in Sources */,
@@ -1038,7 +1074,6 @@
 				B5049BDB15AFA6C400F4AF31 /* ETLHomeController.m in Sources */,
 				B5049BDD15AFA6C400F4AF31 /* ETLProgramViewController.m in Sources */,
 				B5049BDF15AFA6C400F4AF31 /* ETLDoneProgrammingController.m in Sources */,
-				B5049BE115AFA6C400F4AF31 /* ETLBulbSettingsController.m in Sources */,
 				B5049BCA15AFA68300F4AF31 /* ETLTimelapseSlidersController.m in Sources */,
 				B5049BCC15AFA68300F4AF31 /* ETLTimelapseController.m in Sources */,
 				B5049B7815AF66CC00F4AF31 /* ETLTimelapse.m in Sources */,
@@ -1060,6 +1095,9 @@
 				B5F7392E15BF5F3E00A784A4 /* UIButton+setAllTitles.m in Sources */,
 				B5161D4F15C74B760037F120 /* ETLSettingsViewController.m in Sources */,
 				B5161D5315C77E610037F120 /* ETLPreProgrammingController.m in Sources */,
+				B5B1E63515C9A95D001720C2 /* ETLBimodalController.m in Sources */,
+				B5336FEC15C9BEE30074D73A /* ETLStopList.m in Sources */,
+				B5E68DB415C9CAF9008115D9 /* ETLPickerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1079,7 +1117,6 @@
 				B5ED520215924E5900B31083 /* ETLProgramViewController.m in Sources */,
 				B558F8AD1592D7F800CB6E24 /* ETLShotViewController.m in Sources */,
 				B50D23B8159B9C5F00F2FCCC /* ETLTimelapseSlidersController.m in Sources */,
-				B5C1CD55159CF086005D6FC0 /* ETLBulbSettingsController.m in Sources */,
 				B5272D8C15A37CB700F62549 /* STSegmentedControl.m in Sources */,
 				B5272D9115A37CCD00F62549 /* RCSwitch.m in Sources */,
 				B5272D9215A37CCD00F62549 /* RCSwitchOnOff.m in Sources */,
@@ -1098,6 +1135,9 @@
 				B5F7392D15BF5F3E00A784A4 /* UIButton+setAllTitles.m in Sources */,
 				B5161D4E15C74B760037F120 /* ETLSettingsViewController.m in Sources */,
 				B5161D5215C77E610037F120 /* ETLPreProgrammingController.m in Sources */,
+				B5B1E63415C9A95D001720C2 /* ETLBimodalController.m in Sources */,
+				B5336FEB15C9BEE30074D73A /* ETLStopList.m in Sources */,
+				B5E68DB315C9CAF9008115D9 /* ETLPickerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

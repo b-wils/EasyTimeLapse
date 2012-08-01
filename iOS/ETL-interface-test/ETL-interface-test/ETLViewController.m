@@ -57,4 +57,8 @@
     [w findAndResignFirstResponder];
 }
 
+- (void)updateUICalculations:(NSNotification *)notification
+{
+}
+
 @end

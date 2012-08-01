@@ -237,7 +237,7 @@
 {
     periodUnit = [periodUnits objectAtIndex:row];
     [self displayPicker:NO animated:YES];
-    
+
     [self didUpdatePeriod:shotPeriodField];
 }
 
