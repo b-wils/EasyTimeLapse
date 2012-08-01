@@ -16,20 +16,23 @@
 typedef uint8_t byte;
 #endif
 
+// bit feilds
 enum {
  CONFIG_PAUSE = 0,
- CONFIG_LOOP_BEGIN,
- CONFIG_LOOP_END,
- CONFIG_PRESS_TO_ADVANCE
+ CONFIG_PRESS_TO_ADVANCE = 1,
+ CONFIG_PRESS_TO_DERAMP = 2,
+ CONFIG_PRESS_TO_PAUSE = 3,
+ CONFIG_SIN_BYTE1 = 6,
+ CONFIG_SIN_BYTE2 = 7,
 };
 
-#define CONFIG_SIN_MASK (_BV(7) | _BV(6))
+#define CONFIG_SIN_MASK (_BV(CONFIG_SIN_BYTE2) | _BV(CONFIG_SIN_BYTE1))
 #define CONFIG_SIN_P1   (0)
-#define CONFIG_SIN_P2   (_BV(6))
-#define CONFIG_SIN_P3   (_BV(7))
-#define CONFIG_SIN_P4   (_BV(7) | _BV(6))
+#define CONFIG_SIN_P2   (_BV(CONFIG_SIN_BYTE1))
+#define CONFIG_SIN_P3   (_BV(CONFIG_SIN_BYTE2))
+#define CONFIG_SIN_P4   (_BV(CONFIG_SIN_BYTE2) | _BV(CONFIG_SIN_BYTE1))
 
-#define MAX_CONFIGS 5
+#define MAX_CONFIGS 10
 
 enum deviceCommands {
 	ETL_COMMAND_INVALID = 0,
@@ -60,12 +63,14 @@ typedef struct {
 	float     exposureFstopChangePerMin;
     float     fstopSinAmplitude;
 	int8_t    fstopChangeOnPress;
+	uint8_t    sinPhase;
 } PACKED BulbRamp;
 
 typedef struct {
 	uint32_t   intervalDelta;
-    int8_t     repeatIndex;
     uint16_t   numRepeats;
+    int8_t     repeatIndex;
+	uint8_t	   changeConfigInfo;
 } PACKED IntervalRamp;
 
 typedef struct {

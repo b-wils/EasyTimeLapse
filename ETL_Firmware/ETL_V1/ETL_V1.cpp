@@ -86,60 +86,62 @@ void initFromEEProm() {
 void populateConfigs() {
     //myConfigs[0].type = CONFIG_SIN_P4
 	myConfigs[0].type = 0;
+	sbi(myConfigs[0].type, CONFIG_PAUSE);
     myConfigs[0].repeatIndex = 0;
     myConfigs[0].numRepeats = 0;
-    myConfigs[0].shots = 500;
+    myConfigs[0].shots = 20;
     myConfigs[0].interval = 2000;
     myConfigs[0].intervalDelta = 0;
-    //myConfigs[0].exposureOffset = -2.841463415;
 	myConfigs[0].exposureOffset = -2;
-    myConfigs[0].exposureFstopChangePerMin = -2;
-	//myConfigs[0].fstopSinAmplitude = 0.158536585;
+    myConfigs[0].exposureFstopChangePerMin = 0;
 	myConfigs[0].fstopSinAmplitude = 0;
     myConfigs[0].fstopIncreasePerHDRShot = 0;
     myConfigs[0].numHDRShots = 0;
-	myConfigs[0].fstopChangeOnPress = 2;
+	myConfigs[0].fstopChangeOnPress = 0;
 	
     myConfigs[1].type = 0;
+	sbi(myConfigs[1].type, CONFIG_PRESS_TO_ADVANCE);
     myConfigs[1].repeatIndex = 0;
     myConfigs[1].numRepeats = 0;
-    myConfigs[1].shots = 400;
-    myConfigs[1].interval = 12000;
-    myConfigs[1].intervalDelta = 0;
-    myConfigs[1].exposureOffset = -2.841463415;
-    myConfigs[1].exposureFstopChangePerMin = 0.158536585;
+    myConfigs[1].shots = 20;
+    myConfigs[1].interval = 2000;
+    myConfigs[1].intervalDelta = 100;
+    myConfigs[1].exposureOffset = -2;
+    myConfigs[1].exposureFstopChangePerMin = 0;
 	myConfigs[1].fstopSinAmplitude = 0;
     myConfigs[1].fstopIncreasePerHDRShot = 0;
     myConfigs[1].numHDRShots = 0;
-	myConfigs[1].fstopChangeOnPress = -4;
+	myConfigs[1].fstopChangeOnPress = 0;
 	
-    myConfigs[2].type = CONFIG_SIN_P1;
+    myConfigs[2].type = 0;
+	sbi(myConfigs[2].type, CONFIG_PRESS_TO_ADVANCE);
     myConfigs[2].repeatIndex = 0;
     myConfigs[2].numRepeats = 0;
-    myConfigs[2].shots = 50;
-    myConfigs[2].interval = 12000;
+    myConfigs[2].shots = 20;
+    myConfigs[2].interval = 4000;
     myConfigs[2].intervalDelta = 0;
-    myConfigs[2].exposureOffset = 2.841463415;
+    myConfigs[2].exposureOffset = -2;
     myConfigs[2].exposureFstopChangePerMin = 0;
-	myConfigs[2].fstopSinAmplitude = 0.158536585;
+	myConfigs[2].fstopSinAmplitude = 0;
     myConfigs[2].fstopIncreasePerHDRShot = 0;
     myConfigs[2].numHDRShots = 0;
 	myConfigs[2].fstopChangeOnPress = 0;
 	//
-    //myConfigs[3].type = 0;
-    //myConfigs[3].repeatIndex = 0; 
-    //myConfigs[3].numRepeats = 0;
-    //myConfigs[3].shots = 100;
-    //myConfigs[3].interval = 12000;
-    //myConfigs[3].intervalDelta = 0;
-    //myConfigs[3].exposureOffset = 2;
-    //myConfigs[3].exposureFstopChangePerMin = 0;
-	//myConfigs[3].fstopSinAmplitude = 0;
-    //myConfigs[3].fstopIncreasePerHDRShot = 0;
-    //myConfigs[3].numHDRShots = 0;
-	//myConfigs[3].fstopChangeOnPress = 0;
+    myConfigs[3].type = 0;
+	sbi(myConfigs[3].type, CONFIG_PRESS_TO_ADVANCE);
+    myConfigs[3].repeatIndex = 0; 
+    myConfigs[3].numRepeats = 10;
+    myConfigs[3].shots = 20;
+    myConfigs[3].interval = 4000;
+    myConfigs[3].intervalDelta = -100;
+    myConfigs[3].exposureOffset = -2;
+    myConfigs[3].exposureFstopChangePerMin = 0;
+	myConfigs[3].fstopSinAmplitude = 0;
+    myConfigs[3].fstopIncreasePerHDRShot = 0;
+    myConfigs[3].numHDRShots = 0;
+	myConfigs[3].fstopChangeOnPress = 0;
 	
-	numConfigs = 1;
+	numConfigs = 4;
 }
 
 void enableADC() {
@@ -389,7 +391,14 @@ void ProcessButton() {
 						}							
 			            break;
 				    case STATE_TIMELAPSE_PAUSE:
-					    TimelapseResume();
+					    if (millis() - buttonPressTime > BUTTON_STOP_TIMELAPSE_PERIOD) {
+							DebugPrintln(F("Abandon Timelapse"));
+							SetLEDCycle(LED_CYCLE_TIMELAPSE_ABANDON);
+							InitTransmitState();
+						} else {							
+			                TimelapseResume();
+						}	
+					    
 						break;
 		            case STATE_IDLE:
                         if (millis() - buttonPressTime > BUTTON_TRANSMIT_PERIOD) {

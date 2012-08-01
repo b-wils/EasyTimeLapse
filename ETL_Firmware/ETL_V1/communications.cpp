@@ -26,6 +26,9 @@ uint8_t idleRetryCount;
 uint8_t bytesRead = 0;
 size_t modemPacketIndex = 0;
 
+// For testing retry
+uint8_t sendExtraByte;
+
 bool firstPacketReceived;
 
 extern SectionConfig myConfigs[MAX_CONFIGS];
@@ -36,6 +39,7 @@ extern uint8_t timelapseValid;
 uint32_t idleTimer;
 
 void InitTransmitState() { 
+	sendExtraByte = 1;
 	firstPacketReceived = false;
 	switch (currentState) {
 		case STATE_IDLE:
@@ -228,11 +232,13 @@ void ProcessTransmitState() {
 				        myConfigs[configPointer].exposureFstopChangePerMin = recvPacket.bulbRamp.exposureFstopChangePerMin;
 					    myConfigs[configPointer].fstopChangeOnPress = recvPacket.bulbRamp.fstopChangeOnPress;
 					    myConfigs[configPointer].fstopSinAmplitude = recvPacket.bulbRamp.fstopSinAmplitude;
+						myConfigs[configPointer].type |= recvPacket.bulbRamp.sinPhase;
 				        break;
 	                case ETL_COMMAND_INTERVALRAMP:
 				        myConfigs[configPointer].intervalDelta = recvPacket.intervalRamp.intervalDelta;
 					    myConfigs[configPointer].numRepeats = recvPacket.intervalRamp.numRepeats;
 					    myConfigs[configPointer].repeatIndex = recvPacket.intervalRamp.repeatIndex;
+						myConfigs[configPointer].type |= recvPacket.intervalRamp.changeConfigInfo;
 				        break;
 	                case ETL_COMMAND_HDRSHOT:
 				        myConfigs[configPointer].fstopIncreasePerHDRShot = recvPacket.hdrShot.fstopIncreasePerHDRShot;

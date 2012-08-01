@@ -264,7 +264,16 @@ void ProcessTimelapseWaiting() {
 				DebugPrintln(newOffset);
 				InitTimelapsePauseState();
 			}
-		} else {
+		} else if (myConfigs[configIndex].type & _BV(CONFIG_PRESS_TO_ADVANCE)) {
+			DebugPrintln(F("Press: Advance to next section"));
+			TimelapseSettingComplete();
+		} else if (myConfigs[configIndex].type & _BV(CONFIG_PRESS_TO_PAUSE)) {
+			DebugPrintln(F("Press: Pause timelapse"));
+			InitTimelapsePauseState();
+		} else if (myConfigs[configIndex].type & _BV(CONFIG_PRESS_TO_DERAMP)) {
+			DebugPrintln(F("Press: Interval deramp"));
+		} else { 
+			DebugPrintln(F("Nothing to do with button click"));
 			SetLEDCycle(LED_CYCLE_BAD_CLICK);
 		}
 	}
@@ -301,8 +310,11 @@ void ProcessTimelapseWaiting() {
 			}
 		}
 		
-		DebugPrint(F("Exp length "));
+		DebugPrint(F("Interval: "));
+		DebugPrint(currentInterval);
+		DebugPrint(F(" Exp length: "));
 		DebugPrintln(exposureLength);
+		
 		
 		if (exposureLength > (myConfigs[configIndex].interval - BUFFER_RECOVER_TIME)) {
 			DebugPrintln(F("Exposure length/interval collision"));

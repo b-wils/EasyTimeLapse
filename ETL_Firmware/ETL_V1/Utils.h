@@ -123,6 +123,13 @@ void DebugPrint(const __FlashStringHelper * myString) {
 }
 
 static inline
+void DebugPrint(int myString) {
+#ifdef DEBUGPRINT
+	Serial.println(myString);
+#endif
+}
+
+static inline
 void DebugPrintln(int myString) {
 #ifdef DEBUGPRINT
 	Serial.println(myString);
