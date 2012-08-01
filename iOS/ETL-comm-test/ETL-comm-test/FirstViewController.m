@@ -35,7 +35,7 @@
 //        NSLog(@"interval ramp size %ld", sizeof(IntervalRamp));
 //        NSLog(@"hdr size %ld", sizeof(HDRShot));
         
-        
+        sendExtraByte = 1;
         
         [self populatePackets];
     }
@@ -161,9 +161,9 @@
                     break;
                 case IOS_COMMAND_DEVICEINFO:
                     NSLog(@"Device info:");
-                    NSLog(@"  Major Version: %d", receivePacket.deviceInfo.MajorVersion);
-                    NSLog(@"  Minor Version: %d", receivePacket.deviceInfo.MinorVersion);
-                    NSLog(@"  BatteryLevel: %d", receivePacket.deviceInfo.BatteryLevel);
+                    NSLog(@"  Major Version: %d", receivePacket.deviceInfo.majorVersion);
+                    NSLog(@"  Minor Version: %d", receivePacket.deviceInfo.minorVersion);
+                    NSLog(@"  BatteryLevel: %d", receivePacket.deviceInfo.batteryLevel);
                     break;
                 case IOS_COMMAND_INVALID:
                 default:
@@ -205,6 +205,13 @@
             progressBarTimer = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(updateProgressBar:) userInfo:nil repeats:YES];
             
             [deviceInterface startPlayer];
+            
+            if (sendExtraByte > 0) {
+                sendExtraByte--;
+                [deviceInterface writeBuffer:(uint8_t *) &sendExtraByte ofSize:sizeof(sendExtraByte)];
+                NSLog(@"Send extra bytes");
+            }
+            
             [deviceInterface writeBuffer:(uint8_t *) &sentPackets[packetIndex] ofSize:sizeof(sentPackets[packetIndex])];
             totalCommandBits = 32;
         }

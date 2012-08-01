@@ -36,6 +36,8 @@
     IPhonePacket receivePacket;
     
     VariablePacket sentPackets[MAX_PACKETS];
+    
+    int sendExtraByte;
 }
 -(IBAction)programButtonPush;
 -(IBAction)listenButtonPush;
