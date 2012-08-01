@@ -226,11 +226,11 @@
             </objects>
             <point key="canvasLocation" x="1396" y="916"/>
         </scene>
-        <!--View Controller-->
+        <!--Remote Controller-->
         <scene sceneID="MwY-pB-QmC">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wGS-qz-KQL" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="ehp-Qf-Jjj" customClass="ETLViewController" sceneMemberID="viewController">
+                <viewController id="ehp-Qf-Jjj" customClass="ETLRemoteController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KiE-gZ-f06">
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -326,11 +326,11 @@
             </objects>
             <point key="canvasLocation" x="948" y="1196"/>
         </scene>
-        <!--View Controller-->
+        <!--Bimodal Controller-->
         <scene sceneID="NwC-I8-GL2">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="slh-fU-5TW" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="Tsi-pV-1SK" customClass="ETLViewController" sceneMemberID="viewController">
+                <viewController id="Tsi-pV-1SK" customClass="ETLBimodalController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bfN-zT-Ohj">
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -440,7 +440,7 @@
                                 <rect key="frame" x="6" y="6" width="50" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" image="back.png">
+                                <state key="normal" title="Back" image="back.png">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -478,6 +478,57 @@
             </objects>
             <point key="canvasLocation" x="1399" y="1519"/>
         </scene>
+        <!--Instructions Controller-->
+        <scene sceneID="4lT-lP-tbr">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="msp-OB-HHz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="YHx-t6-PRX" customClass="ETLInstructionsController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="W7R-Vu-y6b">
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="instructions_timelapse.png" id="PIU-VF-XB3">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="VEA-HM-2zI">
+                                <rect key="frame" x="25" y="390" width="270" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" image="done.png">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="goBack:" destination="JBh-wh-e8h" eventType="touchUpInside" id="iKr-HF-ERr"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="PLV-cK-czL">
+                                <rect key="frame" x="6" y="6" width="50" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Back" image="back.png">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="goBack:" destination="Tsi-pV-1SK" eventType="touchUpInside" id="akT-Ov-ayI"/>
+                                    <action selector="goBack:" destination="shY-YR-N1D" eventType="touchUpInside" id="tMD-An-jzq"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="355" y="-1297"/>
+        </scene>
         <!--Settings View Controller-->
         <scene sceneID="IzL-sO-Bve">
             <objects>
@@ -491,7 +542,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="mjx-lX-dIO">
+                            <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="mjx-lX-dIO">
                                 <rect key="frame" x="221" y="264" width="79" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.14263999829999999" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
@@ -560,7 +611,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Use flash feedback?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="mpz-P0-Hok">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Use flash feedback" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="mpz-P0-Hok">
                                 <rect key="frame" x="17" y="267" width="161" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
@@ -594,7 +645,7 @@
                                     <action selector="goBack:" destination="bWH-Z2-4Nh" eventType="touchUpInside" id="uOd-3o-dHI"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="5" textAlignment="center" minimumFontSize="17" background="text_input.png" id="9Wp-aM-6vM">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" textAlignment="center" minimumFontSize="17" background="text_input.png" id="9Wp-aM-6vM">
                                 <rect key="frame" x="247" y="202" width="53" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
@@ -813,18 +864,11 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="5" textAlignment="center" minimumFontSize="17" background="text_input.png" id="oV0-0v-ghp">
-                                <rect key="frame" x="155" y="67" width="53" height="35"/>
+                                <rect key="frame" x="20" y="67" width="53" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad" keyboardAppearance="alert" returnKeyType="done"/>
                             </textField>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Take a shot every" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="16" id="stc-in-yLJ">
-                                <rect key="frame" x="20" y="75" width="134" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="19"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Then, ramp over" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="16" id="HxZ-lY-OGf">
                                 <rect key="frame" x="20" y="187" width="122" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -840,7 +884,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="2DU-Nr-qg2">
-                                <rect key="frame" x="218" y="67" width="82" height="35"/>
+                                <rect key="frame" x="82" y="67" width="83" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                                 <state key="normal" title="seconds" backgroundImage="text_input.png">
@@ -1374,6 +1418,7 @@
         <image name="homebutton_timelapse_pressed.png" width="130" height="100"/>
         <image name="howto.png" width="320" height="460"/>
         <image name="indent_mid.png" width="320" height="100"/>
+        <image name="instructions_timelapse.png" width="320" height="460"/>
         <image name="preprogram.png" width="320" height="460"/>
         <image name="ready.png" width="268" height="47"/>
         <image name="ready_pressed.png" width="268" height="47"/>
@@ -1389,6 +1434,9 @@
         <image name="topbar_timelapse.png" width="320" height="44"/>
     </resources>
     <classes>
+        <class className="ETLBimodalController" superclassName="ETLShotViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ETLBimodalController.h"/>
+        </class>
         <class className="ETLBulbController" superclassName="ETLShotViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ETLBulbController.h"/>
             <relationships>
@@ -1480,8 +1528,8 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="rBU-MJ-KTo"/>
         <segue reference="RpZ-Wg-K2n"/>
         <segue reference="jON-PE-T2z"/>
-        <segue reference="2P8-c0-vOa"/>
     </inferredMetricsTieBreakers>
 </document>
