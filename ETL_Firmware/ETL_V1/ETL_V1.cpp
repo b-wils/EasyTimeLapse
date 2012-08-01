@@ -251,8 +251,9 @@ void setup() {
 	
 	nextLedTime = millis();
     
-	//populateConfigs();
+	
 	initFromEEProm();
+	populateConfigs();
 	
 	analogReference(INTERNAL);
 	

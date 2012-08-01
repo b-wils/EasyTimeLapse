@@ -255,13 +255,14 @@ void ProcessTimelapseWaiting() {
 				DebugPrintln(F("Exposure too high"));
 				SetLEDCycle(LED_CYCLE_STOP_CHANGE_FAILURE);
 			} else {
+				// Safe to change our exposure
 				exposurePressChange += myConfigs[configIndex].fstopChangeOnPress;
 				int32_t newOffset = myConfigs[configIndex].exposureOffset + exposurePressChange;
 				DebugPrint(F("tempExposure: "));
 				DebugPrintln(tempExposure);
                 DebugPrint(F("newOffset: "));
 				DebugPrintln(newOffset);
-				SetLEDCycle(LED_CYCLE_STOP_CHANGE_SUCCESS);
+				InitTimelapsePauseState();
 			}
 		} else {
 			SetLEDCycle(LED_CYCLE_BAD_CLICK);
