@@ -21,6 +21,8 @@ extern uint32_t nextLedTime;
 uint32_t printTimer = 0;
 byte printval;
 
+uint8_t crcErrors;
+uint8_t idleRetryCount;
 uint8_t bytesRead = 0;
 size_t modemPacketIndex = 0;
 
@@ -62,6 +64,9 @@ void InitTransmitState() {
 	printval = 'A';
 	
 	configPointer = 0;
+	
+	crcErrors = 0;
+	idleRetryCount = 0;
 	
 	//
 	// Send our begin packet
@@ -125,6 +130,7 @@ void ProcessTransmitState() {
 			memset(&sendPacket, 0, sizeof(IPhonePacket));
 			
 			bytesRead = 0;
+			idleRetryCount = 0;
 		
             crc_t myCrc = crc_init();
 		    myCrc = crc_update(myCrc, (byte*) &recvPacket + sizeof(crc_t), sizeof(recvPacket) - sizeof(crc_t));
@@ -159,7 +165,33 @@ void ProcessTransmitState() {
 			    //DebugPrintln();
 				
 				// TODO for now we always request a packet, need specifc retry code here
+				
+				crcErrors++;
+				
+				if (crcErrors >= CRC_ERRORS_TO_ABANDON) {
+					LeaveTransmitState();
+					DebugPrintln(F("CRC errors exceeded"));
+					SetLEDCycle(LED_CYCLE_PROGRAM_FAILURE);
+					return;
+				}
+				
+				if ((crcErrors % CRC_ERRORS_TO_CLEAR_BUFFER) == 0) {
+					DebugPrintln(F("CRC errors - clear buffer"));
+					// wait 500 ms then clear out the buffer
+					delay(500);
+					
+					while (modem.available()) {
+						modem.read();
+					}
+					
+					SetLEDCycle(LED_CYCLE_PROGRAM_CLEAR_BUFFER);
+				}
+				
+				InitRequestPacket(&sendPacket, modemPacketIndex);
+				
 		    } else {
+				crcErrors = 0;
+				
 				SetLEDCycle(LED_CYCLE_CRC_MATCH);
 				
 			    DebugPrint(F("packet success; crc = "));
@@ -245,9 +277,22 @@ void ProcessTransmitState() {
 		idleTimer = millis();
 	}
 	
-	if (millis() > idleTimer + IDLE_TIMEOUT_PERIOD) {
-		DebugPrintln(F("Idle timeout"));
-		LeaveTransmitState();
+	if (millis() > idleTimer + IDLE_RETRY_PERIOD) {
+		
+		idleRetryCount++;
+		idleTimer = millis();
+		
+		if (idleRetryCount > MAX_IDLE_RETRY_COUNT) {
+			DebugPrintln(F("Idle timeout"));
+			LeaveTransmitState();
+			return;
+		}
+
+		DebugPrintln("Retry packet");
+		IPhonePacket sendPacket;
+			
+		InitRequestPacket(&sendPacket, modemPacketIndex);
+		modem.writeBytes((uint8_t *) &sendPacket, sizeof(sendPacket));
 	}
 }
 
