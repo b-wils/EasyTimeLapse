@@ -51,7 +51,7 @@ void SetConfig(int index) {
     shotsRemaining = myConfigs[index].shots;
     currentInterval = myConfigs[index].interval;
 	HDRShotNumber = 0;
-	exposurePressChange = 0; // TODO there may be cases where we want to preserve this across configs
+	
 	//
 		//DebugPrint("use flash: ");
 		//DebugPrintln(useFlashFeeback, HEX);
@@ -162,6 +162,7 @@ void InitTimelapseState() {
 	buttonClicked = false;
 	buttonHeld = false;
 	configIndex = 0;
+	exposurePressChange = 0; // TODO there may be cases where we want to preserve this across configs
 	repeatsRemaining = -1;
 	
 	nextPhotoTime = millis();

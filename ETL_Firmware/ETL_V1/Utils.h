@@ -15,13 +15,6 @@
 #include <avr/sleep.h>
 #include <avr/interrupt.h>
 
-#ifndef cbi
-#define cbi(sfr, bit) (_SFR_BYTE(sfr) &= ~_BV(bit))
-#endif
-#ifndef sbi
-#define sbi(sfr, bit) (_SFR_BYTE(sfr) |= _BV(bit))
-#endif
-
 struct RGBColors {	
 	byte red;
 	byte green;
