@@ -86,7 +86,7 @@ void initFromEEProm() {
 void populateConfigs() {
     //myConfigs[0].type = CONFIG_SIN_P4
 	myConfigs[0].type = 0;
-	sbi(myConfigs[0].type, CONFIG_PAUSE);
+	sbi(myConfigs[0].type, CONFIG_PRESS_TO_ADVANCE);
     myConfigs[0].repeatIndex = 0;
     myConfigs[0].numRepeats = 0;
     myConfigs[0].shots = 20;
@@ -100,7 +100,7 @@ void populateConfigs() {
 	myConfigs[0].fstopChangeOnPress = 0;
 	
     myConfigs[1].type = 0;
-	sbi(myConfigs[1].type, CONFIG_PRESS_TO_ADVANCE);
+	sbi(myConfigs[1].type, CONFIG_PRESS_TO_DERAMP);
     myConfigs[1].repeatIndex = 0;
     myConfigs[1].numRepeats = 0;
     myConfigs[1].shots = 20;
@@ -128,7 +128,7 @@ void populateConfigs() {
 	myConfigs[2].fstopChangeOnPress = 0;
 	//
     myConfigs[3].type = 0;
-	sbi(myConfigs[3].type, CONFIG_PRESS_TO_ADVANCE);
+	sbi(myConfigs[3].type, CONFIG_PRESS_TO_DERAMP);
     myConfigs[3].repeatIndex = 0; 
     myConfigs[3].numRepeats = 10;
     myConfigs[3].shots = 20;

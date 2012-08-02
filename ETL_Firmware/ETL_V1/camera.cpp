@@ -224,6 +224,20 @@ int32_t CalcExpTime(uint32_t startTime, uint32_t endTime, float fstopSinAmplitud
 	return exposureLength;
 }
 
+// We will probably need a better/more abstract way to do this.
+// This assumes 1) there is a corresponding deramp 2 sections ahead and
+//              2) the rates of change are the same magnitude
+void BulbDeramp() {
+	uint32_t newShotCounter = myConfigs[configIndex].shots - shotsRemaining - 2;
+	uint32_t newInterval = currentInterval;
+	TimelapseSettingComplete();
+	TimelapseSettingComplete();
+	
+	currentInterval = newInterval + (myConfigs[configIndex].intervalDelta * 2);
+	
+	shotsRemaining = newShotCounter;
+}
+
 void ProcessTimelapseWaiting() {
 	
 	if (buttonHeld == true) {
@@ -272,6 +286,7 @@ void ProcessTimelapseWaiting() {
 			InitTimelapsePauseState();
 		} else if (myConfigs[configIndex].type & _BV(CONFIG_PRESS_TO_DERAMP)) {
 			DebugPrintln(F("Press: Interval deramp"));
+			BulbDeramp();
 		} else { 
 			DebugPrintln(F("Nothing to do with button click"));
 			SetLEDCycle(LED_CYCLE_BAD_CLICK);
