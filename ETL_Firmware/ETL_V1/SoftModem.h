@@ -42,10 +42,12 @@
 //  1 stop bit (HIGH)
 //  1 push bit (HIGH)
 
+#define SOFT_MODEM_MAX_WRITE_BUFFER (32)
+
 #include <inttypes.h>
 #include <avr/io.h>
 
-#define SOFT_MODEM_DEBUG       (1)
+//#define SOFT_MODEM_DEBUG       (1)
 
 class SoftModem
 {
@@ -59,6 +61,9 @@ private:
 	uint8_t _recvBufferHead;
 	uint8_t _recvBufferTail;
 	uint8_t _recvBuffer[SOFT_MODEM_MAX_RX_BUFF];
+	uint8_t _sendBufferHead;
+	uint8_t _sendBufferTail;
+	uint8_t _sendBuffer[SOFT_MODEM_MAX_WRITE_BUFFER];
 	uint16_t _lowCount;  // TODO upped this to 16bit values to deal with overflow
 	uint16_t _highCount; // Do deeper investigation between depth and modem settings
 	void modulate(uint8_t b);
@@ -75,6 +80,8 @@ public:
 	#else
 	void write(uint8_t data);
 	void writeBytes(uint8_t *data, uint16_t length);
+	void fillBuffer(uint8_t *data, uint16_t length);
+	void flushBuffer(uint16_t bytes);
 	#endif
 	void demodulate(void);
 	void recv(void);

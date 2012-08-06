@@ -148,6 +148,7 @@ void SoftModem::begin(void)
 
 	_recvStat = 0xff;
 	_recvBufferHead = _recvBufferTail = 0;
+	_sendBufferHead = _sendBufferTail = 0;
 
 	SoftModem::activeObject = this;
 
@@ -391,6 +392,34 @@ void
     SoftModem::writeBytes(uint8_t *data, uint16_t length) {
 	for (int i = 0; i < length; i++) {
 		write(data[i]);
+	}
+}
+
+void
+SoftModem::fillBuffer(uint8_t *data, uint16_t length) {
+	int i;
+	for (i = 0; i < length; i++) {
+		uint8_t new_tail = (_sendBufferTail + 1) & (SOFT_MODEM_MAX_WRITE_BUFFER - 1);
+		if(new_tail != _sendBufferHead){
+			_sendBuffer[_sendBufferTail] = data[i];
+			_sendBufferTail = new_tail;
+		} else {
+			DebugPrintln(F("Buffer is full"));
+			return;	
+		}
+	}		
+}
+
+void
+SoftModem::flushBuffer(uint16_t bytes) {
+	for (int i = 0; i < bytes; i++) {
+		if(_sendBufferHead == _sendBufferTail) {
+			return;
+		}
+
+		int d = _sendBuffer[_sendBufferHead];
+		_sendBufferHead = (_sendBufferHead + 1) & (SOFT_MODEM_MAX_WRITE_BUFFER - 1);
+		write(d);
 	}
 }
 

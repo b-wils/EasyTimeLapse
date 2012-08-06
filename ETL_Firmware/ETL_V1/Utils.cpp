@@ -53,8 +53,8 @@ void PrintSectionConfig(SectionConfig SecConf) {
 
     //DebugPrintln("Section Config:");
 //
-    //DebugPrint("  type: ");
-	//DebugPrintln(SecConf.type);
+    DebugPrint(F("  type: "));
+	DebugPrintln(SecConf.type, HEX);
 	//
 	//DebugPrint("  repeatIndex: ");
 	//DebugPrintln(SecConf.repeatIndex);
@@ -71,23 +71,35 @@ void PrintSectionConfig(SectionConfig SecConf) {
 	//DebugPrint("  intervalDelta: ");
 	//DebugPrintln(SecConf.intervalDelta);
 	
-	DebugPrint(F("  exposureOffset: "));
-	DebugPrintln(SecConf.exposureOffset);
-	//
-	//DebugPrint("  exposureFstopChangePerMin: ");
-	//DebugPrintln(SecConf.exposureFstopChangePerMin);
-//
-	//DebugPrint("  fstopSinAmplitude: ");
-	//DebugPrintln(SecConf.fstopSinAmplitude);
+	if (SecConf.exposureOffset != 0 ) {
+		DebugPrint(F("  exposureOffset: "));
+		DebugPrintln(SecConf.exposureOffset);
+	}
 	
-	DebugPrint(F("  fstopIncreasePerHDRShot: "));
-	DebugPrintln(SecConf.fstopIncreasePerHDRShot);
-	//
-	DebugPrint(F("  numHDRShots: "));
-	DebugPrintln(SecConf.numHDRShots);
-	////
-	//DebugPrint("  fstopChangeOnPress: ");
-	//DebugPrintln(SecConf.fstopChangeOnPress);
+	if (SecConf.exposureFstopChangePerMin != 0 ) {
+		DebugPrint(F("  exposureFstopChangePerMin: "));
+		DebugPrintln(SecConf.exposureFstopChangePerMin);
+	}
+	
+	if (SecConf.fstopSinAmplitude != 0 ) {
+		DebugPrint(F("  fstopSinAmplitude: "));
+		DebugPrintln(SecConf.fstopSinAmplitude);
+	}
+	
+	if (SecConf.fstopIncreasePerHDRShot != 0 ) {
+		DebugPrint(F("  fstopIncreasePerHDRShot: "));
+		DebugPrintln(SecConf.fstopIncreasePerHDRShot);
+	}
+	
+	if (SecConf.numHDRShots != 0 ) {
+		DebugPrint(F("  numHDRShots: "));
+		DebugPrintln(SecConf.numHDRShots);
+	}
+	
+	if (SecConf.fstopChangeOnPress != 0 ) {
+		DebugPrint(F("  fstopChangeOnPress: "));
+		DebugPrintln(SecConf.fstopChangeOnPress);
+	}		
 }
 
 void SetLED(RGBColors colors) {

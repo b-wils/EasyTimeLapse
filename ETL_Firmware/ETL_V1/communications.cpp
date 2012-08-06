@@ -121,6 +121,8 @@ void InitRequestPacket(IPhonePacket *packet, uint8_t requestId) {
 
 void ProcessTransmitState() {
 	
+	//modem.flushBuffer(1)
+	
 	while(modem.available()) {
 
         ((char *) &recvPacket)[bytesRead] = modem.read();
@@ -196,13 +198,12 @@ void ProcessTransmitState() {
 		    } else {
 				crcErrors = 0;
 				
-				SetLEDCycle(LED_CYCLE_CRC_MATCH);
-				
 			    DebugPrint(F("packet success; crc = "));
 				DebugPrintln(myCrc, HEX);
 			    DebugPrintln();				
 					
 			    if (modemPacketIndex == recvPacket.packetId) {
+					SetLEDCycle(LED_CYCLE_CRC_MATCH);
 					modemPacketIndex++; 
 					InitRequestPacket(&sendPacket, modemPacketIndex);
 					
@@ -267,7 +268,9 @@ void ProcessTransmitState() {
 					    DebugPrintln(recvPacket.command, HEX);
 				    }	
 			    } else {
+					DebugPrintln(F("Dont need this packet"));
 				    InitRequestPacket(&sendPacket, modemPacketIndex);
+					SetLEDCycle(LED_CYCLE_WRONG_PACKET);
 				}					
 		    }
 		
@@ -275,7 +278,7 @@ void ProcessTransmitState() {
 			// need to make sure iphone is ready to receive again
 			// this should be async. Interferes with ability to do manual shots
 			// or ideally we will fix iphone so it can send receive simulteneously...
-		    delay(1000);
+		    delay(50);
 	        modem.writeBytes((uint8_t *) &sendPacket, sizeof(sendPacket));
 			
 			nextLedTime = millis(); // TEMP so we still flash after these sync processing

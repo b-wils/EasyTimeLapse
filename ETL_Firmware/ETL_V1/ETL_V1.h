@@ -66,9 +66,9 @@ const int batteryMonitorPin = A0;
 
 #define SNAP_PHOTO (1)
 
-#define STATIC_SHUTTER_LAG 30 //ms
+#define STATIC_SHUTTER_LAG 35 //ms
 #define BUFFER_RECOVER_TIME 200 //ms
-#define EXPOSURE_WARNING_TIME_OFFSET ((uint32_t) 120000) //ms
+#define EXPOSURE_WARNING_TIME_OFFSET (((uint32_t) 5)*60*1000) //ms
 #define MINIMUM_PHOTO_LENGTH 20 //ms
 
 // Voltage Divider
