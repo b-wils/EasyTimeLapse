@@ -7,8 +7,9 @@
 //
 
 #import "ETLShotViewController.h"
+#import "ETLIntervalSelectionController.h"
 
-@interface ETLBimodalController : ETLShotViewController
+@interface ETLBimodalController : ETLShotViewController <UITextFieldDelegate, ETLIntervalSelectionDelegate, PacketProvider>
 {
     IBOutlet UITextField *intervalAField;
     IBOutlet UITextField *intervalBField;

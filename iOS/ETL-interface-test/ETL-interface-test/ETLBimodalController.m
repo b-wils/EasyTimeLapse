@@ -12,6 +12,7 @@
 @interface ETLBimodalController ()
 {
     ETLTimelapse *modeA, *modeB;
+    ETLIntervalSelectionController *intervalA, *intervalB;
 }
 @end
 
@@ -19,13 +20,22 @@
 
 - (void)ensureInitialized
 {
-    if(!modeA) {
-        modeA = [[ETLTimelapse alloc] init];
-    }
+#define SETUP_MODE(x){ \
+    if(!mode##x) { \
+        mode##x = [[ETLTimelapse alloc] init];\
+        mode##x.shotInterval = 200;\
+    }\
+    if (!interval##x) {\
+        interval##x = [[ETLIntervalSelectionController alloc] initWithInputField:interval##x##Field \
+                                                                    unitButton:interval##x##Button  \
+                                                                     andParent:self];               \
+        interval##x.unit = @"seconds";\
+        interval##x.interval = mode##x.shotInterval;\
+    }}
     
-    if(!modeB) {
-        modeB = [[ETLTimelapse alloc] init];
-    }
+    SETUP_MODE(A)
+    SETUP_MODE(B)
+#undef SETUP_MODE
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -40,12 +50,47 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    [self ensureInitialized];
+    self.packetProvider = self;
 }
 
 - (void)updateUICalculations:(NSNotification *)notification
 {
     
+}
+
+- (void)didUpdateInterval:(NSUInteger)ms forSelection:(id)sender
+{
+    ETLTimelapse *tl = (sender == intervalA) ? modeA : modeB;
+    tl.shotInterval = ms;
+}
+
+-(void)renderPacket:(UInt32)packetNumber to:(VariablePacket *)packet
+{
+    memset(packet, 0, sizeof(VariablePacket));
+    switch (packetNumber) {
+        case 2:
+            [modeA renderPacket:packetNumber to:packet];
+            break;
+        case 4:
+            [modeB renderPacket:packetNumber to:packet];
+            break;
+        case 3:            
+            packet->intervalRamp.numRepeats = INT16_MAX;
+        case 1:
+            packet->command = ETL_COMMAND_INTERVALRAMP;
+            packet->packetId = packetNumber;
+            packet->intervalRamp.intervalDelta = 0;
+            packet->intervalRamp.changeConfigInfo = 1 << CONFIG_PRESS_TO_ADVANCE;
+            break;
+        default:
+            // TODO - error
+            break;
+    }
+}
+
+-(UInt32)packetCount {
+    return 4;
 }
 
 - (void)viewDidUnload
@@ -57,6 +102,17 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self hideFirstResponder:nil];
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField 
+{
+    [self hideFirstResponder:nil];
+    return TRUE;
 }
 
 @end

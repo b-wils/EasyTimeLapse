@@ -343,6 +343,7 @@
 		B5420FD315AB63EF001E3D15 /* ETLDoneProgrammingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETLDoneProgrammingController.h; sourceTree = "<group>"; };
 		B5420FD415AB63EF001E3D15 /* ETLDoneProgrammingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLDoneProgrammingController.m; sourceTree = "<group>"; };
 		B5420FD815AB6853001E3D15 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
+		B54C5EF515D0520B00563CEE /* ETLFirstResponder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ETLFirstResponder.h; sourceTree = "<group>"; };
 		B558F83C1592D0D300CB6E24 /* libcommunications.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcommunications.a; path = "../../../Library/Developer/Xcode/DerivedData/Easy_Time_Lapse-grxhihygozrtdfccqjonwjemkieb/Build/Products/Debug-iphoneos/libcommunications.a"; sourceTree = "<group>"; };
 		B558F83F1592D16B00CB6E24 /* AudioUnitObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioUnitObject.h; path = ../../communications/communications/AudioUnitObject.h; sourceTree = "<group>"; };
 		B558F8401592D16B00CB6E24 /* AudioSignalAnalyzer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioSignalAnalyzer.h; path = ../../communications/communications/AudioSignalAnalyzer.h; sourceTree = "<group>"; };
@@ -898,6 +899,7 @@
 			children = (
 				B5E68DB115C9CAF9008115D9 /* ETLPickerView.h */,
 				B5E68DB215C9CAF9008115D9 /* ETLPickerView.m */,
+				B54C5EF515D0520B00563CEE /* ETLFirstResponder.h */,
 			);
 			name = Views;
 			sourceTree = "<group>";

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "NSArray+ArrayUtility.h"
+#import "ETLFirstResponder.h"
 
 #define CLASS(x) (NSClassFromString(@#x))
 
@@ -22,7 +23,7 @@ typedef void (^ETLViewInitBlock)(ETLViewController *);
 
 @property(nonatomic, strong) id delegate;
 
-- (void)emulateFirstResponder:(UIView *)view;
+- (void)emulateFirstResponder:(UIView <ETLFirstResponder>*)view;
 
 - (IBAction)hideFirstResponder:(id)sender;
 - (IBAction)goBack:(id)sender;

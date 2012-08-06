@@ -226,11 +226,11 @@
             </objects>
             <point key="canvasLocation" x="1396" y="916"/>
         </scene>
-        <!--Remote Controller-->
+        <!--View Controller-->
         <scene sceneID="MwY-pB-QmC">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wGS-qz-KQL" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="ehp-Qf-Jjj" customClass="ETLRemoteController" sceneMemberID="viewController">
+                <viewController id="ehp-Qf-Jjj" customClass="ETLViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KiE-gZ-f06">
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -343,7 +343,10 @@
                                 <rect key="frame" x="160" y="115" width="55" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad" keyboardAppearance="alert" returnKeyType="done"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad" returnKeyType="done"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Tsi-pV-1SK" id="JnL-wl-CHX"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Take a shot every" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="16" id="a0s-fs-48f">
                                 <rect key="frame" x="21" y="123" width="134" height="20"/>
@@ -396,7 +399,10 @@
                                 <rect key="frame" x="160" y="219" width="55" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad" keyboardAppearance="alert" returnKeyType="done"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad" returnKeyType="done"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Tsi-pV-1SK" id="Rdv-2E-H1W"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Take a shot every" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="16" id="Kkj-MK-Q1D">
                                 <rect key="frame" x="21" y="227" width="134" height="20"/>
@@ -473,6 +479,10 @@
                     <navigationItem key="navigationItem" id="BGN-IY-voW"/>
                     <connections>
                         <outlet property="backOrHomeButton" destination="woe-Mx-4ns" id="4mu-No-qDL"/>
+                        <outlet property="intervalAButton" destination="CCj-vp-sR1" id="vzm-a9-VsJ"/>
+                        <outlet property="intervalAField" destination="rPh-MC-ckg" id="QaR-Kl-olw"/>
+                        <outlet property="intervalBButton" destination="8dP-BN-R0K" id="N9l-E2-7Vg"/>
+                        <outlet property="intervalBField" destination="7AQ-al-rkX" id="bq7-3J-oZt"/>
                     </connections>
                 </viewController>
             </objects>
@@ -1501,9 +1511,7 @@
         <class className="ETLTimelapseController" superclassName="ETLShotViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ETLTimelapseController.h"/>
             <relationships>
-                <relationship kind="action" name="didClickPeriodUnit:"/>
                 <relationship kind="action" name="didSwitchContinuous:"/>
-                <relationship kind="action" name="didUpdatePeriod:"/>
                 <relationship kind="action" name="didUpdateShotLimit:"/>
                 <relationship kind="outlet" name="continuousSwitch" candidateClass="UISwitch"/>
                 <relationship kind="outlet" name="finalShotLengthLabel" candidateClass="UILabel"/>
@@ -1531,8 +1539,8 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Sgc-tO-3CH"/>
-        <segue reference="jON-PE-T2z"/>
         <segue reference="e5W-2h-EQi"/>
+        <segue reference="rBU-MJ-KTo"/>
+        <segue reference="jON-PE-T2z"/>
     </inferredMetricsTieBreakers>
 </document>

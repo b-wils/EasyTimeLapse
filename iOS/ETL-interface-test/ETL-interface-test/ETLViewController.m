@@ -66,11 +66,7 @@
 
 - (IBAction)hideFirstResponder:(id)sender
 {
-//    [fakeFirstResponder show:NO animated:YES];
-    bool no = NO, yes = YES;
-    [fakeFirstResponder performSelector:@selector(show:animated:) 
-                             withObject:[NSValue valueWithBytes:&no objCType:@encode(bool)] 
-                             withObject:[NSValue valueWithBytes:&yes objCType:@encode(bool)]];
+    [fakeFirstResponder show:NO animated:YES];
     fakeFirstResponder = nil;
     
     UIView * w = [[UIApplication sharedApplication] keyWindow];

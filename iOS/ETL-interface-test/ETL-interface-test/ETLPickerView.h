@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ETLFirstResponder.h"
 
-@interface ETLPickerView : UIPickerView
+@interface ETLPickerView : UIPickerView <ETLFirstResponder>
 - (id)initWithFrame:(CGRect)frame andParent:(UIViewController *)controller;
-- (void)show:(bool)show animated:(bool)animated;
 @end
