@@ -8,8 +8,10 @@
 
 #import "ETLShotViewController.h"
 #import "ETLTimelapse.h"
+#import "ETLTimeUnitList.h"
+#import "ETLIntervalSelectionController.h"
 
-@interface ETLTimelapseController : ETLShotViewController <UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
+@interface ETLTimelapseController : ETLShotViewController <UITextFieldDelegate, ETLIntervalSelectionDelegate>
 {    
     IBOutlet UITextField * shotPeriodField;
     IBOutlet UIButton * periodUnitButton;
@@ -25,11 +27,9 @@
 }
 
 - (IBAction)didSwitchContinuous:(id)sender;
-- (IBAction)didUpdatePeriod:(id)sender;
 - (IBAction)didUpdateShotLimit:(id)sender;
-- (IBAction)didClickPeriodUnit:(id)sender;
 
 @property (nonatomic, strong) ETLTimelapse *timelapse;
-@property (nonatomic, strong) NSString *periodUnit;
+//@property (nonatomic, strong) NSString *periodUnit;
 
 @end

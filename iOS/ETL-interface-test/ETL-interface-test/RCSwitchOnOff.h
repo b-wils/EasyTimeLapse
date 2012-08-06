@@ -23,8 +23,8 @@
 #import "RCSwitch.h"
 
 @interface RCSwitchOnOff : RCSwitch {
-	UILabel *onText;
-	UILabel *offText;	
+	//UILabel *onText;
+	//UILabel *offText;	
 }
 
 @end

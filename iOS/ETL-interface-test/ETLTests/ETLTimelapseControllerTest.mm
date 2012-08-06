@@ -12,16 +12,17 @@
 #import "ETLProgramViewController.h"
 #import "ETLTimelapse.h"
 #import "UIButton+setAllTitles.h"
+#import "ETLPickerView.h"
 
 @interface ETLTimelapseController ()
 - (void)displayPicker:(bool)show animated:(bool)animated;
 @end
 
-@interface ETLTimelapseControllerTest : GHTestCase
+@interface ETLTimelapseControllerTest : ETLTestCase
 {
     ETLTimelapseController *controller;
     id timelapseMock, shotCountMock, switchMock, intervalMock,
-       periodUnitMock, controllerMock, pickerMock, panelMock,
+       periodUnitMock, controllerMock, panelMock,
        finalLengthMock, totalTimeMock, segueMock;
     NSNotification * updateNotification;
 }
@@ -43,7 +44,6 @@
         WIRE(shotCountMock, UITextField, shotLimitField)
         WIRE(intervalMock, UITextField, shotPeriodField)
         WIRE(periodUnitMock, UIButton, periodUnitButton)
-        WIRE(pickerMock, UIPickerView, periodUnitPicker)
         WIRE(panelMock, UIView, shotLimitPanel)
         WIRE(finalLengthMock, UILabel, finalShotLengthLabel)
         WIRE(totalTimeMock, UILabel, totalShootingTimeLabel)
@@ -65,7 +65,6 @@
     VERIFY_MOCK(intervalMock)
     VERIFY_MOCK(periodUnitMock)
     VERIFY_MOCK(segueMock)
-    VERIFY_MOCK(pickerMock)
 }  
 
 //- (IBAction)didSwitchContinuous:(id)sender;
@@ -87,14 +86,14 @@
 }
 
 //    - (IBAction)didUpdatePeriod:(id)sender;
-- (void)testDidUpdatePeriod {
-    const NSString *intervalString = @"5";
-    const UInt64 intervalSecondsInMs = 5000;
-    
-    [[[intervalMock stub] andReturn:intervalString] text];
-    [[timelapseMock expect] setShotInterval:intervalSecondsInMs];
-    [controller didUpdatePeriod:intervalMock];
-}
+//- (void)testDidUpdatePeriod {
+//    const NSString *intervalString = @"5";
+//    const UInt64 intervalSecondsInMs = 5000;
+//    
+//    [[[intervalMock stub] andReturn:intervalString] text];
+//    [[timelapseMock expect] setShotInterval:intervalSecondsInMs];
+//    [controller didUpdatePeriod:intervalMock];
+//}
 
 //    - (IBAction)didUpdateShotLimit:(id)sender;
 - (void)testDidUpdateShotLimit {
@@ -104,22 +103,6 @@
     [[[shotCountMock stub] andReturn:shotCountString] text];
     [[timelapseMock expect] setShotCount:shotCount];
     [controller didUpdateShotLimit:shotCountMock];
-}
-
-//    - (IBAction)didClickPeriodUnit:(id)sender;
-- (void)testDidClickPeriodUnit
-{
-    [[controllerMock expect] displayPicker:YES animated:YES];
-    [controller didClickPeriodUnit:periodUnitMock];
-}
-
-//    - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
-- (void)testPickerView_didSelectrow_inComponent {
-    const NSInteger minutesRow = 2;
-    
-    [[controllerMock expect] displayPicker:NO animated:YES];
-    [[controllerMock expect] didUpdatePeriod:intervalMock];
-    [controller pickerView:pickerMock didSelectRow:minutesRow inComponent:0];
 }
 
 //    - (void)updateUICalculations:(NSNotification *)notification
@@ -175,11 +158,4 @@
     [controller prepareForSegue:segueMock sender:OCMOCK_ANY];
 }
 
-//     - (void)textFieldDidBeginEditing:(UITextField *)textField
--(void)testTextFieldDidBeginEditing
-{
-    [[controllerMock expect] displayPicker:NO animated:YES];
-    [[[intervalMock stub] andReturn:@"5"] text];
-    [controller textFieldDidBeginEditing:intervalMock];
-}
 @end

@@ -9,5 +9,10 @@
 #import "ETLShotViewController.h"
 
 @interface ETLBimodalController : ETLShotViewController
-
+{
+    IBOutlet UITextField *intervalAField;
+    IBOutlet UITextField *intervalBField;
+    IBOutlet UIButton *intervalAButton;
+    IBOutlet UIButton *intervalBButton;
+}
 @end

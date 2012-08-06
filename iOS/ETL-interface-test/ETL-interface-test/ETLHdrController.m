@@ -162,7 +162,7 @@
         ETLTimelapseController *controller = [segue destinationViewController];
         controller.timelapse = hdr.timelapse;
         controller.packetProvider = hdr;
-        controller.periodUnit = @"ms";
+//        controller.periodUnit = @"ms";
     }
     else {
         [super prepareForSegue:segue sender:sender];

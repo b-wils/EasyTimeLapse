@@ -6,13 +6,13 @@
 //  Copyright (c) 2012 Microsoft. All rights reserved.
 //
 
-#import "ETLModel.h"
+#import "ETLPickerList.h"
 
 @protocol ETLStopListDelegate <NSObject>
 -(void)didSelectStop:(NSString *)name ofMs:(NSUInteger)millis;
 @end
 
-@interface ETLStopList : ETLModel <UIPickerViewDataSource, UIPickerViewDelegate>
+@interface ETLStopList : ETLPickerList
 -(NSString *)getStopForMs:(NSUInteger)ms;
 -(NSUInteger)getStopNumberFor:(NSString *)name;
 -(NSUInteger)count;

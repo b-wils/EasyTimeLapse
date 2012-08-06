@@ -28,16 +28,16 @@
 - (void)initCommon
 {
 	[super initCommon];
-	onText = [UILabel new];
-	onText.text = NSLocalizedString(@"ON", @"Switch localized string");
-	onText.textColor = [UIColor whiteColor];
-	onText.font = [UIFont boldSystemFontOfSize:17];
-	onText.shadowColor = [UIColor colorWithWhite:0.175 alpha:1.0];
-	
-	offText = [UILabel new];
-	offText.text = NSLocalizedString(@"OFF", @"Switch localized string");
-	offText.textColor = [UIColor whiteColor];
-	offText.font = [UIFont boldSystemFontOfSize:17];	
+//	onText = [UILabel new];
+//	onText.text = NSLocalizedString(@"ON", @"Switch localized string");
+//	onText.textColor = [UIColor whiteColor];
+//	onText.font = [UIFont boldSystemFontOfSize:17];
+//	onText.shadowColor = [UIColor colorWithWhite:0.175 alpha:1.0];
+//	
+//	offText = [UILabel new];
+//	offText.text = NSLocalizedString(@"OFF", @"Switch localized string");
+//	offText.textColor = [UIColor whiteColor];
+//	offText.font = [UIFont boldSystemFontOfSize:17];	
 }
 
 
@@ -46,13 +46,13 @@
 	{
 		CGRect textRect = [self bounds];
 		textRect.origin.x += 14.0 + (offset - trackWidth);
-		[onText drawTextInRect:textRect];	
+//		[onText drawTextInRect:textRect];	
 	}
 	
 	{
 		CGRect textRect = [self bounds];
 		textRect.origin.x += (offset + trackWidth) - 14.0;
-		[offText drawTextInRect:textRect];
+//		[offText drawTextInRect:textRect];
 	}	
 }
 

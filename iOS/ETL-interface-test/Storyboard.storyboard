@@ -1114,7 +1114,6 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad" returnKeyType="done"/>
                                 <connections>
-                                    <action selector="didUpdatePeriod:" destination="Y0u-g9-Vhl" eventType="editingDidEnd" id="fX0-K5-hyT"/>
                                     <outlet property="delegate" destination="Y0u-g9-Vhl" id="wrT-LK-lia"/>
                                 </connections>
                             </textField>
@@ -1224,9 +1223,6 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <action selector="didClickPeriodUnit:" destination="Y0u-g9-Vhl" eventType="touchUpInside" id="Rgk-Sn-I9Z"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="OIa-8i-s9k">
                                 <rect key="frame" x="6" y="6" width="50" height="32"/>
@@ -1437,6 +1433,12 @@
     <classes>
         <class className="ETLBimodalController" superclassName="ETLShotViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ETLBimodalController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="intervalAButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="intervalAField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="intervalBButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="intervalBField" candidateClass="UITextField"/>
+            </relationships>
         </class>
         <class className="ETLBulbController" superclassName="ETLShotViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ETLBulbController.h"/>

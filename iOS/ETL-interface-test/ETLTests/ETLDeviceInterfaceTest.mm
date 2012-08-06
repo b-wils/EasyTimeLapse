@@ -15,10 +15,10 @@
 #import "AudioSignalAnalyzer.h"
 #import <vector>
 
-@interface ETLDeviceInterfaceTest : GHTestCase <CharReceiver>
+@interface ETLDeviceInterfaceTest : ETLTestCase <CharReceiver>
 {
     ETLDeviceInterface * device;
-    id generatorMock, analyzerMock, listenerMock;
+    id generatorMock, analyzerMock;
     
     std::vector<char> dataBuffer;
 }

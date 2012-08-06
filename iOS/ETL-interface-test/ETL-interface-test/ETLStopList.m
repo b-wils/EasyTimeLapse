@@ -34,6 +34,8 @@
         
         msForStop = [NSDictionary dictionaryWithObjects:msTimes forKeys:fStops];
         stopForMs = [NSDictionary dictionaryWithObjects:fStops forKeys:msTimes];
+        
+        self.listItems = fStops;
     }
     
     return self;
@@ -83,25 +85,9 @@
             : [self getStopForMs:value]; 
 }
 
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+- (void)didSelectItem:(id)item
 {
-    return 1;
-}
-
-- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
-{
-    return [self count];
-}
-
-- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
-{
-    return [self getStopNumber:row];
-}
-
-- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
-{
-    NSString *stop = [self getStopNumber:row];
-    [delegate didSelectStop:stop ofMs:[self getMsForStop:stop]];
+    [delegate didSelectStop:item ofMs:[self getMsForStop:item]];
 }
 
 @end

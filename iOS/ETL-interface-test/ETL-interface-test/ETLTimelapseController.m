@@ -6,23 +6,22 @@
 //  Copyright (c) 2012 Microsoft. All rights reserved.
 //
 
-#import "ETLTimelapseController.h"
-#import "ETLProgramViewController.h"
+#import "ETLViewControllers.h"
 #import "RCSwitchOnOff.h"
-#import "UIButton+setAllTitles.h"
+#import "ETLTimeUnitList.h"
+#import "ETLPickerView.h"
 
 @interface ETLTimelapseController ()
 {
-    NSArray * periodUnits;
-    NSDictionary * msInUnit;
-
-    UIPickerView * periodUnitPicker;
+//    ETLTimeUnitList *unitList;
+//    ETLPickerView *periodUnitPicker;
+    ETLIntervalSelectionController *intervalSelection;
 }
 @end
 
 @implementation ETLTimelapseController
 
-@synthesize timelapse, periodUnit;
+@synthesize timelapse;//, periodUnit;
 
 - (void)setTimelapse:(ETLTimelapse *)value {
     if (timelapse) [[NSNotificationCenter defaultCenter] removeObserver:self name:ModelUpdated object:timelapse];
@@ -32,30 +31,20 @@
 }
 
 - (void)ensureInitialized {
-    if (!periodUnits) {
-        periodUnits = [NSArray arrayWithObjects:
-                       @"ms",
-                       @"seconds",
-                       @"minutes",
-                       @"hours", nil]; 
-        NSArray * msTimes = [NSArray arrayWithObjects:
-                             [NSNumber numberWithInt:1], 
-                             [NSNumber numberWithInt:1000], 
-                             [NSNumber numberWithInt:1000*60], 
-                             [NSNumber numberWithInt:1000*3600], nil];
-        
-        msInUnit = [NSDictionary dictionaryWithObjects:msTimes forKeys:periodUnits];
-    }
-    
-    if (!periodUnit) {
-        periodUnit = [periodUnits objectAtIndex:1]; // "seconds"
-    }
-    
     if(!timelapse) {
         self.timelapse = [[ETLTimelapse alloc] init];
         timelapse.shotInterval = 5000;
         timelapse.shotCount = 0;
         timelapse.clipFramesPerSecond = 23.97f;
+    }
+    
+    if (!intervalSelection) {
+        intervalSelection = [[ETLIntervalSelectionController alloc] initWithInputField:shotPeriodField 
+                                                                             unitButton:periodUnitButton
+                                                                             andParent:self];
+        intervalSelection.parent = self;
+        intervalSelection.unit = @"seconds";
+        intervalSelection.interval = timelapse.shotInterval;
     }
     
     if (!self.packetProvider) {
@@ -93,49 +82,20 @@
         [self setValue:res forKey:obj];
     }];
     
-    periodUnitPicker = [[UIPickerView alloc] init];
-    periodUnitPicker.delegate = self;
-    periodUnitPicker.dataSource = self;
-    [periodUnitPicker selectRow:[periodUnits indexOfObject:periodUnit] inComponent:0 animated:NO];
-    periodUnitPicker.hidden = YES;
-    periodUnitPicker.frame = CGRectMake(0,
-                                      self.view.frame.size.height,
-                                      self.view.frame.size.width,
-                                      periodUnitPicker.frame.size.height);
-    [self.view addSubview:periodUnitPicker];
+//    periodUnitPicker = [[ETLPickerView alloc] initWithFrame:CGRectMake(0,
+//                                                               self.view.frame.size.height,
+//                                                               self.view.frame.size.width,
+//                                                               periodUnitPicker.frame.size.height)
+//                                                  andParent:self];
+//    periodUnitPicker.delegate = unitList;
+//    periodUnitPicker.dataSource = unitList;
+//    [periodUnitPicker selectRow:[unitList getNumberOfUnit:periodUnit] inComponent:0 animated:NO];
+//    periodUnitPicker.hidden = YES;
     
 //    shotPeriodField.inputAccessoryView = numpadToolbar;
 //    shotLimitField.inputAccessoryView = numpadToolbar;
     
     [self updateUICalculations:nil];
-}
-
-- (void)displayPicker:(bool)show animated:(bool)animated
-{
-    if (show != periodUnitPicker.hidden) return;
-    if (show) [self hideFirstResponder:nil];
-    
-    periodUnitPicker.hidden = NO;
-    float duration = animated ? 0.25 : 0.0;
-    CGRect targetBounds = show 
-    ? CGRectMake(0,
-                 self.view.frame.size.height - periodUnitPicker.frame.size.height,
-                 periodUnitPicker.frame.size.width,
-                 periodUnitPicker.frame.size.height)
-    : CGRectMake(0,
-                 self.view.frame.size.height,
-                 self.view.frame.size.width,
-                 periodUnitPicker.frame.size.height);
-    
-    [UIView 
-        animateWithDuration:duration 
-        animations:^{
-            [periodUnitPicker setFrame:targetBounds];            
-        }
-        completion:^(BOOL finished) {
-            if (finished) periodUnitPicker.hidden = !show;
-        }
-    ];
 }
 
 - (NSString *)formatSeconds:(float_t)totalSeconds with:(NSString *)formatString
@@ -151,10 +111,10 @@
 {
     shotLimitPanel.hidden = timelapse.continuousShooting;
     
-    UInt64 period = timelapse.shotInterval;
-    period /= [[msInUnit objectForKey:periodUnit] intValue];
-    shotPeriodField.text = [NSString stringWithFormat:@"%d", period];
-    periodUnitButton.allTitles = periodUnit;
+//    UInt64 period = timelapse.shotInterval;
+//    period /= [intervalSelection interval]; //[unitList msInUnit:periodUnit];
+//    shotPeriodField.text = [NSString stringWithFormat:@"%d", period];
+//    periodUnitButton.allTitles = periodUnit;
     
     if (!timelapse.continuousShooting)
     {
@@ -188,12 +148,9 @@
     }
 }
 
-- (IBAction)didUpdatePeriod:(id)sender
+- (void)didUpdateInterval:(NSUInteger)ms forSelection:(id)sender
 {
-    float_t value = [(UITextField *)sender text].floatValue;
-    NSUInteger multiple = [(NSNumber *)[msInUnit objectForKey:periodUnit] unsignedIntegerValue];
-    
-    timelapse.shotInterval = floor(value * multiple); 
+    timelapse.shotInterval = ms;
 }
 
 - (IBAction)didUpdateShotLimit:(id)sender
@@ -208,42 +165,16 @@
     timelapse.shotCount = newValue;
 }
 
-- (IBAction)didClickPeriodUnit:(id)sender {
-    [self displayPicker:YES animated:YES];
-}
-
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
     return YES;
 }
 
-- (void)textFieldDidBeginEditing:(UITextField *)textField
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField 
 {
-    [self displayPicker:NO animated:YES];
-}
-
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
-{
-    return 1;
-}
-
-- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
-{
-    return [periodUnits count];
-}
-
-- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
-{
-    periodUnit = [periodUnits objectAtIndex:row];
-    [self displayPicker:NO animated:YES];
-
-    [self didUpdatePeriod:shotPeriodField];
-}
-
-- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
-{
-    return [periodUnits objectAtIndex:row];
+    [self hideFirstResponder:nil];
+    return TRUE;
 }
 
 - (BOOL)canBecomeFirstResponder
@@ -259,7 +190,6 @@
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    [self displayPicker:NO animated:YES];
     [self hideFirstResponder:nil];
 }
 

@@ -22,10 +22,13 @@ typedef void (^ETLViewInitBlock)(ETLViewController *);
 
 @property(nonatomic, strong) id delegate;
 
+- (void)emulateFirstResponder:(UIView *)view;
+
 - (IBAction)hideFirstResponder:(id)sender;
 - (IBAction)goBack:(id)sender;
 
 - (void)observe:(id)sender forEvent:(NSString *)name andRun:(SEL)selector;
 
 - (void)updateUICalculations:(NSNotification *)notification;
+- (void)ensureInitialized;
 @end

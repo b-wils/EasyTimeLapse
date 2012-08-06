@@ -7,12 +7,26 @@
 //
 
 #import "ETLBimodalController.h"
+#import "ETLTimelapse.h"
 
 @interface ETLBimodalController ()
-
+{
+    ETLTimelapse *modeA, *modeB;
+}
 @end
 
 @implementation ETLBimodalController
+
+- (void)ensureInitialized
+{
+    if(!modeA) {
+        modeA = [[ETLTimelapse alloc] init];
+    }
+    
+    if(!modeB) {
+        modeB = [[ETLTimelapse alloc] init];
+    }
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,6 +41,11 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+}
+
+- (void)updateUICalculations:(NSNotification *)notification
+{
+    
 }
 
 - (void)viewDidUnload
