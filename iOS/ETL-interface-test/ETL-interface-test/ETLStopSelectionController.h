@@ -14,6 +14,8 @@
 - (void)didUpdateStop:(NSUInteger)ms forSelection:(id)sender;
 @end
 
+#define InitStopSelection(name) {__macroFlag = true; name = [[ETLStopSelectionController alloc] initWithInputField:name##Field stopButton:name##Button andParent:self];}
+
 @interface ETLStopSelectionController : ETLModel <ETLStopListDelegate>
 - (id)initWithInputField:(UITextField *)field stopButton:(UIButton *)stops andParent:(ETLViewController <ETLStopSelectionDelegate> *)controller;
 

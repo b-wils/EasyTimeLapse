@@ -12,6 +12,11 @@
 
 #define CLASS(x) (NSClassFromString(@#x))
 
+// ISSUE TODO HACK
+bool __macroFlag;
+#define WITH if(__macroFlag) {
+#define END __macroFlag = false;}
+
 @class ETLViewController;
 typedef void (^ETLViewInitBlock)(ETLViewController *);
 

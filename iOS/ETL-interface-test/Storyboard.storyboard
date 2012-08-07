@@ -883,7 +883,7 @@
                                 <rect key="frame" x="160" y="64" width="55" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad" keyboardAppearance="alert" returnKeyType="done"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad" returnKeyType="done"/>
                             </textField>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="stops on button press." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" id="x9n-Pe-QkD">
                                 <rect key="frame" x="151" y="321" width="149" height="17"/>
@@ -908,7 +908,7 @@
                                 <rect key="frame" x="159" y="164" width="55" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad" keyboardAppearance="alert" returnKeyType="done"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad" returnKeyType="done"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="cFH-5b-wMH">
                                 <rect key="frame" x="224" y="164" width="75" height="35"/>
@@ -926,7 +926,7 @@
                                 <rect key="frame" x="75" y="313.5" width="68" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad" keyboardAppearance="alert" returnKeyType="done"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad" returnKeyType="done"/>
                             </textField>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="F-stop" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="muY-EY-ybm">
                                 <rect key="frame" x="79" y="347" width="56" height="21"/>
@@ -939,7 +939,7 @@
                                 <rect key="frame" x="75" y="214" width="40" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad" keyboardAppearance="alert" returnKeyType="done"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad" returnKeyType="done"/>
                             </textField>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Stops" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="FuV-Vg-tMw">
                                 <rect key="frame" x="61" y="249" width="69" height="21"/>
@@ -990,6 +990,18 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="a0h-lW-c4W">
+                                <rect key="frame" x="224" y="114" width="75" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                                <state key="normal" title="f-stop" backgroundImage="text_input.png">
+                                    <color key="titleColor" red="0.1960784314" green="0.30980392159999998" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="iPd-So-zM1">
                                 <rect key="frame" x="6" y="6" width="50" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1024,7 +1036,7 @@
                                 <rect key="frame" x="160" y="214" width="55" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad" keyboardAppearance="alert" returnKeyType="done"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad" returnKeyType="done"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="vvl-fW-S5S">
                                 <rect key="frame" x="224" y="214" width="75" height="35"/>
@@ -1042,7 +1054,7 @@
                                 <rect key="frame" x="160" y="264" width="55" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad" keyboardAppearance="alert" returnKeyType="done"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad" returnKeyType="done"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="2EF-Pt-Vcq">
                                 <rect key="frame" x="224" y="264" width="75" height="35"/>
@@ -1060,12 +1072,25 @@
                                 <rect key="frame" x="160" y="114" width="55" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad" keyboardAppearance="alert" returnKeyType="done"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad" returnKeyType="done"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="ttj-dI-M1d"/>
+                    <connections>
+                        <outlet property="endingDurationButton" destination="2EF-Pt-Vcq" id="eN8-gR-2co"/>
+                        <outlet property="endingDurationField" destination="xBj-wH-Npc" id="KnB-du-l7s"/>
+                        <outlet property="initialDurationButton" destination="cFH-5b-wMH" id="iYP-fQ-vJN"/>
+                        <outlet property="initialDurationField" destination="76H-4V-Phw" id="vHK-DV-UhD"/>
+                        <outlet property="initialExposureButton" destination="a0h-lW-c4W" id="XZc-gN-tbn"/>
+                        <outlet property="initialExposureField" destination="11D-Dl-rfX" id="nRk-hW-sPk"/>
+                        <outlet property="intervalButton" destination="2DU-Nr-qg2" id="AKb-wW-JXz"/>
+                        <outlet property="intervalField" destination="oV0-0v-ghp" id="VxL-GO-v1K"/>
+                        <outlet property="numStopsField" destination="Ghc-AM-Shn" id="Uww-TU-zZp"/>
+                        <outlet property="rampDurationButton" destination="vvl-fW-S5S" id="DxR-T6-lYR"/>
+                        <outlet property="rampDurationField" destination="aVz-Ta-dxS" id="2mm-w5-6om"/>
+                    </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="948" y="539"/>
@@ -1453,17 +1478,18 @@
         <class className="ETLBulbController" superclassName="ETLShotViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ETLBulbController.h"/>
             <relationships>
+                <relationship kind="outlet" name="endingDurationButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="endingDurationField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="endingDurationUnitsButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="endingExposureField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="initialDurationButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="initialDurationField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="initialDurationUnitsButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="initialExposureButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="initialExposureField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="intervalButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="intervalField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="intervalUnitButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="numStopsField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="rampDurationButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="rampDurationField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="rampDurationUnitsButton" candidateClass="UIButton"/>
             </relationships>
         </class>
         <class className="ETLDoneProgrammingController" superclassName="ETLViewController">
@@ -1542,8 +1568,8 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="e5W-2h-EQi"/>
         <segue reference="jON-PE-T2z"/>
-        <segue reference="2P8-c0-vOa"/>
+        <segue reference="e5W-2h-EQi"/>
+        <segue reference="xs5-sS-DIA"/>
     </inferredMetricsTieBreakers>
 </document>

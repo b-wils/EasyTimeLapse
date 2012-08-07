@@ -14,6 +14,8 @@
 - (void)didUpdateInterval:(NSUInteger)ms forSelection:(id)sender;
 @end
 
+#define InitIntervalSelection(name) {__macroFlag = true; name = [[ETLIntervalSelectionController alloc] initWithInputField:name##Field unitButton:name##Button andParent:self];}
+
 @interface ETLIntervalSelectionController : ETLModel <ETLTimeUnitListDelegate>
 - (id)initWithInputField:(UITextField *)field unitButton:(UIButton *)units andParent:(ETLViewController *)controller;
 

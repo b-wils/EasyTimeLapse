@@ -9,46 +9,85 @@
 #import "ETLBulbController.h"
 
 @interface ETLBulbController ()
-
+{
+    ETLStopSelectionController *initialExposure;
+    ETLIntervalSelectionController *interval, *initialDuration, *rampDuration, *endingDuration;
+}
 @end
 
 @implementation ETLBulbController
-@synthesize intervalField;
-@synthesize intervalUnitButton;
-@synthesize initialExposureField;
-@synthesize initialDurationField;
-@synthesize initialDurationUnitsButton;
+@synthesize intervalField, intervalButton;
+@synthesize initialExposureField, initialExposureButton;
+@synthesize initialDurationField, initialDurationButton;
+@synthesize rampDurationField, rampDurationButton;
+@synthesize endingDurationField, endingDurationButton;
 @synthesize numStopsField;
-@synthesize rampDurationField;
-@synthesize rampDurationUnitsButton;
 @synthesize endingExposureField;
-@synthesize endingDurationField;
-@synthesize endingDurationUnitsButton;
+
+- (void)ensureInitialized 
+{
+    if (!interval) InitIntervalSelection(interval) WITH 
+        interval.interval = 5; 
+        interval.unit = @"seconds";
+    END
+    
+    if (!initialExposure) InitStopSelection(initialExposure) WITH
+        initialExposure.duration = 200;
+    END
+    
+    if (!initialDuration) InitIntervalSelection(initialDuration) WITH
+        initialDuration.interval = 10;
+        initialDuration.unit = @"minutes";
+    END
+    
+    if (!rampDuration) InitIntervalSelection(rampDuration) WITH
+        rampDuration.interval = 20;
+        rampDuration.unit = @"minutes";
+    END
+    
+    if (!endingDuration) InitIntervalSelection(endingDuration) WITH
+        endingDuration.interval = 10;
+        endingDuration.unit = @"minutes";
+    END
+}
 
 - (void)viewDidLoad
 {
-    NSArray * numFields = [NSArray arrayWithObjects:intervalField,
-                           initialExposureField, initialDurationField,
-                           numStopsField, rampDurationField,
-                           endingExposureField, endingDurationField,
-                           nil];
-    for (UITextField *f in numFields) {
-        f.inputAccessoryView = numpadToolbar;
-    }
+//    NSArray * numFields = [NSArray arrayWithObjects:intervalField,
+//                           initialExposureField, initialDurationField,
+//                           numStopsField, rampDurationField,
+//                           endingExposureField, endingDurationField,
+//                           nil];
+    
+    [super viewDidLoad];
+    [self ensureInitialized];
+}
+
+- (void)didUpdateStop:(NSUInteger)ms forSelection:(id)sender {
+    
+}
+
+- (void)didUpdateInterval:(NSUInteger)ms forSelection:(id)sender {
+    
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self hideFirstResponder:nil];
 }
 
 - (void)viewDidUnload {
     [self setIntervalField:nil];
-    [self setIntervalUnitButton:nil];
+    [self setIntervalButton:nil];
     [self setInitialExposureField:nil];
     [self setInitialDurationField:nil];
-    [self setInitialDurationUnitsButton:nil];
+    [self setInitialDurationButton:nil];
     [self setNumStopsField:nil];
     [self setRampDurationField:nil];
-    [self setRampDurationUnitsButton:nil];
+    [self setRampDurationButton:nil];
     [self setEndingExposureField:nil];
     [self setEndingDurationField:nil];
-    [self setEndingDurationUnitsButton:nil];
+    [self setEndingDurationButton:nil];
     [super viewDidUnload];
 }
 @end
