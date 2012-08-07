@@ -56,7 +56,7 @@
 
 -(void)sendPacket:(VariablePacket *)packet
 {
-    printf("writing: ");
+    printf("\nwriting: ");
     packet->crc = crc_update(crc_init(), ((byte *)packet) + sizeof(crc_t), sizeof(VariablePacket) - sizeof(crc_t));
     packet->crc = crc_finalize(packet->crc);
 
@@ -104,7 +104,7 @@
             byte originalByte = *b;
             *b = *b & 0x7F;
             if ([self isCrcValid]) {
-                printf("Packet fixed @byte #%d)", offset); 
+                printf("\n(Packet fixed @byte #%d)", offset); 
                 return true;
             }
             *b = originalByte;
@@ -123,20 +123,21 @@
         readOffset = 0;
         
         bool isValid = [self isCrcValid];
+        if (!isValid) {
+            isValid = [self tryFixupPacket];
+        }
+        
         UInt32 packetId = isValid ? inPacket.packetId : currentPacket;
         
         NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
                       VALUE_WITH_BYTES(&isValid, bool), @"isCrcValid",
                       VALUE_WITH_BYTES(&packetId, UInt32), @"sendingPacketId",
                       nil];
-        
-        if (!isValid) {
-            isValid = [self tryFixupPacket];
-        }
      
         if (isValid) {
             switch (inPacket.command) {
                 case IOS_COMMAND_REQUESTPACKETID:
+                    printf("\npacket #%lu requested.", packetId);
                     if (packetId <= packetProvider.packetCount) {
                         NOTIFY(PacketRequested, userInfo);
                         [self sendPacketNumber:packetId];
