@@ -92,7 +92,7 @@ unsigned long micros() {
 	#error TIMER 2 not defined
 #endif
 
-  
+/// Oveflow interrupt that has not been processed yet
 #ifdef TIFR2
 	if ((TIFR2 & _BV(TOV2)) && (t < 255))
 		m++;
@@ -103,7 +103,10 @@ unsigned long micros() {
 
 	SREG = oldSREG;
 	
-	return ((m << 8) + t) * (64 / clockCyclesPerMicrosecond());
+	//m * max uint_8 + t = total number of ticks
+	// 
+	
+	return ((m << 8) + t) * MICROSECONDS_PER_TIMER2_TICK;
 }
 
 void delay(unsigned long ms)

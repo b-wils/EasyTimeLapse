@@ -358,6 +358,8 @@ void SoftModem::write(uint8_t data)
 #endif
 {
 	static unsigned long lastTransmissionTime = 0;
+	// If last transmission time < 2x low freq usec
+	// go high for 20x the bitrate
 	if((micros() - lastTransmissionTime) > (uint16_t)(SOFT_MODEM_LOW_USEC*2)){
 		// TODO: What is this for? modulate high for 20 * bitrate? We can probably optimize this
 		for(uint8_t i = 0; i<(uint8_t)SOFT_MODEM_CARRIR_CNT; i++){
