@@ -31,6 +31,7 @@ typedef void (^ETLViewInitBlock)(ETLViewController *);
 - (void)emulateFirstResponder:(UIView <ETLFirstResponder>*)view;
 
 - (IBAction)hideFirstResponder:(id)sender;
+- (void)hideFakeFirstResponder;
 - (IBAction)goBack:(id)sender;
 
 - (void)observe:(id)sender forEvent:(NSString *)name andRun:(SEL)selector;

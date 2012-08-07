@@ -88,11 +88,16 @@
 
 - (IBAction)hideFirstResponder:(id)sender
 {
-    [fakeFirstResponder show:NO animated:YES];
-    fakeFirstResponder = nil;
+    [self hideFakeFirstResponder];
     
     UIView * w = [[UIApplication sharedApplication] keyWindow];
     [w findAndResignFirstResponder];
+}
+
+- (void)hideFakeFirstResponder
+{
+    [fakeFirstResponder show:NO animated:YES];
+    fakeFirstResponder = nil;
 }
 
 - (void)updateUICalculations:(NSNotification *)notification

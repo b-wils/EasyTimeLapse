@@ -53,14 +53,14 @@
 
 - (void)viewDidLoad
 {
-//    NSArray * numFields = [NSArray arrayWithObjects:intervalField,
-//                           initialExposureField, initialDurationField,
-//                           numStopsField, rampDurationField,
-//                           endingExposureField, endingDurationField,
-//                           nil];
     
     [super viewDidLoad];
     [self ensureInitialized];
+    [Array(endingDurationButton, initialDurationButton, initialExposureButton, rampDurationButton) 
+     eachWith:^(id object) {
+        [object addTarget:self action:@selector(scrollToControl:) forControlEvents:UIControlEventTouchUpInside];
+    }];
+
 }
 
 - (void)didUpdateStop:(NSUInteger)ms forSelection:(id)sender {
@@ -74,6 +74,24 @@
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [self hideFirstResponder:nil];
+    [UIView animateWithDuration:0.2 animations:^{
+        [self.view viewWithTag:1].transform = CGAffineTransformMakeTranslation(0, 0);
+    }];
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    [self hideFakeFirstResponder];
+    [self scrollToControl:textField];
+    
+    return TRUE;
+}
+
+- (void) scrollToControl:(UIView *)control
+{
+    [UIView animateWithDuration:0.2 animations:^{
+        [self.view viewWithTag:1].transform = CGAffineTransformMakeTranslation(0, -(MAX(100, control.frame.origin.y) - 100));
+    }];
 }
 
 - (void)viewDidUnload {

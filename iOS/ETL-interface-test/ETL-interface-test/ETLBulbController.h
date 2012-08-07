@@ -10,7 +10,7 @@
 #import "ETLStopSelectionController.h"
 #import "ETLIntervalSelectionController.h"
 
-@interface ETLBulbController : ETLShotViewController <ETLStopSelectionDelegate, ETLIntervalSelectionDelegate>
+@interface ETLBulbController : ETLShotViewController <ETLStopSelectionDelegate, ETLIntervalSelectionDelegate, UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *intervalField;
 @property (weak, nonatomic) IBOutlet UIButton *intervalButton;
