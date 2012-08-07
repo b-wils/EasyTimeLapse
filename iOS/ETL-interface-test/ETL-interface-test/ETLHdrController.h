@@ -8,9 +8,9 @@
 
 #import "ETLShotViewController.h"
 #import "ETLHdrShot.h"
-#import "ETLStopList.h"
+#import "ETLStopSelectionController.h"
 
-@interface ETLHdrController : ETLShotViewController <UITextFieldDelegate, ETLStopListDelegate>
+@interface ETLHdrController : ETLShotViewController <UITextFieldDelegate, ETLStopSelectionDelegate>
 {
     IBOutlet UITextField *bracketCountField;
     IBOutlet UITextField *initialExposureField;
@@ -19,7 +19,7 @@
     IBOutlet UIButton *finalExposureButton;
 }
 
-- (IBAction)didPressStop:(id)sender;
+//- (IBAction)didPressStop:(id)sender;
 - (IBAction)didUpdateExposureField:(id)sender;
 - (IBAction)didUpdateBracketCount:(id)sender;
 @end

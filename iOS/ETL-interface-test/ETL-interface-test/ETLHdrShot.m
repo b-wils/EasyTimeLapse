@@ -30,7 +30,7 @@ ModelSynthesize(UInt32, finalExposure, setFinalExposure);
 
 - (void)synchronizeTimelapse
 {
-    timelapse.shotInterval = finalExposure * 2;
+    timelapse.shotInterval = MAX(initialExposure, finalExposure) * 2;
 }
 
 - (void)renderPacket:(UInt32)packetNumber to:(VariablePacket *)packet;

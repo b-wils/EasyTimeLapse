@@ -10,6 +10,7 @@
 #import "UIView+FindAndResignFirstResponder.h"
 #import <objc/runtime.h>
 #import <Foundation/Foundation.h>
+#import "RCSwitchOnOff.h"
 
 @interface ETLViewController ()
 {
@@ -43,6 +44,27 @@
             [backOrHomeButton setImage:nil forState:UIControlStateHighlighted];
         }
     }
+}
+
+- (void)replaceSwitches:(NSArray *)names
+{
+    [names eachWith:^void (id obj) {
+        UISwitch *s = (UISwitch *)[self valueForKey:obj];
+        CGRect frame = s.frame;
+        frame.size.width = 64;
+        frame.size.height = 28;
+        RCSwitchOnOff *res = [[RCSwitchOnOff alloc] initWithFrame:frame];
+        [res setOn:[s isOn]];
+        
+        NSArray* actions = [s actionsForTarget:self forControlEvent:UIControlEventValueChanged];
+        for (NSString *a in actions) {
+            [res addTarget:self action:NSSelectorFromString(a) forControlEvents:UIControlEventValueChanged];
+        }
+        
+        [[self view] addSubview:res];
+        [s removeFromSuperview];
+        [self setValue:res forKey:obj];
+    }];
 }
 
 #pragma mark -

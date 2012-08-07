@@ -12,9 +12,7 @@
 #import "ETLPickerView.h"
 
 @interface ETLTimelapseController ()
-{
-//    ETLTimeUnitList *unitList;
-//    ETLPickerView *periodUnitPicker;
+{;
     ETLIntervalSelectionController *intervalSelection;
 }
 @end
@@ -65,36 +63,7 @@
 {
     [super viewDidLoad];
     [self ensureInitialized];
-
-    NSArray *switchNames = [NSArray arrayWithObjects:@"continuousSwitch", nil];    
-    [switchNames eachWith:^void (id obj) {
-        UISwitch *s = (UISwitch *)[self valueForKey:obj];
-        RCSwitchOnOff *res = [[RCSwitchOnOff alloc] initWithFrame:s.frame];
-        [res setOn:[s isOn]];
-        
-        NSArray* actions = [s actionsForTarget:self forControlEvent:UIControlEventValueChanged];
-        for (NSString *a in actions) {
-            [res addTarget:self action:NSSelectorFromString(a) forControlEvents:UIControlEventValueChanged];
-        }
-        
-        [[self view] addSubview:res];
-        [s removeFromSuperview];
-        [self setValue:res forKey:obj];
-    }];
-    
-//    periodUnitPicker = [[ETLPickerView alloc] initWithFrame:CGRectMake(0,
-//                                                               self.view.frame.size.height,
-//                                                               self.view.frame.size.width,
-//                                                               periodUnitPicker.frame.size.height)
-//                                                  andParent:self];
-//    periodUnitPicker.delegate = unitList;
-//    periodUnitPicker.dataSource = unitList;
-//    [periodUnitPicker selectRow:[unitList getNumberOfUnit:periodUnit] inComponent:0 animated:NO];
-//    periodUnitPicker.hidden = YES;
-    
-//    shotPeriodField.inputAccessoryView = numpadToolbar;
-//    shotLimitField.inputAccessoryView = numpadToolbar;
-    
+    [self replaceSwitches:Array(@"continuousSwitch")];
     [self updateUICalculations:nil];
 }
 
@@ -110,11 +79,6 @@
 - (void)updateUICalculations:(NSNotification *)notification
 {
     shotLimitPanel.hidden = timelapse.continuousShooting;
-    
-//    UInt64 period = timelapse.shotInterval;
-//    period /= [intervalSelection interval]; //[unitList msInUnit:periodUnit];
-//    shotPeriodField.text = [NSString stringWithFormat:@"%d", period];
-//    periodUnitButton.allTitles = periodUnit;
     
     if (!timelapse.continuousShooting)
     {

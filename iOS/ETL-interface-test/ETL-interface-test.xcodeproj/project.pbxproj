@@ -134,6 +134,16 @@
 		B5720DB415B48DF70092FA31 /* ETLProgrammerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B5720DB315B48DF70092FA31 /* ETLProgrammerTest.m */; };
 		B5720DB715B49A9F0092FA31 /* TestArcHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B5720DB615B49A9F0092FA31 /* TestArcHelper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B5720DB915B4B1390092FA31 /* ETLProgramViewControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B5720DB815B4B1390092FA31 /* ETLProgramViewControllerTest.m */; };
+		B576525D15D079D100E35C56 /* ETLStopSelectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = B576525C15D079D100E35C56 /* ETLStopSelectionController.m */; };
+		B576525E15D079D100E35C56 /* ETLStopSelectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = B576525C15D079D100E35C56 /* ETLStopSelectionController.m */; };
+		B576526015D169C100E35C56 /* next.png in Resources */ = {isa = PBXBuildFile; fileRef = B576525F15D169C100E35C56 /* next.png */; };
+		B576526115D169C100E35C56 /* next.png in Resources */ = {isa = PBXBuildFile; fileRef = B576525F15D169C100E35C56 /* next.png */; };
+		B576526515D169D400E35C56 /* next_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = B576526215D169D400E35C56 /* next_pressed.png */; };
+		B576526615D169D400E35C56 /* next_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = B576526215D169D400E35C56 /* next_pressed.png */; };
+		B576526715D169D400E35C56 /* next_pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B576526315D169D400E35C56 /* next_pressed@2x.png */; };
+		B576526815D169D400E35C56 /* next_pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B576526315D169D400E35C56 /* next_pressed@2x.png */; };
+		B576526915D169D400E35C56 /* next@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B576526415D169D400E35C56 /* next@2x.png */; };
+		B576526A15D169D400E35C56 /* next@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B576526415D169D400E35C56 /* next@2x.png */; };
 		B5990754158FFC000005C8E2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5990753158FFC000005C8E2 /* UIKit.framework */; };
 		B5990756158FFC000005C8E2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5990755158FFC000005C8E2 /* Foundation.framework */; };
 		B5990758158FFC000005C8E2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5990757158FFC000005C8E2 /* CoreGraphics.framework */; };
@@ -369,6 +379,12 @@
 		B5720DB515B49A9F0092FA31 /* TestArcHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestArcHelper.h; sourceTree = "<group>"; };
 		B5720DB615B49A9F0092FA31 /* TestArcHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestArcHelper.m; sourceTree = "<group>"; };
 		B5720DB815B4B1390092FA31 /* ETLProgramViewControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLProgramViewControllerTest.m; sourceTree = "<group>"; };
+		B576525B15D079D100E35C56 /* ETLStopSelectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETLStopSelectionController.h; sourceTree = "<group>"; };
+		B576525C15D079D100E35C56 /* ETLStopSelectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLStopSelectionController.m; sourceTree = "<group>"; };
+		B576525F15D169C100E35C56 /* next.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = next.png; path = ../../../assets/v1/next.png; sourceTree = "<group>"; };
+		B576526215D169D400E35C56 /* next_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = next_pressed.png; path = ../../../assets/v1/next_pressed.png; sourceTree = "<group>"; };
+		B576526315D169D400E35C56 /* next_pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "next_pressed@2x.png"; path = "../../../assets/v1/next_pressed@2x.png"; sourceTree = "<group>"; };
+		B576526415D169D400E35C56 /* next@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "next@2x.png"; path = "../../../assets/v1/next@2x.png"; sourceTree = "<group>"; };
 		B599074F158FFC000005C8E2 /* ETL-interface-test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ETL-interface-test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5990753158FFC000005C8E2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B5990755158FFC000005C8E2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -784,6 +800,10 @@
 		B5C1CD57159CF093005D6FC0 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				B576526215D169D400E35C56 /* next_pressed.png */,
+				B576526315D169D400E35C56 /* next_pressed@2x.png */,
+				B576526415D169D400E35C56 /* next@2x.png */,
+				B576525F15D169C100E35C56 /* next.png */,
 				B5EBA9BE15CA23D90041C2CB /* background_home.png */,
 				B5EBA9BF15CA23D90041C2CB /* background_home@2x.png */,
 				B5EBA9C015CA23D90041C2CB /* background_manual.png */,
@@ -909,6 +929,8 @@
 			children = (
 				B5EBA9AC15C9F32C0041C2CB /* ETLIntervalSelectionController.h */,
 				B5EBA9AD15C9F32C0041C2CB /* ETLIntervalSelectionController.m */,
+				B576525B15D079D100E35C56 /* ETLStopSelectionController.h */,
+				B576525C15D079D100E35C56 /* ETLStopSelectionController.m */,
 			);
 			name = Mini;
 			sourceTree = "<group>";
@@ -1020,6 +1042,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				B504997715AF5C2400F4AF31 /* InfoPlist.strings in Resources */,
+				B576526115D169C100E35C56 /* next.png in Resources */,
+				B576526615D169D400E35C56 /* next_pressed.png in Resources */,
+				B576526815D169D400E35C56 /* next_pressed@2x.png in Resources */,
+				B576526A15D169D400E35C56 /* next@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1137,6 +1163,10 @@
 				B5EBA9D715CA23D90041C2CB /* instructions_manual@2x.png in Resources */,
 				B5EBA9D815CA23D90041C2CB /* instructions_timelapse.png in Resources */,
 				B5EBA9D915CA23D90041C2CB /* instructions_timelapse@2x.png in Resources */,
+				B576526015D169C100E35C56 /* next.png in Resources */,
+				B576526515D169D400E35C56 /* next_pressed.png in Resources */,
+				B576526715D169D400E35C56 /* next_pressed@2x.png in Resources */,
+				B576526915D169D400E35C56 /* next@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1197,6 +1227,7 @@
 				B5EBA9AA15C9EFBD0041C2CB /* ETLBimodalControllerTest.m in Sources */,
 				B5EBA9AF15C9F32D0041C2CB /* ETLIntervalSelectionController.m in Sources */,
 				B5EBA9B115CA1E780041C2CB /* ETLIntervalSelectionControllerTest.m in Sources */,
+				B576525E15D079D100E35C56 /* ETLStopSelectionController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1240,6 +1271,7 @@
 				B5EBA99D15C9E42C0041C2CB /* ETLTimeUnitList.m in Sources */,
 				B5EBA9A115C9E6D10041C2CB /* ETLPickerList.m in Sources */,
 				B5EBA9AE15C9F32D0041C2CB /* ETLIntervalSelectionController.m in Sources */,
+				B576525D15D079D100E35C56 /* ETLStopSelectionController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

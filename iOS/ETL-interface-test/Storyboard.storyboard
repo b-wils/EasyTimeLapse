@@ -665,6 +665,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="xk3-VU-6ag"/>
+                    <connections>
+                        <outlet property="enableInstructionsSwitch" destination="qpt-OZ-S5Z" id="Kr8-l5-3bL"/>
+                        <outlet property="flashFeedbackSwitch" destination="mjx-lX-dIO" id="g3Y-VI-Cbu"/>
+                    </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="363" y="743"/>
@@ -738,7 +742,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Amw-hv-hiE">
-                                <rect key="frame" x="220" y="107" width="75" height="35"/>
+                                <rect key="frame" x="205" y="109" width="75" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                                 <state key="normal" title="f-stop" backgroundImage="text_input.png">
@@ -748,13 +752,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <action selector="didClickPeriodUnit:" destination="Y0u-g9-Vhl" eventType="touchUpInside" id="0ga-LT-1aT"/>
-                                    <action selector="didPressStop:" destination="2uI-kd-f2e" eventType="touchUpInside" id="gY2-6T-udB"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="1GN-M1-ihP">
-                                <rect key="frame" x="220" y="149" width="75" height="35"/>
+                                <rect key="frame" x="205" y="153" width="75" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                                 <state key="normal" title="f-stop" backgroundImage="text_input.png">
@@ -764,10 +764,6 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <action selector="didClickPeriodUnit:" destination="Y0u-g9-Vhl" eventType="touchUpInside" id="Ywe-pn-eeh"/>
-                                    <action selector="didPressStop:" destination="2uI-kd-f2e" eventType="touchUpInside" id="c9O-HN-tfD"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="6OE-xi-eaw">
                                 <rect key="frame" x="25" y="390" width="270" height="50"/>
@@ -834,8 +830,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="9u9-sL-5rM"/>
                     <connections>
+                        <outlet property="bracketCountField" destination="TT9-K3-6U0" id="Ren-HM-5wN"/>
                         <outlet property="finalExposureButton" destination="1GN-M1-ihP" id="Y64-az-kuh"/>
+                        <outlet property="finalExposureField" destination="xKc-si-2oE" id="72z-pO-YK9"/>
                         <outlet property="initialExposureButton" destination="Amw-hv-hiE" id="esp-uX-aKG"/>
+                        <outlet property="initialExposureField" destination="tf6-Ux-Qqm" id="3SB-od-Cwg"/>
                     </connections>
                 </viewController>
             </objects>
@@ -894,7 +893,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="2DU-Nr-qg2">
-                                <rect key="frame" x="224" y="63" width="75" height="35"/>
+                                <rect key="frame" x="224" y="64" width="75" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                                 <state key="normal" title="seconds" backgroundImage="text_input.png">
@@ -1028,7 +1027,7 @@
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad" keyboardAppearance="alert" returnKeyType="done"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="vvl-fW-S5S">
-                                <rect key="frame" x="225" y="214" width="75" height="35"/>
+                                <rect key="frame" x="224" y="214" width="75" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                                 <state key="normal" title="minutes" backgroundImage="text_input.png">
@@ -1046,7 +1045,7 @@
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad" keyboardAppearance="alert" returnKeyType="done"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="2EF-Pt-Vcq">
-                                <rect key="frame" x="225" y="264" width="75" height="35"/>
+                                <rect key="frame" x="224" y="264" width="75" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                                 <state key="normal" title="minutes" backgroundImage="text_input.png">
@@ -1223,7 +1222,7 @@
                                 <color key="backgroundColor" red="0.41960784309999999" green="0.55294117649999996" blue="0.69019607839999997" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="YB2-AI-0C4">
-                                <rect key="frame" x="220" y="64" width="75" height="35"/>
+                                <rect key="frame" x="221" y="64" width="75" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                                 <state key="normal" title="seconds" backgroundImage="text_input.png">
@@ -1350,7 +1349,7 @@
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <state key="highlighted">
+                                <state key="highlighted" image="next_pressed.png">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -1426,6 +1425,7 @@
         <image name="indent_mid.png" width="320" height="100"/>
         <image name="instructions_timelapse.png" width="320" height="460"/>
         <image name="next.png" width="127" height="36"/>
+        <image name="next_pressed.png" width="127" height="36"/>
         <image name="preprogram.png" width="320" height="460"/>
         <image name="ready.png" width="268" height="47"/>
         <image name="ready_pressed.png" width="268" height="47"/>
@@ -1472,7 +1472,6 @@
         <class className="ETLHdrController" superclassName="ETLShotViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ETLHdrController.h"/>
             <relationships>
-                <relationship kind="action" name="didPressStop:"/>
                 <relationship kind="action" name="didUpdateBracketCount:"/>
                 <relationship kind="action" name="didUpdateExposureField:"/>
                 <relationship kind="outlet" name="bracketCountField" candidateClass="UITextField"/>
@@ -1501,6 +1500,10 @@
         </class>
         <class className="ETLSettingsViewController" superclassName="ETLViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ETLSettingsViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="enableInstructionsSwitch" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="flashFeedbackSwitch" candidateClass="UISwitch"/>
+            </relationships>
         </class>
         <class className="ETLShotViewController" superclassName="ETLViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ETLShotViewController.h"/>
@@ -1540,7 +1543,7 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="e5W-2h-EQi"/>
-        <segue reference="rBU-MJ-KTo"/>
         <segue reference="jON-PE-T2z"/>
+        <segue reference="2P8-c0-vOa"/>
     </inferredMetricsTieBreakers>
 </document>

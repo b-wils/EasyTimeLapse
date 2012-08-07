@@ -32,4 +32,6 @@ typedef void (^ETLViewInitBlock)(ETLViewController *);
 
 - (void)updateUICalculations:(NSNotification *)notification;
 - (void)ensureInitialized;
+
+- (void)replaceSwitches:(NSArray *)names;
 @end

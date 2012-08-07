@@ -9,5 +9,8 @@
 #import "ETLViewController.h"
 
 @interface ETLSettingsViewController : ETLViewController
-
+{
+    IBOutlet UISwitch *flashFeedbackSwitch;
+    IBOutlet UISwitch *enableInstructionsSwitch;
+}
 @end

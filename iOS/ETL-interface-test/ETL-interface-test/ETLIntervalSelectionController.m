@@ -20,8 +20,17 @@
 @end
 
 @implementation ETLIntervalSelectionController
-@synthesize parent, unit;
-ModelSynthesize(UInt64, interval, setShotInterval)
+@synthesize parent, unit, interval;
+//ModelSynthesize(UInt64, interval, setShotInterval)
+- (void)setInterval:(NSUInteger)value
+{
+    [self beginUpdate];
+    interval = value;
+    value /= [unitList msInUnit:unit];
+    textField.text = [NSString stringWithFormat:@"%d", value];
+    [self notifyUpdated:@"interval"];
+    [self endUpdate];
+}
 
 - (id)initWithInputField:(UITextField *)field unitButton:(UIButton *)units andParent:(ETLViewController <ETLIntervalSelectionDelegate> *)controller
 {
@@ -42,6 +51,7 @@ ModelSynthesize(UInt64, interval, setShotInterval)
         picker.delegate = unitList;
         picker.dataSource = unitList;
         picker.hidden = YES;
+        picker.showsSelectionIndicator = true;
         
         [parent.view addSubview:picker];
         
@@ -57,7 +67,6 @@ ModelSynthesize(UInt64, interval, setShotInterval)
     unit = value;
     unitButton.allTitles = unit;    
     [picker selectRow:[unitList getNumberOfUnit:unit] inComponent:0 animated:NO];
-    [self didUpdatePeriod:textField];
 }
 
 - (void)didClickPeriodUnit:(id)sender 
@@ -77,6 +86,7 @@ ModelSynthesize(UInt64, interval, setShotInterval)
 - (void)didSelectUnit:(NSString *)name ofMs:(NSUInteger)millis 
 {
     self.unit = name;
+    [self didUpdatePeriod:textField];
 //    [picker show:NO animated:YES];
 }
 
