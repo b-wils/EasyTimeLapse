@@ -86,6 +86,8 @@
      eachWith:^(id object) {
         [object addTarget:self action:@selector(scrollToControl:) forControlEvents:UIControlEventTouchUpInside];
     }];
+    
+    self.packetProvider = self;
 }
 
 - (void)didUpdateStop:(NSUInteger)ms forSelection:(id)sender 
@@ -104,15 +106,18 @@
     }
     
     if (sender == initialDuration) {
-        initial.shootingTime = initialDuration.interval;
+//        initial.shootingTime = initialDuration.interval;
+        initial.shotCount = initialDuration.interval / initial.shotInterval;
     }
     
     if (sender == rampDuration) {
-        ramp.timelapse.shootingTime = rampDuration.interval;
+//        ramp.timelapse.shootingTime = rampDuration.interval;
+        ramp.timelapse.shotCount = rampDuration.interval / ramp.timelapse.shotInterval;
     }
     
     if (sender == endingDuration) {
-        final.shootingTime = endingDuration.interval;
+//        final.shootingTime = endingDuration.interval;
+        final.shotCount = endingDuration.interval / final.shotInterval;
     }
 }
 
