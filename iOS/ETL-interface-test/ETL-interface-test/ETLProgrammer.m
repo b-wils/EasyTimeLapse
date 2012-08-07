@@ -89,6 +89,30 @@
     return currentPacket;
 }
 
+/* tryFixupPacket will take a packet that fails a crc check and iterate over all
+ * non-crc bytes. If a given byte has the most significant bit set, it will unset the
+ * bit and check the crc again. If the crc passes, we report true and modify the data.
+ *
+ * This bit of unintuitive code comes from the casual observation that crc errors tend
+ * to arise on the mic channel into the iPhone as a high MSB. No idea why, but it this
+ * makes transfers on certain iOS devices much faster.
+ */
+-(bool)tryFixupPacket {
+    for (NSUInteger offset = 2; offset < sizeof(IPhonePacket); offset++) {
+        byte *b = ((byte *)&inPacket) + offset;
+        if (*b & 0x80) {
+            byte originalByte = *b;
+            *b = *b & 0x7F;
+            if ([self isCrcValid]) {
+                printf("Packet fixed @byte #%d)", offset); 
+                return true;
+            }
+            *b = originalByte;
+        }
+    }
+    return false;
+}
+
 #define VALUE_WITH_BYTES(data,type) [NSValue valueWithBytes:data objCType:@encode(type)]
 
 -(void)receivedChar:(char)input 
@@ -105,6 +129,10 @@
                       VALUE_WITH_BYTES(&isValid, bool), @"isCrcValid",
                       VALUE_WITH_BYTES(&packetId, UInt32), @"sendingPacketId",
                       nil];
+        
+        if (!isValid) {
+            isValid = [self tryFixupPacket];
+        }
      
         if (isValid) {
             switch (inPacket.command) {
