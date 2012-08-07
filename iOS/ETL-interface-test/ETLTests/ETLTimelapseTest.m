@@ -134,4 +134,16 @@ MOCK_HANDLER(modelUpdated:)
 {
     assertThatInt(timelapse.packetCount, equalToInt(1));
 }
+
+-(void) testExposureLengthPower
+{
+    timelapse.exposure = 1000;
+    assertThatFloat(timelapse.exposureLengthPower, is(equalToFloat(0.0)));
+
+    timelapse.exposure = 500;
+    assertThatFloat(timelapse.exposureLengthPower, is(equalToFloat(-1.0)));
+    
+    timelapse.exposure = 4000;
+    assertThatFloat(timelapse.exposureLengthPower, is(equalToFloat(2.0)));
+}
 @end

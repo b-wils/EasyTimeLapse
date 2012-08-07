@@ -13,6 +13,7 @@
 ModelSynthesize(UInt64, shotInterval, setShotInterval)
 ModelSynthesize(UInt64, shotCount, setShotCount)
 ModelSynthesize(double, clipFramesPerSecond, setClipFramesPerSecond)
+ModelSynthesize(NSUInteger, exposure, setExposure)
 
 -(id) init
 {
@@ -23,6 +24,15 @@ ModelSynthesize(double, clipFramesPerSecond, setClipFramesPerSecond)
     }
     
     return self;
+}
+
+-(float)exposureLengthPower {
+    return log2f(exposure / SECONDS);
+}
+
+-(void)setExposureLengthPower:(float)value
+{
+    exposure = value * value * SECONDS;
 }
 
 -(NSTimeInterval)clipLength
@@ -60,7 +70,7 @@ ModelSynthesize(double, clipFramesPerSecond, setClipFramesPerSecond)
     BasicTimelapse * timelapse = &packet->basicTimelapse;
     timelapse->interval = shotInterval;
     timelapse->shots = shotCount ? shotCount : INT32_MAX;
-    timelapse->exposureLengthPower = 0.0f;
+    timelapse->exposureLengthPower = self.exposureLengthPower;
 }
 
 - (UInt32)packetCount {

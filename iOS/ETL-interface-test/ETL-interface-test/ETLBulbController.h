@@ -10,7 +10,7 @@
 #import "ETLStopSelectionController.h"
 #import "ETLIntervalSelectionController.h"
 
-@interface ETLBulbController : ETLShotViewController <ETLStopSelectionDelegate, ETLIntervalSelectionDelegate, UITextFieldDelegate>
+@interface ETLBulbController : ETLShotViewController <ETLStopSelectionDelegate, ETLIntervalSelectionDelegate, UITextFieldDelegate, PacketProvider>
 
 @property (weak, nonatomic) IBOutlet UITextField *intervalField;
 @property (weak, nonatomic) IBOutlet UIButton *intervalButton;
@@ -20,10 +20,16 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *initialDurationField;
 @property (weak, nonatomic) IBOutlet UIButton *initialDurationButton;
-@property (weak, nonatomic) IBOutlet UITextField *numStopsField;
+
 @property (weak, nonatomic) IBOutlet UITextField *rampDurationField;
 @property (weak, nonatomic) IBOutlet UIButton *rampDurationButton;
-@property (weak, nonatomic) IBOutlet UITextField *endingExposureField;
+
 @property (weak, nonatomic) IBOutlet UITextField *endingDurationField;
 @property (weak, nonatomic) IBOutlet UIButton *endingDurationButton;
+
+@property (weak, nonatomic) IBOutlet UITextField *numStopsField;
+@property (weak, nonatomic) IBOutlet UITextField *stopChangeField;
+
+- (IBAction)didUpdateNumStops:(id)sender;
+- (IBAction)didUpdateStopChange:(id)sender;
 @end

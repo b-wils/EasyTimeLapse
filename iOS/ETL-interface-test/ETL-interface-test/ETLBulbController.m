@@ -7,11 +7,15 @@
 //
 
 #import "ETLBulbController.h"
+#import "ETLTimelapse.h"
+#import "ETLBulbRamp.h"
 
 @interface ETLBulbController ()
 {
     ETLStopSelectionController *initialExposure;
     ETLIntervalSelectionController *interval, *initialDuration, *rampDuration, *endingDuration;
+    ETLTimelapse *initial, *final;
+    ETLBulbRamp *ramp;
 }
 @end
 
@@ -21,32 +25,54 @@
 @synthesize initialDurationField, initialDurationButton;
 @synthesize rampDurationField, rampDurationButton;
 @synthesize endingDurationField, endingDurationButton;
-@synthesize numStopsField;
-@synthesize endingExposureField;
+@synthesize numStopsField, stopChangeField;
 
 - (void)ensureInitialized 
 {
+    if (!initial) {
+        initial = [[ETLTimelapse alloc] init];
+        initial.shotInterval = 5*SECONDS;
+        initial.shotCount = 10*MINUTES / initial.shotInterval;
+        initial.exposure = 200*MS;
+    }
+    
+    if (!ramp) {
+        ramp = [[ETLBulbRamp alloc] init];
+        ramp.timelapse.shotInterval = 5*SECONDS;
+        ramp.timelapse.shotCount = 20*MINUTES / ramp.timelapse.shotInterval;
+        ramp.timelapse.exposure = initial.exposure;
+        ramp.numStops = 10;
+        ramp.fStopChangeOnPress = 3;
+    }
+    
+    if (!final) {
+        final = [[ETLTimelapse alloc] init];
+        final.shotInterval = 5*SECONDS;
+        final.shotCount = 10*MINUTES / final.shotInterval;
+        final.exposureLengthPower = initial.exposureLengthPower + ramp.numStops;
+    }
+    
     if (!interval) InitIntervalSelection(interval) WITH 
-        interval.interval = 5; 
+        interval.interval = initial.shotInterval / SECONDS; 
         interval.unit = @"seconds";
     END
     
     if (!initialExposure) InitStopSelection(initialExposure) WITH
-        initialExposure.duration = 200;
+        initialExposure.duration = initial.exposure;
     END
     
     if (!initialDuration) InitIntervalSelection(initialDuration) WITH
-        initialDuration.interval = 10;
+        initialDuration.interval = initial.shootingTime / MINUTES;
         initialDuration.unit = @"minutes";
     END
     
     if (!rampDuration) InitIntervalSelection(rampDuration) WITH
-        rampDuration.interval = 20;
+        rampDuration.interval = ramp.timelapse.shootingTime / MINUTES;
         rampDuration.unit = @"minutes";
     END
     
     if (!endingDuration) InitIntervalSelection(endingDuration) WITH
-        endingDuration.interval = 10;
+        endingDuration.interval = final.shootingTime / MINUTES;
         endingDuration.unit = @"minutes";
     END
 }
@@ -60,15 +86,45 @@
      eachWith:^(id object) {
         [object addTarget:self action:@selector(scrollToControl:) forControlEvents:UIControlEventTouchUpInside];
     }];
-
 }
 
-- (void)didUpdateStop:(NSUInteger)ms forSelection:(id)sender {
-    
+- (void)didUpdateStop:(NSUInteger)ms forSelection:(id)sender 
+{
+    initial.exposure = ((ETLStopSelectionController *)sender).duration;
+    ramp.timelapse.exposure = initial.exposure;
+    final.exposureLengthPower = initial.exposureLengthPower + ramp.numStops;
 }
 
-- (void)didUpdateInterval:(NSUInteger)ms forSelection:(id)sender {
+- (void)didUpdateInterval:(NSUInteger)ms forSelection:(id)sender 
+{
+    if (sender == interval) {
+        initial.shotInterval = interval.interval;
+        final.shotInterval = interval.interval;
+        ramp.timelapse.shotInterval = interval.interval;
+    }
     
+    if (sender == initialDuration) {
+        initial.shootingTime = initialDuration.interval;
+    }
+    
+    if (sender == rampDuration) {
+        ramp.timelapse.shootingTime = rampDuration.interval;
+    }
+    
+    if (sender == endingDuration) {
+        final.shootingTime = endingDuration.interval;
+    }
+}
+
+- (IBAction)didUpdateNumStops:(id)sender 
+{
+    ramp.numStops = [[sender text] integerValue];
+    final.exposureLengthPower = initial.exposureLengthPower + ramp.numStops;
+}
+
+- (IBAction)didUpdateStopChange:(id)sender
+{
+    ramp.fStopChangeOnPress = [[sender text] integerValue];
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
@@ -94,6 +150,30 @@
     }];
 }
 
+- (void)renderPacket:(UInt32)packetNumber to:(VariablePacket *)packet 
+{
+    switch (packetNumber) {
+        case 1:
+            [initial renderPacket:packetNumber to:packet];
+            break;
+        case 2:
+        case 3:
+            [ramp renderPacket:packetNumber - 1 to:packet];
+            packet->packetId = packetNumber;
+            break;
+        case 4:
+            [final renderPacket:packetNumber to:packet];
+            break;
+        default:
+            // TODO - error
+            break;
+    }
+}
+ 
+- (UInt32)packetCount {
+    return 4;
+}
+
 - (void)viewDidUnload {
     [self setIntervalField:nil];
     [self setIntervalButton:nil];
@@ -103,7 +183,6 @@
     [self setNumStopsField:nil];
     [self setRampDurationField:nil];
     [self setRampDurationButton:nil];
-    [self setEndingExposureField:nil];
     [self setEndingDurationField:nil];
     [self setEndingDurationButton:nil];
     [super viewDidUnload];

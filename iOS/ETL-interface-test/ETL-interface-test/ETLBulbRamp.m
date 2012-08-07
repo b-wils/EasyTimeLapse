@@ -9,6 +9,11 @@
 #import "ETLBulbRamp.h"
 
 @implementation ETLBulbRamp
+@synthesize timelapse;
+//@synthesize fStopChangeOnPress;
+ModelSynthesize(NSInteger, fStopChangeOnPress, setFStopChangeOnPress)
+//@synthesize numStops;
+ModelSynthesize(NSInteger, numStops, setNumStops)
 
 -(id)init {
     self =  [super init];
@@ -19,10 +24,15 @@
     return self;
 }
 
+-(float)fStopChangePerMinute
+{
+    return numStops / (timelapse.shootingTime / MINUTES);
+}
+
 -(void) renderBulbRamp:(BulbRamp *)ramp {
-    //    ramp->exposureFstopChangePerMin = ...
-    //    ramp->fstopChangeOnPress = ...
-    //    ramp->fstopSinAmplitude = ...
+    ramp->exposureFstopChangePerMin = self.fStopChangePerMinute;
+    ramp->fstopChangeOnPress = fStopChangeOnPress;
+//    ramp->fstopSinAmplitude = ...
 }
 
 -(void) renderPacket:(UInt32)packetNumber to:(VariablePacket *)packet;

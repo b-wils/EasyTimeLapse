@@ -948,12 +948,13 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" background="text_input.png" id="RdG-c9-TYJ">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="3" textAlignment="center" minimumFontSize="17" background="text_input.png" id="RdG-c9-TYJ">
                                         <rect key="frame" x="75" y="267" width="68" height="35"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad" returnKeyType="done"/>
                                         <connections>
+                                            <action selector="didUpdateStopChange:" destination="x40-mc-p3d" eventType="editingDidEnd" id="ziF-hc-Ijx"/>
                                             <outlet property="delegate" destination="x40-mc-p3d" id="d03-K5-T4D"/>
                                         </connections>
                                     </textField>
@@ -964,12 +965,13 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" background="text_input.png" id="Ghc-AM-Shn">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="10" textAlignment="center" minimumFontSize="17" background="text_input.png" id="Ghc-AM-Shn">
                                         <rect key="frame" x="75" y="168" width="40" height="35"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad" returnKeyType="done"/>
                                         <connections>
+                                            <action selector="didUpdateNumStops:" destination="x40-mc-p3d" eventType="editingDidEnd" id="Zly-H9-ab5"/>
                                             <outlet property="delegate" destination="x40-mc-p3d" id="NSc-aJ-Rha"/>
                                         </connections>
                                     </textField>
@@ -1118,6 +1120,7 @@
                         <outlet property="numStopsField" destination="Ghc-AM-Shn" id="Uww-TU-zZp"/>
                         <outlet property="rampDurationButton" destination="vvl-fW-S5S" id="DxR-T6-lYR"/>
                         <outlet property="rampDurationField" destination="aVz-Ta-dxS" id="2mm-w5-6om"/>
+                        <outlet property="stopChangeField" destination="RdG-c9-TYJ" id="421-bA-3Ui"/>
                     </connections>
                 </viewController>
             </objects>
@@ -1493,103 +1496,6 @@
         <image name="topbar_settings.png" width="320" height="44"/>
         <image name="topbar_timelapse.png" width="320" height="44"/>
     </resources>
-    <classes>
-        <class className="ETLBimodalController" superclassName="ETLShotViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ETLBimodalController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="intervalAButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="intervalAField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="intervalBButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="intervalBField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="ETLBulbController" superclassName="ETLShotViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ETLBulbController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="endingDurationButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="endingDurationField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="endingExposureField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="initialDurationButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="initialDurationField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="initialExposureButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="initialExposureField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="intervalButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="intervalField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="numStopsField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="rampDurationButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="rampDurationField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="ETLDoneProgrammingController" superclassName="ETLViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ETLDoneProgrammingController.h"/>
-        </class>
-        <class className="ETLHdrController" superclassName="ETLShotViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ETLHdrController.h"/>
-            <relationships>
-                <relationship kind="action" name="didUpdateBracketCount:"/>
-                <relationship kind="action" name="didUpdateExposureField:"/>
-                <relationship kind="outlet" name="bracketCountField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="finalExposureButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="finalExposureField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="initialExposureButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="initialExposureField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="ETLHomeController" superclassName="ETLViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ETLHomeController.h"/>
-        </class>
-        <class className="ETLManualController" superclassName="ETLShotViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ETLManualController.h"/>
-        </class>
-        <class className="ETLPreProgrammingController" superclassName="ETLShotViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ETLPreProgrammingController.h"/>
-        </class>
-        <class className="ETLProgramViewController" superclassName="ETLViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ETLProgramViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="bytesTransferred" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="cancelButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="programmingProgress" candidateClass="UIProgressView"/>
-            </relationships>
-        </class>
-        <class className="ETLSettingsViewController" superclassName="ETLViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ETLSettingsViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="enableInstructionsSwitch" candidateClass="UISwitch"/>
-                <relationship kind="outlet" name="flashFeedbackSwitch" candidateClass="UISwitch"/>
-            </relationships>
-        </class>
-        <class className="ETLShotViewController" superclassName="ETLViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ETLShotViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="gotoSettings"/>
-            </relationships>
-        </class>
-        <class className="ETLTimelapseController" superclassName="ETLShotViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ETLTimelapseController.h"/>
-            <relationships>
-                <relationship kind="action" name="didSwitchContinuous:"/>
-                <relationship kind="action" name="didUpdateShotLimit:"/>
-                <relationship kind="outlet" name="continuousSwitch" candidateClass="UISwitch"/>
-                <relationship kind="outlet" name="finalShotLengthLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="periodUnitButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="readyButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="shotLimitField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="shotLimitPanel" candidateClass="UIView"/>
-                <relationship kind="outlet" name="shotPeriodField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="totalShootingTimeLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="ETLViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ETLViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="goBack:"/>
-                <relationship kind="action" name="hideFirstResponder:"/>
-                <relationship kind="outlet" name="backOrHomeButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="numpadToolbar" candidateClass="UIView"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

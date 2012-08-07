@@ -11,7 +11,8 @@
 #import "ETLProgrammer.h"
 
 @interface ETLBulbRamp : ETLModel <PacketProvider>
-{
-    ETLTimelapse *timelapse;
-}
+@property (nonatomic, strong) ETLTimelapse *timelapse;
+@property (nonatomic, assign) NSInteger fStopChangeOnPress;
+@property (nonatomic, assign) NSInteger numStops;
+@property (nonatomic, assign, readonly) float fStopChangePerMinute;
 @end
