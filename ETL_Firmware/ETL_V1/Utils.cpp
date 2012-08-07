@@ -56,20 +56,24 @@ void PrintSectionConfig(SectionConfig SecConf) {
     DebugPrint(F("  type: "));
 	DebugPrintln(SecConf.type, HEX);
 	//
-	//DebugPrint("  repeatIndex: ");
-	//DebugPrintln(SecConf.repeatIndex);
-	//
-	//DebugPrint("  numRepeats: ");
-	//DebugPrintln(SecConf.numRepeats);
-	//
 	DebugPrint(F("  shots: "));
 	DebugPrintln(SecConf.shots);
 	//
 	DebugPrint(F("  interval: "));
 	DebugPrintln(SecConf.interval);
 	
-	//DebugPrint("  intervalDelta: ");
-	//DebugPrintln(SecConf.intervalDelta);
+	if (SecConf.numRepeats != 0) {
+		DebugPrint(F("  numRepeats: "));
+		DebugPrintln(SecConf.numRepeats);
+
+		DebugPrint(F("  repeatIndex: "));
+		DebugPrintln(SecConf.repeatIndex);
+	}	
+
+	if (SecConf.intervalDelta != 0) {
+		DebugPrint(F("  intervalDelta: "));
+		DebugPrintln(SecConf.intervalDelta);
+	}
 	
 	if (SecConf.exposureOffset != 0 ) {
 		DebugPrint(F("  exposureOffset: "));

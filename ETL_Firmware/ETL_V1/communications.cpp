@@ -35,6 +35,7 @@ extern SectionConfig myConfigs[MAX_CONFIGS];
 extern uint8_t numConfigs;
 extern uint8_t configPointer;
 extern uint8_t timelapseValid;
+extern uint32_t bulbModeShutterLag;
 
 uint32_t idleTimer;
 
@@ -219,6 +220,7 @@ void ProcessTransmitState() {
 				    switch (recvPacket.command) {
 	            
 	                case ETL_COMMAND_SETTINGS:
+						bulbModeShutterLag = recvPacket.deviceSettings.staticShutterLag;
 				        break;
 	                case ETL_COMMAND_BASICTIMELAPSE:						
 				        myConfigs[configPointer].shots = recvPacket.basicTimelapse.shots;
@@ -278,7 +280,7 @@ void ProcessTransmitState() {
 			// need to make sure iphone is ready to receive again
 			// this should be async. Interferes with ability to do manual shots
 			// or ideally we will fix iphone so it can send receive simulteneously...
-		    delay(50);
+		    delay(500);
 	        modem.writeBytes((uint8_t *) &sendPacket, sizeof(sendPacket));
 			
 			nextLedTime = millis(); // TEMP so we still flash after these sync processing

@@ -57,7 +57,7 @@ enum deviceCommands {
 
 typedef struct {
 	uint32_t staticShutterLag;
-	uint8_t  configSections;
+	uint8_t  configSections; // Unused
 } PACKED DeviceSettings;
 
 typedef struct {

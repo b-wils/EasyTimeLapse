@@ -60,17 +60,6 @@ const int batteryMonitorPin = A0;
 #define BUTTON_DEBOUNCE_PERIOD 25
 #define CABLE_DEBOUNCE_PERIOD 100
 
-#define DEFAULT_EXPOSURE 100 //ms
-#define HDR_INTERVAL 500 // TODO this should be configurable
-#define SHUTTER_FEEDBACK_TIMEOUT 1000
-
-#define SNAP_PHOTO (1)
-
-#define STATIC_SHUTTER_LAG 35 //ms
-#define BUFFER_RECOVER_TIME 200 //ms
-#define EXPOSURE_WARNING_TIME_OFFSET (((uint32_t) 5)*60*1000) //ms
-#define MINIMUM_PHOTO_LENGTH 20 //ms
-
 // Voltage Divider
 #define VOTLAGE_DIV_FACTOR 11 // (R1 + R2)/R2
 #define FULL_VOLTAGE 9

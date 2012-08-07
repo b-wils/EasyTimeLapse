@@ -89,8 +89,8 @@ void populateConfigs() {
 	sbi(myConfigs[0].type, CONFIG_PRESS_TO_ADVANCE);
     myConfigs[0].repeatIndex = 0;
     myConfigs[0].numRepeats = 0;
-    myConfigs[0].shots = 20;
-    myConfigs[0].interval = 2000;
+    myConfigs[0].shots = 200;
+    myConfigs[0].interval = 1000;
     myConfigs[0].intervalDelta = 0;
 	myConfigs[0].exposureOffset = -2;
     myConfigs[0].exposureFstopChangePerMin = 0;
@@ -102,9 +102,9 @@ void populateConfigs() {
     myConfigs[1].type = 0;
 	sbi(myConfigs[1].type, CONFIG_PRESS_TO_DERAMP);
     myConfigs[1].repeatIndex = 0;
-    myConfigs[1].numRepeats = 0;
-    myConfigs[1].shots = 20;
-    myConfigs[1].interval = 2000;
+    myConfigs[1].numRepeats = 20;
+    myConfigs[1].shots = 200;
+    myConfigs[1].interval = 5000;
     myConfigs[1].intervalDelta = 100;
     myConfigs[1].exposureOffset = -2;
     myConfigs[1].exposureFstopChangePerMin = 0;
@@ -113,35 +113,35 @@ void populateConfigs() {
     myConfigs[1].numHDRShots = 0;
 	myConfigs[1].fstopChangeOnPress = 0;
 	
-    myConfigs[2].type = 0;
-	sbi(myConfigs[2].type, CONFIG_PRESS_TO_ADVANCE);
-    myConfigs[2].repeatIndex = 0;
-    myConfigs[2].numRepeats = 0;
-    myConfigs[2].shots = 20;
-    myConfigs[2].interval = 4000;
-    myConfigs[2].intervalDelta = 0;
-    myConfigs[2].exposureOffset = -2;
-    myConfigs[2].exposureFstopChangePerMin = 0;
-	myConfigs[2].fstopSinAmplitude = 0;
-    myConfigs[2].fstopIncreasePerHDRShot = 0;
-    myConfigs[2].numHDRShots = 0;
-	myConfigs[2].fstopChangeOnPress = 0;
-	//
-    myConfigs[3].type = 0;
-	sbi(myConfigs[3].type, CONFIG_PRESS_TO_DERAMP);
-    myConfigs[3].repeatIndex = 0; 
-    myConfigs[3].numRepeats = 10;
-    myConfigs[3].shots = 20;
-    myConfigs[3].interval = 4000;
-    myConfigs[3].intervalDelta = -100;
-    myConfigs[3].exposureOffset = -2;
-    myConfigs[3].exposureFstopChangePerMin = 0;
-	myConfigs[3].fstopSinAmplitude = 0;
-    myConfigs[3].fstopIncreasePerHDRShot = 0;
-    myConfigs[3].numHDRShots = 0;
-	myConfigs[3].fstopChangeOnPress = 0;
+    //myConfigs[2].type = 0;
+	//sbi(myConfigs[2].type, CONFIG_PRESS_TO_ADVANCE);
+    //myConfigs[2].repeatIndex = 0;
+    //myConfigs[2].numRepeats = 0;
+    //myConfigs[2].shots = 20;
+    //myConfigs[2].interval = 4000;
+    //myConfigs[2].intervalDelta = 0;
+    //myConfigs[2].exposureOffset = -2;
+    //myConfigs[2].exposureFstopChangePerMin = 0;
+	//myConfigs[2].fstopSinAmplitude = 0;
+    //myConfigs[2].fstopIncreasePerHDRShot = 0;
+    //myConfigs[2].numHDRShots = 0;
+	//myConfigs[2].fstopChangeOnPress = 0;
+	////
+    //myConfigs[3].type = 0;
+	//sbi(myConfigs[3].type, CONFIG_PRESS_TO_DERAMP);
+    //myConfigs[3].repeatIndex = 0; 
+    //myConfigs[3].numRepeats = 10;
+    //myConfigs[3].shots = 20;
+    //myConfigs[3].interval = 4000;
+    //myConfigs[3].intervalDelta = -100;
+    //myConfigs[3].exposureOffset = -2;
+    //myConfigs[3].exposureFstopChangePerMin = 0;
+	//myConfigs[3].fstopSinAmplitude = 0;
+    //myConfigs[3].fstopIncreasePerHDRShot = 0;
+    //myConfigs[3].numHDRShots = 0;
+	//myConfigs[3].fstopChangeOnPress = 0;
 	
-	numConfigs = 4;
+	numConfigs = 2;
 }
 
 void enableADC() {

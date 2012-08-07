@@ -27,6 +27,8 @@ uint32_t nextPhotoTime;
 
 float exposurePressChange = 0;
 
+uint32_t bulbModeShutterLag = 35;
+
 extern uint8_t currentState;
 
 extern byte buttonClicked;
@@ -211,7 +213,7 @@ int32_t CalcExpTime(uint32_t startTime, uint32_t endTime, float fstopSinAmplitud
 	fstopExpFactor += exposurePressChange;
 	
 	exposureLength = pow(2, fstopExpFactor) * 1000;
-	exposureLength -= STATIC_SHUTTER_LAG;
+	exposureLength -= bulbModeShutterLag;
 	
     //DebugPrint("CalcExpTime timeDiffMin: ");
 	//DebugPrintln(timeDiffMin);
