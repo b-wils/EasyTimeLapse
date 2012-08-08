@@ -39,6 +39,33 @@ extern uint32_t bulbModeShutterLag;
 
 uint32_t idleTimer;
 
+void InitRequestPacket(IPhonePacket *packet, uint8_t requestId) {
+	memset(packet, 0, sizeof(IPhonePacket));
+	
+	packet->command = IOS_COMMAND_REQUESTPACKETID;
+	packet->packetId = requestId;
+
+    packet->crc = crc_init();
+	packet->crc = crc_update(packet->crc, ((uint8_t *) packet) + sizeof(crc_t), sizeof(IPhonePacket) - sizeof(crc_t));
+	packet->crc = crc_finalize(packet->crc);
+}
+
+void InitDeviceInfoPacket(IPhonePacket *packet, uint8_t requestId) {
+	memset(packet, 0, sizeof(IPhonePacket));
+	
+	packet->command = IOS_COMMAND_DEVICEINFO;
+	packet->packetId = requestId;
+	
+	packet->deviceInfo.batteryLevel = getBatteryLevel();
+	packet->deviceInfo.majorVersion = 1;
+	packet->deviceInfo.minorVersion = 1;
+	
+    packet->crc = crc_init();
+	packet->crc = crc_update(packet->crc, ((uint8_t *) packet) + sizeof(crc_t), sizeof(IPhonePacket) - sizeof(crc_t));
+	packet->crc = crc_finalize(packet->crc);
+}
+
+
 void InitTransmitState() { 
 	sendExtraByte = 1;
 	firstPacketReceived = false;
@@ -80,16 +107,8 @@ void InitTransmitState() {
 	
 	IPhonePacket startPacket;
     memset(&startPacket, 0, sizeof(IPhonePacket));
-	startPacket.command = IOS_COMMAND_DEVICEINFO;
-	startPacket.packetId = 0x1;
-
-	startPacket.deviceInfo.batteryLevel = 0;
-	startPacket.deviceInfo.majorVersion = 1;
-	startPacket.deviceInfo.minorVersion = 1;
-
-    startPacket.crc = crc_init();
-	startPacket.crc = crc_update(startPacket.crc, &startPacket.command, sizeof(startPacket) - sizeof(crc_t));
-	startPacket.crc = crc_finalize(startPacket.crc);
+	
+	InitDeviceInfoPacket(&startPacket, 1);
 	
 	modem.writeBytes((uint8_t *) &startPacket, sizeof(startPacket));
 	
@@ -108,17 +127,6 @@ void LeaveTransmitState() {
 	default:
 		DebugPrintln(F("Bad attempt to leave transmit state"));
 	}
-}
-
-void InitRequestPacket(IPhonePacket *packet, uint8_t requestId) {
-	memset(packet, 0, sizeof(IPhonePacket));
-	
-	packet->command = IOS_COMMAND_REQUESTPACKETID;
-	packet->packetId = requestId;
-
-    packet->crc = crc_init();
-	packet->crc = crc_update(packet->crc, ((uint8_t *) packet) + sizeof(crc_t), sizeof(IPhonePacket) - sizeof(crc_t));
-	packet->crc = crc_finalize(packet->crc);
 }
 
 void ProcessTransmitState() {
@@ -228,7 +236,7 @@ void ProcessTransmitState() {
 					    myConfigs[configPointer].exposureOffset = recvPacket.basicTimelapse.exposureLengthPower;
 					    myConfigs[configPointer].interval = recvPacket.basicTimelapse.interval;
 				        // Increment to the next config. basic MUST come last
-					    // TODO dump to EEPROM here
+					    // TODO dump to EEPROM here if we get full
 					    configPointer++;
 					    numConfigs = configPointer;
 				        break;
@@ -249,8 +257,9 @@ void ProcessTransmitState() {
 					    myConfigs[configPointer].numHDRShots = recvPacket.hdrShot.numHDRShots;
 				        break;
 					case ETL_COMMAND_GETDEVICEINFO:
-						// TODO populate and send device info
-						DebugPrintln("device info");
+						
+						DebugPrintln(F("device info"));
+						InitDeviceInfoPacket(&sendPacket, modemPacketIndex);
 						break;
 					case ETL_COMMAND_MANUALMODE:
 						// Can probably signoff here
