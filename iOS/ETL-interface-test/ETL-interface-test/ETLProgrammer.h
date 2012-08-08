@@ -17,6 +17,7 @@
 
 #define ByteReceived @"ByteReceived"
 #define PacketRequested @"PacketRequested"
+#define BadCrc @"BadCrc"
 #define ProgrammingComplete @"ProgrammingComplete"
 #define GotDeviceInfo @"GotDeviceInfo"
 

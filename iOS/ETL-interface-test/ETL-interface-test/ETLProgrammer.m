@@ -171,6 +171,7 @@
             }
         }
         else {
+            NOTIFY(BadCrc, nil);
             printf("bad crc\n");
             [self sendPacketNumber:packetId];
         }

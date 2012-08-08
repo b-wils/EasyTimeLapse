@@ -15,7 +15,7 @@
 
 @implementation ETLProgramViewController
 
-@synthesize packetProvider, programmer;
+@synthesize packetProvider, programmer, firstPacketSuccessful;
 
 - (void)ensureInitialized 
 {
@@ -36,7 +36,7 @@
     [original removeFromSuperview];
     [self.view addSubview:programmingProgress];
     
-    programmingProgress.progress = 1 / (packetProvider.packetCount + 1.0);
+    programmingProgress.progress = (firstPacketSuccessful ? 1 : 0) / (packetProvider.packetCount + 1.0);
 }
 
 - (void)startProgramming
@@ -77,7 +77,10 @@ const NSUInteger streamBitsPerDataByte = 14;
 - (void)goBack:(id)sender
 {
     [programmer halt];
-    [super goBack:sender];
+    NSArray *viewControllers = [self.navigationController viewControllers];
+    UIViewController *controller = [viewControllers objectAtIndex:([viewControllers count] - 3)];
+    [self.navigationController popToViewController:controller animated:YES];
+//    [super goBack:sender];
 }
 
 @end

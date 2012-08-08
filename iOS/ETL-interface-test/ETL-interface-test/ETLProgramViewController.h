@@ -26,4 +26,5 @@
 
 @property (nonatomic, strong) id <PacketProvider> packetProvider;
 @property (nonatomic, strong) ETLProgrammer *programmer;
+@property (nonatomic, assign) bool firstPacketSuccessful;
 @end
