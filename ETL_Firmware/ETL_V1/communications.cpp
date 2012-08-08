@@ -56,8 +56,9 @@ void InitTransmitState() {
 	
 	// This is our unused audio channel. This must go to ground otherwise something
 	// weird happens electrically. We could probably use the P/U resistor too.
-	pinMode(focusPin, OUTPUT);
-	digitalWrite(focusPin, HIGH);
+	// problem here coming out of manual mode
+	//pinMode(focusPin, OUTPUT);
+	//digitalWrite(focusPin, HIGH);
 	
 	pinMode(fskVCCFitlerPin, OUTPUT);
 	digitalWrite(fskVCCFitlerPin, HIGH);
@@ -280,7 +281,7 @@ void ProcessTransmitState() {
 			// need to make sure iphone is ready to receive again
 			// this should be async. Interferes with ability to do manual shots
 			// or ideally we will fix iphone so it can send receive simulteneously...
-		    delay(100);
+		    delay(75);
 	        modem.writeBytes((uint8_t *) &sendPacket, sizeof(sendPacket));
 			
 			nextLedTime = millis(); // TEMP so we still flash after these sync processing

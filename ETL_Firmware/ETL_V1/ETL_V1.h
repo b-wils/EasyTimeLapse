@@ -88,5 +88,5 @@ struct EEPromHeader {
 void InitIdleState(); //__attribute__ ((section (".idleinit")));
 void SetConfig(int index);
 void dumpToEEProm();
-
+uint16_t getBatteryLevel();
 #endif /* ETL_V1_H_ */

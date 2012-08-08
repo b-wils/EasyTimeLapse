@@ -183,6 +183,26 @@ void printBatteryLevel() {
 	disableADC();
 }
 
+uint16_t
+getBatteryLevel() {
+	analogReference(INTERNAL);
+	
+	enableADC();
+	
+	// When the VCC line is tied to a AVR pin. Not done in alpha
+	pinMode(enableBatteryMonitorPin, OUTPUT);
+	digitalWrite(enableBatteryMonitorPin, HIGH);
+	
+	// need to throw out the first reading after enabling the ADC
+	uint16_t adcReading = analogRead(batteryMonitorPin);
+	adcReading = analogRead(batteryMonitorPin);
+	
+	disableADC();
+	
+	pinMode(enableBatteryMonitorPin, INPUT);
+	digitalWrite(enableBatteryMonitorPin, LOW);
+}
+
 int main(void)
 {
 	init();
@@ -209,13 +229,9 @@ void CableSenseChange(void) {}
 void InitIdleState() {
     currentState = STATE_IDLE;
 	
-//	SetLEDCycle(LED_CYCLE_IDLE);
-    //LedCycle tempCycle = LED_CYCLE_OFF;
     SetLEDCycle(LED_CYCLE_OFF);
 	
-	//printBatteryLevel();
 	disableADC();
-    //DebugPrintln("Enter Idle");
 }
 
 void ProcessIdle();
@@ -427,6 +443,7 @@ void ProcessButton() {
                         break;
 					case STATE_TIMELAPSE_MANUAL:
 						EndExposure();
+						//delay(200); // Idle if we need to keep a pin high during transmit
 						InitTransmitState();
 						break;
 					case STATE_INVALID:

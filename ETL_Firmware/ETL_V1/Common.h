@@ -117,14 +117,19 @@ typedef struct {
 enum iosCommands {
 	IOS_COMMAND_INVALID = 0,
 	IOS_COMMAND_REQUESTPACKETID,
-	IOS_COMMAND_DEVICEINFO
+	IOS_COMMAND_DEVICEINFO,
+	IOS_COMMAND_GETTIME
 };
 
 typedef struct {
 	uint8_t majorVersion;
 	uint8_t minorVersion;
-	uint8_t batteryLevel;
+	uint8_t /*uint16_t*/ batteryLevel;
 } PACKED DeviceInfo;
+
+typedef struct {
+	uint32_t currentTime;
+} PACKED GetTime;
 
 typedef struct {
     crc_t crc;
@@ -132,6 +137,7 @@ typedef struct {
 	uint8_t packetId; // TODO this is actually next packet we want, should we move this into the union?
 	union {
 		DeviceInfo deviceInfo;
+//		GetTime	   getTime;
 	};
 } PACKED IPhonePacket;
 
