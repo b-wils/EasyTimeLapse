@@ -11,6 +11,7 @@
 #import <objc/runtime.h>
 #import <Foundation/Foundation.h>
 #import "RCSwitchOnOff.h"
+#import "ETLAppDelegate.h"
 
 @interface ETLViewController ()
 {
@@ -102,6 +103,11 @@
 
 - (void)updateUICalculations:(NSNotification *)notification
 {
+}
+
+- (NSManagedObjectContext *)objectContext
+{
+    return [ETLAppDelegate instance].managedObjectContext;
 }
 
 @end

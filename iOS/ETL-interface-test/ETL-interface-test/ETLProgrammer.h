@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ETLDeviceInterface.h"
+#import "Settings.h"
 
 @protocol PacketProvider <NSObject>
 -(void)renderPacket:(UInt32)packetNumber to:(VariablePacket *)packet;
@@ -34,5 +35,6 @@
 
 @property (nonatomic, strong) id <PacketProvider> packetProvider;
 @property (nonatomic, readonly) UInt32 lastPacketSent;
+@property (nonatomic, strong) Settings *settings;
 
 @end

@@ -23,7 +23,7 @@
 
 @implementation ETLProgrammer
 
-@synthesize packetProvider;
+@synthesize packetProvider, settings;
 
 -(id)init
 {
@@ -75,12 +75,22 @@
     [self sendPacket:&packet];
 }
 
+-(void)sendSettingsPacket
+{    
+    VariablePacket packet;
+    packet.command = ETL_COMMAND_SETTINGS;
+    packet.packetId = currentPacket + 1;
+    packet.deviceSettings.configSections = 0;
+    packet.deviceSettings.staticShutterLag = settings.flashOffset.integerValue;
+    [self sendPacket:&packet];
+}
+
 -(void)sendSignoffPacket
 {   
     VariablePacket packet;
     memset(&packet, 0, sizeof(VariablePacket));
     packet.command = ETL_COMMAND_SIGNOFF;
-    packet.packetId = currentPacket + 1;
+    packet.packetId = currentPacket + 2;
     [self sendPacket:&packet];
 }
 
@@ -93,9 +103,9 @@
  * non-crc bytes. If a given byte has the most significant bit set, it will unset the
  * bit and check the crc again. If the crc passes, we report true and modify the data.
  *
- * This bit of unintuitive code comes from the casual observation that crc errors tend
- * to arise on the mic channel into the iPhone as a high MSB. No idea why, but it this
- * makes transfers on certain iOS devices much faster.
+ * This bit of unintuitive code comes from the casual observation that errors tend
+ * to arise on the mic channel into the iPhone as a high MSB in a byte. No idea why 
+ * it happens, but this makes transfers on certain iOS devices much faster.
  */
 -(bool)tryFixupPacket {
     for (NSUInteger offset = 2; offset < sizeof(IPhonePacket); offset++) {
@@ -141,6 +151,10 @@
                     if (packetId <= packetProvider.packetCount) {
                         NOTIFY(PacketRequested, userInfo);
                         [self sendPacketNumber:packetId];
+                    }
+                    else if (packetId == packetProvider.packetCount + 1) {
+                        NOTIFY(PacketRequested, userInfo);
+                        [self sendSettingsPacket];
                     }
                     else {
                         NOTIFY(PacketRequested, userInfo);

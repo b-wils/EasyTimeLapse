@@ -159,6 +159,12 @@
 		B5B1E63415C9A95D001720C2 /* ETLBimodalController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5B1E63315C9A95D001720C2 /* ETLBimodalController.m */; };
 		B5B1E63515C9A95D001720C2 /* ETLBimodalController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5B1E63315C9A95D001720C2 /* ETLBimodalController.m */; };
 		B5B9D2271592732E000444BB /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5B9D2261592732E000444BB /* AudioToolbox.framework */; };
+		B5BD797C15D2E556006E0F4C /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5BD797B15D2E556006E0F4C /* CoreData.framework */; };
+		B5BD798015D2E5FA006E0F4C /* SettingsModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B5BD797E15D2E5FA006E0F4C /* SettingsModel.xcdatamodeld */; };
+		B5BD79EB15D2EC77006E0F4C /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BD79EA15D2EC77006E0F4C /* Settings.m */; };
+		B5BD79EC15D2EC77006E0F4C /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BD79EA15D2EC77006E0F4C /* Settings.m */; };
+		B5BD79EF15D2EC77006E0F4C /* CameraType.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BD79EE15D2EC77006E0F4C /* CameraType.m */; };
+		B5BD79F015D2EC77006E0F4C /* CameraType.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BD79EE15D2EC77006E0F4C /* CameraType.m */; };
 		B5C0582F159E311200750DC9 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = B5C0582D159E311200750DC9 /* background.png */; };
 		B5C05830159E311200750DC9 /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5C0582E159E311200750DC9 /* background@2x.png */; };
 		B5C05833159E35C300750DC9 /* topbar_home.png in Resources */ = {isa = PBXBuildFile; fileRef = B5C05831159E35C300750DC9 /* topbar_home.png */; };
@@ -411,6 +417,12 @@
 		B5B1E63215C9A95D001720C2 /* ETLBimodalController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETLBimodalController.h; sourceTree = "<group>"; };
 		B5B1E63315C9A95D001720C2 /* ETLBimodalController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLBimodalController.m; sourceTree = "<group>"; };
 		B5B9D2261592732E000444BB /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		B5BD797B15D2E556006E0F4C /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		B5BD797F15D2E5FA006E0F4C /* SettingsModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SettingsModel.xcdatamodel; sourceTree = "<group>"; };
+		B5BD79E915D2EC77006E0F4C /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
+		B5BD79EA15D2EC77006E0F4C /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
+		B5BD79ED15D2EC77006E0F4C /* CameraType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraType.h; sourceTree = "<group>"; };
+		B5BD79EE15D2EC77006E0F4C /* CameraType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraType.m; sourceTree = "<group>"; };
 		B5C0582D159E311200750DC9 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = background.png; path = ../../../assets/v1/background.png; sourceTree = "<group>"; };
 		B5C0582E159E311200750DC9 /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "background@2x.png"; path = "../../../assets/v1/background@2x.png"; sourceTree = "<group>"; };
 		B5C05831159E35C300750DC9 /* topbar_home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = topbar_home.png; path = ../../../assets/v1/topbar_home.png; sourceTree = "<group>"; };
@@ -508,6 +520,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5BD797C15D2E556006E0F4C /* CoreData.framework in Frameworks */,
 				B5272DAE15A3871800F62549 /* CoreImage.framework in Frameworks */,
 				B558F8501592D24000CB6E24 /* libstdc++.6.0.9.dylib in Frameworks */,
 				B558F83D1592D0D300CB6E24 /* libcommunications.a in Frameworks */,
@@ -524,6 +537,7 @@
 		B504994C15AF55E900F4AF31 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				B5BD79F115D2ED00006E0F4C /* CoreData */,
 				B5336FE815C9BEB70074D73A /* View */,
 				B504994D15AF560B00F4AF31 /* ETLTimelapse.h */,
 				B504994E15AF560B00F4AF31 /* ETLTimelapse.m */,
@@ -721,6 +735,7 @@
 		B5990744158FFC000005C8E2 = {
 			isa = PBXGroup;
 			children = (
+				B5BD797B15D2E556006E0F4C /* CoreData.framework */,
 				B5420FD815AB6853001E3D15 /* Storyboard.storyboard */,
 				B5990759158FFC000005C8E2 /* ETL-interface-test */,
 				B504997215AF5C2300F4AF31 /* ETLTests */,
@@ -795,6 +810,18 @@
 				B5ED082215915FC00026432C /* NumpadDismissBar.xib */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		B5BD79F115D2ED00006E0F4C /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				B5BD797E15D2E5FA006E0F4C /* SettingsModel.xcdatamodeld */,
+				B5BD79ED15D2EC77006E0F4C /* CameraType.h */,
+				B5BD79EE15D2EC77006E0F4C /* CameraType.m */,
+				B5BD79E915D2EC77006E0F4C /* Settings.h */,
+				B5BD79EA15D2EC77006E0F4C /* Settings.m */,
+			);
+			name = CoreData;
 			sourceTree = "<group>";
 		};
 		B5C1CD57159CF093005D6FC0 /* images */ = {
@@ -1228,6 +1255,8 @@
 				B5EBA9AF15C9F32D0041C2CB /* ETLIntervalSelectionController.m in Sources */,
 				B5EBA9B115CA1E780041C2CB /* ETLIntervalSelectionControllerTest.m in Sources */,
 				B576525E15D079D100E35C56 /* ETLStopSelectionController.m in Sources */,
+				B5BD79EC15D2EC77006E0F4C /* Settings.m in Sources */,
+				B5BD79F015D2EC77006E0F4C /* CameraType.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1272,6 +1301,9 @@
 				B5EBA9A115C9E6D10041C2CB /* ETLPickerList.m in Sources */,
 				B5EBA9AE15C9F32D0041C2CB /* ETLIntervalSelectionController.m in Sources */,
 				B576525D15D079D100E35C56 /* ETLStopSelectionController.m in Sources */,
+				B5BD798015D2E5FA006E0F4C /* SettingsModel.xcdatamodeld in Sources */,
+				B5BD79EB15D2EC77006E0F4C /* Settings.m in Sources */,
+				B5BD79EF15D2EC77006E0F4C /* CameraType.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1420,8 +1452,10 @@
 				GCC_PREFIX_HEADER = "ETL-interface-test/ETL-interface-test-Prefix.pch";
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				INFOPLIST_FILE = "ETL-interface-test/ETL-interface-test-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = /Users/home/ben/source/iOS/communications/communications;
 				VALID_ARCHS = "armv6 armv7";
 				WRAPPER_EXTENSION = app;
@@ -1440,8 +1474,10 @@
 				GCC_PREFIX_HEADER = "ETL-interface-test/ETL-interface-test-Prefix.pch";
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				INFOPLIST_FILE = "ETL-interface-test/ETL-interface-test-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = /Users/home/ben/source/iOS/communications/communications;
 				VALID_ARCHS = "armv6 armv7";
 				WRAPPER_EXTENSION = app;
@@ -1479,6 +1515,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		B5BD797E15D2E5FA006E0F4C /* SettingsModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				B5BD797F15D2E5FA006E0F4C /* SettingsModel.xcdatamodel */,
+			);
+			currentVersion = B5BD797F15D2E5FA006E0F4C /* SettingsModel.xcdatamodel */;
+			path = SettingsModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = B5990746158FFC000005C8E2 /* Project object */;
 }

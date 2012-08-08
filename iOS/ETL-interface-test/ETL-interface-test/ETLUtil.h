@@ -14,6 +14,8 @@
 #import "NSArray+ArrayUtility.h"
 
 #define nint(x) [NSNumber numberWithInt:x]
+#define nfloat(x) [NSNumber numberWithFloat:x]
+#define nbool(x) [NSNumber numberWithBool:x]
 #define thOfSec(x) nint(ceil(1000.0/x))
 #define Array(...) [NSArray arrayWithObjects: __VA_ARGS__ , nil]
 

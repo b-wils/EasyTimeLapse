@@ -7,9 +7,14 @@
 //
 
 #import "ETLViewControllers.h"
+#import "Settings.h"
+#import "CameraType.h"
+#import "ETLUtil.h"
 
 @interface ETLSettingsViewController ()
-
+{
+    Settings *settings;   
+}
 @end
 
 @implementation ETLSettingsViewController
@@ -27,6 +32,26 @@
 {
     [super viewDidLoad];
     [self replaceSwitches:Array(@"enableInstructionsSwitch", @"flashFeedbackSwitch")];
+    settings = [Settings ensureDefaultForContext:self.objectContext];
+    [self updateUICalculations:nil];
+}
+
+- (void)updateUICalculations:(NSNotification *)notification
+{
+    cameraTypeButton.allTitles = ((CameraType *)settings.cameraType).name;
+    videoFramerateButton.allTitles = [NSString stringWithFormat:@"%.2f fps", settings.videoFramerate.floatValue];
+    flashOffsetField.text = [NSString stringWithFormat:@"%d", settings.flashOffset.unsignedIntValue];
+    [enableInstructionsSwitch setOn:settings.isHelpEnabled.boolValue animated:NO];
+    [flashFeedbackSwitch setOn:settings.useFlashFeedback.boolValue animated:NO];
+}
+
+- (IBAction)didUpdateFlashOffset:(id)sender
+{
+    settings.flashOffset = nint(flashOffsetField.text.integerValue);
+    NSError *error = nil;
+    if (![self.objectContext save:&error]) {
+        // Handle the error.
+    }
 }
 
 - (void)viewDidUnload

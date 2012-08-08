@@ -28,6 +28,8 @@ typedef void (^ETLViewInitBlock)(ETLViewController *);
 
 @property(nonatomic, strong) id delegate;
 
+- (NSManagedObjectContext *)objectContext;
+
 - (void)emulateFirstResponder:(UIView <ETLFirstResponder>*)view;
 
 - (IBAction)hideFirstResponder:(id)sender;

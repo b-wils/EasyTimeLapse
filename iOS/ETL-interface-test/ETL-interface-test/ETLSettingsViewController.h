@@ -12,5 +12,10 @@
 {
     IBOutlet UISwitch *flashFeedbackSwitch;
     IBOutlet UISwitch *enableInstructionsSwitch;
+    IBOutlet UIButton *cameraTypeButton;
+    IBOutlet UIButton *videoFramerateButton;
+    IBOutlet UITextField *flashOffsetField;
 }
+
+- (IBAction)didUpdateFlashOffset:(id)sender;
 @end
