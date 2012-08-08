@@ -56,9 +56,9 @@ void InitDeviceInfoPacket(IPhonePacket *packet, uint8_t requestId) {
 	packet->command = IOS_COMMAND_DEVICEINFO;
 	packet->packetId = requestId;
 	
-	packet->deviceInfo.batteryLevel = getBatteryLevel();
 	packet->deviceInfo.majorVersion = 1;
 	packet->deviceInfo.minorVersion = 1;
+	packet->deviceInfo.batteryLevel = getBatteryLevel();
 	
     packet->crc = crc_init();
 	packet->crc = crc_update(packet->crc, ((uint8_t *) packet) + sizeof(crc_t), sizeof(IPhonePacket) - sizeof(crc_t));

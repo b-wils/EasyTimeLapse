@@ -201,6 +201,8 @@ getBatteryLevel() {
 	
 	pinMode(enableBatteryMonitorPin, INPUT);
 	digitalWrite(enableBatteryMonitorPin, LOW);
+	
+	return adcReading;
 }
 
 int main(void)
