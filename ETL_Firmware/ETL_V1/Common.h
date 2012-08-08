@@ -16,12 +16,16 @@
 typedef uint8_t byte;
 #endif
 
-#ifndef cbi
-#define cbi(sfr, bit) (_SFR_BYTE(sfr) &= ~_BV(bit))
+#ifndef _BV
+#define _BV(bit) (1<<(bit))
 #endif
-#ifndef sbi
-#define sbi(sfr, bit) (_SFR_BYTE(sfr) |= _BV(bit))
-#endif
+
+//#ifndef cbi
+//#define cbi(sfr, bit) (_SFR_BYTE(sfr) &= ~_BV(bit))
+//#endif
+//#ifndef sbi
+//#define sbi(sfr, bit) (_SFR_BYTE(sfr) |= _BV(bit))
+//#endif
 
 // bit feilds
 enum {
