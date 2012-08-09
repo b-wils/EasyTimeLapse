@@ -121,7 +121,7 @@ void InitManualTimelapseState() {
 	currentState = STATE_TIMELAPSE_MANUAL;
 }
 
-void InitTimelapseState() {
+void InitTimelapseState(uint32_t startTimeOffset) {
 	pinMode(flashSensePin, INPUT);
 	digitalWrite(flashSensePin, LOW);
 	
@@ -167,7 +167,7 @@ void InitTimelapseState() {
 	exposurePressChange = 0; // TODO there may be cases where we want to preserve this across configs
 	repeatsRemaining = -1;
 	
-	nextPhotoTime = millis();
+	nextPhotoTime = millis() + startTimeOffset;
 	SetConfig(configIndex);
 }
 

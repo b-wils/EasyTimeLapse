@@ -272,6 +272,11 @@ void ProcessTransmitState() {
 						dumpToEEProm();
 						SetLEDCycle(LED_CYCLE_END_PROGRAM);
 						
+						if (recvPacket.programComplete.autoStartFromNow !=0) {
+							// Automatically start
+							InitTimelapseState(recvPacket.programComplete.autoStartFromNow);
+						}
+						
 						return;
 						break;
 				    case ETL_COMMAND_INVALID:

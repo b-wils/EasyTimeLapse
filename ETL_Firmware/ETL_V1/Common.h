@@ -90,6 +90,10 @@ typedef struct {
 } PACKED HDRShot;
 
 typedef struct {
+	int32_t autoStartFromNow; // in ms, 0 means don't auto start
+} PACKED ProgrammingComplete;
+
+typedef struct {
 	crc_t crc;
 	uint8_t command;
 	uint8_t packetId;
@@ -99,6 +103,7 @@ typedef struct {
 		BulbRamp       bulbRamp;
 		IntervalRamp   intervalRamp;
 		HDRShot        hdrShot;
+		ProgrammingComplete programComplete;
 	};
 } PACKED VariablePacket;
 

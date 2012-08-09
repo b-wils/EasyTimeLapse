@@ -425,7 +425,7 @@ void ProcessButton() {
                         } else {
 							// Send to idle state after we finish the current exposure
 							if (timelapseValid) {
-								InitTimelapseState();
+								InitTimelapseState(0);
 							} else {
 								SetLEDCycle(LED_CYCLE_TIMELAPSE_INVALID);
 							}																
@@ -436,7 +436,7 @@ void ProcessButton() {
 							idleTimer = millis();
                         } else {
 							if (timelapseValid) {
-								InitTimelapseState();
+								InitTimelapseState(0);
 							} else {
 								InitIdleState();
 								SetLEDCycle(LED_CYCLE_TIMELAPSE_INVALID);

@@ -32,7 +32,7 @@
 void StartExposure();
 void EndExposure();
 void TimelapseResume();
-void InitTimelapseState();
+void InitTimelapseState(uint32_t startTimeOffset);
 void InitManualTimelapseState();
 void InitTimelapsePauseState();
 void ProcessTimelapseWaiting();
