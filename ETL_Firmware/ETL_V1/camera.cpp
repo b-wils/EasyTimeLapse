@@ -27,7 +27,8 @@ uint32_t nextPhotoTime;
 
 float exposurePressChange = 0;
 
-uint32_t bulbModeShutterLag = 35;
+uint32_t bulbModeShutterLag = DEFAULT_BULB_SHUTTER_OFFSET;
+uint16_t bufferRecoverTime = DEFAULT_BUFFER_RECOVER_TIME;
 
 extern uint8_t currentState;
 
@@ -268,7 +269,7 @@ void ProcessTimelapseWaiting() {
 			if (tempExposure < MINIMUM_PHOTO_LENGTH) {
 				DebugPrintln(F("Exposure too low"));
 				SetLEDCycle(LED_CYCLE_STOP_CHANGE_FAILURE);
-			} else if (tempExposure > (myConfigs[configIndex].interval - BUFFER_RECOVER_TIME)) {
+			} else if (tempExposure > (myConfigs[configIndex].interval - bufferRecoverTime)) {
 				DebugPrintln(F("Exposure too high"));
 				SetLEDCycle(LED_CYCLE_STOP_CHANGE_FAILURE);
 			} else {
@@ -320,10 +321,10 @@ void ProcessTimelapseWaiting() {
 			if (tempExposure < 50) {
 				DebugPrintln("Warning: impending low exposure collision");
 				SetLEDCycle(LED_CYCLE_TIMELAPSE_CHANGE_READY);
-			} else if (tempExposure > (((int32_t) myConfigs[configIndex].interval) - BUFFER_RECOVER_TIME) ){
+			} else if (tempExposure > (((int32_t) myConfigs[configIndex].interval) - bufferRecoverTime) ){
 				DebugPrint("Warning: impending high exposure collision: ");
 				DebugPrintln(tempExposure);
-				DebugPrintln((((int32_t) myConfigs[configIndex].interval) - BUFFER_RECOVER_TIME));
+				DebugPrintln((((int32_t) myConfigs[configIndex].interval) - bufferRecoverTime));
 				SetLEDCycle(LED_CYCLE_TIMELAPSE_CHANGE_READY);
 			}
 		}
@@ -334,10 +335,10 @@ void ProcessTimelapseWaiting() {
 		DebugPrintln(exposureLength);
 		
 		
-		if (exposureLength > (myConfigs[configIndex].interval - BUFFER_RECOVER_TIME)) {
+		if (exposureLength > (myConfigs[configIndex].interval - bufferRecoverTime)) {
 			DebugPrintln(F("Exposure length/interval collision"));
 			SetLEDCycle(LED_CYCLE_TIMELAPSE_EXP_COLLISION);
-			exposureLength = myConfigs[configIndex].interval - BUFFER_RECOVER_TIME;
+			exposureLength = myConfigs[configIndex].interval - bufferRecoverTime;
 		}
 		
 		if (exposureLength < MINIMUM_PHOTO_LENGTH) {

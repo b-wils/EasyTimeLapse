@@ -20,12 +20,12 @@ typedef uint8_t byte;
 #define _BV(bit) (1<<(bit))
 #endif
 
-//#ifndef cbi
-//#define cbi(sfr, bit) (_SFR_BYTE(sfr) &= ~_BV(bit))
-//#endif
-//#ifndef sbi
-//#define sbi(sfr, bit) (_SFR_BYTE(sfr) |= _BV(bit))
-//#endif
+#ifndef cbi
+#define cbi(sfr, bit) (_SFR_BYTE(sfr) &= ~_BV(bit))
+#endif
+#ifndef sbi
+#define sbi(sfr, bit) (_SFR_BYTE(sfr) |= _BV(bit))
+#endif
 
 // bit feilds
 enum {
@@ -59,9 +59,17 @@ enum deviceCommands {
 
 #define PACKED __attribute__((__packed__))
 
+enum deviceSettingsBits {
+	SETTINGS_IDLE,
+	SETTINGS_PHOTO_START
+};
+
 typedef struct {
 	uint32_t staticShutterLag;
-	uint8_t  configSections; // Unused
+	uint16_t bufferRecoverTime;
+	uint8_t  ledStrength;
+	uint8_t  boolFields;
+	//uint8_t  configSections; // Unused
 } PACKED DeviceSettings;
 
 typedef struct {

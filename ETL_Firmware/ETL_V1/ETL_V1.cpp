@@ -16,6 +16,8 @@
 #include "communications.h"
 #include "camera.h"
 
+#define UINT8_T_MAX 255
+
 // Visible to other classes
 uint8_t numConfigs;
 SectionConfig myConfigs[MAX_CONFIGS];
@@ -44,13 +46,19 @@ uint32_t incrementCount;
 
 uint8_t timelapseValid;
 
+extern uint32_t bulbModeShutterLag;
+extern uint16_t bufferRecoverTime;
+
 void dumpToEEProm() {
 	EEPromHeader header;
 	uint16_t eepromPointer = 0;
 	memset(&header, 0, sizeof(EEPromHeader));
 	
 	header.numConfigs = numConfigs;
-	
+	header.ledStrength = ledStrength;
+	header.bulbShutterOffset = bulbModeShutterLag;
+	header.bufferRecoverTime = bufferRecoverTime;
+
 	if (header.numConfigs > MAX_CONFIGS) {
 		DebugPrint(F("Invalid eeprom header num "));
 		DebugPrintln(header.numConfigs);
@@ -70,13 +78,46 @@ void initFromEEProm() {
 	
 	eeprom_read_block(&header, (void *) eepromPointer, sizeof(EEPromHeader));
 	
-	if (header.numConfigs > MAX_CONFIGS) {
+	if (header.numConfigs == 0) {
+		// Manual mode
+		DebugPrintln(F("Init to manual mode"));
+		currentState = STATE_TIMELAPSE_MANUAL;
+	} else if (header.numConfigs == UINT8_T_MAX) {
+		// unconfigured set defaults
+		DebugPrintln(F("initialize eeprom"));
+		currentState = STATE_TIMELAPSE_MANUAL;
+		
+		ledStrength = DEFAULT_LED_STRENGTH;
+		numConfigs = 0;
+		bulbModeShutterLag = DEFAULT_BULB_SHUTTER_OFFSET;
+		bufferRecoverTime = DEFAULT_BUFFER_RECOVER_TIME;
+		
+		dumpToEEProm();
+		return;
+	} else if (header.numConfigs > MAX_CONFIGS) {
 		DebugPrint(F("Init Invalid eeprom header num "));
 		DebugPrintln(header.numConfigs);
+		currentState = STATE_TIMELAPSE_MANUAL;
+		
+		ledStrength = DEFAULT_LED_STRENGTH;
+		numConfigs = 0;
+		bulbModeShutterLag = DEFAULT_BULB_SHUTTER_OFFSET;
+		bufferRecoverTime = DEFAULT_BUFFER_RECOVER_TIME;
+				
+		dumpToEEProm();
 		return;
+	} else {
+		DebugPrintln("valid num configs");
 	}
 	
 	numConfigs = header.numConfigs;	
+	ledStrength = header.ledStrength;
+	bufferRecoverTime = header.bufferRecoverTime;
+	bulbModeShutterLag = header.bulbShutterOffset;
+	
+	DebugPrintln(F("bulb buffer"));
+	DebugPrintln(bulbModeShutterLag);
+	DebugPrintln(bufferRecoverTime);
 	
 	eepromPointer += sizeof(EEPromHeader);
 	
@@ -222,6 +263,13 @@ void SetLEDCycle(LedCycle cycle) {
 	currentLedCycle = cycle;
 	ledCycleIndex = -1; // so we can increment at start of our processing
 	nextLedTime = millis();
+	
+	//for (int i = 0; i < cycle.NumLedPositions; i++) {
+		//DebugPrint(F("R G B "));
+		//DebugPrint(cycle.ColorCycle[0].red);
+		//DebugPrint(cycle.ColorCycle[0].green);
+		//DebugPrintln(cycle.ColorCycle[0].blue);
+	//}
 }
 
 // Needed for external interrupt waking from power down
@@ -271,8 +319,6 @@ void setup() {
 	
 	nextLedTime = millis();
     
-	
-	initFromEEProm();
 	populateConfigs();
 	
 	analogReference(INTERNAL);
@@ -295,6 +341,8 @@ void setup() {
 	incrementCount = 0;
 	
 	timelapseValid = true;
+	
+	initFromEEProm();
 }
 
 extern uint32_t nextPhotoTime;
@@ -424,7 +472,7 @@ void ProcessButton() {
 							SetLEDCycle(LED_CYCLE_START_PROGRAM);
                         } else {
 							// Send to idle state after we finish the current exposure
-							if (timelapseValid) {
+							if (timelapseValid && numConfigs > 0) {
 								InitTimelapseState(0);
 							} else {
 								SetLEDCycle(LED_CYCLE_TIMELAPSE_INVALID);
@@ -558,6 +606,9 @@ void loop() {
 			case 'w':
 				eeprom_write_byte(0, 5);
 				break;
+			case 'i':
+				// initialize from our default settings
+				populateConfigs();
 			case 13:
 			case 10:
 				// new line characters

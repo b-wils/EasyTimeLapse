@@ -82,7 +82,11 @@ enum {
 };
 
 struct EEPromHeader {
+	uint32_t bulbShutterOffset;
+	uint16_t bufferRecoverTime;
 	uint8_t numConfigs;
+	uint8_t ledStrength;
+	uint8_t deviceSettingsBits;
 };
 
 void InitIdleState(); //__attribute__ ((section (".idleinit")));

@@ -36,6 +36,7 @@ extern uint8_t numConfigs;
 extern uint8_t configPointer;
 extern uint8_t timelapseValid;
 extern uint32_t bulbModeShutterLag;
+extern uint16_t bufferRecoverTime;
 
 uint32_t idleTimer;
 
@@ -274,7 +275,12 @@ void ProcessTransmitState() {
 						
 						if (recvPacket.programComplete.autoStartFromNow !=0) {
 							// Automatically start
-							InitTimelapseState(recvPacket.programComplete.autoStartFromNow);
+							// TODO what does pressing the button do before the start time?
+							if (numConfigs > 0) {
+								InitTimelapseState(recvPacket.programComplete.autoStartFromNow);
+							} else {
+								DebugPrintln(F("attempt to auto start with no configs"));
+							}								
 						}
 						
 						return;

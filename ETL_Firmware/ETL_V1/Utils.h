@@ -15,17 +15,33 @@
 #include <avr/sleep.h>
 #include <avr/interrupt.h>
 
-struct RGBColors {	
-	byte red;
-	byte green;
-	byte blue;
+enum COLOR_BITS {
+	COLOR_RED,
+	COLOR_GREEN,
+	COLOR_BLUE
 };
 
+//struct RGBColors {	
+	//byte red;
+	//byte green;
+	//byte blue;
+//};
+
+struct RGBColors {	
+	unsigned red:1;
+	unsigned blue:1;
+	unsigned green:1;
+};
+//const RGBColors2 WHITE2 = {1,1,1};
+	
 RGBColors createColor(uint8_t Red, uint8_t Green, uint8_t Blue);
 
-#define RED_MAX 5
-#define BLUE_MAX 5
-#define GREEN_MAX 5
+#define DEFAULT_LED_STRENGTH 5
+extern uint8_t ledStrength;
+
+#define RED_MAX 1
+#define BLUE_MAX 1
+#define GREEN_MAX 1
 
 const RGBColors OFF		= {0,0,0};
 const RGBColors RED		= {RED_MAX,0,0};

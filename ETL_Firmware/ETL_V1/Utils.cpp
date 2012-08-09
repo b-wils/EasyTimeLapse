@@ -17,6 +17,8 @@
 const int colorLoop_elements = 8;
 //const RGBColors colorLoop[] = {GREEN,YELLOW,RED,PURPLE,BLUE,CYAN,WHITE, OFF};
 
+uint8_t ledStrength = DEFAULT_LED_STRENGTH;
+
 void DebugInit() {	
 	Serial.begin(19200);
 	DebugPrintln(F("ETL version 0.1"));
@@ -107,9 +109,25 @@ void PrintSectionConfig(SectionConfig SecConf) {
 }
 
 void SetLED(RGBColors colors) {
-	analogWrite(redLed, colors.red);
-	analogWrite(blueLed, colors.blue);
-	analogWrite(greenLed, colors.green);
+	
+	if (colors.red != 0) {
+		analogWrite(redLed, ledStrength);
+	} else {
+		analogWrite(redLed, 0);
+	}
+	
+	if (colors.green != 0) {
+		analogWrite(blueLed, ledStrength);
+	} else {
+		analogWrite(blueLed, 0);
+	}
+	
+	if (colors.blue != 0) {
+		analogWrite(greenLed, ledStrength);
+	} else {
+		analogWrite(greenLed, 0);
+	}
+
 }
 
 byte AreColorsEqual(RGBColors color1, RGBColors color2) {
