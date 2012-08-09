@@ -32,8 +32,14 @@
     programView = [self.storyboard instantiateViewControllerWithIdentifier:@"ProgramView"];
     programView.packetProvider = self.packetProvider;
     [programView ensureInitialized];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didRequestPacket:) name:PacketRequested object:programView.programmer];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didRequestPacket:) name:BadCrc object:programView.programmer];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    if (!programView.programmer.isHeadsetAttached) [self goBack:nil];
 }
 
 - (void)didRequestPacket:(NSNotification *)notification

@@ -23,7 +23,7 @@
 
 @implementation ETLProgrammer
 
-@synthesize packetProvider, settings;
+@synthesize packetProvider, settings, isHeadsetAttached;
 
 -(id)init
 {
@@ -35,6 +35,7 @@
         device.delegate = self;
         
         [device startReader];
+        isHeadsetAttached = device.isHeadsetAttached;
     }
     
     return self;
@@ -218,5 +219,17 @@
                                    selector:@selector(finalizeWrite:) 
                                    userInfo:nil 
                                     repeats:NO];
+}
+
+-(void)didAttachHeadphones:(bool)status
+{
+    isHeadsetAttached = status;
+    
+    if(isHeadsetAttached) {
+        NOTIFY(HeadsetAttached, nil);
+    }
+    else {
+        NOTIFY(HeadsetDetached, nil);
+    }
 }
 @end

@@ -21,6 +21,8 @@
 #define BadCrc @"BadCrc"
 #define ProgrammingComplete @"ProgrammingComplete"
 #define GotDeviceInfo @"GotDeviceInfo"
+#define HeadsetAttached @"HeadsetAttached"
+#define HeadsetDetached @"HeadsetDetached"
 
 #define NOTIFY(msg, info)                   \
     [[NSNotificationCenter defaultCenter]   \
@@ -36,5 +38,6 @@
 @property (nonatomic, strong) id <PacketProvider> packetProvider;
 @property (nonatomic, readonly) UInt32 lastPacketSent;
 @property (nonatomic, strong) Settings *settings;
+@property (nonatomic, readonly) bool isHeadsetAttached;
 
 @end

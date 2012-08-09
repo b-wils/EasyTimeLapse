@@ -11,8 +11,6 @@
 
 void interruptionListenerCallback (void	*inUserData, UInt32	interruptionState) 
 {
-	// This callback, being outside the implementation block, needs a reference 
-	//	to the AudioViewController object
 	ETLDeviceInterface *device = (__bridge ETLDeviceInterface *) inUserData;
 	
 	if (interruptionState == kAudioSessionBeginInterruption) {
@@ -21,6 +19,49 @@ void interruptionListenerCallback (void	*inUserData, UInt32	interruptionState)
 		// if the interruption was removed, resume recording
         [device resumeProgramming];
 	}
+}
+
+void audioRouteChangeListenerCallback (void                   *inUserData,
+                                       AudioSessionPropertyID inPropertyID,
+                                       UInt32                 inPropertyValueSize,
+                                       const void             *inPropertyValue) 
+{
+    if (inPropertyID != kAudioSessionProperty_AudioRouteChange) return;
+    ETLDeviceInterface *device = (__bridge ETLDeviceInterface *)inUserData;
+
+    NSDictionary *routeChangeDictionary = (__bridge NSDictionary *)inPropertyValue;
+    SInt32 routeChangeReason = [[routeChangeDictionary objectForKey:
+                                    (__bridge NSString *)CFSTR(kAudioSession_AudioRouteChangeKey_Reason)] 
+                                integerValue];
+    if (routeChangeReason == kAudioSessionRouteChangeReason_OldDeviceUnavailable) {
+      
+        NSDictionary *oldRouteDesc = [routeChangeDictionary objectForKey:(NSString *)kAudioSession_AudioRouteChangeKey_PreviousRouteDescription];
+        NSArray *inputs = [oldRouteDesc objectForKey:(NSString *)kAudioSession_AudioRouteKey_Inputs];
+        NSDictionary *inputDesc = inputs.count > 0 ? (__bridge NSDictionary *)[inputs objectAtIndex:0] : nil;
+        if (!inputDesc) return;
+        
+        NSString *type = [inputDesc objectForKey:(NSString *)kAudioSession_AudioRouteKey_Type];
+        if ([type isEqualToString:(NSString *)kAudioSessionInputRoute_HeadsetMic]) {
+            [device.delegate didAttachHeadphones:false];
+        }
+    }
+    
+    if (routeChangeReason == kAudioSessionRouteChangeReason_NewDeviceAvailable) {
+//        UInt32 dictRefSize = sizeof(CFDictionaryRef);
+//        CFDictionaryRef routeDescriptionRef;
+//        AudioSessionGetProperty(kAudioSessionProperty_AudioRouteDescription, &dictRefSize, &routeDescriptionRef);
+//        
+//        NSDictionary *routeDescription = (__bridge NSDictionary *)routeDescriptionRef;
+//        NSArray *inputs = [routeDescription objectForKey:(NSString *)kAudioSession_AudioRouteKey_Inputs];
+//        NSDictionary *inputDesc = inputs.count > 0 ? (__bridge NSDictionary *)[inputs objectAtIndex:0] : nil;
+//        if (!inputDesc) return;
+//        
+//        NSString *type = [inputDesc objectForKey:(NSString *)kAudioSession_AudioRouteKey_Type];
+//        if ([type isEqualToString:(NSString *)kAudioSessionInputRoute_HeadsetMic]) {
+//            [device.delegate didAttachHeadphones:true];
+//        }
+        [device.delegate didAttachHeadphones:device.isHeadsetAttached];
+    }
 }
 
 @interface  ETLDeviceInterface ()
@@ -67,6 +108,10 @@ static bool audioInitialized = false;
     Float32 preferredBufferSize = .02;
     err = AudioSessionSetProperty(kAudioSessionProperty_PreferredHardwareIOBufferDuration, sizeof(preferredBufferSize), &preferredBufferSize);
     NSAssert1(err == noErr, @"Failed to set buffer duration", err);
+    
+    err = AudioSessionAddPropertyListener(kAudioSessionProperty_AudioRouteChange, 
+                                          audioRouteChangeListenerCallback, 
+                                          (__bridge_retained void*)self);
 	
 	recognizer = [[FSKRecognizer alloc] init];
 	analyzer = [[AudioSignalAnalyzer alloc] init];
@@ -181,6 +226,24 @@ static bool audioInitialized = false;
     numBytesWritten++;
     if(numBytesWritten == numTotalBytes) 
         [self.delegate didWriteBuffer];
+}
+
+-(bool)isHeadsetAttached {
+    UInt32 dictRefSize = sizeof(CFDictionaryRef);
+    CFDictionaryRef routeDescriptionRef;
+    AudioSessionGetProperty(kAudioSessionProperty_AudioRouteDescription, &dictRefSize, &routeDescriptionRef);
+    
+    NSDictionary *routeDescription = (__bridge NSDictionary *)routeDescriptionRef;
+    NSArray *inputs = [routeDescription objectForKey:(NSString *)kAudioSession_AudioRouteKey_Inputs];
+    NSDictionary *inputDesc = inputs.count > 0 ? (__bridge NSDictionary *)[inputs objectAtIndex:0] : nil;
+    if (!inputDesc) return false; // TODO - is this an error?
+    
+    NSString *type = [inputDesc objectForKey:(NSString *)kAudioSession_AudioRouteKey_Type];
+    if ([type isEqualToString:(NSString *)kAudioSessionInputRoute_HeadsetMic]) {
+        return true;
+    }
+    
+    return false;
 }
 
 @end

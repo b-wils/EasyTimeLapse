@@ -16,6 +16,7 @@
 @protocol DeviceStatusDelegate <NSObject>
 
 -(void)didWriteBuffer;
+-(void)didAttachHeadphones:(bool)status;
 
 @end
 
@@ -29,6 +30,7 @@
 @property (nonatomic, readonly) AudioSignalAnalyzer * analyzer;
 @property (nonatomic, readonly) FSKSerialGenerator * generator;
 @property (nonatomic, retain) id <DeviceStatusDelegate> delegate;
+@property (nonatomic, readonly) bool isHeadsetAttached;
 
 - (id)initWithReceiver:(id <CharReceiver>)receiver;
 
