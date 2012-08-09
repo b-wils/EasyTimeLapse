@@ -32,6 +32,7 @@
 @interface ETLProgrammer : NSObject <CharReceiver, DeviceStatusDelegate>
 
 -(void)listen;
+-(void)pause;
 -(void)halt;
 -(void)sendPacketNumber:(UInt32)number;
 

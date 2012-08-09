@@ -179,6 +179,9 @@ static OSStatus	recordingCallback(
 }
 
 @interface AudioSignalAnalyzer ()
+{
+    bool stopped;
+}
 - (OSStatus) createAudioUnit;
 @end
 
@@ -229,6 +232,7 @@ static OSStatus	recordingCallback(
 		[self setupAudioFormat];
 		[self createAudioUnit];
 		[self createBuffers];
+        stopped = true;
 	}
 	return self;
 }
@@ -370,20 +374,26 @@ static OSStatus	recordingCallback(
 
 - (void) record
 {
-	[self setupRecording];	
-	[self reset];
-	
-    AudioUnitInitialize(audioUnit);
-    AudioOutputUnitStart(audioUnit);
+    if (stopped) {
+        stopped = false;
+        [self setupRecording];	
+        [self reset];
+        
+        AudioUnitInitialize(audioUnit);
+        AudioOutputUnitStart(audioUnit);
+    }
 }
 
 
 - (void) stop
 {
-    AudioOutputUnitStop(audioUnit);
-    AudioUnitUninitialize(audioUnit);
-	
-	[self reset];
+    if (!stopped) {
+        AudioOutputUnitStop(audioUnit);
+        AudioUnitUninitialize(audioUnit);
+        
+        [self reset];
+        stopped = true;
+    }
 }
 
 

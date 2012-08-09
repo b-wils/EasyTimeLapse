@@ -45,7 +45,7 @@
     programmer.packetProvider = packetProvider;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didRequestPacket:) name:PacketRequested object:programmer];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didCompleteProgramming:) name:ProgrammingComplete object:programmer];
-    [programmer listen];
+//    [programmer listen];
 }
 
 const NSUInteger streamBitsPerDataByte = 14;

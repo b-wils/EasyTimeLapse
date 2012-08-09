@@ -32,7 +32,7 @@ ModelSynthesize(NSUInteger, exposure, setExposure)
 
 -(void)setExposureLengthPower:(float)value
 {
-    exposure = value * value * SECONDS;
+    exposure = powf(2.0, value) * SECONDS;
 }
 
 -(NSTimeInterval)clipLength

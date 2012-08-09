@@ -39,7 +39,7 @@ ModelSynthesize(NSInteger, numStops, setNumStops)
 {
     switch (packetNumber) {
         case 1:
-            packet->command = ETL_COMMAND_HDRSHOT;
+            packet->command = ETL_COMMAND_BULBRAMP;
             [self renderBulbRamp:&packet->bulbRamp];
             break;
         case 2:

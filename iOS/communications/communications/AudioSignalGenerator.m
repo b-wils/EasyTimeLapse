@@ -116,23 +116,26 @@ static void playbackCallback (
 
 
 - (void) play {
-    stopped = NO;
-	[self setupAudioQueueBuffers];
-	
-	AudioQueueStart (
-					 self.queueObject,
-					 NULL			// start time. NULL means ASAP.
-					 );
+    if (stopped) {
+        stopped = NO;
+        [self setupAudioQueueBuffers];
+        
+        AudioQueueStart (
+                         self.queueObject,
+                         NULL			// start time. NULL means ASAP.
+                         );
+    }
 }
 
 - (void) stop {
-		
-	AudioQueueStop (
-					self.queueObject,
-					self.audioPlayerShouldStopImmediately
-					);
-	AudioQueueReset(self.queueObject);
-    stopped = YES;
+	if (!stopped) {	
+        AudioQueueStop (
+                        self.queueObject,
+                        self.audioPlayerShouldStopImmediately
+                        );
+        AudioQueueReset(self.queueObject);
+        stopped = YES;
+    }
 }
 
 

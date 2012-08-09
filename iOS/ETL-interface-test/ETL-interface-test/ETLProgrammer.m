@@ -34,7 +34,7 @@
         device = [[ETLDeviceInterface alloc] initWithReceiver:self];
         device.delegate = self;
         
-        [device startReader];
+//        [device startReader];
         isHeadsetAttached = device.isHeadsetAttached;
     }
     
@@ -44,6 +44,12 @@
 -(void)listen {
     [device stopProgramming];
     [device startReader];
+}
+
+-(void)pause
+{
+    [device stopReader];
+    [device stopPlayer];
 }
 
 -(bool)isCrcValid
