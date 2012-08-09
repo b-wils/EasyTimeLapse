@@ -34,6 +34,7 @@
         timelapse.shotInterval = 5000;
         timelapse.shotCount = 0;
         timelapse.clipFramesPerSecond = 23.97f;
+        timelapse.exposure = 200;
     }
     
     if (!intervalSelection) {
