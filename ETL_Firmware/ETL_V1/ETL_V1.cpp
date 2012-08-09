@@ -46,6 +46,8 @@ uint32_t incrementCount;
 
 uint8_t timelapseValid;
 
+BoolDeviceSettings boolDeviceSettings;
+
 extern uint32_t bulbModeShutterLag;
 extern uint16_t bufferRecoverTime;
 
@@ -58,6 +60,7 @@ void dumpToEEProm() {
 	header.ledStrength = ledStrength;
 	header.bulbShutterOffset = bulbModeShutterLag;
 	header.bufferRecoverTime = bufferRecoverTime;
+	header.boolDeviceSettings = boolDeviceSettings;
 
 	if (header.numConfigs > MAX_CONFIGS) {
 		DebugPrint(F("Invalid eeprom header num "));
@@ -77,6 +80,7 @@ void initFromEEProm() {
 	uint16_t eepromPointer = 0;
 	
 	eeprom_read_block(&header, (void *) eepromPointer, sizeof(EEPromHeader));
+	eepromPointer += sizeof(EEPromHeader);
 	
 	if (header.numConfigs == 0) {
 		// Manual mode
@@ -91,6 +95,8 @@ void initFromEEProm() {
 		numConfigs = 0;
 		bulbModeShutterLag = DEFAULT_BULB_SHUTTER_OFFSET;
 		bufferRecoverTime = DEFAULT_BUFFER_RECOVER_TIME;
+		boolDeviceSettings.enableIdle = DEFAULT_ENABLE_IDLE;
+		boolDeviceSettings.enableHighResShotTimer = DEFAULT_ENABLE_HIGH_RES_PHOTO_TIMER;
 		
 		dumpToEEProm();
 		return;
@@ -103,7 +109,9 @@ void initFromEEProm() {
 		numConfigs = 0;
 		bulbModeShutterLag = DEFAULT_BULB_SHUTTER_OFFSET;
 		bufferRecoverTime = DEFAULT_BUFFER_RECOVER_TIME;
-				
+		boolDeviceSettings.enableIdle = DEFAULT_ENABLE_IDLE;
+		boolDeviceSettings.enableHighResShotTimer = DEFAULT_ENABLE_HIGH_RES_PHOTO_TIMER;
+
 		dumpToEEProm();
 		return;
 	} else {
@@ -114,12 +122,12 @@ void initFromEEProm() {
 	ledStrength = header.ledStrength;
 	bufferRecoverTime = header.bufferRecoverTime;
 	bulbModeShutterLag = header.bulbShutterOffset;
+	boolDeviceSettings.enableIdle = header.boolDeviceSettings.enableIdle;
+	boolDeviceSettings.enableHighResShotTimer = header.boolDeviceSettings.enableHighResShotTimer;
 	
-	DebugPrintln(F("bulb buffer"));
+	DebugPrintln(F("bulb buffer idle"));
 	DebugPrintln(bulbModeShutterLag);
 	DebugPrintln(bufferRecoverTime);
-	
-	eepromPointer += sizeof(EEPromHeader);
 	
 	eeprom_read_block(&myConfigs[0], (void *) eepromPointer, sizeof(SectionConfig) * numConfigs);
 }
@@ -361,13 +369,22 @@ void ProcessIdle() {
 		    return;
 			break;
         case STATE_TIMELAPSE_WAITING:
-		    if (millis() > (nextPhotoTime - (MILLIS_PER_OVERFLOW * 2))) {
+			uint32_t tempWakeTime;
+		
+			tempWakeTime = nextPhotoTime;
+			// TODO set one of our T2 output compare flags to interrupt sooner.
+			if (boolDeviceSettings.enableHighResShotTimer) {
+				tempWakeTime -= (MILLIS_PER_OVERFLOW * 2);
+			}
+		
+		    if (millis() > tempWakeTime) {
 				return;
 			} else {
 				set_sleep_mode(SLEEP_MODE_PWR_SAVE);
 			}
 			break;
 		case STATE_TIMELAPSE_EXPOSING:
+			// Need precision on shutter off
 			if (millis() > (shutterOffTime - (MILLIS_PER_OVERFLOW * 2))) {
 				return;
 			} else {
@@ -390,7 +407,8 @@ void ProcessIdle() {
     if (currentLedCycle.NumLedPositions != 0) {
 		
 		if (AreColorsEqual(currentLedCycle.ColorCycle[ledCycleIndex],OFF)) {
-			if (millis() > (nextLedTime - (MILLIS_PER_OVERFLOW * 2))) {
+			// Up to a 10 ms variance depending on next overflow and startup time
+			if (millis() > nextLedTime) {
 			//	DebugPrint("Led Soon");
 				return;
 			} else {
@@ -619,9 +637,9 @@ void loop() {
 		}
 	}
 	
-	//if (digitalRead(useIdlePin) == LOW) {
-		//ProcessIdle();
-	//}
+	if (boolDeviceSettings.enableIdle) {
+		ProcessIdle();
+	}
 	
 	//if (millis() > incrementTimer) {
 		//incrementCount++;

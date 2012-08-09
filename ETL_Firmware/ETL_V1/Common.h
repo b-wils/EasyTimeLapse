@@ -59,16 +59,16 @@ enum deviceCommands {
 
 #define PACKED __attribute__((__packed__))
 
-enum deviceSettingsBits {
-	SETTINGS_IDLE,
-	SETTINGS_PHOTO_START
+struct BoolDeviceSettings {
+	unsigned enableIdle:1;
+	unsigned enableHighResShotTimer:1;
 };
 
 typedef struct {
 	uint32_t staticShutterLag;
 	uint16_t bufferRecoverTime;
 	uint8_t  ledStrength;
-	uint8_t  boolFields;
+	BoolDeviceSettings  boolDeviceSettings;
 	//uint8_t  configSections; // Unused
 } PACKED DeviceSettings;
 

@@ -37,6 +37,7 @@ extern uint8_t configPointer;
 extern uint8_t timelapseValid;
 extern uint32_t bulbModeShutterLag;
 extern uint16_t bufferRecoverTime;
+extern BoolDeviceSettings boolDeviceSettings;
 
 uint32_t idleTimer;
 
@@ -231,6 +232,11 @@ void ProcessTransmitState() {
 	            
 	                case ETL_COMMAND_SETTINGS:
 						bulbModeShutterLag = recvPacket.deviceSettings.staticShutterLag;
+						// TODO enable, once implemented on iphone
+						//boolDeviceSettings = recvPacket.deviceSettings.boolDeviceSettings;
+						//bufferRecoverTime = recvPacket.deviceSettings.bufferRecoverTime;
+						//ledStrength = recvPacket.deviceSettings.ledStrength;
+						//
 				        break;
 	                case ETL_COMMAND_BASICTIMELAPSE:						
 				        myConfigs[configPointer].shots = recvPacket.basicTimelapse.shots;

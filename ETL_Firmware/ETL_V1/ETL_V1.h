@@ -60,6 +60,9 @@ const int batteryMonitorPin = A0;
 #define BUTTON_DEBOUNCE_PERIOD 25
 #define CABLE_DEBOUNCE_PERIOD 100
 
+#define DEFAULT_ENABLE_IDLE 1
+#define DEFAULT_ENABLE_HIGH_RES_PHOTO_TIMER 0
+
 // Voltage Divider
 #define VOTLAGE_DIV_FACTOR 11 // (R1 + R2)/R2
 #define FULL_VOLTAGE 9
@@ -86,7 +89,7 @@ struct EEPromHeader {
 	uint16_t bufferRecoverTime;
 	uint8_t numConfigs;
 	uint8_t ledStrength;
-	uint8_t deviceSettingsBits;
+	BoolDeviceSettings boolDeviceSettings;
 };
 
 void InitIdleState(); //__attribute__ ((section (".idleinit")));
