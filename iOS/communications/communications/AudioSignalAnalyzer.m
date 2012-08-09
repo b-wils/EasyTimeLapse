@@ -312,23 +312,8 @@ static OSStatus	recordingCallback(
                                kAudioUnitScope_Input, 
                                kInputBus, 
                                &enableInput, sizeof(UInt32));
-    NSAssert1(err == noErr, @"Error enabling input: %ld", err);
+    NSAssert1(err == noErr, @"Error enabling input: %ld", err);git status
     
-    // Disable voice noise reduction
-//    UInt32 shouldBypass = YES;
-//    err = AudioUnitSetProperty(audioUnit, 
-//                               kAUVoiceIOProperty_BypassVoiceProcessing, 
-//                               kAudioUnitScope_Input, 
-//                               0, 
-//                               &shouldBypass, sizeof(UInt32));
-//    NSAssert1(err == noErr, @"Error disabling noice reduction: %ld", err);
-    
-//    err = AudioUnitSetProperty(audioUnit, 
-//                               kAUVoiceIOProperty_BypassVoiceProcessing, 
-//                               kAudioUnitScope_Output, 
-//                               0, 
-//                               &shouldBypass, sizeof(UInt32));
-//    NSAssert1(err == noErr, @"Error disabling noice reduction: %ld", err);
 	
 	AURenderCallbackStruct input;
 	input.inputProc = recordingCallback;
@@ -399,26 +384,6 @@ static OSStatus	recordingCallback(
 
 - (void) setupRecording
 {
-	// allocate and enqueue buffers
-//	int bufferByteSize = 4096;		// this is the maximum buffer size used by the player class
-//	int bufferIndex;
-//	
-//	for (bufferIndex = 0; bufferIndex < 20; ++bufferIndex) {
-//		
-//		AudioQueueBufferRef bufferRef;
-//		
-//		AudioQueueAllocateBuffer (
-//								  queueObject,
-//								  bufferByteSize, &bufferRef
-//								  );
-//		
-//		AudioQueueEnqueueBuffer (
-//								 queueObject,
-//								 bufferRef,
-//								 0,
-//								 NULL
-//								 );
-//	}
 }
 
 - (void) idle: (unsigned)samples
