@@ -31,7 +31,7 @@ ModelSynthesize(NSInteger, numStops, setNumStops)
 
 -(void) renderBulbRamp:(BulbRamp *)ramp {
     ramp->exposureFstopChangePerMin = self.fStopChangePerMinute;
-    ramp->fstopChangeOnPress = fStopChangeOnPress;
+    ramp->fstopChangeOnPress = -fStopChangeOnPress;
 //    ramp->fstopSinAmplitude = ...
 }
 

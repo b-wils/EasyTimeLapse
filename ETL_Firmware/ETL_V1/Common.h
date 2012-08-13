@@ -59,10 +59,10 @@ enum deviceCommands {
 
 #define PACKED __attribute__((__packed__))
 
-struct BoolDeviceSettings {
+typedef struct {
 	unsigned enableIdle:1;
 	unsigned enableHighResShotTimer:1;
-};
+} PACKED BoolDeviceSettings;
 
 typedef struct {
 	uint32_t staticShutterLag;

@@ -87,7 +87,6 @@
     VariablePacket packet;
     packet.command = ETL_COMMAND_SETTINGS;
     packet.packetId = currentPacket + 1;
-    packet.deviceSettings.configSections = 0;
     packet.deviceSettings.staticShutterLag = settings.flashOffset.integerValue;
     [self sendPacket:&packet];
 }
