@@ -312,7 +312,7 @@ static OSStatus	recordingCallback(
                                kAudioUnitScope_Input, 
                                kInputBus, 
                                &enableInput, sizeof(UInt32));
-    NSAssert1(err == noErr, @"Error enabling input: %ld", err);git status
+    NSAssert1(err == noErr, @"Error enabling input: %ld", err);
     
 	
 	AURenderCallbackStruct input;
