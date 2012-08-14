@@ -115,7 +115,7 @@ void initFromEEProm() {
 		dumpToEEProm();
 		return;
 	} else {
-		DebugPrintln("valid num configs");
+		DebugPrintln(F("valid num configs"));
 	}
 	
 	numConfigs = header.numConfigs;	

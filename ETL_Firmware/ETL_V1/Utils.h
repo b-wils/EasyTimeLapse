@@ -134,7 +134,7 @@ void DebugPrint(const __FlashStringHelper * myString) {
 static inline
 void DebugPrint(int myString) {
 #ifdef DEBUGPRINT
-	Serial.println(myString);
+	Serial.print(myString);
 #endif
 }
 
@@ -183,7 +183,7 @@ void DebugPrintln(int myString, int format) {
 static inline
 void DebugPrint(int myString, int format) {
 #ifdef DEBUGPRINT
-	Serial.println(myString, format);
+	Serial.print(myString, format);
 #endif
 }
 

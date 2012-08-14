@@ -169,6 +169,7 @@ void InitTimelapseState(uint32_t startTimeOffset) {
 	repeatsRemaining = -1;
 	
 	nextPhotoTime = millis() + startTimeOffset;
+	nextHDRBracketTime = nextPhotoTime;
 	SetConfig(configIndex);
 }
 
@@ -358,15 +359,15 @@ void ProcessTimelapseWaiting() {
 				nextPhotoTime = nextHDRBracketTime;
 				shotsRemaining--;
 				HDRShotNumber = 0;
-				DebugPrintln(F("Bracket Complete"));
 			} else {
 				HDRShotNumber++;
 				// TODO should we set the next photo time after the shot is complete?
 				// Consistency in HDR shot time vs how quick we can shoot
 				//nextPhotoTime += exposureLength + HDR_INTERVAL;
+				
+				// For flash timeout, this will actually be updated after exposure is complete
+				nextPhotoTime = millis() + HDR_INTERVAL + exposureLength; 
 			}
-			// For flash timeout, this will actually be updated after exposure is complete
-			nextPhotoTime = millis() + HDR_INTERVAL + exposureLength; 
 		} else {
 			nextPhotoTime += currentInterval;
 			currentInterval += myConfigs[configIndex].intervalDelta;
@@ -413,6 +414,6 @@ void ProcessTimeLapseExposing() {
 		}
 		if (shotsRemaining <= 0) {
 			TimelapseSettingComplete();
-		}	
+		}
     }
 }
