@@ -807,6 +807,7 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad" returnKeyType="done"/>
                                 <connections>
+                                    <action selector="didUpdateBracketCount:" destination="2uI-kd-f2e" eventType="editingDidEnd" id="w2P-1L-cbB"/>
                                     <action selector="didUpdatePeriod:" destination="Y0u-g9-Vhl" eventType="editingDidEnd" id="U2f-rk-t8x"/>
                                     <outlet property="delegate" destination="Y0u-g9-Vhl" id="cAc-rf-XQS"/>
                                 </connections>
@@ -827,6 +828,7 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad" returnKeyType="done"/>
                                 <connections>
+                                    <action selector="didUpdateExposureField:" destination="2uI-kd-f2e" eventType="editingDidEnd" id="3MB-hA-VKt"/>
                                     <action selector="didUpdatePeriod:" destination="Y0u-g9-Vhl" eventType="editingDidEnd" id="RXX-Fn-0zr"/>
                                     <outlet property="delegate" destination="Y0u-g9-Vhl" id="uqq-Xi-p0P"/>
                                 </connections>
@@ -1516,8 +1518,8 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="Sgc-tO-3CH"/>
         <segue reference="jON-PE-T2z"/>
-        <segue reference="2P8-c0-vOa"/>
         <segue reference="e5W-2h-EQi"/>
     </inferredMetricsTieBreakers>
 </document>

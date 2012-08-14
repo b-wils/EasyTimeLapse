@@ -23,7 +23,8 @@
 #define SETUP_MODE(x){ \
     if(!mode##x) { \
         mode##x = [[ETLTimelapse alloc] init];\
-        mode##x.shotInterval = 200;\
+        mode##x.exposure = 100;\
+        mode##x.shotInterval = 2000;\
     }\
     if (!interval##x) {\
         interval##x = [[ETLIntervalSelectionController alloc] initWithInputField:interval##x##Field \
