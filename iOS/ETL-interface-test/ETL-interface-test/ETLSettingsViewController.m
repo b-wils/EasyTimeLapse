@@ -41,6 +41,7 @@
     cameraTypeButton.allTitles = ((CameraType *)settings.cameraType).name;
     videoFramerateButton.allTitles = [NSString stringWithFormat:@"%.2f fps", settings.videoFramerate.floatValue];
     flashOffsetField.text = [NSString stringWithFormat:@"%d", settings.flashOffset.unsignedIntValue];
+    bufferTimeField.text = [NSString stringWithFormat:@"%d", settings.bufferTime.unsignedIntValue];
     [enableInstructionsSwitch setOn:settings.isHelpEnabled.boolValue animated:NO];
     [flashFeedbackSwitch setOn:settings.useFlashFeedback.boolValue animated:NO];
 }
