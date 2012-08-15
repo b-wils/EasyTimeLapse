@@ -777,7 +777,8 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad" keyboardAppearance="alert" returnKeyType="done"/>
                                 <connections>
-                                    <action selector="didUpdateFlashOffset:" destination="bWH-Z2-4Nh" eventType="editingDidEnd" id="XSk-yq-OJO"/>
+                                    <action selector="didUpdateBufferTime:" destination="bWH-Z2-4Nh" eventType="editingDidEnd" id="rZh-4w-Dwf"/>
+                                    <action selector="didUpdateFlashOffset:" destination="bWH-Z2-4Nh" eventType="editingDidEnd" id="7KG-L5-kkD"/>
                                 </connections>
                             </textField>
                         </subviews>
