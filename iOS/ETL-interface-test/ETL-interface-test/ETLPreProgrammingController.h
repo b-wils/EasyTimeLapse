@@ -11,7 +11,7 @@
 // TODO - move these strings somewhere sensible with localization
 
 #define READY_TO_PROGRAM_MSG @"Please hold button on device for two seconds and release to program"
-#define MIC_REQUIRED_MSG @"Please connect the ETL device"
+#define MIC_REQUIRED_MSG @"Please connect the device"
 #define LOW_VOLUME_MSG @"Please turn your headset volume all the way up"
 
 @interface ETLPreProgrammingController : ETLShotViewController
