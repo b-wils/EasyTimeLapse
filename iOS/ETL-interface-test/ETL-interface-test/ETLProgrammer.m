@@ -88,6 +88,7 @@
     packet.command = ETL_COMMAND_SETTINGS;
     packet.packetId = currentPacket + 1;
     packet.deviceSettings.staticShutterLag = settings.flashOffset.integerValue;
+    packet.deviceSettings.bufferRecoverTime = settings.bufferTime.integerValue;
     [self sendPacket:&packet];
 }
 

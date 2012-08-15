@@ -28,7 +28,7 @@
     if (mutableFetchResults == nil || mutableFetchResults.count == 0) {
         camera = (CameraType *)[NSEntityDescription insertNewObjectForEntityForName:@"CameraType" inManagedObjectContext:context];
         camera.name = DEFAULT_CAMERA_NAME;
-        camera.flashOffset = nint(0);
+        camera.flashOffset = nint(35);
         
         if (![context save:&error]) {
             // Handle the error.

@@ -6,6 +6,7 @@
         <relationship name="setting" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Settings" inverseName="cameraType" inverseEntity="Settings" syncable="YES"/>
     </entity>
     <entity name="Settings" representedClassName="Settings" syncable="YES">
+        <attribute name="bufferTime" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="flashOffset" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="isHelpEnabled" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="useFlashFeedback" optional="YES" attributeType="Boolean" syncable="YES"/>
@@ -13,7 +14,7 @@
         <relationship name="cameraType" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="CameraType" inverseName="setting" inverseEntity="CameraType" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Settings" positionX="160" positionY="192" width="128" height="120"/>
         <element name="CameraType" positionX="-7479" positionY="-1638" width="128" height="90"/>
+        <element name="Settings" positionX="160" positionY="192" width="128" height="135"/>
     </elements>
 </model>

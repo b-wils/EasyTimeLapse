@@ -15,7 +15,9 @@
     IBOutlet UIButton *cameraTypeButton;
     IBOutlet UIButton *videoFramerateButton;
     IBOutlet UITextField *flashOffsetField;
+    IBOutlet UITextField *bufferTimeField;
 }
 
 - (IBAction)didUpdateFlashOffset:(id)sender;
+- (IBAction)didUpdateBufferTime:(id)sender;
 @end

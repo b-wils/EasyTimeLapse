@@ -16,6 +16,7 @@
 @property (nonatomic, retain) NSNumber * isHelpEnabled;
 @property (nonatomic, retain) NSNumber * videoFramerate;
 @property (nonatomic, retain) NSNumber * flashOffset;
+@property (nonatomic, retain) NSNumber * bufferTime;
 @property (nonatomic, retain) NSManagedObject *cameraType;
 
 + (Settings *)ensureDefaultForContext:(NSManagedObjectContext *)context;

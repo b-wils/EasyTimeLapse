@@ -17,6 +17,7 @@
 @dynamic videoFramerate;
 @dynamic flashOffset;
 @dynamic cameraType;
+@dynamic bufferTime;
 
 + (Settings *)ensureDefaultForContext:(NSManagedObjectContext *)context
 {
@@ -32,6 +33,7 @@
         result.useFlashFeedback = nbool(false);
         result.isHelpEnabled = nbool(true);
         result.videoFramerate = nfloat(24);
+        result.bufferTime = nint(500);
         
         CameraType *camera = [CameraType ensureDefaultForContext:context];
         result.cameraType = camera;

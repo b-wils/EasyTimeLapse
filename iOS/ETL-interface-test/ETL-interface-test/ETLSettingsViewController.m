@@ -54,6 +54,15 @@
     }
 }
 
+- (IBAction)didUpdateBufferTime:(id)sender
+{
+    settings.bufferTime = nint(bufferTimeField.text.integerValue);
+    NSError *error = nil;
+    if (![self.objectContext save:&error]) {
+        // Handle the error.
+    }
+}
+
 - (void)viewDidUnload
 {
     [super viewDidUnload];
