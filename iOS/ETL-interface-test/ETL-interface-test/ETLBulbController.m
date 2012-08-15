@@ -157,7 +157,8 @@
 
 - (void)renderPacket:(UInt32)packetNumber to:(VariablePacket *)packet 
 {
-    switch (packetNumber) {
+    UInt32 effectivePacketNumber = packetNumber + (initial.shotCount ? 0 : 1);
+    switch (effectivePacketNumber) {
         case 1:
             [initial renderPacket:packetNumber to:packet];
             if (initial.shotCount == 0) {
@@ -182,7 +183,7 @@
 }
  
 - (UInt32)packetCount {
-    return 4;
+    return 2 + (initial.shotCount ? 1 : 0) + (final.shotCount ? 1 : 0);
 }
 
 - (void)viewDidUnload {
