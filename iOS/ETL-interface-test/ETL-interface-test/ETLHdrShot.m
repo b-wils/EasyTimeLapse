@@ -30,16 +30,23 @@ ModelSynthesize(UInt32, finalExposure, setFinalExposure);
     return self;
 }
 
+- (float) fstopIncreasePerShot 
+{
+    return log2f((float)finalExposure / (float)initialExposure) / (bracketCount - 1);
+}
+
 - (void)synchronizeTimelapse
 {
     // TODO ISSUE - Dependency on ETLAppDelegate from a model object is super gross
     Settings *settings = [Settings ensureDefaultForContext:[ETLAppDelegate instance].managedObjectContext];
     NSUInteger bufferTime = settings.bufferTime.integerValue;
-    NSUInteger minExp = MIN(initialExposure, finalExposure);
-    NSUInteger maxExp = MAX(initialExposure, finalExposure);
-    float interval = bracketCount * (minExp + bufferTime);
-    for (float i = 0; i < bracketCount - 1; i++) {
-        interval += (maxExp - minExp) / powf(2, i);
+//    NSUInteger minExp = MIN(initialExposure, finalExposure);
+//    NSUInteger maxExp = MAX(initialExposure, finalExposure);
+    
+    float interval = 0;
+    float delta = self.fstopIncreasePerShot;
+    for (float i = 0; i < bracketCount; i ++) {
+        interval += powf(2, log2f(initialExposure/SECONDS) + i * delta) * SECONDS + bufferTime;
     }
     
     timelapse.shotInterval = interval;
@@ -54,11 +61,11 @@ ModelSynthesize(UInt32, finalExposure, setFinalExposure);
             
             HDRShot * hdr = &packet->hdrShot;
             hdr->numHDRShots = bracketCount - 1;
-            hdr->fstopIncreasePerHDRShot = log2f((float)finalExposure / (float)initialExposure) / (bracketCount - 1);
+            hdr->fstopIncreasePerHDRShot = self.fstopIncreasePerShot;
             break;
         case 2:
             [timelapse renderPacket:2 to:packet];
-            packet->basicTimelapse.exposureLengthPower = log2f(initialExposure/1000.0);
+            packet->basicTimelapse.exposureLengthPower = log2f(initialExposure/SECONDS);
             break;
         default:
             // TODO - error

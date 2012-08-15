@@ -106,6 +106,8 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"Timelapse"]) {
+        [hdr synchronizeTimelapse];
+        
         ETLTimelapseController *controller = [segue destinationViewController];
         controller.timelapse = hdr.timelapse;
         controller.packetProvider = hdr;

@@ -11,6 +11,8 @@
 
 @interface ETLHdrShot : ETLModel <PacketProvider>
 
+- (void)synchronizeTimelapse;
+
 @property (nonatomic, strong) ETLTimelapse * timelapse;
 @property (nonatomic) UInt32 bracketCount;
 @property (nonatomic) UInt32 initialExposure;
