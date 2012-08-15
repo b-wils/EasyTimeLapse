@@ -26,6 +26,7 @@
 @synthesize rampDurationField, rampDurationButton;
 @synthesize endingDurationField, endingDurationButton;
 @synthesize numStopsField, stopChangeField;
+@synthesize sunsetMode;
 
 - (void)ensureInitialized 
 {
@@ -41,8 +42,8 @@
         ramp.timelapse.shotInterval = 5*SECONDS;
         ramp.timelapse.shotCount = 20*MINUTES / ramp.timelapse.shotInterval;
         ramp.timelapse.exposure = initial.exposure;
-        ramp.numStops = 10;
-        ramp.fStopChangeOnPress = 3;
+        ramp.numStops = self.sunsetMode ? 10 : -10;
+        ramp.fStopChangeOnPress = self.sunsetMode ? 3 : -3;
     }
     
     if (!final) {
@@ -106,30 +107,29 @@
     }
     
     if (sender == initialDuration) {
-//        initial.shootingTime = initialDuration.interval;
         initial.shotCount = initialDuration.interval / initial.shotInterval;
     }
     
     if (sender == rampDuration) {
-//        ramp.timelapse.shootingTime = rampDuration.interval;
         ramp.timelapse.shotCount = rampDuration.interval / ramp.timelapse.shotInterval;
     }
     
     if (sender == endingDuration) {
-//        final.shootingTime = endingDuration.interval;
         final.shotCount = endingDuration.interval / final.shotInterval;
     }
 }
 
 - (IBAction)didUpdateNumStops:(id)sender 
 {
-    ramp.numStops = [[sender text] integerValue];
+    NSInteger nStops = [[sender text] integerValue];
+    ramp.numStops = self.sunsetMode ? nStops : -nStops;
     final.exposureLengthPower = initial.exposureLengthPower + ramp.numStops;
 }
 
 - (IBAction)didUpdateStopChange:(id)sender
 {
-    ramp.fStopChangeOnPress = [[sender text] integerValue];
+    NSInteger change = [[sender text] integerValue];
+    ramp.fStopChangeOnPress = self.sunsetMode ? change : -change;
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event

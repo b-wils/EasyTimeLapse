@@ -326,11 +326,11 @@
             </objects>
             <point key="canvasLocation" x="948" y="1378"/>
         </scene>
-        <!--View Controller-->
+        <!--Pre Bulb Controller-->
         <scene sceneID="Ysp-IE-mVe">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C6M-5h-re2" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="l6R-KR-qgy" customClass="ETLViewController" sceneMemberID="viewController">
+                <viewController id="l6R-KR-qgy" customClass="ETLPreBulbController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3i3-HE-Usb">
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -350,6 +350,9 @@
                                 <state key="highlighted" image="homebutton_manual_pressed.png">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="x40-mc-p3d" kind="push" identifier="Sunrise" id="8Xe-XV-ZV3"/>
+                                </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Sunrise" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" adjustsFontSizeToFit="NO" id="gbU-JO-HMB">
                                 <rect key="frame" x="20" y="214" width="130" height="23"/>
@@ -369,6 +372,9 @@
                                 <state key="highlighted" image="homebutton_manual_pressed.png">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="x40-mc-p3d" kind="push" identifier="Sunset" id="jea-Ar-2B8"/>
+                                </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Sunset" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="3kI-wl-XRp">
                                 <rect key="frame" x="201" y="214" width="69" height="23"/>
@@ -408,6 +414,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="gotoSettings" destination="l6R-KR-qgy" eventType="touchUpInside" id="NZ4-H0-gef"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -1753,8 +1762,9 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="RpZ-Wg-K2n"/>
-        <segue reference="rBU-MJ-KTo"/>
         <segue reference="jON-PE-T2z"/>
+        <segue reference="RpZ-Wg-K2n"/>
+        <segue reference="jea-Ar-2B8"/>
+        <segue reference="xs5-sS-DIA"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -30,6 +30,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *numStopsField;
 @property (weak, nonatomic) IBOutlet UITextField *stopChangeField;
 
+@property (nonatomic, assign) bool sunsetMode;
+
 - (IBAction)didUpdateNumStops:(id)sender;
 - (IBAction)didUpdateStopChange:(id)sender;
 @end
