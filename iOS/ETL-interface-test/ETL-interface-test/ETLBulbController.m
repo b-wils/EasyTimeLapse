@@ -160,6 +160,9 @@
     switch (packetNumber) {
         case 1:
             [initial renderPacket:packetNumber to:packet];
+            if (initial.shotCount == 0) {
+                packet->basicTimelapse.shots = 0;
+            }
             break;
         case 2:
         case 3:
@@ -168,6 +171,9 @@
             break;
         case 4:
             [final renderPacket:packetNumber to:packet];
+            if (final.shotCount == 0) {
+                packet->basicTimelapse.shots = 0;
+            }
             break;
         default:
             // TODO - error

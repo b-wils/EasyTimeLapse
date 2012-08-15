@@ -56,6 +56,7 @@
         frame.size.height = 28;
         RCSwitchOnOff *res = [[RCSwitchOnOff alloc] initWithFrame:frame];
         [res setOn:[s isOn]];
+        [res setHidden:[s isHidden]];
         
         NSArray* actions = [s actionsForTarget:self forControlEvent:UIControlEventValueChanged];
         for (NSString *a in actions) {
