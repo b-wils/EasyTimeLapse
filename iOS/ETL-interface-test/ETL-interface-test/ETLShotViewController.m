@@ -47,6 +47,7 @@
 
 - (IBAction)gotoSettings
 {
+    [self hideFirstResponder:nil];
     UIViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"Settings"];
     [self.navigationController pushViewController:controller animated:YES];
 }

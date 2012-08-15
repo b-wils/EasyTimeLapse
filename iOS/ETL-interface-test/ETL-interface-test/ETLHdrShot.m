@@ -8,6 +8,8 @@
 
 #import "ETLHdrShot.h"
 #import "ETLTimelapse.h"
+#import "Settings.h"
+#import "ETLAppDelegate.h"
 
 @implementation ETLHdrShot
 
@@ -30,7 +32,17 @@ ModelSynthesize(UInt32, finalExposure, setFinalExposure);
 
 - (void)synchronizeTimelapse
 {
-    timelapse.shotInterval = MAX(initialExposure, finalExposure) * 2;
+    // TODO ISSUE - Dependency on ETLAppDelegate from a model object is super gross
+    Settings *settings = [Settings ensureDefaultForContext:[ETLAppDelegate instance].managedObjectContext];
+    NSUInteger bufferTime = settings.bufferTime.integerValue;
+    NSUInteger minExp = MIN(initialExposure, finalExposure);
+    NSUInteger maxExp = MAX(initialExposure, finalExposure);
+    float interval = bracketCount * (minExp + bufferTime);
+    for (float i = 0; i < bracketCount - 1; i++) {
+        interval += (maxExp - minExp) / powf(2, i);
+    }
+    
+    timelapse.shotInterval = interval;
 }
 
 - (void)renderPacket:(UInt32)packetNumber to:(VariablePacket *)packet;

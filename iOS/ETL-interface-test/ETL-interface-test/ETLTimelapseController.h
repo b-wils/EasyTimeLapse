@@ -30,6 +30,4 @@
 - (IBAction)didUpdateShotLimit:(id)sender;
 
 @property (nonatomic, strong) ETLTimelapse *timelapse;
-//@property (nonatomic, strong) NSString *periodUnit;
-
 @end

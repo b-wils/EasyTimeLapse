@@ -12,14 +12,14 @@
 #import "ETLPickerView.h"
 
 @interface ETLTimelapseController ()
-{;
-    ETLIntervalSelectionController *intervalSelection;
+{
+    ETLIntervalSelectionController *intervalSelection;   
 }
 @end
 
 @implementation ETLTimelapseController
 
-@synthesize timelapse;//, periodUnit;
+@synthesize timelapse;
 
 - (void)setTimelapse:(ETLTimelapse *)value {
     if (timelapse) [[NSNotificationCenter defaultCenter] removeObserver:self name:ModelUpdated object:timelapse];
@@ -42,7 +42,13 @@
                                                                              unitButton:periodUnitButton
                                                                              andParent:self];
         intervalSelection.parent = self;
-        intervalSelection.unit = @"seconds";
+        NSString *unit;
+        if (timelapse.shotInterval % (int)HOURS == 0) unit = @"hours";
+        else if (timelapse.shotInterval % (int)MINUTES == 0) unit = @"minutes";
+        else if (timelapse.shotInterval % (int)SECONDS == 0) unit = @"seconds";
+        else unit = @"ms";
+
+        intervalSelection.unit = unit;
         intervalSelection.interval = timelapse.shotInterval;
     }
     

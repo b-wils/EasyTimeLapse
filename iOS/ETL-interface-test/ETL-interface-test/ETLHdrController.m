@@ -50,7 +50,7 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad]; //a1023470
+    [super viewDidLoad];
     [self ensureInitialized];
     
     [self updateUICalculations:nil];
@@ -109,6 +109,7 @@
         ETLTimelapseController *controller = [segue destinationViewController];
         controller.timelapse = hdr.timelapse;
         controller.packetProvider = hdr;
+        [self hideFirstResponder:nil];
     }
     else {
         [super prepareForSegue:segue sender:sender];
