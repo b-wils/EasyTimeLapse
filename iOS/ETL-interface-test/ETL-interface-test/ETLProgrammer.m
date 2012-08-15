@@ -89,6 +89,10 @@
     packet.packetId = currentPacket + 1;
     packet.deviceSettings.staticShutterLag = settings.flashOffset.integerValue;
     packet.deviceSettings.bufferRecoverTime = settings.bufferTime.integerValue;
+    packet.deviceSettings.ledStrength = 5;
+    packet.deviceSettings.boolDeviceSettings.enableHighResShotTimer = false;
+    packet.deviceSettings.boolDeviceSettings.enableIdle = true;
+//    packet.deviceSettings.
     [self sendPacket:&packet];
 }
 
