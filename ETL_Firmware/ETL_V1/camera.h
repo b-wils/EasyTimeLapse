@@ -12,7 +12,7 @@
 #include "Utils.h"
 
 #define DEFAULT_EXPOSURE 100 //ms
-#define HDR_INTERVAL 500 // TODO this should be configurable
+#define HDR_INTERVAL 1000 // TODO this should be configurable
 #define SHUTTER_FEEDBACK_TIMEOUT 1000
 
 #define EXPOSURE_WARNING_TIME_OFFSET (((uint32_t) 5)*60*1000) //ms

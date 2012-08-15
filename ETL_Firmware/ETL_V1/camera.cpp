@@ -285,12 +285,24 @@ void ProcessTimelapseWaiting() {
 			}
 		} else if (myConfigs[configIndex].type & _BV(CONFIG_PRESS_TO_ADVANCE)) {
 			DebugPrintln(F("Press: Advance to next section"));
+			SetLEDCycle(LED_CYCLE_GOOD_CLICK);
+			// Set our photo time to the new interval
+			// TODO this may have weirdness if the current interval is changing
+			uint32_t oldInterval = currentInterval;
 			TimelapseSettingComplete();
+			if (oldInterval != currentInterval) {
+				nextPhotoTime = nextPhotoTime - oldInterval + currentInterval;
+				if (nextPhotoTime < millis()) {
+					nextPhotoTime = millis();
+				}
+			}
+			
 		} else if (myConfigs[configIndex].type & _BV(CONFIG_PRESS_TO_PAUSE)) {
 			DebugPrintln(F("Press: Pause timelapse"));
 			InitTimelapsePauseState();
 		} else if (myConfigs[configIndex].type & _BV(CONFIG_PRESS_TO_DERAMP)) {
 			DebugPrintln(F("Press: Interval deramp"));
+			SetLEDCycle(LED_CYCLE_GOOD_CLICK);
 			BulbDeramp();
 		} else { 
 			DebugPrintln(F("Nothing to do with button click"));
