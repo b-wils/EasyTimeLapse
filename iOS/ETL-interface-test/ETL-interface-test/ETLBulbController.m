@@ -34,7 +34,7 @@
         initial = [[ETLTimelapse alloc] init];
         initial.shotInterval = 5*SECONDS;
         initial.shotCount = 10*MINUTES / initial.shotInterval;
-        initial.exposure = 200*MS;
+        initial.exposure = self.sunsetMode ? 200*MS : 4*SECONDS;
     }
     
     if (!ramp) {
