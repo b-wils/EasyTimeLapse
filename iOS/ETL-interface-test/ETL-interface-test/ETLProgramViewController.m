@@ -77,8 +77,8 @@ const NSUInteger streamBitsPerDataByte = 14;
     [self.navigationController pushViewController:controller animated:YES];
 }
 
-const int BATTERY_MIN = 407 >> 2;
-const int BATTERY_MAX = 761 >> 2;
+const int BATTERY_MIN = 300;
+const int BATTERY_MAX = 761;
 const int BATTERY_RANGE = BATTERY_MAX - BATTERY_MIN;
 
 - (void)didReceiveDeviceData:(NSNotification *)notification

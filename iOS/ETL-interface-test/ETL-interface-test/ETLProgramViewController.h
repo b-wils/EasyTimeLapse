@@ -21,7 +21,7 @@
     
     NSTimer * progressBarTimer, *startTimer;
     
-    uint8_t batteryLevel;
+    uint16_t batteryLevel;
 }
 
 - (void)didFinishProgramming:(id)sender;

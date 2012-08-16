@@ -18,6 +18,7 @@
     id progressTimer;
     NSUInteger totalCommandBits;
     double programmingProgress;
+    bool didRetryDeviceInfo;
 }
 @end
 
@@ -36,6 +37,7 @@
         
 //        [device startReader];
         isHeadsetAttached = device.isHeadsetAttached;
+        didRetryDeviceInfo = false;
     }
     
     return self;
@@ -63,6 +65,8 @@
 
 -(void)sendPacket:(VariablePacket *)packet
 {
+    if (didRetryDeviceInfo) { printf("\nSending packet #%u as #%u", packet->packetId, ++packet->packetId); }
+//    if (didRetryDeviceInfo) { packet->packetId++; }
     printf("\nwriting: ");
     packet->crc = crc_update(crc_init(), ((byte *)packet) + sizeof(crc_t), sizeof(VariablePacket) - sizeof(crc_t));
     packet->crc = crc_finalize(packet->crc);
@@ -93,6 +97,17 @@
     packet.deviceSettings.boolDeviceSettings.enableHighResShotTimer = false;
     packet.deviceSettings.boolDeviceSettings.enableIdle = true;
 //    packet.deviceSettings.
+    [self sendPacket:&packet];
+}
+
+-(void)sendRequestDeviceInfoPacket 
+{
+    printf("\nRequesting device info...");
+    VariablePacket packet;
+    memset(&packet, 0, sizeof(VariablePacket));
+    packet.command = ETL_COMMAND_GETDEVICEINFO;
+    packet.packetId = 0;
+    didRetryDeviceInfo = true;
     [self sendPacket:&packet];
 }
 
@@ -150,6 +165,7 @@
         
         UInt32 packetId = isValid ? inPacket.packetId : currentPacket;
         
+        if (isValid && didRetryDeviceInfo) {packetId--;} // HACK to work around numbering for re-request of device info
         NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
                       VALUE_WITH_BYTES(&isValid, bool), @"isCrcValid",
                       VALUE_WITH_BYTES(&packetId, UInt32), @"sendingPacketId",
@@ -181,7 +197,7 @@
                     NSDictionary *deviceInfo = [NSDictionary dictionaryWithObjectsAndKeys:
                         VALUE_WITH_BYTES(&inPacket.deviceInfo.majorVersion, uint8_t), @"majorVersion",
                         VALUE_WITH_BYTES(&inPacket.deviceInfo.minorVersion, uint8_t), @"minorVersion",
-                        VALUE_WITH_BYTES(&inPacket.deviceInfo.batteryLevel, uint8_t), @"batteryLevel",
+                        VALUE_WITH_BYTES(&inPacket.deviceInfo.batteryLevel, uint16_t), @"batteryLevel",
                         nil];
                     NOTIFY(GotDeviceInfo, deviceInfo);
                     NOTIFY(PacketRequested, userInfo);
@@ -198,7 +214,12 @@
         else {
             NOTIFY(BadCrc, nil);
             printf("bad crc\n");
-            [self sendPacketNumber:packetId];
+            if (packetId) {
+                [self sendPacketNumber:packetId];
+            }
+            else {
+                [self sendRequestDeviceInfoPacket];
+            }
         }
     }
 }
