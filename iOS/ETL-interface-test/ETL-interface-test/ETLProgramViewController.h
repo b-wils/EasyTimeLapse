@@ -15,10 +15,13 @@
     IBOutlet UIProgressView * programmingProgress;
     IBOutlet UILabel * bytesTransferred;
     IBOutlet UIButton * cancelButton;
+    IBOutlet UILabel * batteryLevelLabel;
 
     NSUInteger totalCommandBits;
     
     NSTimer * progressBarTimer, *startTimer;
+    
+    uint8_t batteryLevel;
 }
 
 - (void)didFinishProgramming:(id)sender;

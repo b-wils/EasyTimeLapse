@@ -37,6 +37,7 @@
     [original removeFromSuperview];
     [self.view addSubview:programmingProgress];
     
+    batteryLevelLabel.text = [NSString stringWithFormat:@"%u%%", batteryLevel];
     programmingProgress.progress = (firstPacketSuccessful ? 1 : 0) / (packetProvider.packetCount + 2.0);
 }
 
@@ -45,6 +46,7 @@
     programmer.packetProvider = packetProvider;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didRequestPacket:) name:PacketRequested object:programmer];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didCompleteProgramming:) name:ProgrammingComplete object:programmer];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveDeviceData:) name:GotDeviceInfo object:programmer];
 //    [programmer listen];
 }
 
@@ -58,7 +60,7 @@ const NSUInteger streamBitsPerDataByte = 14;
     programmingProgress.progress = packetId / (packetProvider.packetCount + 2.0);
 }
 
-- (void)didCompleteProgramming:(NSNotification *)notificatoin
+- (void)didCompleteProgramming:(NSNotification *)notification
 {
     programmingProgress.progress = 1.0;
     bytesTransferred.text = @"done";
@@ -73,6 +75,21 @@ const NSUInteger streamBitsPerDataByte = 14;
     
     ETLDoneProgrammingController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"DoneProgramming"];
     [self.navigationController pushViewController:controller animated:YES];
+}
+
+const int BATTERY_MIN = 407 >> 2;
+const int BATTERY_MAX = 761 >> 2;
+const int BATTERY_RANGE = BATTERY_MAX - BATTERY_MIN;
+
+- (void)didReceiveDeviceData:(NSNotification *)notification
+{
+    NSNumber *value = [notification.userInfo objectForKey:@"batteryLevel"];
+    [value getValue:&batteryLevel];
+    
+    batteryLevel = MAX(0, batteryLevel - BATTERY_MIN);
+    batteryLevel = batteryLevel * 100.0 / BATTERY_RANGE;
+    
+    batteryLevelLabel.text = [NSString stringWithFormat:@"%u%%", batteryLevel];
 }
 
 - (void)goBack:(id)sender
