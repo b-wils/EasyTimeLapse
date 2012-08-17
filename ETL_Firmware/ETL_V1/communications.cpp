@@ -233,9 +233,9 @@ void ProcessTransmitState() {
 	                case ETL_COMMAND_SETTINGS:
 						bulbModeShutterLag = recvPacket.deviceSettings.staticShutterLag;
 						// TODO enable, once implemented on iphone
-						//boolDeviceSettings = recvPacket.deviceSettings.boolDeviceSettings;
-						//bufferRecoverTime = recvPacket.deviceSettings.bufferRecoverTime;
-						//ledStrength = recvPacket.deviceSettings.ledStrength;
+						boolDeviceSettings = recvPacket.deviceSettings.boolDeviceSettings;
+						bufferRecoverTime = recvPacket.deviceSettings.bufferRecoverTime;
+						ledStrength = recvPacket.deviceSettings.ledStrength;
 						//
 				        break;
 	                case ETL_COMMAND_BASICTIMELAPSE:						
@@ -323,6 +323,9 @@ void ProcessTransmitState() {
 		if (idleRetryCount > MAX_IDLE_RETRY_COUNT) {
 			DebugPrintln(F("Idle timeout"));
 			LeaveTransmitState();
+			if (modemPacketIndex > 1) {
+				SetLEDCycle(LED_CYCLE_PROGRAM_FAILURE);
+			}
 			return;
 		}
 

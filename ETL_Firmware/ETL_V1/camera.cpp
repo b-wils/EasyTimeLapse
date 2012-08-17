@@ -215,7 +215,10 @@ int32_t CalcExpTime(uint32_t startTime, uint32_t endTime, float fstopSinAmplitud
 	fstopExpFactor += exposurePressChange;
 	
 	exposureLength = pow(2, fstopExpFactor) * 1000;
-	exposureLength -= bulbModeShutterLag;
+	
+	if (useFlashFeeback) {
+		exposureLength -= bulbModeShutterLag;
+	}	
 	
     //DebugPrint("CalcExpTime timeDiffMin: ");
 	//DebugPrintln(timeDiffMin);
@@ -378,7 +381,7 @@ void ProcessTimelapseWaiting() {
 				//nextPhotoTime += exposureLength + HDR_INTERVAL;
 				
 				// For flash timeout, this will actually be updated after exposure is complete
-				nextPhotoTime = millis() + HDR_INTERVAL + exposureLength; 
+				nextPhotoTime = millis() + bufferRecoverTime + exposureLength; 
 			}
 		} else {
 			nextPhotoTime += currentInterval;
@@ -411,7 +414,8 @@ void ProcessTimeLapseWaitingFlash() {
             digitalWrite(focusPin, LOW);
 			digitalWrite(flashFeedbackPin, LOW);
 			DebugPrintln(F("Flash timeout"));
-			InitIdleState(); // TODO, get an error here
+			InitIdleState();
+			SetLEDCycle(LED_CYCLE_PC_SYNC_TIMEOUT);
 		}
 	}
 }
@@ -422,7 +426,7 @@ void ProcessTimeLapseExposing() {
 		//Serial.println("shot complete");
         currentState = STATE_TIMELAPSE_WAITING;
 		if (HDRShotNumber != 0) {
-			nextPhotoTime = millis() + HDR_INTERVAL;
+			nextPhotoTime = millis() + bufferRecoverTime;
 		}
 		if (shotsRemaining <= 0) {
 			TimelapseSettingComplete();
