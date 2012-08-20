@@ -11,14 +11,18 @@
 @implementation UIView (FindAndResignFirstResponder)
 - (BOOL)findAndResignFirstResponder
 {
-    if (self.isFirstResponder) {
-        [self resignFirstResponder];
-        return YES;     
+    UIView *result = [self findFirstResponder];
+    return result && [result resignFirstResponder];
+}
+
+-(UIView *)findFirstResponder
+{
+    UIView *result = nil;
+    if (self.isFirstResponder) return self;
+    else for (UIView *subView in self.subviews) {
+        if (!result) result = [subView findFirstResponder];
     }
-    for (UIView *subView in self.subviews) {
-        if ([subView findAndResignFirstResponder])
-            return YES;
-    }
-    return NO;
+    
+    return result;
 }
 @end

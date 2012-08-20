@@ -12,6 +12,7 @@
 #import <Foundation/Foundation.h>
 #import "RCSwitchOnOff.h"
 #import "ETLAppDelegate.h"
+#import "ETLUtil.h"
 
 @interface ETLViewController ()
 {
@@ -58,10 +59,13 @@
         [res setOn:[s isOn]];
         [res setHidden:[s isHidden]];
         
-        NSArray* actions = [s actionsForTarget:self forControlEvent:UIControlEventValueChanged];
-        for (NSString *a in actions) {
-            [res addTarget:self action:NSSelectorFromString(a) forControlEvents:UIControlEventValueChanged];
-        }
+        [Array(nint(UIControlEventValueChanged), nint(UIControlEventTouchUpInside), nint(UIControlEventTouchDown)) eachWith:^(id object) {
+            UIControlEvents event = [object unsignedIntegerValue];
+            NSArray* actions = [s actionsForTarget:self forControlEvent:event];
+            for (NSString *a in actions) {
+                [res addTarget:self action:NSSelectorFromString(a) forControlEvents:event];
+            } 
+        }];
         
         [[self view] addSubview:res];
         [s removeFromSuperview];

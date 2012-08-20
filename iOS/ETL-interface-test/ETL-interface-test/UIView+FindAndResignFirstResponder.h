@@ -10,4 +10,5 @@
 
 @interface UIView (FindAndResignFirstResponder)
 - (BOOL)findAndResignFirstResponder;
+- (UIView *)findFirstResponder;
 @end

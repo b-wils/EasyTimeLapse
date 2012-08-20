@@ -26,6 +26,7 @@
     IBOutlet UIButton * readyButton;
 }
 
+- (IBAction)willSwitchContinuous:(id)sender;
 - (IBAction)didSwitchContinuous:(id)sender;
 - (IBAction)didUpdateShotLimit:(id)sender;
 

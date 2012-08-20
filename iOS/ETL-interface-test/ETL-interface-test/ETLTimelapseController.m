@@ -107,6 +107,10 @@
         }
     }
 }
+- (IBAction)willSwitchContinuous:(id)sender
+{
+    [self hideFirstResponder:nil];
+}
 
 - (IBAction)didSwitchContinuous:(id)sender
 {
