@@ -47,7 +47,13 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didRequestPacket:) name:PacketRequested object:programmer];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didCompleteProgramming:) name:ProgrammingComplete object:programmer];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveDeviceData:) name:GotDeviceInfo object:programmer];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didDetachHeadphones:) name:HeadsetDetached object:programmer];
 //    [programmer listen];
+}
+
+- (void)didDetachHeadphones:(NSNotification *)notification
+{
+    [self goBack:nil];
 }
 
 const NSUInteger streamBitsPerDataByte = 14;
