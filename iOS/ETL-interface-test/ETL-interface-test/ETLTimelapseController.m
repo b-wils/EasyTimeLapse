@@ -37,21 +37,6 @@
         timelapse.exposure = 200;
     }
     
-    if (!intervalSelection) {
-        intervalSelection = [[ETLIntervalSelectionController alloc] initWithInputField:shotPeriodField 
-                                                                             unitButton:periodUnitButton
-                                                                             andParent:self];
-        intervalSelection.parent = self;
-        NSString *unit;
-        if (timelapse.shotInterval % (int)HOURS == 0) unit = @"hours";
-        else if (timelapse.shotInterval % (int)MINUTES == 0) unit = @"minutes";
-        else if (timelapse.shotInterval % (int)SECONDS == 0) unit = @"seconds";
-        else unit = @"ms";
-
-        intervalSelection.unit = unit;
-        intervalSelection.interval = timelapse.shotInterval;
-    }
-    
     if (!self.packetProvider) {
         self.packetProvider = timelapse;
     }
@@ -70,7 +55,9 @@
 {
     [super viewDidLoad];
     [self ensureInitialized];
-    [self replaceSwitches:Array(@"continuousSwitch")];
+    [[UIApplication sharedApplication] setStatusBarHidden:YES];
+    [UIViewController attemptRotationToDeviceOrientation];
+    
     [self updateUICalculations:nil];
 }
 
@@ -84,73 +71,33 @@
 }
 
 - (void)updateUICalculations:(NSNotification *)notification
-{
-    shotLimitPanel.hidden = timelapse.continuousShooting;
-    
-    if (!timelapse.continuousShooting)
-    {
-        shotLimitField.text = [NSString stringWithFormat:@"%d", timelapse.shotCount];
-        
-        float_t totalSeconds = timelapse.shotCount / timelapse.clipFramesPerSecond;
-        finalShotLengthLabel.text = [self formatSeconds:totalSeconds with:@"%u:%u:%2.2f"];
-        
-        totalSeconds = (float_t)timelapse.shotCount * ((float_t)timelapse.shotInterval / 1000.0);
-        totalShootingTimeLabel.text = [self formatSeconds:totalSeconds with:@"%u:%u:%2.0f"];
-        
-        if (continuousSwitch.on) {
-            [continuousSwitch setOn:NO animated:YES];
-        }
+{    
+    if (!timelapse.continuousShooting) {
     }
     else {
-        if (!continuousSwitch.on) {
-            [continuousSwitch setOn:YES animated:YES];
-        }
     }
-}
-- (IBAction)willSwitchContinuous:(id)sender
-{
-    [self hideFirstResponder:nil];
 }
 
-- (IBAction)didSwitchContinuous:(id)sender
-{
-    UISwitch * s = (UISwitch *)sender;
-    if (!s.on) {
-        timelapse.shotCount = [shotLimitField.text integerValue];
-    }
-    else {
-        [timelapse setShotCount:0];
-    }
-}
+//- (IBAction)didSwitchContinuous:(id)sender
+//{
+//}
 
 - (void)didUpdateInterval:(NSUInteger)ms forSelection:(id)sender
 {
     timelapse.shotInterval = ms;
 }
-
-- (IBAction)didUpdateShotLimit:(id)sender
-{
-    NSInteger newValue = [(UITextField *)sender text].intValue;
-    if (newValue < 1) {
-        newValue = 0;
-        ((UITextField *)sender).text = [NSString stringWithFormat:@"%i", timelapse.shotCount];
-        [continuousSwitch setOn:!continuousSwitch.on animated:YES];
-    }
-    
-    timelapse.shotCount = newValue;
-}
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-    [textField resignFirstResponder];
-    return YES;
-}
-
-- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField 
-{
-    [self hideFirstResponder:nil];
-    return TRUE;
-}
+//
+//- (BOOL)textFieldShouldReturn:(UITextField *)textField
+//{
+//    [textField resignFirstResponder];
+//    return YES;
+//}
+//
+//- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField 
+//{
+//    [self hideFirstResponder:nil];
+//    return TRUE;
+//}
 
 - (BOOL)canBecomeFirstResponder
 {
@@ -163,9 +110,15 @@
     [self becomeFirstResponder];
 }
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+//- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+//{
+//    [self hideFirstResponder:nil];
+//}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
 {
-    [self hideFirstResponder:nil];
+g    return (toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft) || (toInterfaceOrientation == UIInterfaceOrientationLandscapeRight);
+    return YES;
 }
 
 @end

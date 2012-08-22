@@ -13,22 +13,14 @@
 
 @interface ETLTimelapseController : ETLShotViewController <UITextFieldDelegate, ETLIntervalSelectionDelegate>
 {    
-    IBOutlet UITextField * shotPeriodField;
-    IBOutlet UIButton * periodUnitButton;
-    
-    IBOutlet UISwitch * continuousSwitch;
-    IBOutlet UIView * shotLimitPanel;
-    IBOutlet UITextField * shotLimitField;
-    
-    IBOutlet UILabel * finalShotLengthLabel;
-    IBOutlet UILabel * totalShootingTimeLabel;
+    IBOutlet UISlider *eventDurationSlider;
+    IBOutlet UISlider *clipLengthSlider;
+    IBOutlet UISlider *timeScaleSlider;
     
     IBOutlet UIButton * readyButton;
 }
 
-- (IBAction)willSwitchContinuous:(id)sender;
-- (IBAction)didSwitchContinuous:(id)sender;
-- (IBAction)didUpdateShotLimit:(id)sender;
+//- (IBAction)didSwitchContinuous:(id)sender;
 
 @property (nonatomic, strong) ETLTimelapse *timelapse;
 @end
