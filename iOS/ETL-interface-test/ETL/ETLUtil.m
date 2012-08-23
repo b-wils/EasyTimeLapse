@@ -17,7 +17,6 @@ NSString* formatSeconds(float_t totalSeconds, NSString *formatString)
     return [NSString stringWithFormat:formatString, hours, minutes, seconds];
 }
 
-git
 NSString* msToEnglish(NSUInteger ms) {
     if (ms == FOREVER) return @"∞";
     
