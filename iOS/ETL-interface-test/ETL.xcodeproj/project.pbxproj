@@ -144,6 +144,12 @@
 		B576526815D169D400E35C56 /* next_pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B576526315D169D400E35C56 /* next_pressed@2x.png */; };
 		B576526915D169D400E35C56 /* next@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B576526415D169D400E35C56 /* next@2x.png */; };
 		B576526A15D169D400E35C56 /* next@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B576526415D169D400E35C56 /* next@2x.png */; };
+		B592B09515E5683000F892BA /* ETLSliderStepController.m in Sources */ = {isa = PBXBuildFile; fileRef = B592B09415E5683000F892BA /* ETLSliderStepController.m */; };
+		B592B09615E5683000F892BA /* ETLSliderStepController.m in Sources */ = {isa = PBXBuildFile; fileRef = B592B09415E5683000F892BA /* ETLSliderStepController.m */; };
+		B592B09915E5688700F892BA /* ETLRangeMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = B592B09815E5688700F892BA /* ETLRangeMapper.m */; };
+		B592B09A15E5688700F892BA /* ETLRangeMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = B592B09815E5688700F892BA /* ETLRangeMapper.m */; };
+		B592B09C15E57F6E00F892BA /* ETLUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = B592B09B15E57F6E00F892BA /* ETLUtil.m */; };
+		B592B09D15E57F6E00F892BA /* ETLUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = B592B09B15E57F6E00F892BA /* ETLUtil.m */; };
 		B5990754158FFC000005C8E2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5990753158FFC000005C8E2 /* UIKit.framework */; };
 		B5990756158FFC000005C8E2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5990755158FFC000005C8E2 /* Foundation.framework */; };
 		B5990758158FFC000005C8E2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5990757158FFC000005C8E2 /* CoreGraphics.framework */; };
@@ -248,7 +254,7 @@
 			containerPortal = B5990746158FFC000005C8E2 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = B599074E158FFC000005C8E2;
-			remoteInfo = "ETL";
+			remoteInfo = ETL;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -395,14 +401,19 @@
 		B576526215D169D400E35C56 /* next_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = next_pressed.png; path = ../../../assets/v1/next_pressed.png; sourceTree = "<group>"; };
 		B576526315D169D400E35C56 /* next_pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "next_pressed@2x.png"; path = "../../../assets/v1/next_pressed@2x.png"; sourceTree = "<group>"; };
 		B576526415D169D400E35C56 /* next@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "next@2x.png"; path = "../../../assets/v1/next@2x.png"; sourceTree = "<group>"; };
+		B592B09315E5683000F892BA /* ETLSliderStepController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETLSliderStepController.h; sourceTree = "<group>"; };
+		B592B09415E5683000F892BA /* ETLSliderStepController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLSliderStepController.m; sourceTree = "<group>"; };
+		B592B09715E5688700F892BA /* ETLRangeMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETLRangeMapper.h; sourceTree = "<group>"; };
+		B592B09815E5688700F892BA /* ETLRangeMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLRangeMapper.m; sourceTree = "<group>"; };
+		B592B09B15E57F6E00F892BA /* ETLUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLUtil.m; sourceTree = "<group>"; };
 		B599074F158FFC000005C8E2 /* ETL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ETL.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5990753158FFC000005C8E2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B5990755158FFC000005C8E2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B5990757158FFC000005C8E2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		B599075B158FFC000005C8E2 /* ETL-Info.plist */ = {isa = PBXFileReference; path = "ETL-Info.plist"; sourceTree = "<group>"; };
+		B599075B158FFC000005C8E2 /* ETL-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ETL-Info.plist"; sourceTree = "<group>"; };
 		B599075D158FFC000005C8E2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B599075F158FFC000005C8E2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		B5990761158FFC000005C8E2 /* ETL-Prefix.pch */ = {isa = PBXFileReference; path = "ETL-Prefix.pch"; sourceTree = "<group>"; };
+		B5990761158FFC000005C8E2 /* ETL-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ETL-Prefix.pch"; sourceTree = "<group>"; };
 		B5990762158FFC000005C8E2 /* ETLAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ETLAppDelegate.h; sourceTree = "<group>"; };
 		B5990763158FFC000005C8E2 /* ETLAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ETLAppDelegate.m; sourceTree = "<group>"; };
 		B599077F158FFC9F0005C8E2 /* ETLHomeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETLHomeController.h; sourceTree = "<group>"; };
@@ -659,6 +670,8 @@
 				B5EBA99C15C9E42C0041C2CB /* ETLTimeUnitList.m */,
 				B5EBA99F15C9E6D10041C2CB /* ETLPickerList.h */,
 				B5EBA9A015C9E6D10041C2CB /* ETLPickerList.m */,
+				B592B09715E5688700F892BA /* ETLRangeMapper.h */,
+				B592B09815E5688700F892BA /* ETLRangeMapper.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -794,8 +807,7 @@
 				B5720DB015B48B9B0092FA31 /* ETLProgrammer.m */,
 				B599075A158FFC000005C8E2 /* Supporting Files */,
 			);
-			name = ETL;
-			path = "ETL";
+			path = ETL;
 			sourceTree = "<group>";
 		};
 		B599075A158FFC000005C8E2 /* Supporting Files */ = {
@@ -971,6 +983,8 @@
 				B5EBA9AD15C9F32C0041C2CB /* ETLIntervalSelectionController.m */,
 				B576525B15D079D100E35C56 /* ETLStopSelectionController.h */,
 				B576525C15D079D100E35C56 /* ETLStopSelectionController.m */,
+				B592B09315E5683000F892BA /* ETLSliderStepController.h */,
+				B592B09415E5683000F892BA /* ETLSliderStepController.m */,
 			);
 			name = Mini;
 			sourceTree = "<group>";
@@ -1005,6 +1019,7 @@
 				B5F7392B15BF5F3E00A784A4 /* UIButton+setAllTitles.h */,
 				B5F7392C15BF5F3E00A784A4 /* UIButton+setAllTitles.m */,
 				B5336FEE15C9C08A0074D73A /* ETLUtil.h */,
+				B592B09B15E57F6E00F892BA /* ETLUtil.m */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -1043,7 +1058,7 @@
 			dependencies = (
 			);
 			name = ETL;
-			productName = "ETL";
+			productName = ETL;
 			productReference = B599074F158FFC000005C8E2 /* ETL.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -1273,6 +1288,9 @@
 				B5BD79EC15D2EC77006E0F4C /* Settings.m in Sources */,
 				B5BD79F015D2EC77006E0F4C /* CameraType.m in Sources */,
 				B5E1AC6615DC1B9700D022E8 /* ETLPreBulbController.m in Sources */,
+				B592B09615E5683000F892BA /* ETLSliderStepController.m in Sources */,
+				B592B09A15E5688700F892BA /* ETLRangeMapper.m in Sources */,
+				B592B09D15E57F6E00F892BA /* ETLUtil.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1321,6 +1339,9 @@
 				B5BD79EB15D2EC77006E0F4C /* Settings.m in Sources */,
 				B5BD79EF15D2EC77006E0F4C /* CameraType.m in Sources */,
 				B5E1AC6515DC1B9700D022E8 /* ETLPreBulbController.m in Sources */,
+				B592B09515E5683000F892BA /* ETLSliderStepController.m in Sources */,
+				B592B09915E5688700F892BA /* ETLRangeMapper.m in Sources */,
+				B592B09C15E57F6E00F892BA /* ETLUtil.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

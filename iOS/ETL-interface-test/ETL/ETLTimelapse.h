@@ -10,11 +10,7 @@
 #import "ETLModel.h"
 #import "Common.h"
 #import "ETLProgrammer.h"
-
-#define MS 1.0
-#define SECONDS (1000 * MS)
-#define MINUTES (SECONDS * 60)
-#define HOURS (MINUTES * 60)
+#import "ETLUtil.h"
 
 @interface ETLTimelapse : ETLModel <PacketProvider>
 

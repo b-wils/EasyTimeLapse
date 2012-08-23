@@ -19,4 +19,14 @@
 #define thOfSec(x) nint(ceil(1000.0/x))
 #define Array(...) [NSArray arrayWithObjects: __VA_ARGS__ , nil]
 
+#define MS 1.0
+#define SECONDS (1000 * MS)
+#define MINUTES (SECONDS * 60)
+#define HOURS (MINUTES * 60)
+#define FOREVER INT_MAX
+
+#define nsprintf(str, ...) ([NSString stringWithFormat:str, __VA_ARGS__])
+
+NSString *msToEnglish(NSUInteger ms);
+
 #endif

@@ -1276,8 +1276,8 @@
                                         <rect key="frame" x="7" y="6" width="33" height="31"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.41960784309999999" green="0.55294117649999996" blue="0.69019607839999997" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="18"/>
-                                        <state key="normal" title="=">
+                                        <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="17"/>
+                                        <state key="normal" title="▼">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -1359,7 +1359,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="⌛Scale" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="25o-Cm-izm">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="⌛Wait" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="25o-Cm-izm">
                                 <rect key="frame" x="8" y="158" width="73" height="28"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -1411,9 +1411,12 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
+                        <outlet property="clipLengthLabel" destination="TP1-qb-TwS" id="i9H-Ut-qgN"/>
                         <outlet property="clipLengthSlider" destination="tYl-j6-llA" id="0TT-OE-aN5"/>
+                        <outlet property="eventDurationLabel" destination="kR1-b3-x85" id="3Lx-7e-Ffg"/>
                         <outlet property="eventDurationSlider" destination="5xW-y7-Jic" id="fcG-dN-yyI"/>
                         <outlet property="readyButton" destination="du1-wh-HM5" id="QKj-j1-8fl"/>
+                        <outlet property="timeScaleLabel" destination="ATs-qQ-9Ls" id="jfm-Vs-A3O"/>
                         <outlet property="timeScaleSlider" destination="BYo-Rd-c6J" id="KvO-l0-rqs"/>
                     </connections>
                 </viewController>
@@ -1619,6 +1622,115 @@
         <image name="topbar_remote.png" width="320" height="44"/>
         <image name="topbar_settings.png" width="320" height="44"/>
     </resources>
+    <classes>
+        <class className="ETLBimodalController" superclassName="ETLShotViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ETLBimodalController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="intervalAButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="intervalAField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="intervalBButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="intervalBField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="ETLBulbController" superclassName="ETLShotViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ETLBulbController.h"/>
+            <relationships>
+                <relationship kind="action" name="didUpdateNumStops:"/>
+                <relationship kind="action" name="didUpdateStopChange:"/>
+                <relationship kind="outlet" name="endingDurationButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="endingDurationField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="initialDurationButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="initialDurationField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="initialExposureButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="initialExposureField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="intervalButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="intervalField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="numStopsField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="rampDurationButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="rampDurationField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="stopChangeField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="ETLDoneProgrammingController" superclassName="ETLViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ETLDoneProgrammingController.h"/>
+        </class>
+        <class className="ETLHdrController" superclassName="ETLShotViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ETLHdrController.h"/>
+            <relationships>
+                <relationship kind="action" name="didUpdateBracketCount:"/>
+                <relationship kind="action" name="didUpdateExposureField:"/>
+                <relationship kind="outlet" name="bracketCountField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="finalExposureButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="finalExposureField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="initialExposureButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="initialExposureField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="ETLHomeController" superclassName="ETLViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ETLHomeController.h"/>
+        </class>
+        <class className="ETLManualController" superclassName="ETLShotViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ETLManualController.h"/>
+        </class>
+        <class className="ETLPreBulbController" superclassName="ETLShotViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ETLPreBulbController.h"/>
+        </class>
+        <class className="ETLPreProgrammingController" superclassName="ETLShotViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ETLPreProgrammingController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="statusLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="ETLProgramViewController" superclassName="ETLViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ETLProgramViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="batteryLevelLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="bytesTransferred" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="cancelButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="programmingProgress" candidateClass="UIProgressView"/>
+            </relationships>
+        </class>
+        <class className="ETLSettingsViewController" superclassName="ETLViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ETLSettingsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="didUpdateBufferTime:"/>
+                <relationship kind="action" name="didUpdateFlashOffset:"/>
+                <relationship kind="outlet" name="bufferTimeField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="cameraTypeButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="enableInstructionsSwitch" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="flashFeedbackSwitch" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="flashOffsetField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="videoFramerateButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="ETLShotViewController" superclassName="ETLViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ETLShotViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="gotoSettings"/>
+            </relationships>
+        </class>
+        <class className="ETLTimelapseController" superclassName="ETLShotViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ETLTimelapseController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="clipLengthLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="clipLengthSlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="eventDurationLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="eventDurationSlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="readyButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="timeScaleLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="timeScaleSlider" candidateClass="UISlider"/>
+            </relationships>
+        </class>
+        <class className="ETLViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ETLViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="goBack:"/>
+                <relationship kind="action" name="hideFirstResponder:"/>
+                <relationship kind="outlet" name="backOrHomeButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="numpadToolbar" candidateClass="UIView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

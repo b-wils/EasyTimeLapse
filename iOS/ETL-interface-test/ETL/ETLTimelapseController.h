@@ -8,14 +8,19 @@
 
 #import "ETLShotViewController.h"
 #import "ETLTimelapse.h"
-#import "ETLTimeUnitList.h"
-#import "ETLIntervalSelectionController.h"
+//#import "ETLTimeUnitList.h"
+//#import "ETLIntervalSelectionController.h"
+#import "ETLSliderStepController.h"
 
 @interface ETLTimelapseController : ETLShotViewController <UITextFieldDelegate, ETLIntervalSelectionDelegate>
-{    
+{       
     IBOutlet UISlider *eventDurationSlider;
     IBOutlet UISlider *clipLengthSlider;
     IBOutlet UISlider *timeScaleSlider;
+    
+    IBOutlet UILabel *eventDurationLabel;
+    IBOutlet UILabel *clipLengthLabel;
+    IBOutlet UILabel *timeScaleLabel;
     
     IBOutlet UIButton * readyButton;
 }
