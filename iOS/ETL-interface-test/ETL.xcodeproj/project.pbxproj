@@ -248,7 +248,7 @@
 			containerPortal = B5990746158FFC000005C8E2 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = B599074E158FFC000005C8E2;
-			remoteInfo = "ETL-interface-test";
+			remoteInfo = "ETL";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -395,14 +395,14 @@
 		B576526215D169D400E35C56 /* next_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = next_pressed.png; path = ../../../assets/v1/next_pressed.png; sourceTree = "<group>"; };
 		B576526315D169D400E35C56 /* next_pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "next_pressed@2x.png"; path = "../../../assets/v1/next_pressed@2x.png"; sourceTree = "<group>"; };
 		B576526415D169D400E35C56 /* next@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "next@2x.png"; path = "../../../assets/v1/next@2x.png"; sourceTree = "<group>"; };
-		B599074F158FFC000005C8E2 /* ETL-interface-test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ETL-interface-test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B599074F158FFC000005C8E2 /* ETL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ETL.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5990753158FFC000005C8E2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B5990755158FFC000005C8E2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B5990757158FFC000005C8E2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		B599075B158FFC000005C8E2 /* ETL-interface-test-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ETL-interface-test-Info.plist"; sourceTree = "<group>"; };
+		B599075B158FFC000005C8E2 /* ETL-Info.plist */ = {isa = PBXFileReference; path = "ETL-Info.plist"; sourceTree = "<group>"; };
 		B599075D158FFC000005C8E2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B599075F158FFC000005C8E2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		B5990761158FFC000005C8E2 /* ETL-interface-test-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ETL-interface-test-Prefix.pch"; sourceTree = "<group>"; };
+		B5990761158FFC000005C8E2 /* ETL-Prefix.pch */ = {isa = PBXFileReference; path = "ETL-Prefix.pch"; sourceTree = "<group>"; };
 		B5990762158FFC000005C8E2 /* ETLAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ETLAppDelegate.h; sourceTree = "<group>"; };
 		B5990763158FFC000005C8E2 /* ETLAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ETLAppDelegate.m; sourceTree = "<group>"; };
 		B599077F158FFC9F0005C8E2 /* ETLHomeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETLHomeController.h; sourceTree = "<group>"; };
@@ -745,7 +745,7 @@
 			children = (
 				B5BD797B15D2E556006E0F4C /* CoreData.framework */,
 				B5420FD815AB6853001E3D15 /* Storyboard.storyboard */,
-				B5990759158FFC000005C8E2 /* ETL-interface-test */,
+				B5990759158FFC000005C8E2 /* ETL */,
 				B504997215AF5C2300F4AF31 /* ETLTests */,
 				B5990752158FFC000005C8E2 /* Frameworks */,
 				B5990750158FFC000005C8E2 /* Products */,
@@ -757,7 +757,7 @@
 		B5990750158FFC000005C8E2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B599074F158FFC000005C8E2 /* ETL-interface-test.app */,
+				B599074F158FFC000005C8E2 /* ETL.app */,
 				B504996D15AF5C2300F4AF31 /* ETLTests.app */,
 			);
 			name = Products;
@@ -779,7 +779,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		B5990759158FFC000005C8E2 /* ETL-interface-test */ = {
+		B5990759158FFC000005C8E2 /* ETL */ = {
 			isa = PBXGroup;
 			children = (
 				B504994C15AF55E900F4AF31 /* Models */,
@@ -794,17 +794,18 @@
 				B5720DB015B48B9B0092FA31 /* ETLProgrammer.m */,
 				B599075A158FFC000005C8E2 /* Supporting Files */,
 			);
-			path = "ETL-interface-test";
+			name = ETL;
+			path = "ETL";
 			sourceTree = "<group>";
 		};
 		B599075A158FFC000005C8E2 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
 				B558F83E1592D11F00CB6E24 /* External Headers */,
-				B599075B158FFC000005C8E2 /* ETL-interface-test-Info.plist */,
+				B599075B158FFC000005C8E2 /* ETL-Info.plist */,
 				B599075C158FFC000005C8E2 /* InfoPlist.strings */,
 				B599075F158FFC000005C8E2 /* main.m */,
-				B5990761158FFC000005C8E2 /* ETL-interface-test-Prefix.pch */,
+				B5990761158FFC000005C8E2 /* ETL-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1029,9 +1030,9 @@
 			productReference = B504996D15AF5C2300F4AF31 /* ETLTests.app */;
 			productType = "com.apple.product-type.application";
 		};
-		B599074E158FFC000005C8E2 /* ETL-interface-test */ = {
+		B599074E158FFC000005C8E2 /* ETL */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B599076D158FFC000005C8E2 /* Build configuration list for PBXNativeTarget "ETL-interface-test" */;
+			buildConfigurationList = B599076D158FFC000005C8E2 /* Build configuration list for PBXNativeTarget "ETL" */;
 			buildPhases = (
 				B599074B158FFC000005C8E2 /* Sources */,
 				B599074C158FFC000005C8E2 /* Frameworks */,
@@ -1041,9 +1042,9 @@
 			);
 			dependencies = (
 			);
-			name = "ETL-interface-test";
-			productName = "ETL-interface-test";
-			productReference = B599074F158FFC000005C8E2 /* ETL-interface-test.app */;
+			name = ETL;
+			productName = "ETL";
+			productReference = B599074F158FFC000005C8E2 /* ETL.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1056,7 +1057,7 @@
 				LastUpgradeCheck = 0430;
 				ORGANIZATIONNAME = "";
 			};
-			buildConfigurationList = B5990749158FFC000005C8E2 /* Build configuration list for PBXProject "ETL-interface-test" */;
+			buildConfigurationList = B5990749158FFC000005C8E2 /* Build configuration list for PBXProject "ETL" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -1069,7 +1070,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B599074E158FFC000005C8E2 /* ETL-interface-test */,
+				B599074E158FFC000005C8E2 /* ETL */,
 				B504996C15AF5C2300F4AF31 /* ETLTests */,
 			);
 		};
@@ -1328,7 +1329,7 @@
 /* Begin PBXTargetDependency section */
 		B5049B7615AF638B00F4AF31 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = B599074E158FFC000005C8E2 /* ETL-interface-test */;
+			target = B599074E158FFC000005C8E2 /* ETL */;
 			targetProxy = B5049B7515AF638B00F4AF31 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1465,12 +1466,12 @@
 					"\"$(SRCROOT)/../../../gh-unit/Examples/MyTestable-MacOSX/Frameworks\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ETL-interface-test/ETL-interface-test-Prefix.pch";
+				GCC_PREFIX_HEADER = "ETL/ETL-Prefix.pch";
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				INFOPLIST_FILE = "ETL-interface-test/ETL-interface-test-Info.plist";
+				INFOPLIST_FILE = "ETL/ETL-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ETL;
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = /Users/home/ben/source/iOS/communications/communications;
 				VALID_ARCHS = "armv6 armv7";
@@ -1487,12 +1488,12 @@
 					"\"$(SRCROOT)/../../../gh-unit/Examples/MyTestable-MacOSX/Frameworks\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ETL-interface-test/ETL-interface-test-Prefix.pch";
+				GCC_PREFIX_HEADER = "ETL/ETL-Prefix.pch";
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				INFOPLIST_FILE = "ETL-interface-test/ETL-interface-test-Info.plist";
+				INFOPLIST_FILE = "ETL/ETL-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ETL;
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = /Users/home/ben/source/iOS/communications/communications;
 				VALID_ARCHS = "armv6 armv7";
@@ -1512,7 +1513,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B5990749158FFC000005C8E2 /* Build configuration list for PBXProject "ETL-interface-test" */ = {
+		B5990749158FFC000005C8E2 /* Build configuration list for PBXProject "ETL" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B599076B158FFC000005C8E2 /* Debug */,
@@ -1521,7 +1522,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B599076D158FFC000005C8E2 /* Build configuration list for PBXNativeTarget "ETL-interface-test" */ = {
+		B599076D158FFC000005C8E2 /* Build configuration list for PBXNativeTarget "ETL" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B599076E158FFC000005C8E2 /* Debug */,

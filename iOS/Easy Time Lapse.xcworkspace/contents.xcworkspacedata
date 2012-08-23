@@ -5,7 +5,7 @@
       location = "group:ETL-comm-test/ETL-comm-test.xcodeproj">
    </FileRef>
    <FileRef
-      location = "container:ETL-interface-test/ETL-interface-test.xcodeproj">
+      location = "container:ETL-interface-test/ETL.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:ETL-interface-test/../communications/communications.xcodeproj">
