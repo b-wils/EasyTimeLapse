@@ -114,7 +114,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="l6R-KR-qgy" kind="push" id="SXq-g0-aaf"/>
+                                    <segue destination="tAE-BA-qo6" kind="push" id="5lw-hh-SjQ"/>
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Time Lapse" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" id="fw0-Yb-4RQ">
@@ -797,6 +797,114 @@
             </objects>
             <point key="canvasLocation" x="363" y="743"/>
         </scene>
+        <!--Bulb Ramp Controller-->
+        <scene sceneID="pYO-Fr-8Ld">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xzl-c3-fM2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="tAE-BA-qo6" customClass="ETLBulbRampController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NaW-rC-sdC">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" id="Etd-YQ-huj" customClass="ETLRampView">
+                                <rect key="frame" x="0.0" y="44" width="378" height="202"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="0.6908756702560126" green="1" blue="0.72192913288579419" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Ease In" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="ZxV-kT-CBQ">
+                                <rect key="frame" x="20" y="256" width="77" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="40" minValue="8" maxValue="80" id="MOk-Xm-iCN">
+                                <rect key="frame" x="103" y="256" width="277" height="23"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="didChangeEaseIn:" destination="tAE-BA-qo6" eventType="valueChanged" id="5j7-57-BbR"/>
+                                </connections>
+                            </slider>
+                            <view contentMode="scaleToFill" id="7CD-Ih-Vga">
+                                <rect key="frame" x="0.0" y="0.0" width="480" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Bulb Ramp" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="AOY-HC-Mta">
+                                        <rect key="frame" x="48" y="0.0" width="193" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="36"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="yb5-Nc-j6M">
+                                        <rect key="frame" x="7" y="6" width="33" height="31"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.41960784309999999" green="0.55294117649999996" blue="0.69019607839999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="17"/>
+                                        <state key="normal" title="▼">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoDark" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="E5h-L9-pJE">
+                                        <rect key="frame" x="244" y="14" width="18" height="19"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="c0e-Kk-KW6">
+                                        <rect key="frame" x="399" y="12" width="61" height="20"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.41960784309999999" green="0.55294117649999996" blue="0.69019607839999997" alpha="0.0" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
+                                        <state key="normal" title="go pro">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Ease Out" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="vaA-4J-yY7">
+                                <rect key="frame" x="20" y="288" width="77" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="40" minValue="8" maxValue="80" id="IGL-LS-s7W">
+                                <rect key="frame" x="103" y="289" width="277" height="23"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="didChangeEaseOut:" destination="tAE-BA-qo6" eventType="valueChanged" id="Gqd-tO-t4q"/>
+                                </connections>
+                            </slider>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="0ye-Vw-GLw"/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <connections>
+                        <outlet property="rampView" destination="Etd-YQ-huj" id="JLp-Ci-ZJz"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="303" y="1382"/>
+        </scene>
         <!--Hdr Controller-->
         <scene sceneID="h7C-I7-WSb">
             <objects>
@@ -1266,7 +1374,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Timelapse" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="UcL-i3-6SJ">
-                                        <rect key="frame" x="48" y="0.0" width="317" height="44"/>
+                                        <rect key="frame" x="48" y="0.0" width="180" height="44"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="36"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -1286,7 +1394,7 @@
                                         </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoDark" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="7RB-Ps-T1H">
-                                        <rect key="frame" x="373" y="12" width="18" height="19"/>
+                                        <rect key="frame" x="231" y="15" width="18" height="19"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal">
@@ -1651,6 +1759,14 @@
                 <relationship kind="outlet" name="stopChangeField" candidateClass="UITextField"/>
             </relationships>
         </class>
+        <class className="ETLBulbRampController" superclassName="ETLShotViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ETLBulbRampController.h"/>
+            <relationships>
+                <relationship kind="action" name="didChangeEaseIn:"/>
+                <relationship kind="action" name="didChangeEaseOut:"/>
+                <relationship kind="outlet" name="rampView" candidateClass="ETLRampView"/>
+            </relationships>
+        </class>
         <class className="ETLDoneProgrammingController" superclassName="ETLViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ETLDoneProgrammingController.h"/>
         </class>
@@ -1689,6 +1805,9 @@
                 <relationship kind="outlet" name="cancelButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="programmingProgress" candidateClass="UIProgressView"/>
             </relationships>
+        </class>
+        <class className="ETLRampView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ETLRampView.h"/>
         </class>
         <class className="ETLSettingsViewController" superclassName="ETLViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ETLSettingsViewController.h"/>
@@ -1737,8 +1856,8 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="QMX-0j-4Og"/>
         <segue reference="arz-kM-dV9"/>
+        <segue reference="WEr-fs-VHr"/>
         <segue reference="jea-Ar-2B8"/>
         <segue reference="xs5-sS-DIA"/>
     </inferredMetricsTieBreakers>

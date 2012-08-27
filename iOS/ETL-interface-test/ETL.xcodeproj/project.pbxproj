@@ -120,6 +120,16 @@
 		B5272DD415A66BCE00F62549 /* back_home@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5272DD015A66BCE00F62549 /* back_home@2x.png */; };
 		B5272DD515A66BCE00F62549 /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = B5272DD115A66BCE00F62549 /* back.png */; };
 		B5272DD615A66BCE00F62549 /* back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5272DD215A66BCE00F62549 /* back@2x.png */; };
+		B52FB3DE15EA94080073CAAC /* ETLBulbRampController.m in Sources */ = {isa = PBXBuildFile; fileRef = B52FB3DD15EA94080073CAAC /* ETLBulbRampController.m */; };
+		B52FB3DF15EA94080073CAAC /* ETLBulbRampController.m in Sources */ = {isa = PBXBuildFile; fileRef = B52FB3DD15EA94080073CAAC /* ETLBulbRampController.m */; };
+		B52FB3E215EA97210073CAAC /* ETLRampView.m in Sources */ = {isa = PBXBuildFile; fileRef = B52FB3E115EA97210073CAAC /* ETLRampView.m */; };
+		B52FB3E315EA97210073CAAC /* ETLRampView.m in Sources */ = {isa = PBXBuildFile; fileRef = B52FB3E115EA97210073CAAC /* ETLRampView.m */; };
+		B52FB3E515EA97870073CAAC /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B52FB3E415EA97870073CAAC /* OpenGLES.framework */; };
+		B52FB3E715EA97960073CAAC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B52FB3E615EA97960073CAAC /* QuartzCore.framework */; };
+		B52FB3EA15EBCF600073CAAC /* Vertex.glsl in Resources */ = {isa = PBXBuildFile; fileRef = B52FB3E915EBCF600073CAAC /* Vertex.glsl */; };
+		B52FB3EB15EBCF600073CAAC /* Vertex.glsl in Resources */ = {isa = PBXBuildFile; fileRef = B52FB3E915EBCF600073CAAC /* Vertex.glsl */; };
+		B52FB3ED15EBCF900073CAAC /* Fragment.glsl in Resources */ = {isa = PBXBuildFile; fileRef = B52FB3EC15EBCF900073CAAC /* Fragment.glsl */; };
+		B52FB3EE15EBCF900073CAAC /* Fragment.glsl in Resources */ = {isa = PBXBuildFile; fileRef = B52FB3EC15EBCF900073CAAC /* Fragment.glsl */; };
 		B5336FEB15C9BEE30074D73A /* ETLStopList.m in Sources */ = {isa = PBXBuildFile; fileRef = B5336FEA15C9BEE30074D73A /* ETLStopList.m */; };
 		B5336FEC15C9BEE30074D73A /* ETLStopList.m in Sources */ = {isa = PBXBuildFile; fileRef = B5336FEA15C9BEE30074D73A /* ETLStopList.m */; };
 		B5336FEF15C9C5770074D73A /* ETLStopListTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B5336FED15C9BF150074D73A /* ETLStopListTest.m */; };
@@ -361,6 +371,14 @@
 		B5272DD015A66BCE00F62549 /* back_home@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "back_home@2x.png"; path = "../../../assets/v1/back_home@2x.png"; sourceTree = "<group>"; };
 		B5272DD115A66BCE00F62549 /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = back.png; path = ../../../assets/v1/back.png; sourceTree = "<group>"; };
 		B5272DD215A66BCE00F62549 /* back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "back@2x.png"; path = "../../../assets/v1/back@2x.png"; sourceTree = "<group>"; };
+		B52FB3DC15EA94080073CAAC /* ETLBulbRampController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETLBulbRampController.h; sourceTree = "<group>"; };
+		B52FB3DD15EA94080073CAAC /* ETLBulbRampController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLBulbRampController.m; sourceTree = "<group>"; };
+		B52FB3E015EA97210073CAAC /* ETLRampView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETLRampView.h; sourceTree = "<group>"; };
+		B52FB3E115EA97210073CAAC /* ETLRampView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLRampView.m; sourceTree = "<group>"; };
+		B52FB3E415EA97870073CAAC /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		B52FB3E615EA97960073CAAC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		B52FB3E915EBCF600073CAAC /* Vertex.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Vertex.glsl; sourceTree = "<group>"; };
+		B52FB3EC15EBCF900073CAAC /* Fragment.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Fragment.glsl; sourceTree = "<group>"; };
 		B5336FE915C9BEE30074D73A /* ETLStopList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETLStopList.h; sourceTree = "<group>"; };
 		B5336FEA15C9BEE30074D73A /* ETLStopList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLStopList.m; sourceTree = "<group>"; };
 		B5336FED15C9BF150074D73A /* ETLStopListTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ETLStopListTest.m; sourceTree = "<group>"; };
@@ -539,6 +557,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B52FB3E715EA97960073CAAC /* QuartzCore.framework in Frameworks */,
+				B52FB3E515EA97870073CAAC /* OpenGLES.framework in Frameworks */,
 				B5BD797C15D2E556006E0F4C /* CoreData.framework in Frameworks */,
 				B5272DAE15A3871800F62549 /* CoreImage.framework in Frameworks */,
 				B558F8501592D24000CB6E24 /* libstdc++.6.0.9.dylib in Frameworks */,
@@ -661,6 +681,15 @@
 			name = ColorSwitcher;
 			sourceTree = "<group>";
 		};
+		B52FB3E815EBCF430073CAAC /* Shaders */ = {
+			isa = PBXGroup;
+			children = (
+				B52FB3E915EBCF600073CAAC /* Vertex.glsl */,
+				B52FB3EC15EBCF900073CAAC /* Fragment.glsl */,
+			);
+			name = Shaders;
+			sourceTree = "<group>";
+		};
 		B5336FE815C9BEB70074D73A /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -756,6 +785,8 @@
 		B5990744158FFC000005C8E2 = {
 			isa = PBXGroup;
 			children = (
+				B52FB3E615EA97960073CAAC /* QuartzCore.framework */,
+				B52FB3E415EA97870073CAAC /* OpenGLES.framework */,
 				B5BD797B15D2E556006E0F4C /* CoreData.framework */,
 				B5420FD815AB6853001E3D15 /* Storyboard.storyboard */,
 				B5990759158FFC000005C8E2 /* ETL */,
@@ -825,6 +856,7 @@
 		B599077E158FFC650005C8E2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B52FB3E815EBCF430073CAAC /* Shaders */,
 				B5C1CD57159CF093005D6FC0 /* images */,
 				B5C1CD54159CF086005D6FC0 /* BulbSettings.xib */,
 				B50D23B7159B9C5F00F2FCCC /* TimelapseSliders.xib */,
@@ -962,6 +994,8 @@
 				B5B1E63315C9A95D001720C2 /* ETLBimodalController.m */,
 				B5E1AC6315DC1B9700D022E8 /* ETLPreBulbController.h */,
 				B5E1AC6415DC1B9700D022E8 /* ETLPreBulbController.m */,
+				B52FB3DC15EA94080073CAAC /* ETLBulbRampController.h */,
+				B52FB3DD15EA94080073CAAC /* ETLBulbRampController.m */,
 			);
 			name = Shots;
 			sourceTree = "<group>";
@@ -972,6 +1006,8 @@
 				B5E68DB115C9CAF9008115D9 /* ETLPickerView.h */,
 				B5E68DB215C9CAF9008115D9 /* ETLPickerView.m */,
 				B54C5EF515D0520B00563CEE /* ETLFirstResponder.h */,
+				B52FB3E015EA97210073CAAC /* ETLRampView.h */,
+				B52FB3E115EA97210073CAAC /* ETLRampView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -1101,6 +1137,8 @@
 				B576526615D169D400E35C56 /* next_pressed.png in Resources */,
 				B576526815D169D400E35C56 /* next_pressed@2x.png in Resources */,
 				B576526A15D169D400E35C56 /* next@2x.png in Resources */,
+				B52FB3EB15EBCF600073CAAC /* Vertex.glsl in Resources */,
+				B52FB3EE15EBCF900073CAAC /* Fragment.glsl in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1224,6 +1262,8 @@
 				B576526915D169D400E35C56 /* next@2x.png in Resources */,
 				B5E1AC6D15DD724900D022E8 /* battery.png in Resources */,
 				B5E1AC6E15DD724900D022E8 /* battery@2x.png in Resources */,
+				B52FB3EA15EBCF600073CAAC /* Vertex.glsl in Resources */,
+				B52FB3ED15EBCF900073CAAC /* Fragment.glsl in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1291,6 +1331,8 @@
 				B592B09615E5683000F892BA /* ETLSliderStepController.m in Sources */,
 				B592B09A15E5688700F892BA /* ETLRangeMapper.m in Sources */,
 				B592B09D15E57F6E00F892BA /* ETLUtil.m in Sources */,
+				B52FB3DF15EA94080073CAAC /* ETLBulbRampController.m in Sources */,
+				B52FB3E315EA97210073CAAC /* ETLRampView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1342,6 +1384,8 @@
 				B592B09515E5683000F892BA /* ETLSliderStepController.m in Sources */,
 				B592B09915E5688700F892BA /* ETLRangeMapper.m in Sources */,
 				B592B09C15E57F6E00F892BA /* ETLUtil.m in Sources */,
+				B52FB3DE15EA94080073CAAC /* ETLBulbRampController.m in Sources */,
+				B52FB3E215EA97210073CAAC /* ETLRampView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

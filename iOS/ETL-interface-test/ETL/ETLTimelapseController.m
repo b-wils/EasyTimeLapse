@@ -140,8 +140,6 @@
 {
     [super viewDidLoad];
     [self ensureInitialized];
-    [[UIApplication sharedApplication] setStatusBarHidden:YES];
-    [UIViewController attemptRotationToDeviceOrientation];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didUpdateDuration:) name:SliderMoved object:eventDurationController];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didUpdateClipLength:) name:SliderMoved object:clipLengthController];
