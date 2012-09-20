@@ -119,10 +119,6 @@
 
     }
     
-    EnsureSliderStepController(eventDuration)
-    EnsureSliderStepController(clipLength)
-    EnsureSliderStepController(timeScale)
-    
     if (!self.packetProvider) {
         self.packetProvider = timelapse;
     }
@@ -187,18 +183,50 @@
 //    [self hideFirstResponder:nil];
 //    return TRUE;
 //}
+
+- (IBAction)didTapEvent:(id)sender 
+{
+    [self moveSelectorTo:sender];    
+}
+
+- (IBAction)didTapClip:(id)sender
+{
+    [self moveSelectorTo:sender];    
+}
+
+- (IBAction)didTapInterval:(id)sender
+{
+    [self moveSelectorTo:sender];    
+}
+
+- (IBAction)didTapShots:(id)sender 
+{
+    [self moveSelectorTo:sender];
+}
+
+- (void)moveSelectorTo:(UIView *)view
+{
+//    CGRect bounds = selectorImage.bounds;
+//    bounds.origin.y = view.bounds.origin.y;
+    CGPoint center = selectorImage.center;
+    center.y = view.center.y;
+    [UIView animateWithDuration:0.2 animations:^{
+//        selectorImage.bounds = bounds;
+        selectorImage.center = center;
+    }];
+}
      
 - (void)didUpdateDuration:(NSNotification *)notification {
     int value = [[notification.userInfo objectForKey:@"value"] intValue];
     
     if (value == FOREVER || value < 0) {
-        clipLengthSlider.enabled = false;
-        clipLengthLabel.text = msToEnglish(FOREVER);
+//        clipLengthSlider.enabled = false;
+//        clipLengthLabel.text = msToEnglish(FOREVER);
         
         timelapse.shotCount = 0;
     }
     else {
-        clipLengthSlider.enabled = true;
+//        clipLengthSlider.enabled = true;
         [clipLengthController updateUI];
         
         int length = [clipLengthController.value intValue];

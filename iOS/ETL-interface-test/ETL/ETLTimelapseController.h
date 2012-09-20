@@ -15,21 +15,16 @@
 #import "ETLThumb.h"
 
 @interface ETLTimelapseController : ETLShotViewController <UITextFieldDelegate, ETLIntervalSelectionDelegate>
-{       
-    IBOutlet UISlider *eventDurationSlider;
-    IBOutlet UISlider *clipLengthSlider;
-    IBOutlet UISlider *timeScaleSlider;
-    
-    IBOutlet UILabel *eventDurationLabel;
-    IBOutlet UILabel *clipLengthLabel;
-    IBOutlet UILabel *timeScaleLabel;
-    
+{           
     IBOutlet UIButton *readyButton;
-    
-    IBOutlet ETLThumb *testView;
+    IBOutlet UILabel *eventLabel, *clipLabel, *intervalLabel, *shotsLabel;
+    IBOutlet UIImageView *selectorImage;
 }
 
-//- (IBAction)didSwitchContinuous:(id)sender;
+- (IBAction)didTapEvent:(id)sender;
+- (IBAction)didTapClip:(id)sender;
+- (IBAction)didTapInterval:(id)sender;
+- (IBAction)didTapShots:(id)sender;
 
 @property (nonatomic, strong) ETLTimelapse *timelapse;
 @end

@@ -18,27 +18,32 @@ bool isClockwise(CGPoint a, CGPoint b);
 double distance(CGPoint a, CGPoint b);
 
 @interface ETLRadialCurveLayer : CALayer
+{
+    double start, end;
+}
 @property (nonatomic, assign) double theta;
 @end
 
 @implementation ETLRadialCurveLayer
 @synthesize theta;
-- (id)init
+- (id)initWithStart:(double)st andEnd:(double)ed
 {
     self = [super init];
     if (self) {
         self.delegate = self;
         self.contentsScale = [[UIScreen mainScreen] scale];
+        start = st;
+        end = ed;
     }
     return self;
 }
 
 - (void)drawArcFrom:(CGFloat)start to:(CGFloat)end ofWidth:(CGFloat)width andColor:(UIColor *)color inContext:(CGContextRef)ctx 
 {
-    CGPoint center = {self.frame.size.width / 2, self.frame.size.height / 2};
+//    CGPoint center = {self.frame.size.width / 2, self.frame.size.height / 2};
     CGFloat radius = self.frame.size.height/2 - 50;
     
-    UIBezierPath *path = [UIBezierPath bezierPathWithArcCenter:center radius:radius startAngle:start endAngle:end clockwise:YES];
+    UIBezierPath *path = [UIBezierPath bezierPathWithArcCenter:self.position radius:radius startAngle:start endAngle:end clockwise:YES];
     CGContextBeginPath(ctx);
     CGContextAddPath(ctx, path.CGPath);
     CGContextSetStrokeColorWithColor(ctx, color.CGColor);
@@ -48,7 +53,8 @@ double distance(CGPoint a, CGPoint b);
 
 - (void)drawLayer:(CALayer *)layer inContext:(CGContextRef)ctx
 {
-    CGFloat start = 3*PI/4, end = PI/4;
+//    CGFloat start = 3*PI/4, end = PI/4;
+//    CGFloat start = 5*PI/4, end = 3*PI/4;    
     UIColor *color = [UIColor colorWithRed:48.0/255 green:180.0/255 blue:74.0/255 alpha:0.5];
     [self drawArcFrom:start to:-theta ofWidth:12 andColor:color inContext:ctx];
     
@@ -71,6 +77,9 @@ double distance(CGPoint a, CGPoint b);
     UIButton *unitButton;
     UIView *menuView;
     ETLRadialCurveLayer *curveLayer;
+    
+    double start, end;
+    CGPoint center;
 }
 @end
 
@@ -80,30 +89,34 @@ double distance(CGPoint a, CGPoint b);
 {
     self = [super initWithCoder:(NSCoder *)aDecoder];
     if (self) {
+        const int xOffset = 30;
         thumb = [[ETLThumb alloc] initWithSize:60];
-
-        CGPoint center = {self.frame.size.width / 2, self.frame.size.height / 2};
+        start = 5*PI/4, end = 3*PI/4;    
+        center = (CGPoint){self.frame.size.width / 2 + xOffset, self.frame.size.height / 2};
         CGFloat radius = self.frame.size.height/2 - 50;
-
-        pctLabel = [[UILabel alloc] init]; //WithFrame:CGRectMake(0, center.y - 12, self.frame.size.width, 24)];
-        pctLabel.center = center;
-        pctLabel.textAlignment = UITextAlignmentCenter;
-        pctLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:46];
-        pctLabel.textColor = [UIColor colorWithRed:48.0/255 green:180.0/255 blue:74.0/255 alpha:1];
-        pctLabel.backgroundColor = [UIColor blackColor];
-        pctLabel.text = nsprintf(@"%3.1f%%", 33.33333);
-        pctLabel.bounds = CGRectMake(0, center.y - 28, self.frame.size.width, 40);        
         
-        center.y += radius;
         unitButton = [[UIButton alloc] init];
         unitButton.center = center;
         unitButton.titleLabel.textAlignment = UITextAlignmentCenter;
-        unitButton.titleLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:20];
-        unitButton.titleLabel.textColor = [UIColor whiteColor];
+        unitButton.titleLabel.font = [UIFont fontWithName:@"Futura-CondensedMedium" size:48];
         unitButton.backgroundColor = nil;
         unitButton.allTitles = @"seconds";
-        unitButton.bounds = CGRectMake(0, center.y + radius - 20, self.frame.size.width, 24);
+        [unitButton setTitleColor:[UIColor colorWithRed:47.0/255 green:47.0/255 blue:47.0/255 alpha:1] forState:UIControlStateNormal];
+        [unitButton setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
+        unitButton.bounds = CGRectMake(0, center.y + radius - 20, radius*2 - 20, 24);
         [unitButton addTarget:self action:@selector(showUnitMenu:) forControlEvents:UIControlEventTouchUpInside];
+        
+        center.x -= 145;
+        pctLabel = [[UILabel alloc] init]; //WithFrame:CGRectMake(0, center.y - 12, self.frame.size.width, 24)];
+        pctLabel.center = center;
+        pctLabel.textAlignment = UITextAlignmentRight;
+        pctLabel.font = [UIFont fontWithName:@"Futura-CondensedMedium" size:124];
+        pctLabel.textColor = [UIColor colorWithRed:47.0/255 green:47.0/255 blue:47.0/255 alpha:1];
+        pctLabel.backgroundColor = [UIColor colorWithHue:0 saturation:0 brightness:0 alpha:0];
+//        pctLabel.backgroundColor = [UIColor blueColor];
+        pctLabel.text = nsprintf(@"%1.0f", 33.33333);
+        pctLabel.bounds = CGRectMake(0, center.y - 68, 150, 120);
+        center.x += 145;
         
         menuView = [[self.subviews filterWith:^bool(id object) {
             return strcmp(object_getClassName(object), "UIView") == 0;
@@ -120,9 +133,10 @@ double distance(CGPoint a, CGPoint b);
             [object addTarget:self action:@selector(selectUnit:) forControlEvents:UIControlEventTouchUpInside];
         }];
         
-        curveLayer = [[ETLRadialCurveLayer alloc] init];
+        curveLayer = [[ETLRadialCurveLayer alloc] initWithStart:start andEnd:end];
         curveLayer.frame = (CGRect){{0,0}, self.frame.size};
         curveLayer.backgroundColor = nil;
+        curveLayer.position = (CGPoint){center.x - xOffset/2, center.y};
         curveLayer.theta = 0;
         
         [self addSubview:pctLabel];
@@ -131,10 +145,12 @@ double distance(CGPoint a, CGPoint b);
         [self.layer addSublayer:thumb.layer];
         [self addSubview:menuView];
         
-        [self moveThumbToTheta:percentToTheta(0.33333)];
-        curveLayer.theta = percentToTheta(0.33333);
+        [self moveThumbToTheta:[self percentToTheta:0.33333]];
+        curveLayer.theta = [self percentToTheta:0.33333];
         
         [self setNeedsDisplay];
+        
+        unitButton.titleLabel.textColor = [UIColor colorWithRed:47.0/255 green:47.0/255 blue:47.0/255 alpha:1];
     }
     return self;
 }
@@ -166,26 +182,25 @@ double distance(CGPoint a, CGPoint b);
     }];
     
     UIButton *btn = (UIButton *)sender;
-    printf("unit: %s\n", [btn.titleLabel.text cString]);
+    [unitButton setAllTitles:btn.titleLabel.text.lowercaseString];
 }
 
-double thetaToPercent(double theta) {
+-(double) thetaToPercent:(double)theta
+{
     double pct = 0;
-    if (theta < -3*PI/4) {
-        theta += 2*PI;
-    }
     
-    theta += PI/4;
+    theta += end;
     pct = theta / (3*PI/2);
     pct = (1 - pct);
     
     return pct;
 }
 
-double percentToTheta(double pct) {
+-(double) percentToTheta:(double)pct
+{
     double theta = 0;
     theta = (1 - pct) * 3*PI/2;
-    theta -= PI/4;
+    theta -= end;
     
     if (theta > PI) {
         theta -= 2*PI;
@@ -217,7 +232,7 @@ double percentToTheta(double pct) {
 - (void)moveThumbToTheta:(CGFloat)theta
 {
     CGFloat radius = self.frame.size.height/2 - 50;
-    CGPoint center = {self.frame.size.width / 2, self.frame.size.height / 2};
+//     center = {self.frame.size.width / 2, self.frame.size.height / 2};
     CGFloat x = radius * cos(theta) + center.x;
     CGFloat y = -radius * sin(theta) + center.y;
     
@@ -231,7 +246,7 @@ double percentToTheta(double pct) {
     if(thumbTouch) {
         UITouch *touch = thumbTouch; //[event touchesForView:self].anyObject;
         CGFloat radius = self.frame.size.height/2 - 50;
-        CGPoint center = {self.frame.size.width / 2, self.frame.size.height / 2};
+//        CGPoint center = {self.frame.size.width / 2, self.frame.size.height / 2};
         CGFloat x = [touch locationInView:self].x - center.x;
         CGFloat y = [touch locationInView:self].y - center.y;
         CGFloat r = sqrt(x*x + y*y);
@@ -244,13 +259,14 @@ double percentToTheta(double pct) {
         if(isClockwise(CGPointMake(1, 0), CGPointMake(x, y))) theta *= -1;
         if(isClockwise(CGPointMake(1, 0), CGPointMake(oldX, oldY))) oldTheta *= -1;
         
-        if (theta > -3*PI/4 && theta < -PI/4) {
-            if (x < 0) theta = -3*PI/4;
-            if (x > 0) theta = -PI/4;
-            if (ABS(x) < 10) { thumbTouch = nil; thumb.highlighted = false; }
+        if (theta > -(start - 2*PI) || theta < -end) {
+            if (y < 0) theta = -(start - 2*PI) - 0.01;
+            if (y > 0) theta = -end;
+            if (ABS(y) < 10) { thumbTouch = nil; thumb.highlighted = false; }
         }
         
-        pctLabel.text = nsprintf(@"%3.1f%%", thetaToPercent(theta) * 100);
+        double pct = [self thetaToPercent:theta];
+        pctLabel.text = nsprintf(@"%1.0f", pct * 100);
         [self moveThumbToTheta:theta];
     }
 }

@@ -14,4 +14,10 @@
     [self setTitle:title forState:UIControlStateNormal];
     [self setTitle:title forState:UIControlStateHighlighted];
 }
+
+- (void)setAllTitleColors:(UIColor *)color
+{
+    [self setTitleColor:color forState:UIControlStateNormal];
+    [self setTitleColor:color forState:UIControlStateHighlighted];
+}
 @end

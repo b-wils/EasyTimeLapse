@@ -10,4 +10,5 @@
 
 @interface UIButton (setAllTitles)
 - (void)setAllTitles:(NSString *)title;
+- (void)setAllTitleColors:(UIColor *)color;
 @end
