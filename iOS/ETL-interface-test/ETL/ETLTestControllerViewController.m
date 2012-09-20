@@ -8,9 +8,13 @@
 
 #import "ETLTestControllerViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "ETLUnitKeypad.h"
+#import "ETLUtil.h"
 
 @interface ETLTestControllerViewController ()
-
+{
+    ETLUnitKeypad *keypad;
+}
 @end
 
 @implementation ETLTestControllerViewController
@@ -27,7 +31,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    menuView.hidden = true;
+    keypad = [[ETLUnitKeypad alloc] initWithFrame:self.view.frame];
+    
+    self.view.transform = CGAffineTransformMakeRotation(3.141592/2);
+    [self.view addSubview:keypad];
+    
+    ETLShortTimeValue *v = [[ETLShortTimeValue alloc] init];
+    v.scaledValue = ndouble(4.222);
+    v.unit = @"seconds";
+    
+    keypad.value = v;
 }
 
 - (void)viewDidUnload
@@ -36,11 +49,6 @@
     // Release any retained subviews of the main view.
 }
 
-- (IBAction)displayMenu:(id)sender
-{
-    menuView.hidden = false;
-    menuView.layer.cornerRadius = 10;
-}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {

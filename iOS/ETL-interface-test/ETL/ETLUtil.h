@@ -16,6 +16,7 @@
 
 #define nint(x) [NSNumber numberWithInt:x]
 #define nfloat(x) [NSNumber numberWithFloat:x]
+#define ndouble(x) [NSNumber numberWithDouble:x]
 #define nbool(x) [NSNumber numberWithBool:x]
 #define thOfSec(x) nint(ceil(1000.0/x))
 #define Array(...) [NSArray arrayWithObjects: __VA_ARGS__ , nil]
@@ -26,7 +27,11 @@
 #define HOURS (MINUTES * 60)
 #define FOREVER INT_MAX
 
+#define PI 3.14159265358979323846
+#define EPSILON 0.000001
+
 #define nsprintf(str, ...) ([NSString stringWithFormat:str, __VA_ARGS__])
+#define coalesce(a, b) (a == nil ? b : a)
 
 NSString *msToEnglish(NSUInteger ms);
 

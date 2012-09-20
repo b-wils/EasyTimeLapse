@@ -8,23 +8,21 @@
 
 #import "ETLShotViewController.h"
 #import "ETLTimelapse.h"
-//#import "ETLTimeUnitList.h"
-//#import "ETLIntervalSelectionController.h"
 #import "ETLSliderStepController.h"
+#import "ETLValueListView.h"
 
-#import "ETLThumb.h"
-
-@interface ETLTimelapseController : ETLShotViewController <UITextFieldDelegate, ETLIntervalSelectionDelegate>
+@interface ETLTimelapseController : ETLShotViewController <UITextFieldDelegate, ETLIntervalSelectionDelegate, ETLValueListDelegate>
 {           
     IBOutlet UIButton *readyButton;
-    IBOutlet UILabel *eventLabel, *clipLabel, *intervalLabel, *shotsLabel;
-    IBOutlet UIImageView *selectorImage;
+//    IBOutlet UILabel *eventLabel, *clipLabel, *intervalLabel, *shotsLabel;
+//    IBOutlet UIImageView *selectorImage;
+    IBOutlet ETLValueListView *valueList;
+    IBOutlet UIView *editorPane;
+    IBOutlet UIView *menuView;
+    IBOutlet UIButton *editorToggleButton;
 }
 
-- (IBAction)didTapEvent:(id)sender;
-- (IBAction)didTapClip:(id)sender;
-- (IBAction)didTapInterval:(id)sender;
-- (IBAction)didTapShots:(id)sender;
+- (IBAction)toggleEditorType:(id)sender;
 
 @property (nonatomic, strong) ETLTimelapse *timelapse;
 @end

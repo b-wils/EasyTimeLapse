@@ -12,14 +12,14 @@
 
 @interface ETLThumb ()
 {
-    CAShapeLayer *nubLayer;
+    CAShapeLayer *nubLayer, *nubFade;
     CAShapeLayer *ringLayer;
 }
 @end
 
 @implementation ETLThumb
 
-@synthesize highlighted, layer;
+@synthesize highlighted, layer, enabled;
 
 - (id)initWithSize:(CGFloat)size
 {
@@ -35,6 +35,7 @@
                                                                                 [NSNull null], @"position",
                                                                                 nil];
         layer.actions = newActions;
+        self.enabled = true;
         
         [self setupView];
     }
@@ -53,19 +54,25 @@
     CGRect rect = (CGRect){{0,0}, size/2, size/2};
     UIBezierPath *path = [UIBezierPath bezierPathWithOvalInRect:rect];
     nubLayer.path = path.CGPath;
-    nubLayer.fillColor = [UIColor whiteColor].CGColor;
+    nubLayer.fillColor = [UIColor colorWithRed:47.0/255 green:47.0/255 blue:47.0/255 alpha:1].CGColor;
     
-    [layer addSublayer:nubLayer];
+    nubFade = [CAShapeLayer layer];
+    nubFade.frame = nubLayer.frame;
+    nubFade.path = [UIBezierPath bezierPathWithOvalInRect:rect].CGPath;
+    nubFade.fillColor = [UIColor whiteColor].CGColor;
+    nubFade.opacity = 0;
     
     ringLayer = [CAShapeLayer layer];
     ringLayer.frame = CGRectInset(layer.bounds, size/16, size/16);
     ringLayer.opacity = 0.0;
     ringLayer.path = [UIBezierPath bezierPathWithOvalInRect:(CGRect){{0,0}, ringLayer.frame.size}].CGPath;
     ringLayer.fillColor = nil;
-    ringLayer.strokeColor = [UIColor whiteColor].CGColor;
+    ringLayer.strokeColor = [UIColor colorWithRed:47.0/255 green:47.0/255 blue:47.0/255 alpha:1].CGColor;
     ringLayer.lineWidth = size/8;
     ringLayer.transform = CATransform3DMakeScale(0.5, 0.5, 1);
     
+    [layer addSublayer:nubLayer];
+    [layer addSublayer:nubFade];
     [layer addSublayer:ringLayer];
 }
 
@@ -89,6 +96,18 @@
     else {
         ringLayer.opacity = 0.0;
         ringLayer.transform = CATransform3DMakeScale(0.5, 0.5, 1);
+    }
+}
+
+- (void)setEnabled:(bool)value
+{
+    enabled = value;
+    if (value) {
+        nubFade.opacity = 0;
+    }
+    else {
+        self.highlighted = false;
+        nubFade.opacity = 0.5;
     }
 }
 @end

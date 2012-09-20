@@ -7,14 +7,10 @@
 //
 
 #import "ETLViewController.h"
-#import "ETLThumb.h"
+#import "ETLValueListView.h"
 
 @interface ETLTestControllerViewController : ETLViewController
 {
-    IBOutlet UIButton *menuButton;
-    IBOutlet UIView *menuView;
 }
-
-- (IBAction)displayMenu:(id)sender;
 
 @end

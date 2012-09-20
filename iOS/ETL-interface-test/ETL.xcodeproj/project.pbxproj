@@ -140,6 +140,32 @@
 		B5420FD215AB635F001E3D15 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = B5420FD115AB635F001E3D15 /* Default.png */; };
 		B5420FD615AB63EF001E3D15 /* ETLDoneProgrammingController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5420FD415AB63EF001E3D15 /* ETLDoneProgrammingController.m */; };
 		B5420FD915AB6853001E3D15 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5420FD815AB6853001E3D15 /* Storyboard.storyboard */; };
+		B546DAFB16068D4100A42DA8 /* ETLValueSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = B546DAFA16068D4100A42DA8 /* ETLValueSelector.m */; };
+		B546DAFC16068D4100A42DA8 /* ETLValueSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = B546DAFA16068D4100A42DA8 /* ETLValueSelector.m */; };
+		B546DAFF1607647A00A42DA8 /* ETLValueListView.m in Sources */ = {isa = PBXBuildFile; fileRef = B546DAFE1607647A00A42DA8 /* ETLValueListView.m */; };
+		B546DB001607647A00A42DA8 /* ETLValueListView.m in Sources */ = {isa = PBXBuildFile; fileRef = B546DAFE1607647A00A42DA8 /* ETLValueListView.m */; };
+		B546DB031607CEAA00A42DA8 /* ETLUnitKeypad.m in Sources */ = {isa = PBXBuildFile; fileRef = B546DB021607CEAA00A42DA8 /* ETLUnitKeypad.m */; };
+		B546DB041607CEAA00A42DA8 /* ETLUnitKeypad.m in Sources */ = {isa = PBXBuildFile; fileRef = B546DB021607CEAA00A42DA8 /* ETLUnitKeypad.m */; };
+		B546DB291607D52600A42DA8 /* battery.png in Resources */ = {isa = PBXBuildFile; fileRef = B546DB151607D52600A42DA8 /* battery.png */; };
+		B546DB2A1607D52600A42DA8 /* battery@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B546DB161607D52600A42DA8 /* battery@2x.png */; };
+		B546DB2B1607D52600A42DA8 /* cancel.png in Resources */ = {isa = PBXBuildFile; fileRef = B546DB171607D52600A42DA8 /* cancel.png */; };
+		B546DB2C1607D52600A42DA8 /* cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B546DB181607D52600A42DA8 /* cancel@2x.png */; };
+		B546DB2D1607D52600A42DA8 /* done.png in Resources */ = {isa = PBXBuildFile; fileRef = B546DB191607D52600A42DA8 /* done.png */; };
+		B546DB2E1607D52600A42DA8 /* done@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B546DB1A1607D52600A42DA8 /* done@2x.png */; };
+		B546DB2F1607D52600A42DA8 /* keypad_del.png in Resources */ = {isa = PBXBuildFile; fileRef = B546DB1B1607D52600A42DA8 /* keypad_del.png */; };
+		B546DB301607D52600A42DA8 /* keypad_del@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B546DB1C1607D52600A42DA8 /* keypad_del@2x.png */; };
+		B546DB311607D52600A42DA8 /* keypad.png in Resources */ = {isa = PBXBuildFile; fileRef = B546DB1D1607D52600A42DA8 /* keypad.png */; };
+		B546DB321607D52600A42DA8 /* keypad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B546DB1E1607D52600A42DA8 /* keypad@2x.png */; };
+		B546DB331607D52600A42DA8 /* pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = B546DB1F1607D52600A42DA8 /* pressed.png */; };
+		B546DB341607D52600A42DA8 /* pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B546DB201607D52600A42DA8 /* pressed@2x.png */; };
+		B546DB351607D52600A42DA8 /* prog_connected.png in Resources */ = {isa = PBXBuildFile; fileRef = B546DB211607D52600A42DA8 /* prog_connected.png */; };
+		B546DB361607D52600A42DA8 /* prog_connected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B546DB221607D52600A42DA8 /* prog_connected@2x.png */; };
+		B546DB371607D52600A42DA8 /* prog_disconnected.png in Resources */ = {isa = PBXBuildFile; fileRef = B546DB231607D52600A42DA8 /* prog_disconnected.png */; };
+		B546DB381607D52600A42DA8 /* prog_disconnected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B546DB241607D52600A42DA8 /* prog_disconnected@2x.png */; };
+		B546DB391607D52600A42DA8 /* prog_post.png in Resources */ = {isa = PBXBuildFile; fileRef = B546DB251607D52600A42DA8 /* prog_post.png */; };
+		B546DB3A1607D52600A42DA8 /* prog_post@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B546DB261607D52600A42DA8 /* prog_post@2x.png */; };
+		B546DB3B1607D52600A42DA8 /* radialicon_u.png in Resources */ = {isa = PBXBuildFile; fileRef = B546DB271607D52600A42DA8 /* radialicon_u.png */; };
+		B546DB3C1607D52600A42DA8 /* radialicon_u@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B546DB281607D52600A42DA8 /* radialicon_u@2x.png */; };
 		B558F83D1592D0D300CB6E24 /* libcommunications.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B558F83C1592D0D300CB6E24 /* libcommunications.a */; };
 		B558F8501592D24000CB6E24 /* libstdc++.6.0.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B558F84F1592D24000CB6E24 /* libstdc++.6.0.9.dylib */; };
 		B558F8AD1592D7F800CB6E24 /* ETLShotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B558F8AC1592D7F800CB6E24 /* ETLShotViewController.m */; };
@@ -448,6 +474,32 @@
 		B5420FD315AB63EF001E3D15 /* ETLDoneProgrammingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETLDoneProgrammingController.h; sourceTree = "<group>"; };
 		B5420FD415AB63EF001E3D15 /* ETLDoneProgrammingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLDoneProgrammingController.m; sourceTree = "<group>"; };
 		B5420FD815AB6853001E3D15 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
+		B546DAF916068D4100A42DA8 /* ETLValueSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETLValueSelector.h; sourceTree = "<group>"; };
+		B546DAFA16068D4100A42DA8 /* ETLValueSelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLValueSelector.m; sourceTree = "<group>"; };
+		B546DAFD1607647A00A42DA8 /* ETLValueListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETLValueListView.h; sourceTree = "<group>"; };
+		B546DAFE1607647A00A42DA8 /* ETLValueListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLValueListView.m; sourceTree = "<group>"; };
+		B546DB011607CEAA00A42DA8 /* ETLUnitKeypad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETLUnitKeypad.h; sourceTree = "<group>"; };
+		B546DB021607CEAA00A42DA8 /* ETLUnitKeypad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLUnitKeypad.m; sourceTree = "<group>"; };
+		B546DB151607D52600A42DA8 /* battery.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = battery.png; path = ../../../assets/ks/battery.png; sourceTree = "<group>"; };
+		B546DB161607D52600A42DA8 /* battery@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "battery@2x.png"; path = "../../../assets/ks/battery@2x.png"; sourceTree = "<group>"; };
+		B546DB171607D52600A42DA8 /* cancel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cancel.png; path = ../../../assets/ks/cancel.png; sourceTree = "<group>"; };
+		B546DB181607D52600A42DA8 /* cancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "cancel@2x.png"; path = "../../../assets/ks/cancel@2x.png"; sourceTree = "<group>"; };
+		B546DB191607D52600A42DA8 /* done.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = done.png; path = ../../../assets/ks/done.png; sourceTree = "<group>"; };
+		B546DB1A1607D52600A42DA8 /* done@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "done@2x.png"; path = "../../../assets/ks/done@2x.png"; sourceTree = "<group>"; };
+		B546DB1B1607D52600A42DA8 /* keypad_del.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = keypad_del.png; path = ../../../assets/ks/keypad_del.png; sourceTree = "<group>"; };
+		B546DB1C1607D52600A42DA8 /* keypad_del@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "keypad_del@2x.png"; path = "../../../assets/ks/keypad_del@2x.png"; sourceTree = "<group>"; };
+		B546DB1D1607D52600A42DA8 /* keypad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = keypad.png; path = ../../../assets/ks/keypad.png; sourceTree = "<group>"; };
+		B546DB1E1607D52600A42DA8 /* keypad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "keypad@2x.png"; path = "../../../assets/ks/keypad@2x.png"; sourceTree = "<group>"; };
+		B546DB1F1607D52600A42DA8 /* pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pressed.png; path = ../../../assets/ks/pressed.png; sourceTree = "<group>"; };
+		B546DB201607D52600A42DA8 /* pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pressed@2x.png"; path = "../../../assets/ks/pressed@2x.png"; sourceTree = "<group>"; };
+		B546DB211607D52600A42DA8 /* prog_connected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = prog_connected.png; path = ../../../assets/ks/prog_connected.png; sourceTree = "<group>"; };
+		B546DB221607D52600A42DA8 /* prog_connected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "prog_connected@2x.png"; path = "../../../assets/ks/prog_connected@2x.png"; sourceTree = "<group>"; };
+		B546DB231607D52600A42DA8 /* prog_disconnected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = prog_disconnected.png; path = ../../../assets/ks/prog_disconnected.png; sourceTree = "<group>"; };
+		B546DB241607D52600A42DA8 /* prog_disconnected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "prog_disconnected@2x.png"; path = "../../../assets/ks/prog_disconnected@2x.png"; sourceTree = "<group>"; };
+		B546DB251607D52600A42DA8 /* prog_post.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = prog_post.png; path = ../../../assets/ks/prog_post.png; sourceTree = "<group>"; };
+		B546DB261607D52600A42DA8 /* prog_post@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "prog_post@2x.png"; path = "../../../assets/ks/prog_post@2x.png"; sourceTree = "<group>"; };
+		B546DB271607D52600A42DA8 /* radialicon_u.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = radialicon_u.png; path = ../../../assets/ks/radialicon_u.png; sourceTree = "<group>"; };
+		B546DB281607D52600A42DA8 /* radialicon_u@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "radialicon_u@2x.png"; path = "../../../assets/ks/radialicon_u@2x.png"; sourceTree = "<group>"; };
 		B54C5EF515D0520B00563CEE /* ETLFirstResponder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ETLFirstResponder.h; sourceTree = "<group>"; };
 		B558F83C1592D0D300CB6E24 /* libcommunications.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcommunications.a; path = "../../../Library/Developer/Xcode/DerivedData/Easy_Time_Lapse-grxhihygozrtdfccqjonwjemkieb/Build/Products/Debug-iphoneos/libcommunications.a"; sourceTree = "<group>"; };
 		B558F83F1592D16B00CB6E24 /* AudioUnitObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioUnitObject.h; path = ../../communications/communications/AudioUnitObject.h; sourceTree = "<group>"; };
@@ -877,6 +929,26 @@
 		B567FBD815FFC3B200B4C97C /* images */ = {
 			isa = PBXGroup;
 			children = (
+				B546DB151607D52600A42DA8 /* battery.png */,
+				B546DB161607D52600A42DA8 /* battery@2x.png */,
+				B546DB171607D52600A42DA8 /* cancel.png */,
+				B546DB181607D52600A42DA8 /* cancel@2x.png */,
+				B546DB191607D52600A42DA8 /* done.png */,
+				B546DB1A1607D52600A42DA8 /* done@2x.png */,
+				B546DB1B1607D52600A42DA8 /* keypad_del.png */,
+				B546DB1C1607D52600A42DA8 /* keypad_del@2x.png */,
+				B546DB1D1607D52600A42DA8 /* keypad.png */,
+				B546DB1E1607D52600A42DA8 /* keypad@2x.png */,
+				B546DB1F1607D52600A42DA8 /* pressed.png */,
+				B546DB201607D52600A42DA8 /* pressed@2x.png */,
+				B546DB211607D52600A42DA8 /* prog_connected.png */,
+				B546DB221607D52600A42DA8 /* prog_connected@2x.png */,
+				B546DB231607D52600A42DA8 /* prog_disconnected.png */,
+				B546DB241607D52600A42DA8 /* prog_disconnected@2x.png */,
+				B546DB251607D52600A42DA8 /* prog_post.png */,
+				B546DB261607D52600A42DA8 /* prog_post@2x.png */,
+				B546DB271607D52600A42DA8 /* radialicon_u.png */,
+				B546DB281607D52600A42DA8 /* radialicon_u@2x.png */,
 				B567FBD915FFC3DA00B4C97C /* bg.png */,
 				B567FBDA15FFC3DA00B4C97C /* bg@2x.png */,
 				B567FBDB15FFC3DA00B4C97C /* bulb_bottomcanvas_bg.png */,
@@ -1195,6 +1267,12 @@
 				B5E376B715F5312200C8C305 /* ETLRadialSlider.m */,
 				B5ACD13F15FA492200F43490 /* ETLFlickPicker.h */,
 				B5ACD14015FA492200F43490 /* ETLFlickPicker.m */,
+				B546DAF916068D4100A42DA8 /* ETLValueSelector.h */,
+				B546DAFA16068D4100A42DA8 /* ETLValueSelector.m */,
+				B546DAFD1607647A00A42DA8 /* ETLValueListView.h */,
+				B546DAFE1607647A00A42DA8 /* ETLValueListView.m */,
+				B546DB011607CEAA00A42DA8 /* ETLUnitKeypad.h */,
+				B546DB021607CEAA00A42DA8 /* ETLUnitKeypad.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -1499,6 +1577,26 @@
 				B567FC3215FFC3DA00B4C97C /* star_p@2x.png in Resources */,
 				B567FC3315FFC3DA00B4C97C /* star_u.png in Resources */,
 				B567FC3415FFC3DA00B4C97C /* star_u@2x.png in Resources */,
+				B546DB291607D52600A42DA8 /* battery.png in Resources */,
+				B546DB2A1607D52600A42DA8 /* battery@2x.png in Resources */,
+				B546DB2B1607D52600A42DA8 /* cancel.png in Resources */,
+				B546DB2C1607D52600A42DA8 /* cancel@2x.png in Resources */,
+				B546DB2D1607D52600A42DA8 /* done.png in Resources */,
+				B546DB2E1607D52600A42DA8 /* done@2x.png in Resources */,
+				B546DB2F1607D52600A42DA8 /* keypad_del.png in Resources */,
+				B546DB301607D52600A42DA8 /* keypad_del@2x.png in Resources */,
+				B546DB311607D52600A42DA8 /* keypad.png in Resources */,
+				B546DB321607D52600A42DA8 /* keypad@2x.png in Resources */,
+				B546DB331607D52600A42DA8 /* pressed.png in Resources */,
+				B546DB341607D52600A42DA8 /* pressed@2x.png in Resources */,
+				B546DB351607D52600A42DA8 /* prog_connected.png in Resources */,
+				B546DB361607D52600A42DA8 /* prog_connected@2x.png in Resources */,
+				B546DB371607D52600A42DA8 /* prog_disconnected.png in Resources */,
+				B546DB381607D52600A42DA8 /* prog_disconnected@2x.png in Resources */,
+				B546DB391607D52600A42DA8 /* prog_post.png in Resources */,
+				B546DB3A1607D52600A42DA8 /* prog_post@2x.png in Resources */,
+				B546DB3B1607D52600A42DA8 /* radialicon_u.png in Resources */,
+				B546DB3C1607D52600A42DA8 /* radialicon_u@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1573,6 +1671,9 @@
 				B593769215EEAF8D000578BA /* ETLProTimelapseController.m in Sources */,
 				B5E376B915F5312200C8C305 /* ETLRadialSlider.m in Sources */,
 				B5ACD14215FA492200F43490 /* ETLFlickPicker.m in Sources */,
+				B546DAFC16068D4100A42DA8 /* ETLValueSelector.m in Sources */,
+				B546DB001607647A00A42DA8 /* ETLValueListView.m in Sources */,
+				B546DB041607CEAA00A42DA8 /* ETLUnitKeypad.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1632,6 +1733,9 @@
 				B5E376B815F5312200C8C305 /* ETLRadialSlider.m in Sources */,
 				B5ACD13E15F9235200F43490 /* ETLTestControllerViewController.m in Sources */,
 				B5ACD14115FA492200F43490 /* ETLFlickPicker.m in Sources */,
+				B546DAFB16068D4100A42DA8 /* ETLValueSelector.m in Sources */,
+				B546DAFF1607647A00A42DA8 /* ETLValueListView.m in Sources */,
+				B546DB031607CEAA00A42DA8 /* ETLUnitKeypad.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -15,5 +15,6 @@
 @property (nonatomic, assign) CGPoint position;
 @property (nonatomic, assign) bool highlighted;
 @property (nonatomic, strong) CALayer *layer;
+@property (nonatomic, assign) bool enabled;
 
 @end

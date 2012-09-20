@@ -11,12 +11,22 @@
 //#import "ETLTimeUnitList.h"
 //#import "ETLPickerView.h"
 #import "ETLSliderStepController.h"
+#import "ETLRadialSlider.h"
+#import "ETLUnitKeypad.h"
 #import <QuartzCore/QuartzCore.h>
+
+#define UIColorBurntOrange [UIColor colorWithRed:224/255.0 green:132/255.0 blue:59/255.0 alpha:1]
+#define UIColorForestGreen [UIColor colorWithRed:121/255.0 green:137/255.0 blue:109/255.0 alpha:1]
 
 @interface ETLTimelapseController ()
 {
     ETLSliderStepController *eventDurationController, *clipLengthController, *timeScaleController;
     ETLRangeMapper *eventDurationMapper, *clipLengthMapper, *timeScaleMapper;
+    ETLShortTimeValue *shotLength, *clipLength, *intervalValue;
+    ETLRadialSlider *slider;
+    ETLUnitKeypad *keypad;
+    
+    bool editorMode;
 }
 @end
 
@@ -32,12 +42,21 @@
 }
 
 - (void)ensureInitialized {
-    if(!timelapse) {
+    if (!timelapse) {
         self.timelapse = [[ETLTimelapse alloc] init];
         timelapse.shotInterval = 5000;
         timelapse.shotCount = 0;
         timelapse.clipFramesPerSecond = 23.97f;
         timelapse.exposure = 200;
+    }
+    
+    if (!slider) {
+        CGRect frame = editorPane.bounds;
+        slider = [[ETLRadialSlider alloc] initWithFrame:frame];
+        frame = (CGRect){{frame.origin.x + frame.size.width, frame.origin.y}, frame.size};
+        keypad = [[ETLUnitKeypad alloc] initWithFrame:frame];         
+        [editorPane addSubview:slider];
+        [editorPane addSubview:keypad];
     }
   
     if(!eventDurationMapper) {
@@ -138,6 +157,52 @@
     [super viewDidLoad];
     [self ensureInitialized];
     
+    valueList.delegate = self;
+    shotLength = [[ETLShortTimeValue alloc] init];
+    shotLength.scaledValue = nint(40);
+    shotLength.unit = @"seconds";
+    shotLength.bounds = [[ETLBounds alloc] init];
+    shotLength.bounds.lower = nint(1);
+    shotLength.bounds.upper = nint(90);
+    ETLValueSelector *picker = [valueList addItemNamed:@"Record" withValue:shotLength];
+    picker.color = UIColorForestGreen;
+    [valueList didSelectValue:picker];
+    
+    clipLength = [[ETLShortTimeValue alloc] init];
+    clipLength.scaledValue = nint(40);
+    clipLength.unit = @"minutes";
+    clipLength.bounds = [[ETLBounds alloc] init];
+    clipLength.bounds.lower = nint(1);
+    clipLength.bounds.upper = nint(90);
+    picker = [valueList addItemNamed:@"Play" withValue:clipLength];
+    picker.color = UIColorForestGreen;
+    
+    intervalValue = [[ETLShortTimeValue alloc] init];
+    intervalValue.scaledValue = nint(4);
+    intervalValue.unit = @"seconds";
+    intervalValue.bounds = [[ETLBounds alloc] init];
+    intervalValue.bounds.lower = nint(1);
+    intervalValue.bounds.upper = nint(90);
+
+    //    tv = [[ETLShortTimeValue alloc] init];
+//    tv.millis = 4 * HOURS;
+    picker = [valueList addItemNamed:@"Interval" withValue:intervalValue];
+    picker.color = UIColorBurntOrange;
+    
+//    picker = [valueList addItemNamed:@"Shots" withValue:nint(4)];
+//    picker.color = UIColorBurntOrange;
+    
+    menuView.hidden = true;
+    menuView.layer.cornerRadius = 10;
+    menuView.layer.borderWidth = 3;
+    menuView.layer.borderColor = [UIColor grayColor].CGColor;
+    
+    [[menuView.subviews filterWith:^bool(id object) {
+        return [[object class] isSubclassOfClass:NSClassFromString(@"UIButton")];
+    }] eachWith:^(id object) {
+        [object addTarget:self action:@selector(didSelectUnit:) forControlEvents:UIControlEventTouchUpInside];
+    }];
+    
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
     self.navigationController.navigationBarHidden = YES;
     
@@ -184,36 +249,13 @@
 //    return TRUE;
 //}
 
-- (IBAction)didTapEvent:(id)sender 
+- (void)didSelectValue:(ETLValueSelector *)sel
 {
-    [self moveSelectorTo:sender];    
-}
-
-- (IBAction)didTapClip:(id)sender
-{
-    [self moveSelectorTo:sender];    
-}
-
-- (IBAction)didTapInterval:(id)sender
-{
-    [self moveSelectorTo:sender];    
-}
-
-- (IBAction)didTapShots:(id)sender 
-{
-    [self moveSelectorTo:sender];
-}
-
-- (void)moveSelectorTo:(UIView *)view
-{
-//    CGRect bounds = selectorImage.bounds;
-//    bounds.origin.y = view.bounds.origin.y;
-    CGPoint center = selectorImage.center;
-    center.y = view.center.y;
-    [UIView animateWithDuration:0.2 animations:^{
-//        selectorImage.bounds = bounds;
-        selectorImage.center = center;
-    }];
+    slider.color = sel.color;
+    slider.value = sel.value;
+    
+//    keypad.colo
+    keypad.value = sel.value;
 }
      
 - (void)didUpdateDuration:(NSNotification *)notification {
@@ -262,6 +304,61 @@
         timelapse.shotCount = [eventDurationController.value intValue] * 1.0 / interval;
         [clipLengthController setValue:nint((int)timelapse.clipLength * 1000) animated:YES];
     }
+}
+
+- (void)showUnitMenu:(id)sender
+{
+    menuView.hidden = false;
+    menuView.alpha = 0;
+    menuView.transform = CGAffineTransformMakeScale(0.1, 0.1);
+    [UIView animateWithDuration:0.2 animations:^{
+        menuView.alpha = 1.0;
+        menuView.transform = CGAffineTransformMakeScale(1, 1);
+    }];
+}
+
+- (void)didSelectUnit:(id)sender
+{
+    [UIView animateWithDuration:0.2 animations:^{
+        menuView.alpha = 0;
+        menuView.transform = CGAffineTransformMakeScale(0.1, 0.1);
+    } completion:^(BOOL finished) {
+        menuView.hidden = true;
+    }];
+    
+    UIButton *btn = (UIButton *)sender;
+    NSString *unit = btn.titleLabel.text.lowercaseString;
+    slider.value.unit = unit;
+}
+
+- (void)toggleEditorType:(id)sender
+{
+    if (editorMode) {
+        [UIView animateWithDuration:0.4 animations:^{
+            slider.center = (CGPoint){slider.center.x + editorPane.frame.size.width, slider.center.y};
+            keypad.center = (CGPoint){keypad.center.x + editorPane.frame.size.width, keypad.center.y};
+            editorToggleButton.alpha = 0;
+        } completion:^(BOOL finished) {
+            [UIView animateWithDuration:0.4 animations:^{
+                editorToggleButton.imageView.image = [UIImage imageNamed:@"keypadicon_u.png"];
+                editorToggleButton.alpha = 1;
+            }];
+        }];
+    }
+    else {
+        [UIView animateWithDuration:0.4 animations:^{
+            slider.center = (CGPoint){slider.center.x - editorPane.frame.size.width, slider.center.y};
+            keypad.center = (CGPoint){keypad.center.x - editorPane.frame.size.width, keypad.center.y};
+            editorToggleButton.alpha = 0;
+        } completion:^(BOOL finished) {
+            [UIView animateWithDuration:0.4 animations:^{
+                editorToggleButton.imageView.image = [UIImage imageNamed:@"radialicon_u.png"];
+                editorToggleButton.alpha = 1;
+            }];
+        }];
+    }
+    
+    editorMode = !editorMode;
 }
 
 - (BOOL)canBecomeFirstResponder
