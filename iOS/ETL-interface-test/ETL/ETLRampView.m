@@ -7,12 +7,15 @@
 //
 
 #import "ETLRampView.h"
+#import "ETLUtil.h"
 
 @interface ETLRampView ()
 {
     CGPoint p[6];
     //bool draggingLeft, draggingRight;
     UITouch *leftTouch, *rightTouch;
+    
+    ETLThumb *leftThumb, *rightThumb;
 }
 @end
 
@@ -34,6 +37,9 @@
         leftTouch = nil;
         rightTouch = nil;
         
+        leftThumb = [[ETLThumb alloc] initWithSize:10];
+        rightThumb = [[ETLThumb alloc] initWithSize:10];
+        
         self.multipleTouchEnabled = YES;
     }
     return self;
@@ -41,15 +47,22 @@
 
 - (UIBezierPath *)createPath
 {
-    NSUInteger top = self.frame.size.height - final, bot = self.frame.size.height - initial, w = self.frame.size.width;
-    NSUInteger inSpan = easeIn / 4, outSpan = easeOut / 4;
+    NSInteger top = self.frame.size.height - final, bot = self.frame.size.height - initial, w = self.frame.size.width;
+    NSInteger inSpan = easeIn / 4, outSpan = easeOut / 4;
+    
+    float inPct = easeIn / 80.0f;
+    float outPct = easeOut / 80.0f;
 
     p[0] = (CGPoint) {0, bot};
     p[1] = (CGPoint) {w/3 - inSpan, bot};
-    p[2] = (CGPoint) {w/3 + inSpan * 2, bot - inSpan};
-    p[3] = (CGPoint) {2*w/3 - outSpan * 2, top + outSpan};
+    p[2] = (CGPoint) {w/3 + inSpan * 2, bot - (bot - top) * 0.2 * inPct};
+    p[3] = (CGPoint) {2*w/3 - outSpan * 2, top + (bot - top) * 0.2 * outPct};
     p[4] = (CGPoint) {2*w/3 + outSpan, top};
     p[5] = (CGPoint) {w, top};
+    
+//    printf("bot: %d; top: %d\t\t", bot, top);
+//    printf("ease in: %.1f%%; out: %.1f%%\n", inPct * 100, 0.0);
+//    printf("p[2]: (%.1f, %.1f)\t\tbot - top: %d\n.", p[2].x, p[2].y, bot - top);
     
     CGPoint c1 = {p[1].x + easeIn/2, p[1].y}, 
             c2 = {p[2].x + easeIn/2, p[2].y - easeIn/2},
@@ -59,8 +72,12 @@
     UIBezierPath *path = [UIBezierPath bezierPath];
     [path moveToPoint:p[0]];
     [path addLineToPoint:p[1]];
+//    [path addLineToPoint:p[2]];
+//    [path addLineToPoint:p[3]];
+//    [path addLineToPoint:p[4]];
     [path addQuadCurveToPoint:p[2] controlPoint:c1];
-    [path addCurveToPoint:p[3] controlPoint1:c2 controlPoint2:c3];
+//    [path addCurveToPoint:p[3] controlPoint1:c2 controlPoint2:c3];
+    [path addLineToPoint:p[3]];
     [path addQuadCurveToPoint:p[4] controlPoint:c4];
     [path addLineToPoint:p[5]];
     [path moveToPoint:(CGPoint){0,0}];
@@ -105,8 +122,10 @@
         [self drawMarkerAt:p[3].x];
     }
     
-    [self drawNubAt:p[1]];
-    [self drawNubAt:p[4]];
+//    leftThumb.position = p[1];
+//    [leftThumb render];
+//    rightThumb.position = p[4];
+//    [rightThumb render];
 }
 
 - (void)drawSpanAt:(NSInteger)position ofWidth:(NSUInteger)width
@@ -150,38 +169,18 @@
     }];
 }
 
-- (void)drawNubAt:(CGPoint)point
-{
-    [self doInContext:^(CGContextRef context) {
-        CGContextSetLineWidth(context, 5);
-        CGContextSetRGBFillColor(context, 255, 255, 255, 1);
-        CGContextSetRGBStrokeColor(context, 0, 0, 0, 1);
-
-        CGContextFillEllipseInRect(context, CGRectMake(point.x - 5, point.y - 5, 10, 10));
-        CGContextStrokeEllipseInRect(context, CGRectMake(point.x - 5, point.y - 5, 10, 10));
-    }];
-}
-
 - (void)tryBindTouch:(UITouch *)touch
 {
     CGPoint point = [touch locationInView:self];
-    point.x -= p[1].x;
-    point.y -= (self.frame.size.height - initial);
-    
-    float dist = sqrtf(point.x*point.x + point.y*point.y);
-    if (dist < 15) {
+
+    if (point.x <= p[1].x) {
         leftTouch = touch;
         return;
     }
-    point = [touch locationInView:self];
-    point.x -= p[4].x;
-    point.y -= (self.frame.size.height - final);
-    
-    dist = sqrtf(point.x*point.x + point.y*point.y);
-    if (dist < 15) {
+
+    if (point.x >= p[4].x) {
         rightTouch = touch;
     }
-
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
@@ -197,18 +196,16 @@
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    for (UITouch *touch in touches) {
-        CGPoint point = [touch locationInView:self];
-        
+    for (UITouch *touch in touches) {        
         if (touch.phase == UITouchPhaseBegan) {
             [self tryBindTouch:touch];
         }
         
         if ([touch isEqual:leftTouch]) {
-            initial = self.frame.size.height - point.y;
+            initial += [touch previousLocationInView:touch.view].y - [touch locationInView:touch.view].y;
         }
         else if ([touch isEqual:rightTouch]) {
-            final = self.frame.size.height - point.y; 
+            final += [touch previousLocationInView:touch.view].y - [touch locationInView:touch.view].y;
         }
     }
     
@@ -225,16 +222,6 @@
             rightTouch = nil;
         }
     }
-}
-
-- (void)doInContext:(void(^)(CGContextRef context))block
-{
-    CGContextRef context =  UIGraphicsGetCurrentContext();
-    CGContextSaveGState(context);
-    
-    block(context);
-    
-    CGContextRestoreGState(context);
 }
 
 @end

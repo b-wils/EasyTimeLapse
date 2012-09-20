@@ -11,6 +11,7 @@
 
 #import "UIView+FindAndResignFirstResponder.h"
 #import "UIButton+setAllTitles.h"
+#import "UIView+UIView_DrawingHelpers.h"
 #import "NSArray+ArrayUtility.h"
 
 #define nint(x) [NSNumber numberWithInt:x]

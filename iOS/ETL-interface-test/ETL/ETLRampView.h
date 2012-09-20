@@ -11,6 +11,8 @@
 #include <OpenGLES/ES2/gl.h>
 #include <OpenGLES/ES2/glext.h>
 
+#import "ETLThumb.h"
+
 @interface ETLRampView : UIView
 
 @property (nonatomic, assign) NSUInteger easeIn;

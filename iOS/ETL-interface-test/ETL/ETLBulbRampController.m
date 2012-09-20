@@ -50,8 +50,6 @@
 {
     UISlider *slider = (UISlider *)sender;
     rampView.easeIn = slider.value;
-    
-    printf("ease in: %d\n", rampView.easeIn);
 }
 
 - (IBAction)didChangeEaseOut:(id)sender

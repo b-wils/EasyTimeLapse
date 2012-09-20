@@ -130,6 +130,10 @@
 		B52FB3EB15EBCF600073CAAC /* Vertex.glsl in Resources */ = {isa = PBXBuildFile; fileRef = B52FB3E915EBCF600073CAAC /* Vertex.glsl */; };
 		B52FB3ED15EBCF900073CAAC /* Fragment.glsl in Resources */ = {isa = PBXBuildFile; fileRef = B52FB3EC15EBCF900073CAAC /* Fragment.glsl */; };
 		B52FB3EE15EBCF900073CAAC /* Fragment.glsl in Resources */ = {isa = PBXBuildFile; fileRef = B52FB3EC15EBCF900073CAAC /* Fragment.glsl */; };
+		B53341B915ED4EE200EBBBB6 /* ETLThumb.m in Sources */ = {isa = PBXBuildFile; fileRef = B53341B815ED4EE200EBBBB6 /* ETLThumb.m */; };
+		B53341BA15ED4EE200EBBBB6 /* ETLThumb.m in Sources */ = {isa = PBXBuildFile; fileRef = B53341B815ED4EE200EBBBB6 /* ETLThumb.m */; };
+		B53341BD15ED4F8C00EBBBB6 /* UIView+UIView_DrawingHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = B53341BC15ED4F8C00EBBBB6 /* UIView+UIView_DrawingHelpers.m */; };
+		B53341BE15ED4F8C00EBBBB6 /* UIView+UIView_DrawingHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = B53341BC15ED4F8C00EBBBB6 /* UIView+UIView_DrawingHelpers.m */; };
 		B5336FEB15C9BEE30074D73A /* ETLStopList.m in Sources */ = {isa = PBXBuildFile; fileRef = B5336FEA15C9BEE30074D73A /* ETLStopList.m */; };
 		B5336FEC15C9BEE30074D73A /* ETLStopList.m in Sources */ = {isa = PBXBuildFile; fileRef = B5336FEA15C9BEE30074D73A /* ETLStopList.m */; };
 		B5336FEF15C9C5770074D73A /* ETLStopListTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B5336FED15C9BF150074D73A /* ETLStopListTest.m */; };
@@ -379,6 +383,10 @@
 		B52FB3E615EA97960073CAAC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		B52FB3E915EBCF600073CAAC /* Vertex.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Vertex.glsl; sourceTree = "<group>"; };
 		B52FB3EC15EBCF900073CAAC /* Fragment.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Fragment.glsl; sourceTree = "<group>"; };
+		B53341B715ED4EE200EBBBB6 /* ETLThumb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETLThumb.h; sourceTree = "<group>"; };
+		B53341B815ED4EE200EBBBB6 /* ETLThumb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLThumb.m; sourceTree = "<group>"; };
+		B53341BB15ED4F8C00EBBBB6 /* UIView+UIView_DrawingHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+UIView_DrawingHelpers.h"; sourceTree = "<group>"; };
+		B53341BC15ED4F8C00EBBBB6 /* UIView+UIView_DrawingHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+UIView_DrawingHelpers.m"; sourceTree = "<group>"; };
 		B5336FE915C9BEE30074D73A /* ETLStopList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETLStopList.h; sourceTree = "<group>"; };
 		B5336FEA15C9BEE30074D73A /* ETLStopList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLStopList.m; sourceTree = "<group>"; };
 		B5336FED15C9BF150074D73A /* ETLStopListTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ETLStopListTest.m; sourceTree = "<group>"; };
@@ -1008,6 +1016,8 @@
 				B54C5EF515D0520B00563CEE /* ETLFirstResponder.h */,
 				B52FB3E015EA97210073CAAC /* ETLRampView.h */,
 				B52FB3E115EA97210073CAAC /* ETLRampView.m */,
+				B53341B715ED4EE200EBBBB6 /* ETLThumb.h */,
+				B53341B815ED4EE200EBBBB6 /* ETLThumb.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -1056,6 +1066,8 @@
 				B5F7392C15BF5F3E00A784A4 /* UIButton+setAllTitles.m */,
 				B5336FEE15C9C08A0074D73A /* ETLUtil.h */,
 				B592B09B15E57F6E00F892BA /* ETLUtil.m */,
+				B53341BB15ED4F8C00EBBBB6 /* UIView+UIView_DrawingHelpers.h */,
+				B53341BC15ED4F8C00EBBBB6 /* UIView+UIView_DrawingHelpers.m */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -1333,6 +1345,8 @@
 				B592B09D15E57F6E00F892BA /* ETLUtil.m in Sources */,
 				B52FB3DF15EA94080073CAAC /* ETLBulbRampController.m in Sources */,
 				B52FB3E315EA97210073CAAC /* ETLRampView.m in Sources */,
+				B53341BA15ED4EE200EBBBB6 /* ETLThumb.m in Sources */,
+				B53341BE15ED4F8C00EBBBB6 /* UIView+UIView_DrawingHelpers.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1386,6 +1400,8 @@
 				B592B09C15E57F6E00F892BA /* ETLUtil.m in Sources */,
 				B52FB3DE15EA94080073CAAC /* ETLBulbRampController.m in Sources */,
 				B52FB3E215EA97210073CAAC /* ETLRampView.m in Sources */,
+				B53341B915ED4EE200EBBBB6 /* ETLThumb.m in Sources */,
+				B53341BD15ED4F8C00EBBBB6 /* UIView+UIView_DrawingHelpers.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
