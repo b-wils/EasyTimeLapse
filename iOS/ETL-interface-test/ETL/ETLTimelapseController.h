@@ -12,6 +12,8 @@
 //#import "ETLIntervalSelectionController.h"
 #import "ETLSliderStepController.h"
 
+#import "ETLThumb.h"
+
 @interface ETLTimelapseController : ETLShotViewController <UITextFieldDelegate, ETLIntervalSelectionDelegate>
 {       
     IBOutlet UISlider *eventDurationSlider;
@@ -22,7 +24,9 @@
     IBOutlet UILabel *clipLengthLabel;
     IBOutlet UILabel *timeScaleLabel;
     
-    IBOutlet UIButton * readyButton;
+    IBOutlet UIButton *readyButton;
+    
+    IBOutlet ETLThumb *testView;
 }
 
 //- (IBAction)didSwitchContinuous:(id)sender;

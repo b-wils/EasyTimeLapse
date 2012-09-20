@@ -8,42 +8,87 @@
 
 #import "ETLThumb.h"
 #import "ETLUtil.h"
+#import <QuartzCore/QuartzCore.h>
+
+@interface ETLThumb ()
+{
+    CAShapeLayer *nubLayer;
+    CAShapeLayer *ringLayer;
+}
+@end
 
 @implementation ETLThumb
 
-@synthesize position;
+@synthesize highlighted, layer;
 
 - (id)initWithSize:(CGFloat)size
 {
-    return [self initWithFrame:CGRectMake(0, 0, size, size)];
-}
-
-- (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
+    self = [super init];
     if (self) {
-        // Initialization code
+        layer = [CALayer layer];
+        layer.frame = (CGRect){{0,0}, size, size};
+        NSDictionary *newActions = [[NSDictionary alloc] initWithObjectsAndKeys:[NSNull null], @"onOrderIn",
+                                                                                [NSNull null], @"onOrderOut",
+                                                                                [NSNull null], @"sublayers",
+                                                                                [NSNull null], @"contents",
+                                                                                [NSNull null], @"bounds",
+                                                                                [NSNull null], @"position",
+                                                                                nil];
+        layer.actions = newActions;
+        
+        [self setupView];
     }
+    
     return self;
 }
 
-- (void)drawRect:(CGRect)rect
-{    
-    [self doInContext:^(CGContextRef context) {
-        CGContextSetLineWidth(context, 5);
-        CGContextSetRGBFillColor(context, 255, 255, 255, 1);
-        CGContextSetRGBStrokeColor(context, 0, 0, 0, 1);
-        
-        CGContextFillEllipseInRect(context, rect);
-        CGContextStrokeEllipseInRect(context, rect);
-    }];
-}
-
-- (void)render
+- (void)setupView
 {
-    float height = self.frame.size.height;
-    float width = self.frame.size.width;  
-    [self drawRect:CGRectMake(position.x - width/2, position.y - height/2, width, height)];
+    CGFloat height = layer.frame.size.height;
+    CGFloat width = layer.frame.size.width;
+    CGFloat size = MIN(height, width);
+    
+    nubLayer = [CAShapeLayer layer];
+    nubLayer.frame = CGRectInset(layer.bounds, width/4, height/4);
+    CGRect rect = (CGRect){{0,0}, size/2, size/2};
+    UIBezierPath *path = [UIBezierPath bezierPathWithOvalInRect:rect];
+    nubLayer.path = path.CGPath;
+    nubLayer.fillColor = [UIColor whiteColor].CGColor;
+    
+    [layer addSublayer:nubLayer];
+    
+    ringLayer = [CAShapeLayer layer];
+    ringLayer.frame = CGRectInset(layer.bounds, size/16, size/16);
+    ringLayer.opacity = 0.0;
+    ringLayer.path = [UIBezierPath bezierPathWithOvalInRect:(CGRect){{0,0}, ringLayer.frame.size}].CGPath;
+    ringLayer.fillColor = nil;
+    ringLayer.strokeColor = [UIColor whiteColor].CGColor;
+    ringLayer.lineWidth = size/8;
+    ringLayer.transform = CATransform3DMakeScale(0.5, 0.5, 1);
+    
+    [layer addSublayer:ringLayer];
 }
 
+- (void)setPosition:(CGPoint)value
+{
+    layer.position = value;
+}
+
+- (CGPoint)position
+{
+    return layer.position;
+}
+
+- (void)setHighlighted:(bool)value
+{
+    highlighted = value;
+    if(value) {
+        ringLayer.opacity = 0.8;
+        ringLayer.transform = CATransform3DMakeScale(1, 1, 1);
+    }
+    else {
+        ringLayer.opacity = 0.0;
+        ringLayer.transform = CATransform3DMakeScale(0.5, 0.5, 1);
+    }
+}
 @end

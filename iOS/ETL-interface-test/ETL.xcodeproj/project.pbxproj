@@ -164,6 +164,8 @@
 		B592B09A15E5688700F892BA /* ETLRangeMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = B592B09815E5688700F892BA /* ETLRangeMapper.m */; };
 		B592B09C15E57F6E00F892BA /* ETLUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = B592B09B15E57F6E00F892BA /* ETLUtil.m */; };
 		B592B09D15E57F6E00F892BA /* ETLUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = B592B09B15E57F6E00F892BA /* ETLUtil.m */; };
+		B593769115EEAF8D000578BA /* ETLProTimelapseController.m in Sources */ = {isa = PBXBuildFile; fileRef = B593769015EEAF8D000578BA /* ETLProTimelapseController.m */; };
+		B593769215EEAF8D000578BA /* ETLProTimelapseController.m in Sources */ = {isa = PBXBuildFile; fileRef = B593769015EEAF8D000578BA /* ETLProTimelapseController.m */; };
 		B5990754158FFC000005C8E2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5990753158FFC000005C8E2 /* UIKit.framework */; };
 		B5990756158FFC000005C8E2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5990755158FFC000005C8E2 /* Foundation.framework */; };
 		B5990758158FFC000005C8E2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5990757158FFC000005C8E2 /* CoreGraphics.framework */; };
@@ -176,6 +178,9 @@
 		B599078F159008AF0005C8E2 /* ETLBulbController.m in Sources */ = {isa = PBXBuildFile; fileRef = B599078E159008AE0005C8E2 /* ETLBulbController.m */; };
 		B5990792159009180005C8E2 /* ETLHdrController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5990791159009180005C8E2 /* ETLHdrController.m */; };
 		B599079615900F830005C8E2 /* ETLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B599079515900F830005C8E2 /* ETLViewController.m */; };
+		B5ACD13E15F9235200F43490 /* ETLTestControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5ACD13D15F9235200F43490 /* ETLTestControllerViewController.m */; };
+		B5ACD14115FA492200F43490 /* ETLFlickPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = B5ACD14015FA492200F43490 /* ETLFlickPicker.m */; };
+		B5ACD14215FA492200F43490 /* ETLFlickPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = B5ACD14015FA492200F43490 /* ETLFlickPicker.m */; };
 		B5B1E63415C9A95D001720C2 /* ETLBimodalController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5B1E63315C9A95D001720C2 /* ETLBimodalController.m */; };
 		B5B1E63515C9A95D001720C2 /* ETLBimodalController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5B1E63315C9A95D001720C2 /* ETLBimodalController.m */; };
 		B5B9D2271592732E000444BB /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5B9D2261592732E000444BB /* AudioToolbox.framework */; };
@@ -203,6 +208,8 @@
 		B5E1AC6615DC1B9700D022E8 /* ETLPreBulbController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E1AC6415DC1B9700D022E8 /* ETLPreBulbController.m */; };
 		B5E1AC6D15DD724900D022E8 /* battery.png in Resources */ = {isa = PBXBuildFile; fileRef = B5E1AC6B15DD724900D022E8 /* battery.png */; };
 		B5E1AC6E15DD724900D022E8 /* battery@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5E1AC6C15DD724900D022E8 /* battery@2x.png */; };
+		B5E376B815F5312200C8C305 /* ETLRadialSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E376B715F5312200C8C305 /* ETLRadialSlider.m */; };
+		B5E376B915F5312200C8C305 /* ETLRadialSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E376B715F5312200C8C305 /* ETLRadialSlider.m */; };
 		B5E68DB315C9CAF9008115D9 /* ETLPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E68DB215C9CAF9008115D9 /* ETLPickerView.m */; };
 		B5E68DB415C9CAF9008115D9 /* ETLPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E68DB215C9CAF9008115D9 /* ETLPickerView.m */; };
 		B5EBA99D15C9E42C0041C2CB /* ETLTimeUnitList.m in Sources */ = {isa = PBXBuildFile; fileRef = B5EBA99C15C9E42C0041C2CB /* ETLTimeUnitList.m */; };
@@ -432,6 +439,8 @@
 		B592B09715E5688700F892BA /* ETLRangeMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETLRangeMapper.h; sourceTree = "<group>"; };
 		B592B09815E5688700F892BA /* ETLRangeMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLRangeMapper.m; sourceTree = "<group>"; };
 		B592B09B15E57F6E00F892BA /* ETLUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLUtil.m; sourceTree = "<group>"; };
+		B593768F15EEAF8D000578BA /* ETLProTimelapseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETLProTimelapseController.h; sourceTree = "<group>"; };
+		B593769015EEAF8D000578BA /* ETLProTimelapseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLProTimelapseController.m; sourceTree = "<group>"; };
 		B599074F158FFC000005C8E2 /* ETL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ETL.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5990753158FFC000005C8E2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B5990755158FFC000005C8E2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -455,6 +464,10 @@
 		B599079315900EF10005C8E2 /* ETLViewControllers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETLViewControllers.h; sourceTree = "<group>"; };
 		B599079415900F830005C8E2 /* ETLViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETLViewController.h; sourceTree = "<group>"; };
 		B599079515900F830005C8E2 /* ETLViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLViewController.m; sourceTree = "<group>"; };
+		B5ACD13C15F9235200F43490 /* ETLTestControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETLTestControllerViewController.h; sourceTree = "<group>"; };
+		B5ACD13D15F9235200F43490 /* ETLTestControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLTestControllerViewController.m; sourceTree = "<group>"; };
+		B5ACD13F15FA492200F43490 /* ETLFlickPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETLFlickPicker.h; sourceTree = "<group>"; };
+		B5ACD14015FA492200F43490 /* ETLFlickPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLFlickPicker.m; sourceTree = "<group>"; };
 		B5B1E63215C9A95D001720C2 /* ETLBimodalController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETLBimodalController.h; sourceTree = "<group>"; };
 		B5B1E63315C9A95D001720C2 /* ETLBimodalController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLBimodalController.m; sourceTree = "<group>"; };
 		B5B9D2261592732E000444BB /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -482,6 +495,8 @@
 		B5E1AC6415DC1B9700D022E8 /* ETLPreBulbController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLPreBulbController.m; sourceTree = "<group>"; };
 		B5E1AC6B15DD724900D022E8 /* battery.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = battery.png; path = ../../../assets/v1/battery.png; sourceTree = "<group>"; };
 		B5E1AC6C15DD724900D022E8 /* battery@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "battery@2x.png"; path = "../../../assets/v1/battery@2x.png"; sourceTree = "<group>"; };
+		B5E376B615F5312200C8C305 /* ETLRadialSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETLRadialSlider.h; sourceTree = "<group>"; };
+		B5E376B715F5312200C8C305 /* ETLRadialSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLRadialSlider.m; sourceTree = "<group>"; };
 		B5E68DB115C9CAF9008115D9 /* ETLPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETLPickerView.h; sourceTree = "<group>"; };
 		B5E68DB215C9CAF9008115D9 /* ETLPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLPickerView.m; sourceTree = "<group>"; };
 		B5E68DB515C9CB0B008115D9 /* ETLPickerViewTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLPickerViewTest.m; sourceTree = "<group>"; };
@@ -845,6 +860,8 @@
 				B5720DAF15B48B9B0092FA31 /* ETLProgrammer.h */,
 				B5720DB015B48B9B0092FA31 /* ETLProgrammer.m */,
 				B599075A158FFC000005C8E2 /* Supporting Files */,
+				B5ACD13C15F9235200F43490 /* ETLTestControllerViewController.h */,
+				B5ACD13D15F9235200F43490 /* ETLTestControllerViewController.m */,
 			);
 			path = ETL;
 			sourceTree = "<group>";
@@ -1004,6 +1021,8 @@
 				B5E1AC6415DC1B9700D022E8 /* ETLPreBulbController.m */,
 				B52FB3DC15EA94080073CAAC /* ETLBulbRampController.h */,
 				B52FB3DD15EA94080073CAAC /* ETLBulbRampController.m */,
+				B593768F15EEAF8D000578BA /* ETLProTimelapseController.h */,
+				B593769015EEAF8D000578BA /* ETLProTimelapseController.m */,
 			);
 			name = Shots;
 			sourceTree = "<group>";
@@ -1018,6 +1037,10 @@
 				B52FB3E115EA97210073CAAC /* ETLRampView.m */,
 				B53341B715ED4EE200EBBBB6 /* ETLThumb.h */,
 				B53341B815ED4EE200EBBBB6 /* ETLThumb.m */,
+				B5E376B615F5312200C8C305 /* ETLRadialSlider.h */,
+				B5E376B715F5312200C8C305 /* ETLRadialSlider.m */,
+				B5ACD13F15FA492200F43490 /* ETLFlickPicker.h */,
+				B5ACD14015FA492200F43490 /* ETLFlickPicker.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -1347,6 +1370,9 @@
 				B52FB3E315EA97210073CAAC /* ETLRampView.m in Sources */,
 				B53341BA15ED4EE200EBBBB6 /* ETLThumb.m in Sources */,
 				B53341BE15ED4F8C00EBBBB6 /* UIView+UIView_DrawingHelpers.m in Sources */,
+				B593769215EEAF8D000578BA /* ETLProTimelapseController.m in Sources */,
+				B5E376B915F5312200C8C305 /* ETLRadialSlider.m in Sources */,
+				B5ACD14215FA492200F43490 /* ETLFlickPicker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1402,6 +1428,10 @@
 				B52FB3E215EA97210073CAAC /* ETLRampView.m in Sources */,
 				B53341B915ED4EE200EBBBB6 /* ETLThumb.m in Sources */,
 				B53341BD15ED4F8C00EBBBB6 /* UIView+UIView_DrawingHelpers.m in Sources */,
+				B593769115EEAF8D000578BA /* ETLProTimelapseController.m in Sources */,
+				B5E376B815F5312200C8C305 /* ETLRadialSlider.m in Sources */,
+				B5ACD13E15F9235200F43490 /* ETLTestControllerViewController.m in Sources */,
+				B5ACD14115FA492200F43490 /* ETLFlickPicker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

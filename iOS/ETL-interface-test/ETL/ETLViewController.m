@@ -115,4 +115,9 @@
     return [ETLAppDelegate instance].managedObjectContext;
 }
 
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+{
+    return UIInterfaceOrientationIsLandscape(toInterfaceOrientation);
+}
+
 @end

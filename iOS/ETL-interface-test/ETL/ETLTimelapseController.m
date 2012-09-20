@@ -11,6 +11,7 @@
 //#import "ETLTimeUnitList.h"
 //#import "ETLPickerView.h"
 #import "ETLSliderStepController.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface ETLTimelapseController ()
 {
@@ -149,7 +150,6 @@
         CGAffineTransform transform = CGAffineTransformMakeRotation(3.14159/2);
         self.view.transform = transform;
     }
-
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didUpdateDuration:) name:SliderMoved object:eventDurationController];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didUpdateClipLength:) name:SliderMoved object:clipLengthController];

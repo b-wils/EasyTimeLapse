@@ -8,11 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ETLThumb : UIView
+@interface ETLThumb : NSObject
 
 - (id)initWithSize:(CGFloat)size;
-- (void)render;
 
 @property (nonatomic, assign) CGPoint position;
+@property (nonatomic, assign) bool highlighted;
+@property (nonatomic, strong) CALayer *layer;
 
 @end
