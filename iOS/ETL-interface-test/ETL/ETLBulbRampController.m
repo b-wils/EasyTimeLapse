@@ -26,8 +26,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [[UIApplication sharedApplication] setStatusBarHidden:YES];
-    [UIViewController attemptRotationToDeviceOrientation];
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
+    self.navigationController.navigationBarHidden = YES;
+//    [UIViewController attemptRotationToDeviceOrientation];
+
+    if (UIInterfaceOrientationIsPortrait(UIApplication.sharedApplication.statusBarOrientation)) {
+        // Rotate the view if we're in portrait.
+        CGAffineTransform transform = CGAffineTransformMakeRotation(3.14159/2);
+        self.view.transform = transform;
+    }
 }
 
 - (void)viewDidUnload
@@ -41,9 +48,21 @@
     [rampView setNeedsDisplay];
 }
 
+//- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+//{
+//    if (UIInterfaceOrientationIsPortrait(toInterfaceOrientation)) {
+//        CGAffineTransform transform = CGAffineTransformMakeRotation(3.14159/2);
+//        self.view.transform = transform;
+//    }
+//    else {
+//        self.view.transform = CGAffineTransformIdentity;
+//    }
+//}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return YES;
+    //return UIInterfaceOrientationIsLandscape(interfaceOrientation);
+    return NO;
 }
 
 - (IBAction)didChangeEaseIn:(id)sender

@@ -141,6 +141,16 @@
     [super viewDidLoad];
     [self ensureInitialized];
     
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
+    self.navigationController.navigationBarHidden = YES;
+    
+    if (UIInterfaceOrientationIsPortrait(UIApplication.sharedApplication.statusBarOrientation)) {
+        // Rotate the view if we're in portrait.
+        CGAffineTransform transform = CGAffineTransformMakeRotation(3.14159/2);
+        self.view.transform = transform;
+    }
+
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didUpdateDuration:) name:SliderMoved object:eventDurationController];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didUpdateClipLength:) name:SliderMoved object:clipLengthController];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didUpdateTimeScale:) name:SliderMoved object:timeScaleController];
@@ -245,7 +255,7 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
 {
 //    return (toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft) || (toInterfaceOrientation == UIInterfaceOrientationLandscapeRight);
-    return YES;
+    return NO;
 }
 
 @end

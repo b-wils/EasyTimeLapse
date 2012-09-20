@@ -10,6 +10,12 @@
 
 @implementation ETLHomeController
 
+- (void)viewDidAppear:(BOOL)animated
+{
+//    [UIApplication sharedApplication].statusBarHidden = YES;
+//    self.navigationController.navigationBarHidden = YES;
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"Timelapse"])
