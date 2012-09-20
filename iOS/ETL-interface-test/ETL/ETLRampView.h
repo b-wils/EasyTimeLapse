@@ -15,9 +15,9 @@
 
 @interface ETLRampView : UIView
 
-@property (nonatomic, assign) NSUInteger easeIn;
-@property (nonatomic, assign) NSUInteger easeOut;
-@property (nonatomic, assign) NSUInteger initial;
-@property (nonatomic, assign) NSUInteger final;
+@property (nonatomic, assign) NSInteger easeIn;
+@property (nonatomic, assign) NSInteger easeOut;
+@property (nonatomic, assign) NSInteger initial;
+@property (nonatomic, assign) NSInteger final;
 
 @end

@@ -12,34 +12,28 @@
 @interface ETLRampView ()
 {
     CGPoint p[6];
-    //bool draggingLeft, draggingRight;
-    UITouch *leftTouch, *rightTouch;
+    UITouch *initialTouch, *finalTouch, *easeInTouch, *easeOutTouch;
+    UILabel *initialLabel, *finalLabel;
     
-    ETLThumb *leftThumb, *rightThumb;
+//    ETLThumb *leftThumb, *rightThumb;
 }
 @end
 
 @implementation ETLRampView
 
-@synthesize easeIn, easeOut, initial, final;
+@synthesize easeIn = _easeIn, easeOut = _easeOut, initial, final;
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];
     if (self) { 
-        easeIn = 40;
-        easeOut = 40;
+        _easeIn = 40;
+        _easeOut = 40;
         initial = 40;
         final = self.frame.size.height - 40;
         
-//        draggingLeft = false;
-//        draggingRight = false;
-        leftTouch = nil;
-        rightTouch = nil;
-        
-        leftThumb = [[ETLThumb alloc] initWithSize:10];
-        rightThumb = [[ETLThumb alloc] initWithSize:10];
-        
+        initialLabel = [[UILabel alloc] init];
+        finalLabel = [[UILabel alloc] init];
         self.multipleTouchEnabled = YES;
     }
     return self;
@@ -48,26 +42,26 @@
 - (UIBezierPath *)createPath
 {
     NSInteger top = self.frame.size.height - final, bot = self.frame.size.height - initial, w = self.frame.size.width;
-    NSInteger inSpan = easeIn / 4, outSpan = easeOut / 4;
+    NSInteger inSpan = self.easeIn / 4, outSpan = self.easeOut / 4;
     
-    float inPct = easeIn / 80.0f;
-    float outPct = easeOut / 80.0f;
+    float inPct = self.easeIn / 80.0f;
+    float outPct = self.easeOut / 80.0f;
 
     p[0] = (CGPoint) {0, bot};
-    p[1] = (CGPoint) {w/3 - inSpan, bot};
-    p[2] = (CGPoint) {w/3 + inSpan * 2, bot - (bot - top) * 0.2 * inPct};
-    p[3] = (CGPoint) {2*w/3 - outSpan * 2, top + (bot - top) * 0.2 * outPct};
-    p[4] = (CGPoint) {2*w/3 + outSpan, top};
+    p[1] = (CGPoint) {w/4 - inSpan, bot};
+    p[2] = (CGPoint) {w/4 + inSpan * 2, bot - (bot - top) * 0.2 * inPct};
+    p[3] = (CGPoint) {3*w/4 - outSpan * 2, top + (bot - top) * 0.2 * outPct};
+    p[4] = (CGPoint) {3*w/4 + outSpan, top};
     p[5] = (CGPoint) {w, top};
     
 //    printf("bot: %d; top: %d\t\t", bot, top);
 //    printf("ease in: %.1f%%; out: %.1f%%\n", inPct * 100, 0.0);
 //    printf("p[2]: (%.1f, %.1f)\t\tbot - top: %d\n.", p[2].x, p[2].y, bot - top);
     
-    CGPoint c1 = {p[1].x + easeIn/2, p[1].y}, 
-            c2 = {p[2].x + easeIn/2, p[2].y - easeIn/2},
-            c3 = {p[3].x - easeOut/2, p[3].y + easeOut/2},
-            c4 = {p[4].x - easeOut/2, p[4].y};
+    CGPoint c1 = {p[1].x + self.easeIn/3, p[1].y}, 
+//            c2 = {p[2].x + easeIn/2, p[2].y - easeIn/2},
+//            c3 = {p[3].x - easeOut/2, p[3].y + easeOut/2},
+            c4 = {p[4].x - self.easeOut/3, p[4].y};
     
     UIBezierPath *path = [UIBezierPath bezierPath];
     [path moveToPoint:p[0]];
@@ -86,18 +80,28 @@
     return path;
 }
 
-- (void)setEaseIn:(NSUInteger)value
+- (void)setEaseIn:(NSInteger)value
 {
     if (value < 10) value = 0;
-    easeIn = value;
+    _easeIn = value;
     [self setNeedsDisplay];
 }
 
-- (void)setEaseOut:(NSUInteger)value
+- (NSInteger)easeIn
+{
+    return (_easeIn < 10) ? 0 : _easeIn;
+}
+
+- (void)setEaseOut:(NSInteger)value
 {
     if (value < 10) value = 0;
-    easeOut = value;
+    _easeOut = value;
     [self setNeedsDisplay];
+}
+
+- (NSInteger)easeOut
+{
+    return (_easeOut < 10) ? 0 : _easeOut;
 }
 
 - (void)drawRect:(CGRect)rect
@@ -108,18 +112,34 @@
     path.lineWidth = 5;
     [path stroke];
     
-    if (easeIn > 0) {
+    if (self.easeIn > 0) {
         [self drawSpanAt:p[1].x ofWidth:p[2].x - p[1].x];
     }
     else {
         [self drawMarkerAt:p[1].x];
     }
 
-    if (easeOut > 0) {    
+    if (self.easeOut > 0) {    
         [self drawSpanAt:p[3].x ofWidth:p[4].x - p[3].x];
     }
     else {
         [self drawMarkerAt:p[3].x];
+    }
+    
+    if (initialTouch) {
+        initialLabel.text = nsprintf(@"%d", initial);
+//        initialLabel.frame = CGRectMake(p[2].x, p[1].y, 100, 100);
+        initialLabel.bounds = CGRectMake(p[2].x, p[1].y, 50, -8); 
+        initialLabel.backgroundColor = [UIColor whiteColor];
+       [initialLabel drawRect:initialLabel.bounds]; 
+    }
+    
+    if (finalTouch) {
+        finalLabel.text = nsprintf(@"%d", final);
+        finalLabel.bounds = CGRectMake(p[3].x - 50, p[4].y, 50, -8); 
+        finalLabel.backgroundColor = [UIColor whiteColor];
+        finalLabel.textAlignment = UITextAlignmentRight;
+        [finalLabel drawRect:finalLabel.bounds];         
     }
     
 //    leftThumb.position = p[1];
@@ -174,12 +194,16 @@
     CGPoint point = [touch locationInView:self];
 
     if (point.x <= p[1].x) {
-        leftTouch = touch;
-        return;
+        initialTouch = touch;
     }
-
-    if (point.x >= p[4].x) {
-        rightTouch = touch;
+    else if (point.x > p[1].x && point.x <= self.frame.size.width/2 - 20) {
+        easeInTouch = touch;
+    }
+    else if (point.x > self.frame.size.width/2 + 20 && point.x < p[4].x) {
+        easeOutTouch = touch;
+    }
+    else if (point.x >= p[4].x) {
+        finalTouch = touch;
     }
 }
 
@@ -201,11 +225,21 @@
             [self tryBindTouch:touch];
         }
         
-        if ([touch isEqual:leftTouch]) {
+        if ([touch isEqual:initialTouch]) {
             initial += [touch previousLocationInView:touch.view].y - [touch locationInView:touch.view].y;
         }
-        else if ([touch isEqual:rightTouch]) {
+        else if ([touch isEqual:finalTouch]) {
             final += [touch previousLocationInView:touch.view].y - [touch locationInView:touch.view].y;
+        }
+        else if ([touch isEqual:easeInTouch]) {
+            _easeIn -= [touch previousLocationInView:touch.view].x - [touch locationInView:touch.view].x;
+            _easeIn = MAX(_easeIn, 0);
+            _easeIn = MIN(_easeIn, 80);
+        }
+        else if ([touch isEqual:easeOutTouch]) {
+            _easeOut += [touch previousLocationInView:touch.view].x - [touch locationInView:touch.view].x;
+            _easeOut = MAX(_easeOut, 0);          
+            _easeOut = MIN(_easeOut, 80);
         }
     }
     
@@ -215,13 +249,21 @@
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
     for (UITouch *touch in touches) {
-        if ([touch isEqual:leftTouch]) {
-            leftTouch = nil;
+        if ([touch isEqual:initialTouch]) {
+            initialTouch = nil;
         }
-        else if ([touch isEqual:rightTouch]) {
-            rightTouch = nil;
+        else if ([touch isEqual:finalTouch]) {
+            finalTouch = nil;
+        }
+        else if ([touch isEqual:easeInTouch]) {
+            easeInTouch = nil;
+        }
+        else if ([touch isEqual:easeOutTouch]) {
+            easeOutTouch = nil;
         }
     }
+
+    [self setNeedsDisplay];
 }
 
 @end
