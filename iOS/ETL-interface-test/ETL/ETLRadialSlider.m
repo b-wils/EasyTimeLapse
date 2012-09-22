@@ -3,7 +3,7 @@
 //  ETL
 //
 //  Created by Carll Hoffman on 9/3/12.
-//  Copyright (c) 2012 Microsoft. All rights reserved.
+//  Copyright (c) 2012 Carll Hoffman. All rights reserved.
 //
 
 #import "ETLRadialSlider.h"
@@ -71,12 +71,16 @@ double distance(CGPoint a, CGPoint b);
     CGFloat radius = self.frame.size.height/2 - 50;
     
     UIBezierPath *path = [UIBezierPath bezierPathWithArcCenter:self.position radius:radius startAngle:st endAngle:ed clockwise:YES];
+    CGPathRef pathRef = path.CGPath;
+    
+    CGPathRetain(pathRef);
     return path.CGPath;
 }
 
 - (void)setTheta:(double)value
 {
     theta = value;
+    
     track.path = [self arcFrom:-theta to:end];
     fill.path = [self arcFrom:start to:-theta];
     fillFade.path = [self arcFrom:start to:-theta];
@@ -93,6 +97,14 @@ double distance(CGPoint a, CGPoint b);
 {
     disableFade.opacity = value ? 0 : 0.5;
 }
+
+//- (void)dealloc
+//{
+//    track.path = nil;
+//    fill.path = nil;
+//    fillFade.path = nil;
+//    disableFade.path = nil;
+//}
 @end
 
 @interface ETLRadialSlider ()

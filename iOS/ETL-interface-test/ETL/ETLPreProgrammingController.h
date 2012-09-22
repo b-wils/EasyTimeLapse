@@ -10,7 +10,7 @@
 
 // TODO - move these strings somewhere sensible with localization
 
-#define READY_TO_PROGRAM_MSG @"Please hold button on device for two seconds and release to program"
+#define READY_TO_PROGRAM_MSG @"Hold remote button for 2 seconds"
 #define MIC_REQUIRED_MSG @"Please connect the device"
 #define LOW_VOLUME_MSG @"Please turn your headset volume all the way up"
 

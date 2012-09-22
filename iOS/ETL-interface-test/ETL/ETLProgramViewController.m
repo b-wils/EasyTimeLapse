@@ -31,14 +31,14 @@
     [super viewDidLoad];
 
     [self ensureInitialized];
-    UIProgressView *original = programmingProgress;
-    programmingProgress = (UIProgressView *)[[ADVPopoverProgressBar alloc] initWithFrame:programmingProgress.frame];
-    [programmingProgress setProgress:0];
-    [original removeFromSuperview];
-    [self.view addSubview:programmingProgress];
+//    UIProgressView *original = programmingProgress;
+//    programmingProgress = (UIProgressView *)[[ADVPopoverProgressBar alloc] initWithFrame:programmingProgress.frame];
+//    [programmingProgress setProgress:0];
+//    [original removeFromSuperview];
+//    [self.view addSubview:programmingProgress];
     
-    batteryLevelLabel.text = [NSString stringWithFormat:@"%u%%", batteryLevel];
-    programmingProgress.progress = (firstPacketSuccessful ? 1 : 0) / (packetProvider.packetCount + 2.0);
+//    batteryLevelLabel.text = [NSString stringWithFormat:@"%u%%", batteryLevel];
+//    programmingProgress.progress = (firstPacketSuccessful ? 1 : 0) / (packetProvider.packetCount + 2.0);
 }
 
 - (void)startProgramming
@@ -63,7 +63,9 @@ const NSUInteger streamBitsPerDataByte = 14;
     NSDictionary *userInfo = notification.userInfo;
     UInt32 packetId; [(NSValue *)[userInfo objectForKey:@"sendingPacketId"] getValue:&packetId];
     
-    programmingProgress.progress = packetId / (packetProvider.packetCount + 2.0);
+//    programmingProgress.progress = packetId / (packetProvider.packetCount + 2.0);
+    UInt32 pct = packetId / (packetProvider.packetCount + 2.0) * 100;
+    percentComplete.text = nsprintf(@"%2d", pct);
 }
 
 - (void)didCompleteProgramming:(NSNotification *)notification

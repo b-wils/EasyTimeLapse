@@ -16,6 +16,7 @@
     IBOutlet UILabel * bytesTransferred;
     IBOutlet UIButton * cancelButton;
     IBOutlet UILabel * batteryLevelLabel;
+    IBOutlet UILabel * percentComplete;
 
     NSUInteger totalCommandBits;
     
