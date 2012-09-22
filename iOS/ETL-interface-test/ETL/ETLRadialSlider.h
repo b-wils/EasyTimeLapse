@@ -18,4 +18,7 @@
 
 - (void)setColor:(UIColor *)value;
 
+//HACK animation hack
+- (void)animateTheta:(NSTimer *)timer;
+
 @end

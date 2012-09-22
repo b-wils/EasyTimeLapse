@@ -105,6 +105,10 @@ double distance(CGPoint a, CGPoint b);
     
     double start, end, min, max;
     CGPoint center;
+    
+    // HACK animation hack
+    CGFloat targetTheta;
+    NSTimer *animationTimer;
 }
 @end
 
@@ -212,7 +216,33 @@ double distance(CGPoint a, CGPoint b);
     [value addObserver:self forKeyPath:@"scaledValue" options:NSKeyValueObservingOptionNew context:nil];
     [value addObserver:self forKeyPath:@"unit" options:NSKeyValueObservingOptionNew context:nil];
     
+//    [self updateUI];
+    //HACK animation hack
+    CGFloat oldTheta = [self calculateTheta];
     [self updateUI];
+    targetTheta = [self calculateTheta];
+    [self moveThumbToTheta:oldTheta];
+    
+    if (animationTimer) {
+        [animationTimer invalidate];
+        animationTimer = nil;
+    }
+    animationTimer = [NSTimer scheduledTimerWithTimeInterval:0.02 target:self selector:@selector(animateTheta:) userInfo:nil repeats:YES];
+}
+
+//HACK animation hack
+- (void)animateTheta:(NSTimer *)timer
+{
+    CGFloat curTheta = [self calculateTheta];
+    CGFloat dTheta = targetTheta < curTheta ? -0.18 : 0.18;
+    CGFloat newTheta = ABS(dTheta) >= ABS(targetTheta - curTheta) ? targetTheta : curTheta + dTheta;
+    
+    [self moveThumbToTheta:newTheta];
+    
+    if(ABS(targetTheta - newTheta) <= EPSILON) {
+        [animationTimer invalidate];
+        animationTimer = nil;
+    }
 }
 
 - (void)setSlideEnabled:(bool)val
@@ -273,6 +303,12 @@ double distance(CGPoint a, CGPoint b);
     if(!thumbTouch && thumb.enabled && distance(point, thumb.position) < 30) {
         thumbTouch = touch;
         thumb.highlighted = true;
+        
+        //HACK animation hack
+        if (animationTimer) {
+            [animationTimer invalidate];
+            animationTimer = nil;
+        }
     }
 }
 
@@ -348,3 +384,11 @@ double distance(CGPoint a, CGPoint b)
     double dy = a.y - b.y;
     return sqrt(dx*dx + dy*dy);
 }
+
+@interface ETLRadialSlider (AnimationHack)
+
+@end
+
+@implementation ETLRadialSlider (AnimationHack)
+
+@end
