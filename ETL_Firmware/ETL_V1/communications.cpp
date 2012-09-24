@@ -339,20 +339,13 @@ void ProcessTransmitState() {
 
 void ProcessTransmitStateTest() {
 	
-	//if (millis() > printTimer) {
-	    ////modem.write(printval);
-		////printval++;
-		////printTimer += 5000;
-		//
-		//modem.printDebugInfo(1);
-	//}
+	if (millis() > printTimer) {
+		printTimer += 3000;
+		modem.printDebugInfo(1);
+	}
 	
 	while(modem.available()) {
-        //byte myByte = modem.read();
-		
-		//DebugPrint("byte:");
-		//DebugPrintln(myByte, HEX);
-		
-		//printTimer = millis() + 3000;
-	}		
+        byte myByte = modem.read();
+		SetLEDCycle(LED_CYCLE_CRC_MISMATCH);
+	}
 }

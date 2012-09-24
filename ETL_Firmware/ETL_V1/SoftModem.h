@@ -6,9 +6,14 @@
 // #define SOFT_MODEM_HIGH_FREQ   (1764)
 // #define SOFT_MODEM_MAX_RX_BUFF (32)
 
-#define SOFT_MODEM_BAUD_RATE   (500)
-#define SOFT_MODEM_LOW_FREQ    (2000)
-#define SOFT_MODEM_HIGH_FREQ   (4000)
+//#define SOFT_MODEM_BAUD_RATE   (125)
+//#define SOFT_MODEM_LOW_FREQ    (500)
+//#define SOFT_MODEM_HIGH_FREQ   (1000)
+//#define SOFT_MODEM_MAX_RX_BUFF (64)
+
+#define SOFT_MODEM_BAUD_RATE   (200)
+#define SOFT_MODEM_LOW_FREQ    (600)
+#define SOFT_MODEM_HIGH_FREQ   (1200)
 #define SOFT_MODEM_MAX_RX_BUFF (64)
 
 // #define SOFT_MODEM_BAUD_RATE   (315)
@@ -47,7 +52,7 @@
 #include <inttypes.h>
 #include <avr/io.h>
 
-//#define SOFT_MODEM_DEBUG       (1)
+#define SOFT_MODEM_DEBUG       (1)
 
 class SoftModem
 {

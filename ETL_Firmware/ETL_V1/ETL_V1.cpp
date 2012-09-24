@@ -139,9 +139,9 @@ void populateConfigs() {
     myConfigs[0].repeatIndex = 0;
     myConfigs[0].numRepeats = 0;
     myConfigs[0].shots = 200;
-    myConfigs[0].interval = 1000;
+    myConfigs[0].interval = 3000;
     myConfigs[0].intervalDelta = 0;
-	myConfigs[0].exposureOffset = -2;
+	myConfigs[0].exposureOffset = 0;
     myConfigs[0].exposureFstopChangePerMin = 0;
 	myConfigs[0].fstopSinAmplitude = 0;
     myConfigs[0].fstopIncreasePerHDRShot = 0;
@@ -350,7 +350,8 @@ void setup() {
 	
 	timelapseValid = true;
 	
-	initFromEEProm();
+	//initFromEEProm();
+	populateConfigs();
 }
 
 extern uint32_t nextPhotoTime;
@@ -453,7 +454,8 @@ void ProcessButton() {
         // reset the debouncing timer
         lastDebounceTime = millis();
 		
-		//DebugPrint("button change");
+		DebugPrint(F("bmil= "));
+		DebugPrintln(lastDebounceTime);
     } 
   
     if ((millis() - lastDebounceTime) > BUTTON_DEBOUNCE_PERIOD) {
@@ -561,6 +563,8 @@ void ProcessLEDCycle() {
 		}
 	}	
 }
+
+void ProcessTransmitStateTest();
 
 void loop() {
 	

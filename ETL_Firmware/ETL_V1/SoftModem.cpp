@@ -77,7 +77,13 @@ SoftModem::~SoftModem() {
   #define MICROS_PER_TIMER_COUNT   (clockCyclesToMicroseconds(8))
 #endif
 #else
-#error "Unknow CPU cycle"
+//#error "Unknow CPU cycle"
+//#define TIMER_CLOCK_SELECT       (4)
+  //#define MICROS_PER_TIMER_COUNT   (clockCyclesToMicroseconds(256))
+#define TIMER_CLOCK_SELECT       (3)
+  #define MICROS_PER_TIMER_COUNT   (clockCyclesToMicroseconds(64))
+    //#define TIMER_CLOCK_SELECT       (2)
+  //#define MICROS_PER_TIMER_COUNT   (clockCyclesToMicroseconds(8))
 #endif
 
 #define SOFT_MODEM_BIT_PERIOD      (1000000/SOFT_MODEM_BAUD_RATE)
@@ -551,34 +557,34 @@ void SoftModem::demodulateTest(void)
 
 void SoftModem::printDebugInfo(short resetCounts)
 {
-	//DebugPrintln();
+	DebugPrintln();
 
 	//DebugPrint("  anaIsrCnt=");
 	//DebugPrintln(anaISRCnt,DEC);
 	//
 	//DebugPrint("  timer2ISRCnt=");
 	//DebugPrintln(timer2ISRCnt,DEC);
-	
+	//
 	//DebugPrint("  errs=");
 	//DebugPrintln(errs,DEC);
 	//
 	//DebugPrint("  ints=");
 	//DebugPrintln(ints,DEC);
 	
-	//DebugPrint("  lowNoiseCnt=");
-	//DebugPrintln(lowNoiseCnt,DEC);
+	DebugPrint("  lerr=");
+	DebugPrintln(lowNoiseCnt,DEC);
+	
+    //DebugPrint("  midNoiseCnt=");
+	//DebugPrintln(midNoiseCnt,DEC);
 	//
-    ////DebugPrint("  midNoiseCnt=");
-	////DebugPrintln(midNoiseCnt,DEC);
-	////
-	//DebugPrint("  highNoiseCnt=");
-	//DebugPrintln(highNoiseCnt,DEC);
-	//
-	//DebugPrint("  lowSignalCnt=");
-	//DebugPrintln(lowSignalCnt,DEC);
-	//
-	//DebugPrint("  highSignalCnt=");
-	//DebugPrintln(highSignalCnt,DEC);
+	DebugPrint("  herr=");
+	DebugPrintln(highNoiseCnt,DEC);
+	
+	DebugPrint("  lsig=");
+	DebugPrintln(lowSignalCnt,DEC);
+	
+	DebugPrint("  hsig=");
+	DebugPrintln(highSignalCnt,DEC);
 	
 	if (resetCounts) {
         resetSignalCounts();

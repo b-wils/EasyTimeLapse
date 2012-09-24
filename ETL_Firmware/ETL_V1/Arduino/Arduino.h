@@ -13,7 +13,7 @@
 
 //#define F_CPU 11289600L
 //#define F_CPU 8000000L
-#define F_CPU 4000000L
+#define F_CPU 1000000L
 
 #define F_TIMER2 32768L
 

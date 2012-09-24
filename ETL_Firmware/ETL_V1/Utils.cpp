@@ -20,7 +20,7 @@ const int colorLoop_elements = 8;
 uint8_t ledStrength = DEFAULT_LED_STRENGTH;
 
 void DebugInit() {	
-	Serial.begin(19200);
+	Serial.begin(9600);
 	DebugPrintln(F("ETL version 0.1"));
 	
 	//Serial.print("testprint");
@@ -110,23 +110,42 @@ void PrintSectionConfig(SectionConfig SecConf) {
 
 void SetLED(RGBColors colors) {
 	
-	if (colors.red != 0) {
-		analogWrite(redLed, ledStrength);
-	} else {
-		analogWrite(redLed, 0);
-	}
+	//if (colors.red != 0) {
+		//digitalWrite(redLed, HIGH);
+	//} else {
+		//digitalWrite(redLed, LOW);
+	//}
 	
 	if (colors.green != 0) {
-		analogWrite(blueLed, ledStrength);
+		digitalWrite(blueLed, HIGH);
 	} else {
-		analogWrite(blueLed, 0);
+		digitalWrite(blueLed, LOW);
 	}
 	
 	if (colors.blue != 0) {
-		analogWrite(greenLed, ledStrength);
+		digitalWrite(greenLed, HIGH);
 	} else {
-		analogWrite(greenLed, 0);
+		digitalWrite(greenLed, LOW);
 	}
+//
+	if (colors.red != 0) {
+		analogWrite(redLed, 50);
+	} else {
+		analogWrite(redLed, 0);
+	}
+	//
+	//if (colors.green != 0) {
+		//analogWrite(blueLed, ledStrength);
+	//} else {
+		//analogWrite(blueLed, 0);
+	//}
+	//
+	//if (colors.blue != 0) {
+		//analogWrite(greenLed, ledStrength);
+	//} else {
+		//analogWrite(greenLed, 0);
+	//}
+
 
 }
 

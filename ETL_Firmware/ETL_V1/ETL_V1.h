@@ -31,11 +31,11 @@ const int buttonPin = 2;     // the number of the pushbutton pin
 const int enableBatteryMonitorPin = A1;
 const int shutterPin = A2;
 const int focusPin = A3;
-const int flashFeedbackPin = A4;
-const int flashSensePin = A5;
+const int flashFeedbackPin = A5; //A4;
+const int flashSensePin = 4; // A5;
 const int batteryMonitorPin = A0;
-#define redLed 11
-#define greenLed 9
+#define redLed 9
+#define greenLed 11
 #define blueLed 10
 #define fskVCCFitlerPin 8 // NOT USED
 
