@@ -22,6 +22,9 @@ uint8_t ledStrength = DEFAULT_LED_STRENGTH;
 void DebugInit() {	
 	Serial.begin(9600);
 	DebugPrintln(F("ETL version 0.1"));
+	DebugPrint("milpf: usPovf:");
+	DebugPrintln(MILLIS_PER_OVERFLOW);
+	DebugPrintln(MICROSECONDS_PER_TIMER2_OVERFLOW);
 	
 	//Serial.print("testprint");
 	//Serial.print(PSTR("testprint"));

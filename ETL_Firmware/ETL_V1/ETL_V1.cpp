@@ -135,11 +135,11 @@ void initFromEEProm() {
 void populateConfigs() {
     //myConfigs[0].type = CONFIG_SIN_P4
 	myConfigs[0].type = 0;
-	sbi(myConfigs[0].type, CONFIG_PRESS_TO_ADVANCE);
+	//sbi(myConfigs[0].type, CONFIG_PRESS_TO_ADVANCE);
     myConfigs[0].repeatIndex = 0;
     myConfigs[0].numRepeats = 0;
     myConfigs[0].shots = 200;
-    myConfigs[0].interval = 3000;
+    myConfigs[0].interval = 30000;
     myConfigs[0].intervalDelta = 0;
 	myConfigs[0].exposureOffset = 0;
     myConfigs[0].exposureFstopChangePerMin = 0;

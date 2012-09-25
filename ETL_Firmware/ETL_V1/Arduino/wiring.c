@@ -178,23 +178,23 @@ void init()
 	sei();
 	
 	//TODO this is for enabling the external async timer. Relevant code below needs to be removed
-	//TIMSK2 = 0;
-	//
-	//sbi(ASSR, AS2); // asynchronous
-	//
-	//TCNT2 = 0;
+	TIMSK2 = 0;
+	
+	sbi(ASSR, AS2); // asynchronous
+	
+	TCNT2 = 0;
 //
 	//// enable timer2
-	//cbi(TCCR2B, CS22); // prescale
-	//cbi(TCCR2B, CS21);
-	//sbi(TCCR2B, CS20);
-	//
-	//while (!(ASSR & ((1<<TCN2UB)|(1<<TCR2BUB))));
-	//
-	//sbi(TIFR2, TOV2);
-	//
-	//sbi(TIMSK2, TOIE2); // interrupt
+	cbi(TCCR2B, CS22); // prescale
+	cbi(TCCR2B, CS21);
+	sbi(TCCR2B, CS20);
 	
+	while (!(ASSR & ((1<<TCN2UB)|(1<<TCR2BUB))));
+	
+	
+	sbi(TIMSK2, TOIE2); // interrupt
+	
+	sbi(TIFR2, TOV2);
 	// on the ATmega168, timer 0 is also used for fast hardware pwm
 	// (using phase-correct PWM would mean that timer 0 overflowed half as often
 	// resulting in different millis() behavior on the ATmega8 and ATmega168)
@@ -213,8 +213,8 @@ void init()
 	sbi(TCCR0, CS20);
 #elif defined(TCCR2B) && defined(CS21) && defined(CS20)
 	// this combination is for the standard 168/328/1280/2560
-	sbi(TCCR2B, CS22);
-	sbi(TCCR2B, CS21); // prescale 256
+	//sbi(TCCR2B, CS22);
+	//sbi(TCCR2B, CS21); // prescale 256
 #elif defined(TCCR2A) && defined(CS21) && defined(CS20)
 	// this combination is for the __AVR_ATmega645__ series
 	sbi(TCCR2A, CS21);

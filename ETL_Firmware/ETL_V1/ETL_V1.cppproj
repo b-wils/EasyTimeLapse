@@ -28,13 +28,13 @@
       </OverrideVtorValue>
       <Channel>
         <host>127.0.0.1</host>
-        <port>26031</port>
+        <port>47125</port>
         <ssl>False</ssl>
       </Channel>
       <ToolOptions>
         <InterfaceName>ISP</InterfaceName>
         <InterfaceProperties>
-          <JtagDbgClock>1000000</JtagDbgClock>
+          <JtagDbgClock>164582</JtagDbgClock>
           <JtagProgClock>1000000</JtagProgClock>
           <IspClock>164582</IspClock>
           <JtagInChain>false</JtagInChain>
@@ -71,15 +71,15 @@
       </OverrideVtorValue>
       <Channel>
         <host>127.0.0.1</host>
-        <port>64367</port>
+        <port>47125</port>
         <ssl>False</ssl>
       </Channel>
       <ToolOptions>
-        <InterfaceName>HVPP</InterfaceName>
+        <InterfaceName>ISP</InterfaceName>
         <InterfaceProperties>
           <JtagDbgClock>1000000</JtagDbgClock>
           <JtagProgClock>1000000</JtagProgClock>
-          <IspClock>150000</IspClock>
+          <IspClock>189390</IspClock>
           <JtagInChain>false</JtagInChain>
           <JtagEnableExtResetOnStartSession>false</JtagEnableExtResetOnStartSession>
           <JtagDevicesBefore>0</JtagDevicesBefore>

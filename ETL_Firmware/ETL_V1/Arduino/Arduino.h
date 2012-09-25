@@ -83,20 +83,21 @@ extern "C"{
 #define microsecondsToClockCycles(a) ( ((a) * (F_CPU / 1000L)) / 1000L )
 
 #define timer2CyclesPerMicrosecond() ( F_TIMER2 / 1000000L )
-#define timer2CyclesToMicroseconds(a) ( ((a) * 1000L) / (F_TIMER2 / 1000L) )
+#define timer2CyclesToMicroseconds(a) ( ((a) * 1000L) * 1000L / F_TIMER2)
 #define microsecondsToTimer2Cycles(a) ( ((a) * (F_TIMER2 / 1000L)) / 1000L )
 
 // the prescaler is set so that timer2 ticks every 64 clock cycles, and the
 // the overflow handler is called every 256 ticks.
-#define TIMER2_PRESCALER_SETTING (256) // 64
-#define MICROSECONDS_PER_TIMER2_OVERFLOW (clockCyclesToMicroseconds(((uint32_t) TIMER2_PRESCALER_SETTING) * 256))
+//#define TIMER2_PRESCALER_SETTING (256) // 64
+#define TIMER2_PRESCALER_SETTING (1) // 64
+#define MICROSECONDS_PER_TIMER2_OVERFLOW (timer2CyclesToMicroseconds(((uint32_t) TIMER2_PRESCALER_SETTING) * 256))
 
 // the whole number of milliseconds per timer0 overflow
 #define MILLIS_PER_OVERFLOW (MICROSECONDS_PER_TIMER2_OVERFLOW / 1000)
 
 // micros per tick
-#define MICROSECONDS_PER_TIMER2_TICK (clockCyclesToMicroseconds((uint32_t) TIMER2_PRESCALER_SETTING))
-//#define MICROSECONDS_PER_TIMER2_TICK (timer2CyclesToMicroseconds((uint32_t) TIMER2_PRESCALER_SETTING))
+//#define MICROSECONDS_PER_TIMER2_TICK (clockCyclesToMicroseconds((uint32_t) TIMER2_PRESCALER_SETTING))
+#define MICROSECONDS_PER_TIMER2_TICK (timer2CyclesToMicroseconds((uint32_t) TIMER2_PRESCALER_SETTING))
 
 #define lowByte(w) ((uint8_t) ((w) & 0xff))
 #define highByte(w) ((uint8_t) ((w) >> 8))
