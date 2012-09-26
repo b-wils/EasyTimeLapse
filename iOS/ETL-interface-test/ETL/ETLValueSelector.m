@@ -268,7 +268,7 @@
 
 - (NSString *)description
 {
-    return nsprintf(@"%ld %@", self.rawValue.unsignedIntValue, self.unit);
+    return nsprintf(@"%ld", self.rawValue.unsignedIntValue);
 }
 
 @end

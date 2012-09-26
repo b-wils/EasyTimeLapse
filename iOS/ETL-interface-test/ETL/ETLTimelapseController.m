@@ -26,6 +26,7 @@
     ETLSimpleValue *numShots;
     ETLRadialSlider *slider;
     ETLUnitKeypad *keypad;
+    UIButton *cancelUnitMenu;
     
     bool editorMode;
     bool ignoreUpdates;
@@ -217,8 +218,9 @@
     
     menuView.hidden = true;
     menuView.layer.cornerRadius = 10;
-    menuView.layer.borderWidth = 3;
-    menuView.layer.borderColor = [UIColor grayColor].CGColor;
+    menuView.layer.borderWidth = 0;
+//    menuView.layer.borderColor = [UIColor grayColor].CGColor;
+    menuView.backgroundColor = [UIColor colorWithRed:47.0/255 green:47.0/255 blue:47.0/255 alpha:0.8];
     
     [[menuView.subviews filterWith:^bool(id object) {
         return [[object class] isSubclassOfClass:NSClassFromString(@"UIButton")];
@@ -240,6 +242,19 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didUpdateTimeScale:) name:SliderMoved object:timeScaleController];
     
     [self updateUICalculations:nil];
+    
+    [keypad setHidden:YES];
+    
+    cancelUnitMenu = [UIButton buttonWithType:UIButtonTypeCustom];
+    cancelUnitMenu.frame = (CGRect){self.view.frame.origin, {self.view.frame.size.height, self.view.frame.size.width}};
+    cancelUnitMenu.backgroundColor = UIColor.clearColor;
+    cancelUnitMenu.hidden = true;
+    [cancelUnitMenu addTarget:self action:@selector(hideUnitMenu:) forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    [menuView removeFromSuperview];
+    [self.view addSubview:cancelUnitMenu];
+    [self.view addSubview:menuView];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
@@ -370,23 +385,32 @@
 
 - (void)showUnitMenu:(id)sender
 {
-    menuView.hidden = false;
-    menuView.alpha = 0;
-    menuView.transform = CGAffineTransformMakeScale(0.1, 0.1);
-    [UIView animateWithDuration:0.2 animations:^{
-        menuView.alpha = 1.0;
-        menuView.transform = CGAffineTransformMakeScale(1, 1);
-    }];
+    if(slider.value != numShots) {
+        cancelUnitMenu.hidden = false;
+        menuView.hidden = false;
+        menuView.alpha = 0;
+        menuView.transform = CGAffineTransformMakeScale(0.1, 0.1);
+        [UIView animateWithDuration:0.2 animations:^{
+            menuView.alpha = 1.0;
+            menuView.transform = CGAffineTransformMakeScale(1, 1);
+        }];
+    }
 }
 
-- (void)didSelectUnit:(id)sender
+- (void)hideUnitMenu:(id)sender
 {
+    cancelUnitMenu.hidden = true;
     [UIView animateWithDuration:0.2 animations:^{
         menuView.alpha = 0;
         menuView.transform = CGAffineTransformMakeScale(0.1, 0.1);
     } completion:^(BOOL finished) {
         menuView.hidden = true;
     }];
+}
+
+- (void)didSelectUnit:(id)sender
+{
+    [self hideUnitMenu:sender];
     
     UIButton *btn = (UIButton *)sender;
     NSString *unit = btn.titleLabel.text.lowercaseString;
@@ -405,9 +429,11 @@
                 editorToggleButton.imageView.image = [UIImage imageNamed:@"keypadicon_u.png"];
                 editorToggleButton.alpha = 1;
             }];
+            keypad.hidden = true;
         }];
     }
     else {
+        keypad.hidden = false;
         [UIView animateWithDuration:0.4 animations:^{
             slider.center = (CGPoint){slider.center.x - editorPane.frame.size.width, slider.center.y};
             keypad.center = (CGPoint){keypad.center.x - editorPane.frame.size.width, keypad.center.y};
@@ -423,6 +449,18 @@
     editorMode = !editorMode;
 }
 
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    if(!menuView.hidden) {
+        for (UITouch *t in touches) {
+            [self hideUnitMenu:self.view];
+        }
+    }
+    else {
+        [super touchesBegan:touches withEvent:event];
+    }
+}
+
 - (BOOL)canBecomeFirstResponder
 {
     return YES;
@@ -434,14 +472,8 @@
     [self becomeFirstResponder];
 }
 
-//- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-//{
-//    [self hideFirstResponder:nil];
-//}
-
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
 {
-//    return (toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft) || (toInterfaceOrientation == UIInterfaceOrientationLandscapeRight);
     return NO;
 }
 

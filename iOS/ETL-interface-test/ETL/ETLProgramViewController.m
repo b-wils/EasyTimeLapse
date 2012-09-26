@@ -100,6 +100,11 @@ const int BATTERY_RANGE = BATTERY_MAX - BATTERY_MIN;
     batteryLevelLabel.text = [NSString stringWithFormat:@"%u%%", batteryLevel];
 }
 
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return NO;
+}
+
 - (void)goBack:(id)sender
 {
     [programmer halt];

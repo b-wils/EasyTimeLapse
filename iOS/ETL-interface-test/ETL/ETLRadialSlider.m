@@ -220,6 +220,8 @@ double distance(CGPoint a, CGPoint b);
     }
     
     double pct = (value.scaledValue.doubleValue - min) / (max - min);
+    pct = MAX(0, pct);
+    pct = MIN(1, pct);
     [self moveThumbToTheta:[self percentToTheta:pct]];
 }
 
