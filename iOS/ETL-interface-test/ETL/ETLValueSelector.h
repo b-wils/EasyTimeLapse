@@ -45,6 +45,8 @@
 @interface ETLShortTimeValue : ETLUnitScaleValue
 //@property (nonatomic, strong) NSNumber *scaledValue;
 @property (nonatomic) NSInteger millis;
+- (void)consolidateValue;
 @end
 
-//@interface ETL
+@interface ETLSimpleValue : ETLUnitScaleValue
+@end

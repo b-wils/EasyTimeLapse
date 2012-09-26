@@ -15,6 +15,8 @@
 #import "NSArray+ArrayUtility.h"
 
 #define nint(x) [NSNumber numberWithInt:x]
+#define nbig(x) [NSNumber numberWithLong:x];
+#define ubig(x) [NSNumber numberWithUnsignedLong:x];
 #define nfloat(x) [NSNumber numberWithFloat:x]
 #define ndouble(x) [NSNumber numberWithDouble:x]
 #define nbool(x) [NSNumber numberWithBool:x]

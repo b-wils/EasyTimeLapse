@@ -483,7 +483,7 @@
 		B546DB1D1607D52600A42DA8 /* keypad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = keypad.png; path = ../../../assets/ks/keypad.png; sourceTree = "<group>"; };
 		B546DB1E1607D52600A42DA8 /* keypad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "keypad@2x.png"; path = "../../../assets/ks/keypad@2x.png"; sourceTree = "<group>"; };
 		B546DB1F1607D52600A42DA8 /* pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pressed.png; path = ../../../assets/ks/pressed.png; sourceTree = "<group>"; };
-		B546DB201607D52600A42DA8 /* pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pressed@2x.png"; path = "../../../assets/ks/pressed@2x.png"; sourceTree = "<group>"; };
+		B546DB201607D52600A42DA8 /* pressed@2x.png */ = {isa = PBXFileReference; name = "pressed@2x.png"; path = "../../../assets/ks/pressed@2x.png"; sourceTree = "<group>"; };
 		B546DB211607D52600A42DA8 /* prog_connected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = prog_connected.png; path = ../../../assets/ks/prog_connected.png; sourceTree = "<group>"; };
 		B546DB221607D52600A42DA8 /* prog_connected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "prog_connected@2x.png"; path = "../../../assets/ks/prog_connected@2x.png"; sourceTree = "<group>"; };
 		B546DB231607D52600A42DA8 /* prog_disconnected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = prog_disconnected.png; path = ../../../assets/ks/prog_disconnected.png; sourceTree = "<group>"; };

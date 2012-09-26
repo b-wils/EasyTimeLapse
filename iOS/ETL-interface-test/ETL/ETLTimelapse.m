@@ -48,7 +48,7 @@ ModelSynthesize(NSUInteger, exposure, setExposure)
 
 -(NSTimeInterval)shootingTime
 {
-    if(!self.continuousShooting) return shotCount * shotInterval;
+    if(!self.continuousShooting) return (shotCount * 1.0) * shotInterval;
     return INFINITY;
 }
 

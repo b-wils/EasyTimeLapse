@@ -72,7 +72,7 @@
     ringLayer.transform = CATransform3DMakeScale(0.5, 0.5, 1);
     
     [layer addSublayer:nubLayer];
-    [layer addSublayer:nubFade];
+//    [layer addSublayer:nubFade];
     [layer addSublayer:ringLayer];
 }
 
@@ -103,11 +103,13 @@
 {
     enabled = value;
     if (value) {
-        nubFade.opacity = 0;
+        nubLayer.opacity = 1;
+//        nubFade.opacity = 0;
     }
     else {
         self.highlighted = false;
-        nubFade.opacity = 0.5;
+        nubLayer.opacity = 0;
+//        nubFade.opacity = 0.5;
     }
 }
 @end

@@ -23,10 +23,12 @@
     ETLSliderStepController *eventDurationController, *clipLengthController, *timeScaleController;
     ETLRangeMapper *eventDurationMapper, *clipLengthMapper, *timeScaleMapper;
     ETLShortTimeValue *shotLength, *clipLength, *intervalValue;
+    ETLSimpleValue *numShots;
     ETLRadialSlider *slider;
     ETLUnitKeypad *keypad;
     
     bool editorMode;
+    bool ignoreUpdates;
 }
 @end
 
@@ -158,9 +160,28 @@
     [self ensureInitialized];
     
     valueList.delegate = self;
+    
     shotLength = [[ETLShortTimeValue alloc] init];
-    shotLength.scaledValue = nint(40);
-    shotLength.unit = @"seconds";
+    shotLength.unit = @"hours";
+    
+    clipLength = [[ETLShortTimeValue alloc] init];
+    clipLength.unit = @"seconds";
+    
+    intervalValue = [[ETLShortTimeValue alloc] init];
+    
+    numShots = [[ETLSimpleValue alloc] init];
+    numShots.unit = @"shots";
+    
+    [shotLength addObserver:self forKeyPath:@"rawValue" options:NSKeyValueObservingOptionNew context:nil];
+    [shotLength addObserver:self forKeyPath:@"scaledValue" options:NSKeyValueObservingOptionNew context:nil];
+    [clipLength addObserver:self forKeyPath:@"rawValue" options:NSKeyValueObservingOptionNew context:nil];
+    [clipLength addObserver:self forKeyPath:@"scaledValue" options:NSKeyValueObservingOptionNew context:nil];
+    [numShots addObserver:self forKeyPath:@"rawValue" options:NSKeyValueObservingOptionNew context:nil];
+    [numShots addObserver:self forKeyPath:@"scaledValue" options:NSKeyValueObservingOptionNew context:nil];
+    [intervalValue addObserver:self forKeyPath:@"rawValue" options:NSKeyValueObservingOptionNew context:nil];
+    [intervalValue addObserver:self forKeyPath:@"scaledValue" options:NSKeyValueObservingOptionNew context:nil];
+    
+    shotLength.scaledValue = nint(4);
     shotLength.bounds = [[ETLBounds alloc] init];
     shotLength.bounds.lower = nint(1);
     shotLength.bounds.upper = nint(90);
@@ -168,18 +189,15 @@
     picker.color = UIColorForestGreen;
     [valueList didSelectValue:picker];
     
-    clipLength = [[ETLShortTimeValue alloc] init];
     clipLength.scaledValue = nint(40);
-    clipLength.unit = @"minutes";
     clipLength.bounds = [[ETLBounds alloc] init];
     clipLength.bounds.lower = nint(1);
     clipLength.bounds.upper = nint(90);
     picker = [valueList addItemNamed:@"Play" withValue:clipLength];
     picker.color = UIColorForestGreen;
     
-    intervalValue = [[ETLShortTimeValue alloc] init];
-    intervalValue.scaledValue = nint(4);
-    intervalValue.unit = @"seconds";
+//    intervalValue.scaledValue = nint(4);
+//    intervalValue.unit = @"seconds";
     intervalValue.bounds = [[ETLBounds alloc] init];
     intervalValue.bounds.lower = nint(1);
     intervalValue.bounds.upper = nint(90);
@@ -188,9 +206,14 @@
 //    tv.millis = 4 * HOURS;
     picker = [valueList addItemNamed:@"Interval" withValue:intervalValue];
     picker.color = UIColorBurntOrange;
+
+//    numShots.scaledValue = nint(400);
+    numShots.bounds = [[ETLBounds alloc] init];
+    numShots.bounds.lower = nint(1);
+    numShots.bounds.upper = nint(1000);
     
-//    picker = [valueList addItemNamed:@"Shots" withValue:nint(4)];
-//    picker.color = UIColorBurntOrange;
+    picker = [valueList addItemNamed:@"Shots" withValue:numShots];
+    picker.color = UIColorBurntOrange;
     
     menuView.hidden = true;
     menuView.layer.cornerRadius = 10;
@@ -217,6 +240,45 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didUpdateTimeScale:) name:SliderMoved object:timeScaleController];
     
     [self updateUICalculations:nil];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if (ignoreUpdates) return;
+    
+    ignoreUpdates = YES;
+    UInt64 shotCount = numShots.rawValue.unsignedLongValue;
+    UInt64 shotInterval = intervalValue.rawValue.unsignedLongValue;
+    NSTimeInterval shootingTime = shotLength.rawValue.doubleValue;
+    NSTimeInterval clipLen = clipLength.rawValue.doubleValue;
+    
+    if (object == numShots) {
+        shotLength.millis = shotCount * shotInterval;
+        [shotLength consolidateValue];
+        
+        clipLength.millis = shotCount / timelapse.clipFramesPerSecond * SECONDS;
+        [clipLength consolidateValue];
+    }
+    else if (object == intervalValue) {
+        shotLength.millis = shotCount * shotInterval;
+        [shotLength consolidateValue];
+    }
+    else if (object == shotLength)
+    {
+        intervalValue.millis = shootingTime / shotCount;
+        [intervalValue consolidateValue];
+    }
+    else if (object == clipLength)
+    {
+        numShots.rawValue = ubig(clipLength.millis / SECONDS * timelapse.clipFramesPerSecond);
+        intervalValue.millis = shootingTime / numShots.rawValue.unsignedLongValue;
+        [intervalValue consolidateValue];
+    }
+    
+    timelapse.shotCount = numShots.rawValue.unsignedLongValue;
+    timelapse.shotInterval = intervalValue.millis;
+    
+    ignoreUpdates = NO;
 }
 
 - (void)updateUICalculations:(NSNotification *)notification

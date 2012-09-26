@@ -80,6 +80,10 @@
                options:NSKeyValueObservingOptionNew
                context:nil];
     [value addObserver:self
+            forKeyPath:@"scaledValue"
+               options:NSKeyValueObservingOptionNew 
+               context:nil];
+    [value addObserver:self
             forKeyPath:@"unit"
                options:NSKeyValueObservingOptionNew
                context:nil];
@@ -119,7 +123,7 @@
 
 - (void)setMillis:(NSInteger)val
 {
-    self.rawValue = nint(val);
+    self.rawValue = nbig(val);
 }
 
 //- (NSNumber *)scaledValue
@@ -142,9 +146,30 @@
 //    return scaledValue;
 //}
 
+- (void)setRawValue:(NSNumber *)val
+{
+    [super setRawValue:val];
+    
+    double t = val.doubleValue;
+    if ([self.unit isEqualToString:@"seconds"]) {
+        t /= SECONDS;
+    }
+    if ([self.unit isEqualToString:@"minutes"]) {
+        t /= MINUTES;
+    }
+    if ([self.unit isEqualToString:@"hours"]) {
+        t /= HOURS;
+    }
+    if ([self.unit isEqualToString:@"days"]) {
+        t /= 24*HOURS;
+    }
+
+    [super setScaledValue:ndouble(t)];
+}
+
 - (void)setScaledValue:(NSNumber *)val
 {
-    NSUInteger ms = val.unsignedIntegerValue;
+    double ms = val.doubleValue;
     if ([self.unit isEqualToString:@"seconds"]) {
         ms *= SECONDS;
     }
@@ -157,15 +182,93 @@
     if ([self.unit isEqualToString:@"days"]) {
         ms *= 24*HOURS;
     }
+
     [super setScaledValue:val];
-    self.millis = ms;
+    self.millis = ms + 0.5;
 }
 
 - (NSString *)description
 {
-//    return msToEnglish(self.millis);
-    return nsprintf(@"%.0f %@", self.scaledValue.floatValue, self.unit);
+    NSNumber *test = ndouble(15.111);
+    double testV = test.doubleValue;
+    
+    printf("%f\n", testV);
+    
+    double val = self.scaledValue.doubleValue;
+    if (val == INFINITY || [self.unit isEqualToString:@"forever"]) {
+        return self.unit;
+    }
+    else {
+        int precision = 2;
+        
+        if ([self.unit isEqualToString:@"ms"]) precision = 0;
+        else if ([self.unit isEqualToString:@"seconds"]) precision = 3;
+        
+        double val = self.scaledValue.doubleValue;
+        for(; precision > 0; precision--)
+        {
+            double v = val * pow(10, precision - 1);
+            double x = fmod(v, 1);
+            if (x < 0.999 && x > EPSILON) break;
+        }
+        
+        return nsprintf(@"%.*f %@", precision, self.scaledValue.doubleValue, self.unit);
+    }
 }
 
+- (void)consolidateValue
+{
+    NSUInteger ms = self.millis;
+    NSString *u;
+    double t = ms;
+
+    if (ms > 24*HOURS) {
+        u = @"days";
+        t /= 24*HOURS;
+    }
+    else if (ms > HOURS) {
+        u = @"hours";
+        t /= HOURS;
+    }
+    else if (ms > MINUTES) {
+        u = @"minutes";
+        t /= MINUTES;
+    }
+    else if (ms > SECONDS) {
+        u = @"seconds";
+        t /= SECONDS;
+    }
+    else {
+        u = @"ms";
+    }
+    
+//    self.scaledValue = ndouble(t);
+    [super setScaledValue:ndouble(t)];
+    self.unit = u;
+}
+
+@end
+
+@implementation ETLSimpleValue
+
+- (void)setScaledValue:(NSNumber *)val
+{
+    [super setScaledValue:val];
+//    [self setValue:val forKey:@"rawValue"];
+//    self.rawValue = val;
+    [super setRawValue:val];
+}
+
+- (void)setRawValue:(NSNumber *)val
+{
+    [super setRawValue:val];
+//    [self setValue:val forKey:@"scaledValue"];
+    [super setScaledValue:val];
+}
+
+- (NSString *)description
+{
+    return nsprintf(@"%ld %@", self.rawValue.unsignedIntValue, self.unit);
+}
 
 @end

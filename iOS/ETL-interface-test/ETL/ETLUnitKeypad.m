@@ -42,15 +42,16 @@ const CGPoint numpadOffset = (CGPoint){68, 68};
 
 - (UIButton *)createButtonAt:(int)row :(int)col
 {
-    UIImage *downBackground = [UIImage imageNamed:@"pressed.png"];
+    UIImage *downBackground = [UIImage imageNamed:@"pressed.png"]; 
     UIFont *buttonFont = [UIFont fontWithName:@"Futura" size:22];
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = CGRectMake(numpadOffset.x + bWidth * col, numpadOffset.y + bHeight * row, 74, 45);
     button.titleLabel.textAlignment = UITextAlignmentCenter;
     button.titleLabel.font = buttonFont;
     [button setTitleColor:[UIColor colorWithRed:47.0/255 green:47.0/255 blue:47.0/255 alpha:1] forState:UIControlStateNormal];
-    button.backgroundColor = [UIColor clearColor];
     [button setBackgroundImage:downBackground forState:UIControlStateHighlighted];
+//    button.backgroundColor = [UIColor clearColor];
+//    [button setImage:downBackground forState:UIControlStateNormal];
     
     [self addSubview:button];
     
@@ -117,7 +118,7 @@ const CGPoint numpadOffset = (CGPoint){68, 68};
     double fraction = modf(value.scaledValue.doubleValue, &whole);
     
     state.intPart = (int)whole;
-    state.fractionalPart = (fraction * 1000 + 0.5);
+    state.fractionalPart = (fraction * pow(10, state.maxFractionalDigits) + 0.5);
     int multiple = pow(10.0, state.maxFractionalDigits);
     if (state.maxFractionalDigits > 0 && fraction >= 1.0/multiple) {
         double f = fraction;

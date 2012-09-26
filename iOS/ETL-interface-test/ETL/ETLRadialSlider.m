@@ -82,9 +82,11 @@ double distance(CGPoint a, CGPoint b);
     theta = value;
     
     track.path = [self arcFrom:-theta to:end];
-    fill.path = [self arcFrom:start to:-theta];
-    fillFade.path = [self arcFrom:start to:-theta];
-    disableFade.path = [self arcFrom:start to:end];
+    CGPathRef fillPath = [self arcFrom:start to:-theta];
+    fill.path = fillPath;
+    fillFade.path = fillPath;
+    if (disableFade.opacity > 0)
+        disableFade.path = [self arcFrom:start to:end];
 }
 
 - (void)setColor:(UIColor *)value
@@ -98,13 +100,6 @@ double distance(CGPoint a, CGPoint b);
     disableFade.opacity = value ? 0 : 0.5;
 }
 
-//- (void)dealloc
-//{
-//    track.path = nil;
-//    fill.path = nil;
-//    fillFade.path = nil;
-//    disableFade.path = nil;
-//}
 @end
 
 @interface ETLRadialSlider ()
@@ -166,16 +161,17 @@ double distance(CGPoint a, CGPoint b);
     unitButton.bounds = CGRectMake(0, center.y + radius - 20, radius*2 - 20, 24);
     [unitButton addTarget:self.superview action:@selector(showUnitMenu:) forControlEvents:UIControlEventTouchUpInside];
     
-    center.x -= 145;
+    center.x -= 125;
     pctLabel = [[UILabel alloc] init];
     pctLabel.center = center;
     pctLabel.textAlignment = UITextAlignmentRight;
     pctLabel.font = [UIFont fontWithName:@"Futura-CondensedMedium" size:124];
     pctLabel.textColor = [UIColor colorWithRed:47.0/255 green:47.0/255 blue:47.0/255 alpha:1];
-    pctLabel.backgroundColor = [UIColor colorWithHue:0 saturation:0 brightness:0 alpha:0];
+    pctLabel.backgroundColor = [UIColor clearColor];
     pctLabel.text = nsprintf(@"%1.0f", 33.33333);
-    pctLabel.bounds = CGRectMake(0, center.y - 68, 150, 120);
-    center.x += 145;
+    pctLabel.bounds = CGRectMake(0, center.y - 68, 120, 120);
+    [pctLabel setAdjustsFontSizeToFitWidth:YES];
+    center.x += 125;
         
     curveLayer = [[ETLRadialCurveLayer alloc] initWithStart:start andEnd:end];
     curveLayer.frame = (CGRect){{0,0}, self.frame.size};
@@ -213,8 +209,15 @@ double distance(CGPoint a, CGPoint b);
     min = value.bounds.lower.doubleValue;
     max = value.bounds.upper.doubleValue;
     unitButton.allTitles = value.unit;
-    self.slideEnabled = ![value.unit isEqualToString:@"forever"];
-    pctLabel.text = nsprintf(@"%1.0f", value.scaledValue.floatValue);
+    
+    bool foreverMode = [value.unit isEqualToString:@"forever"];
+    self.slideEnabled = !foreverMode;
+    if (foreverMode) {
+        pctLabel.text = @"∞";        
+    }
+    else {
+        pctLabel.text = nsprintf(@"%1.0f", value.scaledValue.floatValue);
+    }
     
     double pct = (value.scaledValue.doubleValue - min) / (max - min);
     [self moveThumbToTheta:[self percentToTheta:pct]];
