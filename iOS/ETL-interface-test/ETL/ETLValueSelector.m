@@ -199,18 +199,19 @@
         return self.unit;
     }
     else {
-        int precision = 2;
-        
-        if ([self.unit isEqualToString:@"ms"]) precision = 0;
-        else if ([self.unit isEqualToString:@"seconds"]) precision = 3;
-        
-        double val = self.scaledValue.doubleValue;
-        for(; precision > 0; precision--)
-        {
-            double v = val * pow(10, precision - 1);
-            double x = fmod(v, 1);
-            if (x < 0.999 && x > EPSILON) break;
-        }
+//        int precision = 2;
+//        
+//        if ([self.unit isEqualToString:@"ms"]) precision = 0;
+//        else if ([self.unit isEqualToString:@"seconds"]) precision = 3;
+//        
+//        double val = self.scaledValue.doubleValue;
+//        for(; precision > 0; precision--)
+//        {
+//            double v = val * pow(10, precision - 1);
+//            double x = fmod(v, 1);
+//            if (x < 0.999 && x > EPSILON) break;
+//        }
+        int precision = 0;
         
         return nsprintf(@"%.*f %@", precision, self.scaledValue.doubleValue, self.unit);
     }

@@ -420,6 +420,8 @@
 - (void)toggleEditorType:(id)sender
 {
     if (editorMode) {
+        CGPoint c = menuView.center;
+        c.x += 32; menuView.center = c;
         [UIView animateWithDuration:0.4 animations:^{
             slider.center = (CGPoint){slider.center.x + editorPane.frame.size.width, slider.center.y};
             keypad.center = (CGPoint){keypad.center.x + editorPane.frame.size.width, keypad.center.y};
@@ -433,6 +435,8 @@
         }];
     }
     else {
+        CGPoint c = menuView.center;
+        c.x -= 32; menuView.center = c;
         keypad.hidden = false;
         [UIView animateWithDuration:0.4 animations:^{
             slider.center = (CGPoint){slider.center.x - editorPane.frame.size.width, slider.center.y};

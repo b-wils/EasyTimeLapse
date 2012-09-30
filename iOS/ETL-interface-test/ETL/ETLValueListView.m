@@ -47,16 +47,18 @@
     nubView.backgroundColor = [UIColor clearColor];
     nubView.clipsToBounds = true;
     
-    UIBezierPath *path = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(-15, 2, 30, 53)];
+    double d = nubView.frame.size.width;
+    double h = nubView.frame.size.height / 2;
+    
+    double m = -h/d;
+    double x = (-4*m*h - 2*m*d)/(-4*m) - 3; 
+    double s = ABS(4*(-x + d));
+    
+    UIBezierPath *path = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(-s + d, -(s - 2*h)/2, s, s)];
     nubLayer = [CAShapeLayer layer];
     nubLayer.path = path.CGPath;
     nubLayer.lineWidth = 0;
     nubLayer.strokeColor = [UIColor clearColor].CGColor;
-    
-//    nubLayer.shadowPath = path.CGPath;
-//    nubLayer.shadowColor = [UIColor greenColor].CGColor;
-//    nubLayer.shadowRadius = 5;
-//    nubLayer.shadowOffset = CGSizeMake(5, 5);
 
     [nubView.layer addSublayer:nubLayer];
     [self addSubview:nubView];
@@ -92,7 +94,6 @@
     CGPoint center = nubView.center;
     center.y = target.center.y;
     [UIView animateWithDuration:0.2 animations:^{
-//        nubView.backgroundColor = target.color;
         nubLayer.fillColor = target.color.CGColor;
         nubView.center = center;
     }];
