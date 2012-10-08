@@ -34,12 +34,10 @@
 @property (nonatomic, strong) NSNumber *rawValue;
 @property (nonatomic, strong) NSNumber *scaledValue;
 @property (nonatomic, strong) NSString *unit;
-//@property (nonatomic, assign) bool bounded;
 @property (nonatomic, readonly) NSArray *unitList;
 @property (nonatomic, strong) ETLBounds *bounds;
 
-//- (NSNumber *)scaledValue;
-//- (void)setScaledValue:(NSNumber *)val;
+- (void)addObserver:(NSObject *)obs;
 @end
 
 @interface ETLShortTimeValue : ETLUnitScaleValue

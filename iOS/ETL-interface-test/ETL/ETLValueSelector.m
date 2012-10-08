@@ -113,6 +113,12 @@
 
 @implementation ETLUnitScaleValue
 @synthesize rawValue, bounds, unit, unitList, scaledValue;
+
+- (void)addObserver:(NSObject *)obs
+{
+    [self addObserver:obs forKeyPath:@"rawValue" options:NSKeyValueObservingOptionNew context:nil];
+    [self addObserver:obs forKeyPath:@"scaledValue" options:NSKeyValueObservingOptionNew context:nil];
+}
 @end
 
 @implementation ETLShortTimeValue
@@ -125,26 +131,6 @@
 {
     self.rawValue = nbig(val);
 }
-
-//- (NSNumber *)scaledValue
-//{
-////    NSUInteger ms = self.rawValue.unsignedIntegerValue;
-////    if ([self.unit isEqualToString:@"seconds"]) {
-////        ms /= SECONDS;
-////    }
-////    if ([self.unit isEqualToString:@"minutes"]) {
-////        ms /= MINUTES;
-////    }
-////    if ([self.unit isEqualToString:@"hours"]) {
-////        ms /= HOURS;
-////    }
-////    if ([self.unit isEqualToString:@"days"]) {
-////        ms /= 24*HOURS;
-////    }
-////    
-////    return nint(ms);
-//    return scaledValue;
-//}
 
 - (void)setRawValue:(NSNumber *)val
 {
@@ -255,15 +241,12 @@
 - (void)setScaledValue:(NSNumber *)val
 {
     [super setScaledValue:val];
-//    [self setValue:val forKey:@"rawValue"];
-//    self.rawValue = val;
     [super setRawValue:val];
 }
 
 - (void)setRawValue:(NSNumber *)val
 {
     [super setRawValue:val];
-//    [self setValue:val forKey:@"scaledValue"];
     [super setScaledValue:val];
 }
 

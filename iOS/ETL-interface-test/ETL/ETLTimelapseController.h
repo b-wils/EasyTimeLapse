@@ -11,11 +11,9 @@
 #import "ETLSliderStepController.h"
 #import "ETLValueListView.h"
 
-@interface ETLTimelapseController : ETLShotViewController <UITextFieldDelegate, ETLIntervalSelectionDelegate, ETLValueListDelegate>
+@interface ETLTimelapseController : ETLShotViewController <ETLValueListDelegate>
 {           
     IBOutlet UIButton *readyButton;
-//    IBOutlet UILabel *eventLabel, *clipLabel, *intervalLabel, *shotsLabel;
-//    IBOutlet UIImageView *selectorImage;
     IBOutlet ETLValueListView *valueList;
     IBOutlet UIView *editorPane;
     IBOutlet UIView *menuView;

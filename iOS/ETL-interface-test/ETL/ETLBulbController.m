@@ -82,6 +82,9 @@
 {
     
     [super viewDidLoad];
+    
+    self.view.backgroundColor = UIColor.whiteColor;
+    
     [self ensureInitialized];
     [Array(endingDurationButton, initialDurationButton, initialExposureButton, rampDurationButton) 
      eachWith:^(id object) {

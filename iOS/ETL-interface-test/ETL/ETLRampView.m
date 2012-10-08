@@ -9,11 +9,14 @@
 #import "ETLRampView.h"
 #import "ETLUtil.h"
 
+#define LineGreenColor [UIColor colorWithRed:93/255.0 green:121/255.0 blue:130/255.0 alpha:1]
+
 @interface ETLRampView ()
 {
     CGPoint p[6];
     UITouch *initialTouch, *finalTouch, *easeInTouch, *easeOutTouch;
     UILabel *initialLabel, *finalLabel;
+//    CALayer *gridLayer;
     
 //    ETLThumb *leftThumb, *rightThumb;
 }
@@ -74,8 +77,8 @@
     [path addLineToPoint:p[3]];
     [path addQuadCurveToPoint:p[4] controlPoint:c4];
     [path addLineToPoint:p[5]];
-    [path moveToPoint:(CGPoint){0,0}];
-    [path closePath];
+//    [path moveToPoint:(CGPoint){0,0}];
+//    [path closePath];
 
     return path;
 }
@@ -104,27 +107,143 @@
     return (_easeOut < 10) ? 0 : _easeOut;
 }
 
+- (void)drawLines:(CGRect)rect
+{
+//    [[UIColor lightGrayColor] setStroke];
+    [self doInContext:^(CGContextRef context) {
+        CGContextSetStrokeColorWithColor(context, [UIColor colorWithRed:229/255.0 green:230/255.0 blue:225/255.0 alpha:1].CGColor);    
+//        CGContextSetStrokeColorWithColor(context, [UIColor redColor].CGColor);
+        CGContextSetLineWidth(context, 1);
+        
+        for (float y = 27.5; y <= self.frame.size.height; y += 27.5) {
+            CGContextBeginPath(context);
+            CGContextMoveToPoint(context, 0, (int)y);
+            CGContextAddLineToPoint(context, self.frame.size.width, (int)y);
+            CGContextStrokePath(context);
+        }
+        
+        CGContextBeginPath(context);
+        CGContextMoveToPoint(context, 0, self.frame.size.height);
+        CGContextAddLineToPoint(context, self.frame.size.width, self.frame.size.height);
+        CGContextStrokePath(context);
+        
+        float xSpan = self.frame.size.width / 10.0;
+        for (float x = xSpan; x <= self.frame.size.width; x += xSpan)
+        {
+            CGContextBeginPath(context);
+            CGContextMoveToPoint(context, (int)x, 0);
+            CGContextAddLineToPoint(context, (int)x, self.frame.size.height);
+            CGContextStrokePath(context);
+        }
+    }];
+}
+
 - (void)drawRect:(CGRect)rect
 {
     UIBezierPath *path = [self createPath];
     
-    [[UIColor blackColor] setStroke];
+    [self doInContext:^(CGContextRef context) {
+        CGContextSetFillColorWithColor(context, [UIColor colorWithRed:238/255.0 green:239/255.0 blue:233/255.0 alpha:1].CGColor);
+        CGContextFillRect(context, rect);
+        
+        CGContextAddPath(context, path.CGPath);
+        CGContextAddLineToPoint(context, self.frame.size.width, self.frame.size.height);
+        CGContextAddLineToPoint(context, 0, self.frame.size.height);
+        CGContextClosePath(context);
+        CGContextClip(context);
+        
+        CGGradientRef gradient;
+        CGColorSpaceRef colorspace = CGColorSpaceCreateDeviceRGB();
+        size_t num_locations = 2;
+        CGFloat locations[2] = { 0.0, 1.0 };
+        CGFloat components[8] = { 
+            153/255.0, 195/255.0, 191/255.0, 1.0, 
+            213/255.0, 230/255.0, 228/255.0, 1.0 };
+        gradient = CGGradientCreateWithColorComponents (colorspace, components,
+                                                          locations, num_locations);
+        CGContextDrawLinearGradient(context, gradient, (CGPoint){0, 0}, (CGPoint){0, self.frame.size.height}, 0);
+    }];
+    
+    [self drawLines:rect];
+    
+    [LineGreenColor setStroke];
     path.lineWidth = 5;
     [path stroke];
     
-    if (self.easeIn > 0) {
-        [self drawSpanAt:p[1].x ofWidth:p[2].x - p[1].x];
-    }
-    else {
-        [self drawMarkerAt:p[1].x];
-    }
+    [self doInContext:^(CGContextRef context) {
+        if (self.easeIn > 0) {
+            [self drawSpanAt:p[1].x ofWidth:p[2].x - p[1].x];
+            
+            [LineGreenColor setFill];
+            [UIColor.whiteColor setStroke];
+            
+            CGRect r = CGRectMake(p[2].x - 8, p[1].y - 8 + 1.25, 16, 16);
+            UIBezierPath* nubPath = [UIBezierPath bezierPathWithOvalInRect:r];
+            nubPath.lineWidth = 2;
+            [nubPath fill];
+            [nubPath stroke];
+            
+            [LineGreenColor setStroke];
+            CGContextMoveToPoint(context, p[1].x, p[1].y + 1.25);
+            CGContextAddLineToPoint(context, p[2].x, p[1].y + 1.25);
+            CGContextSetLineWidth(context, 2);
+            CGContextStrokePath(context);
+        }
+        else {
+            [self drawMarkerAt:p[1].x];
+            
+            [LineGreenColor setFill];
+            [UIColor.whiteColor setStroke];
+            
+            CGRect r = CGRectMake(p[2].x - 8, p[1].y - 8, 16, 16);
+            CGRect clip = CGRectMake(p[2].x, p[1].y - 8, 8, 16);
+            
+            CGContextClipToRect(context, clip);
+            
+            UIBezierPath* nubPath = [UIBezierPath bezierPathWithOvalInRect:r];
+            nubPath.lineWidth = 2;
+            [nubPath fill];
+            [nubPath stroke];
 
-    if (self.easeOut > 0) {    
-        [self drawSpanAt:p[3].x ofWidth:p[4].x - p[3].x];
-    }
-    else {
-        [self drawMarkerAt:p[3].x];
-    }
+        }
+    }];
+    
+    [self doInContext:^(CGContextRef context) {
+        if (self.easeOut > 0) {    
+            [self drawSpanAt:p[3].x ofWidth:p[4].x - p[3].x];
+            
+            [LineGreenColor setFill];
+            [UIColor.whiteColor setStroke];
+                        
+            CGRect r = CGRectMake(p[3].x - 8, p[4].y - 8 - 1.25, 16, 16);
+            UIBezierPath* nubPath = [UIBezierPath bezierPathWithOvalInRect:r];
+            nubPath.lineWidth = 2;
+            [nubPath fill];
+            [nubPath stroke];
+            
+            [LineGreenColor setStroke];
+            CGContextMoveToPoint(context, p[3].x, p[4].y - 1.25);
+            CGContextAddLineToPoint(context, p[4].x, p[4].y - 1.25);
+            CGContextSetLineWidth(context, 2);
+            CGContextStrokePath(context);
+        }
+        else {
+            [self drawMarkerAt:p[3].x];
+            
+            [LineGreenColor setFill];
+            [UIColor.whiteColor setStroke];
+            
+            CGRect r = CGRectMake(p[3].x - 8, p[4].y - 8, 16, 16);
+            CGRect clip = CGRectMake(p[3].x - 8, p[4].y - 8, 8, 16);
+            
+            CGContextClipToRect(context, clip);
+            
+            UIBezierPath* nubPath = [UIBezierPath bezierPathWithOvalInRect:r];
+            nubPath.lineWidth = 2;
+            [nubPath fill];
+            [nubPath stroke];
+        }
+    }];
     
     if (initialTouch) {
         initialLabel.text = nsprintf(@"%d", initial);
@@ -153,12 +272,20 @@
     [self doInContext:^(CGContextRef context) {
         CGContextSetLineWidth(context, 0);
         CGColorSpaceRef colorspace = CGColorSpaceCreateDeviceRGB();
-        CGFloat components[] = {1.0, 1.0, 1.0, 0.5};
+        
+        CGFloat components[] = {1.0, 1.0, 1.0, 0.25};
         CGColorRef color = CGColorCreate(colorspace, components);
-
         CGContextSetFillColorWithColor(context, color);
-        CGRect rect = {{position, 0}, {width, self.frame.size.height}};
+        
+        CGFloat components2[] = {1,1,1,1};
+        color = CGColorCreate(colorspace, components2);
+        
+        CGContextSetStrokeColorWithColor(context, color);
+        CGContextSetLineWidth(context, 1);
+        
+        CGRect rect = {{position, -2}, {width, self.frame.size.height + 2}};
         CGContextFillRect(context, rect);
+        CGContextStrokeRect(context, rect);
         CGColorSpaceRelease(colorspace);
         CGColorRelease(color);
     }];

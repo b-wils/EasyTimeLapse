@@ -232,8 +232,6 @@
 		B592B09A15E5688700F892BA /* ETLRangeMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = B592B09815E5688700F892BA /* ETLRangeMapper.m */; };
 		B592B09C15E57F6E00F892BA /* ETLUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = B592B09B15E57F6E00F892BA /* ETLUtil.m */; };
 		B592B09D15E57F6E00F892BA /* ETLUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = B592B09B15E57F6E00F892BA /* ETLUtil.m */; };
-		B593769115EEAF8D000578BA /* ETLProTimelapseController.m in Sources */ = {isa = PBXBuildFile; fileRef = B593769015EEAF8D000578BA /* ETLProTimelapseController.m */; };
-		B593769215EEAF8D000578BA /* ETLProTimelapseController.m in Sources */ = {isa = PBXBuildFile; fileRef = B593769015EEAF8D000578BA /* ETLProTimelapseController.m */; };
 		B5990754158FFC000005C8E2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5990753158FFC000005C8E2 /* UIKit.framework */; };
 		B5990756158FFC000005C8E2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5990755158FFC000005C8E2 /* Foundation.framework */; };
 		B5990758158FFC000005C8E2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5990757158FFC000005C8E2 /* CoreGraphics.framework */; };
@@ -249,6 +247,24 @@
 		B5ACD13E15F9235200F43490 /* ETLTestControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5ACD13D15F9235200F43490 /* ETLTestControllerViewController.m */; };
 		B5ACD14115FA492200F43490 /* ETLFlickPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = B5ACD14015FA492200F43490 /* ETLFlickPicker.m */; };
 		B5ACD14215FA492200F43490 /* ETLFlickPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = B5ACD14015FA492200F43490 /* ETLFlickPicker.m */; };
+		B5ADF561161A229300F0F5B0 /* ETLShotStatusController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5ADF560161A229300F0F5B0 /* ETLShotStatusController.m */; };
+		B5ADF562161A229300F0F5B0 /* ETLShotStatusController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5ADF560161A229300F0F5B0 /* ETLShotStatusController.m */; };
+		B5ADF56B161A24C700F0F5B0 /* share_p.png in Resources */ = {isa = PBXBuildFile; fileRef = B5ADF563161A24C700F0F5B0 /* share_p.png */; };
+		B5ADF56C161A24C700F0F5B0 /* share_p.png in Resources */ = {isa = PBXBuildFile; fileRef = B5ADF563161A24C700F0F5B0 /* share_p.png */; };
+		B5ADF56D161A24C700F0F5B0 /* share_p@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5ADF564161A24C700F0F5B0 /* share_p@2x.png */; };
+		B5ADF56E161A24C700F0F5B0 /* share_p@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5ADF564161A24C700F0F5B0 /* share_p@2x.png */; };
+		B5ADF56F161A24C700F0F5B0 /* share_u.png in Resources */ = {isa = PBXBuildFile; fileRef = B5ADF565161A24C700F0F5B0 /* share_u.png */; };
+		B5ADF570161A24C700F0F5B0 /* share_u.png in Resources */ = {isa = PBXBuildFile; fileRef = B5ADF565161A24C700F0F5B0 /* share_u.png */; };
+		B5ADF571161A24C700F0F5B0 /* share_u@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5ADF566161A24C700F0F5B0 /* share_u@2x.png */; };
+		B5ADF572161A24C700F0F5B0 /* share_u@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5ADF566161A24C700F0F5B0 /* share_u@2x.png */; };
+		B5ADF573161A24C700F0F5B0 /* statusaction_p.png in Resources */ = {isa = PBXBuildFile; fileRef = B5ADF567161A24C700F0F5B0 /* statusaction_p.png */; };
+		B5ADF574161A24C700F0F5B0 /* statusaction_p.png in Resources */ = {isa = PBXBuildFile; fileRef = B5ADF567161A24C700F0F5B0 /* statusaction_p.png */; };
+		B5ADF575161A24C700F0F5B0 /* statusaction_p@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5ADF568161A24C700F0F5B0 /* statusaction_p@2x.png */; };
+		B5ADF576161A24C700F0F5B0 /* statusaction_p@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5ADF568161A24C700F0F5B0 /* statusaction_p@2x.png */; };
+		B5ADF577161A24C700F0F5B0 /* statusaction_u.png in Resources */ = {isa = PBXBuildFile; fileRef = B5ADF569161A24C700F0F5B0 /* statusaction_u.png */; };
+		B5ADF578161A24C700F0F5B0 /* statusaction_u.png in Resources */ = {isa = PBXBuildFile; fileRef = B5ADF569161A24C700F0F5B0 /* statusaction_u.png */; };
+		B5ADF579161A24C700F0F5B0 /* statusaction_u@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5ADF56A161A24C700F0F5B0 /* statusaction_u@2x.png */; };
+		B5ADF57A161A24C700F0F5B0 /* statusaction_u@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5ADF56A161A24C700F0F5B0 /* statusaction_u@2x.png */; };
 		B5B1E63415C9A95D001720C2 /* ETLBimodalController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5B1E63315C9A95D001720C2 /* ETLBimodalController.m */; };
 		B5B1E63515C9A95D001720C2 /* ETLBimodalController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5B1E63315C9A95D001720C2 /* ETLBimodalController.m */; };
 		B5B9D2271592732E000444BB /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5B9D2261592732E000444BB /* AudioToolbox.framework */; };
@@ -483,7 +499,7 @@
 		B546DB1D1607D52600A42DA8 /* keypad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = keypad.png; path = ../../../assets/ks/keypad.png; sourceTree = "<group>"; };
 		B546DB1E1607D52600A42DA8 /* keypad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "keypad@2x.png"; path = "../../../assets/ks/keypad@2x.png"; sourceTree = "<group>"; };
 		B546DB1F1607D52600A42DA8 /* pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pressed.png; path = ../../../assets/ks/pressed.png; sourceTree = "<group>"; };
-		B546DB201607D52600A42DA8 /* pressed@2x.png */ = {isa = PBXFileReference; name = "pressed@2x.png"; path = "../../../assets/ks/pressed@2x.png"; sourceTree = "<group>"; };
+		B546DB201607D52600A42DA8 /* pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pressed@2x.png"; path = "../../../assets/ks/pressed@2x.png"; sourceTree = "<group>"; };
 		B546DB211607D52600A42DA8 /* prog_connected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = prog_connected.png; path = ../../../assets/ks/prog_connected.png; sourceTree = "<group>"; };
 		B546DB221607D52600A42DA8 /* prog_connected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "prog_connected@2x.png"; path = "../../../assets/ks/prog_connected@2x.png"; sourceTree = "<group>"; };
 		B546DB231607D52600A42DA8 /* prog_disconnected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = prog_disconnected.png; path = ../../../assets/ks/prog_disconnected.png; sourceTree = "<group>"; };
@@ -575,8 +591,6 @@
 		B592B09715E5688700F892BA /* ETLRangeMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETLRangeMapper.h; sourceTree = "<group>"; };
 		B592B09815E5688700F892BA /* ETLRangeMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLRangeMapper.m; sourceTree = "<group>"; };
 		B592B09B15E57F6E00F892BA /* ETLUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLUtil.m; sourceTree = "<group>"; };
-		B593768F15EEAF8D000578BA /* ETLProTimelapseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETLProTimelapseController.h; sourceTree = "<group>"; };
-		B593769015EEAF8D000578BA /* ETLProTimelapseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLProTimelapseController.m; sourceTree = "<group>"; };
 		B599074F158FFC000005C8E2 /* ETL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ETL.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5990753158FFC000005C8E2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B5990755158FFC000005C8E2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -604,6 +618,16 @@
 		B5ACD13D15F9235200F43490 /* ETLTestControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLTestControllerViewController.m; sourceTree = "<group>"; };
 		B5ACD13F15FA492200F43490 /* ETLFlickPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETLFlickPicker.h; sourceTree = "<group>"; };
 		B5ACD14015FA492200F43490 /* ETLFlickPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLFlickPicker.m; sourceTree = "<group>"; };
+		B5ADF55F161A229300F0F5B0 /* ETLShotStatusController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETLShotStatusController.h; sourceTree = "<group>"; };
+		B5ADF560161A229300F0F5B0 /* ETLShotStatusController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLShotStatusController.m; sourceTree = "<group>"; };
+		B5ADF563161A24C700F0F5B0 /* share_p.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = share_p.png; path = ../../../assets/ks/share_p.png; sourceTree = "<group>"; };
+		B5ADF564161A24C700F0F5B0 /* share_p@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "share_p@2x.png"; path = "../../../assets/ks/share_p@2x.png"; sourceTree = "<group>"; };
+		B5ADF565161A24C700F0F5B0 /* share_u.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = share_u.png; path = ../../../assets/ks/share_u.png; sourceTree = "<group>"; };
+		B5ADF566161A24C700F0F5B0 /* share_u@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "share_u@2x.png"; path = "../../../assets/ks/share_u@2x.png"; sourceTree = "<group>"; };
+		B5ADF567161A24C700F0F5B0 /* statusaction_p.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = statusaction_p.png; path = ../../../assets/ks/statusaction_p.png; sourceTree = "<group>"; };
+		B5ADF568161A24C700F0F5B0 /* statusaction_p@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "statusaction_p@2x.png"; path = "../../../assets/ks/statusaction_p@2x.png"; sourceTree = "<group>"; };
+		B5ADF569161A24C700F0F5B0 /* statusaction_u.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = statusaction_u.png; path = ../../../assets/ks/statusaction_u.png; sourceTree = "<group>"; };
+		B5ADF56A161A24C700F0F5B0 /* statusaction_u@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "statusaction_u@2x.png"; path = "../../../assets/ks/statusaction_u@2x.png"; sourceTree = "<group>"; };
 		B5B1E63215C9A95D001720C2 /* ETLBimodalController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETLBimodalController.h; sourceTree = "<group>"; };
 		B5B1E63315C9A95D001720C2 /* ETLBimodalController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETLBimodalController.m; sourceTree = "<group>"; };
 		B5B9D2261592732E000444BB /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -921,6 +945,14 @@
 		B567FBD815FFC3B200B4C97C /* images */ = {
 			isa = PBXGroup;
 			children = (
+				B5ADF563161A24C700F0F5B0 /* share_p.png */,
+				B5ADF564161A24C700F0F5B0 /* share_p@2x.png */,
+				B5ADF565161A24C700F0F5B0 /* share_u.png */,
+				B5ADF566161A24C700F0F5B0 /* share_u@2x.png */,
+				B5ADF567161A24C700F0F5B0 /* statusaction_p.png */,
+				B5ADF568161A24C700F0F5B0 /* statusaction_p@2x.png */,
+				B5ADF569161A24C700F0F5B0 /* statusaction_u.png */,
+				B5ADF56A161A24C700F0F5B0 /* statusaction_u@2x.png */,
 				B546DB151607D52600A42DA8 /* battery.png */,
 				B546DB161607D52600A42DA8 /* battery@2x.png */,
 				B546DB171607D52600A42DA8 /* cancel.png */,
@@ -1235,8 +1267,8 @@
 				B5E1AC6415DC1B9700D022E8 /* ETLPreBulbController.m */,
 				B52FB3DC15EA94080073CAAC /* ETLBulbRampController.h */,
 				B52FB3DD15EA94080073CAAC /* ETLBulbRampController.m */,
-				B593768F15EEAF8D000578BA /* ETLProTimelapseController.h */,
-				B593769015EEAF8D000578BA /* ETLProTimelapseController.m */,
+				B5ADF55F161A229300F0F5B0 /* ETLShotStatusController.h */,
+				B5ADF560161A229300F0F5B0 /* ETLShotStatusController.m */,
 			);
 			name = Shots;
 			sourceTree = "<group>";
@@ -1394,6 +1426,14 @@
 				B576526A15D169D400E35C56 /* next@2x.png in Resources */,
 				B52FB3EB15EBCF600073CAAC /* Vertex.glsl in Resources */,
 				B52FB3EE15EBCF900073CAAC /* Fragment.glsl in Resources */,
+				B5ADF56C161A24C700F0F5B0 /* share_p.png in Resources */,
+				B5ADF56E161A24C700F0F5B0 /* share_p@2x.png in Resources */,
+				B5ADF570161A24C700F0F5B0 /* share_u.png in Resources */,
+				B5ADF572161A24C700F0F5B0 /* share_u@2x.png in Resources */,
+				B5ADF574161A24C700F0F5B0 /* statusaction_p.png in Resources */,
+				B5ADF576161A24C700F0F5B0 /* statusaction_p@2x.png in Resources */,
+				B5ADF578161A24C700F0F5B0 /* statusaction_u.png in Resources */,
+				B5ADF57A161A24C700F0F5B0 /* statusaction_u@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1581,6 +1621,14 @@
 				B546DB3A1607D52600A42DA8 /* prog_post@2x.png in Resources */,
 				B546DB3B1607D52600A42DA8 /* radialicon_u.png in Resources */,
 				B546DB3C1607D52600A42DA8 /* radialicon_u@2x.png in Resources */,
+				B5ADF56B161A24C700F0F5B0 /* share_p.png in Resources */,
+				B5ADF56D161A24C700F0F5B0 /* share_p@2x.png in Resources */,
+				B5ADF56F161A24C700F0F5B0 /* share_u.png in Resources */,
+				B5ADF571161A24C700F0F5B0 /* share_u@2x.png in Resources */,
+				B5ADF573161A24C700F0F5B0 /* statusaction_p.png in Resources */,
+				B5ADF575161A24C700F0F5B0 /* statusaction_p@2x.png in Resources */,
+				B5ADF577161A24C700F0F5B0 /* statusaction_u.png in Resources */,
+				B5ADF579161A24C700F0F5B0 /* statusaction_u@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1652,12 +1700,12 @@
 				B52FB3E315EA97210073CAAC /* ETLRampView.m in Sources */,
 				B53341BA15ED4EE200EBBBB6 /* ETLThumb.m in Sources */,
 				B53341BE15ED4F8C00EBBBB6 /* UIView+UIView_DrawingHelpers.m in Sources */,
-				B593769215EEAF8D000578BA /* ETLProTimelapseController.m in Sources */,
 				B5E376B915F5312200C8C305 /* ETLRadialSlider.m in Sources */,
 				B5ACD14215FA492200F43490 /* ETLFlickPicker.m in Sources */,
 				B546DAFC16068D4100A42DA8 /* ETLValueSelector.m in Sources */,
 				B546DB001607647A00A42DA8 /* ETLValueListView.m in Sources */,
 				B546DB041607CEAA00A42DA8 /* ETLUnitKeypad.m in Sources */,
+				B5ADF562161A229300F0F5B0 /* ETLShotStatusController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1713,13 +1761,13 @@
 				B52FB3E215EA97210073CAAC /* ETLRampView.m in Sources */,
 				B53341B915ED4EE200EBBBB6 /* ETLThumb.m in Sources */,
 				B53341BD15ED4F8C00EBBBB6 /* UIView+UIView_DrawingHelpers.m in Sources */,
-				B593769115EEAF8D000578BA /* ETLProTimelapseController.m in Sources */,
 				B5E376B815F5312200C8C305 /* ETLRadialSlider.m in Sources */,
 				B5ACD13E15F9235200F43490 /* ETLTestControllerViewController.m in Sources */,
 				B5ACD14115FA492200F43490 /* ETLFlickPicker.m in Sources */,
 				B546DAFB16068D4100A42DA8 /* ETLValueSelector.m in Sources */,
 				B546DAFF1607647A00A42DA8 /* ETLValueListView.m in Sources */,
 				B546DB031607CEAA00A42DA8 /* ETLUnitKeypad.m in Sources */,
+				B5ADF561161A229300F0F5B0 /* ETLShotStatusController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

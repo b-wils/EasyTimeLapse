@@ -29,7 +29,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
+    self.navigationController.navigationBarHidden = YES;
+    
+    if (UIInterfaceOrientationIsPortrait(UIApplication.sharedApplication.statusBarOrientation)) {
+        // Rotate the view if we're in portrait.
+        CGAffineTransform transform = CGAffineTransformMakeRotation(3.14159/2);
+        self.view.transform = transform;
+    }
+
 }
 
 - (void)viewDidUnload

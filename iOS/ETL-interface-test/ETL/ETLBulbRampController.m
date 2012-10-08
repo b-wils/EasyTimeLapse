@@ -26,15 +26,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
-    self.navigationController.navigationBarHidden = YES;
-//    [UIViewController attemptRotationToDeviceOrientation];
-
-    if (UIInterfaceOrientationIsPortrait(UIApplication.sharedApplication.statusBarOrientation)) {
-        // Rotate the view if we're in portrait.
-        CGAffineTransform transform = CGAffineTransformMakeRotation(3.14159/2);
-        self.view.transform = transform;
-    }
+    rampView.backgroundColor = UIColor.whiteColor;
+    
 }
 
 - (void)viewDidUnload
