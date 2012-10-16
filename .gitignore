@@ -4,11 +4,7 @@
 *.xcuserdatad
 ETL
 server
-*.o
-*.d
-*.hex
-*.elf
-*.eep
-*.lls
-*.map
-*.mk
+*.atsuo
+debug/
+release/
+etl_webapp/
