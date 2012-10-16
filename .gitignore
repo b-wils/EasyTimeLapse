@@ -3,3 +3,12 @@
 *.xcbkptlist
 *.xcuserdatad
 ETL
+server
+*.o
+*.d
+*.hex
+*.elf
+*.eep
+*.lls
+*.map
+*.mk
